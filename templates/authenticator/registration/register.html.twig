@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+{#
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+
+#}
+
+  <!-- Titlebar -->
+  <div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)" data-color-opacity="0.8" data-img-width="800" data-img-height="505">
+    <div id="titlebar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Register</h2>
+            <!-- Breadcrumbs -->
+            <nav id="breadcrumbs">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Register</li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Contact --> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="my-account">
+          <div class="tabs-container"> 
+            <!-- Register -->
+			  <div class="utf-welcome-text-item">
+				<h3>Create Your New Account!</h3>
+				<span>Don't Have an Account? <a href="{{ path('app_login') }}">Se connecté</a></span> 
+			  </div>
+              {{ form_start(registrationForm) }}
+
+                <div class="form-row form-row-wide margin-bottom-15">
+                    {{ form_row(registrationForm.PhoneNumber) }}
+                </div>
+				<div class="form-row form-row-wide">
+                    {{ form_row(registrationForm.email) }}
+                </div>
+                <div class="form-row form-row-wide">
+                    {{ form_row(registrationForm.plainPassword) }}
+                </div>
+				<div class="form-row form-row-wide">
+                    <input class="input-text" type="password" name="password" placeholder="Repeat Password" id="repeat_password"/>
+                </div>
+                <div class="form-row checkbox margin-top-10 margin-bottom-10">
+					{{ form_widget(registrationForm.agreeTerms) }}
+					<label for="registration_form_agreeTerms"><span class="checkbox-icon"></span> By Registering You Confirm That You Accept <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+				</div>
+				<input type="submit" class="button full-width border margin-top-10" name="Create An Account" value="Créer votre compte" />				
+                {{ form_end(registrationForm) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container / End --> 
+
+
+
+
+
+
+    {{ form_end(registrationForm) }}
+{% endblock %}

@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+        <meta name="description" content="{% block description %}Welcome!{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/favicon.png">
+        <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+        {% block css %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <!-- Preloader Start -->
+        
+        <div class="preloader">
+            <div class="utf-preloader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <!-- Preloader End -->
+        <div id="wrapper"> 
+            {% include '_partial/header.html.twig' %}
+            {% block body %}{% endblock %}
+            {% include '_partial/footer.html.twig' %}
+        </div>
+        <!-- Scripts --> 
+        <script src="{{ asset('scripts/jquery-3.3.1.min.js') }}"></script> 
+        <script src="{{ asset('scripts/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('scripts/chosen.min.js') }}"></script> 
+        <script src="{{ asset('scripts/magnific-popup.min.js') }}"></script> 
+        <script src="{{ asset('scripts/owl.carousel.min.js') }}"></script> 
+        <script src="{{ asset('scripts/rangeSlider.js') }}"></script> 
+        <script src="{{ asset('scripts/sticky-kit.min.js') }}"></script> 
+        <script src="{{ asset('scripts/slick.min.js') }}"></script> 
+        <script src="{{ asset('scripts/masonry.min.js') }}"></script> 
+        <script src="{{ asset('scripts/mmenu.min.js') }}"></script> 
+        <script src="{{ asset('scripts/tooltips.min.js') }}"></script> 
+        <script src="{{ asset('scripts/typed.js') }}"></script>
+        <script src="{{ asset('scripts/custom_jquery.js') }}"></script> 
+        {% block javascript %}{% endblock %}
     </body>
 </html>
