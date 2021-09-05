@@ -28,18 +28,17 @@ class HomePageController extends AbstractController
         $ReplacementAdvertising = $this->ReplacementAdvertisingRepository->AdversingRemplacement();
 
         // Initialization of all replacement advertisements
-        $AllAdPictures = [];
-        foreach($ReplacementAdvertising as $ReplacementAdvertising){
+        foreach($ReplacementAdvertising as $e){
             $AllAdPictures[]  = [
-                'src'=> 'img/adversing/' . $ReplacementAdvertising->getPicture(),
-                'url'=> '',
-                'position' => $ReplacementAdvertising->getPosition(),
+                'src'=> 'img/remplacement/' . $e->getPicture(),
+                'url'=> '#',
+                'position' => $e->getPosition(),
                 'empty'=>false
             ];
         }
 
         // Will fill in the blocks once and for all if there is an ad picture, otherwise the replacement pub
-        foreach($AllAdPictures as $key => $allAdPicture){
+        foreach($AllAdPictures as $key => &$allAdPicture){
             if(isset($Adversing[$key]) and isset($Adversing[$key]->getPicture()[0])){
                 $adp = $Adversing[$key];
                 $allAdPicture = [
@@ -49,14 +48,15 @@ class HomePageController extends AbstractController
                     'empty'=>false
                 ];
 
-            } /*elseif( isset($ReplacementAdvertising[$key]) ) { 
+            } elseif (isset($ReplacementAdvertising[$key])) {
+                $r = $ReplacementAdvertising[$key];
                 $allAdPicture = [
-                    'src'=> 'img/adversing/' . $ReplacementAdvertising[$key]->getPicture(),
+                    'src'=> 'img/remplacement/' . $r->getPicture(),
                     'url'=> '',
-                    'position' => $ReplacementAdvertising[$key]->getPosition(),
+                    'position' => $r->getPosition(),
                     'empty'=>false
                 ];
-            }*/
+            }
         }
 
         return $this->render('site/home_page/index.html.twig', [
