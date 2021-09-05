@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -86,6 +88,31 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Url;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Latitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Longitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $City;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Delivery::class, mappedBy="users")
+     */
+    private $Delivery;
+
+    public function __construct()
+    {
+        $this->Delivery = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -292,6 +319,72 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUrl(string $Url): self
     {
         $this->Url = $Url;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->Latitude;
+    }
+
+    public function setLatitude(?string $Latitude): self
+    {
+        $this->Latitude = $Latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->Longitude;
+    }
+
+    public function setLongitude(?string $Longitude): self
+    {
+        $this->Longitude = $Longitude;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->City;
+    }
+
+    public function setCity(?string $City): self
+    {
+        $this->City = $City;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Delivery[]
+     */
+    public function getDelivery(): Collection
+    {
+        return $this->Delivery;
+    }
+
+    public function addDelivery(Delivery $delivery): self
+    {
+        if (!$this->Delivery->contains($delivery)) {
+            $this->Delivery[] = $delivery;
+            $delivery->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDelivery(Delivery $delivery): self
+    {
+        if ($this->Delivery->removeElement($delivery)) {
+            // set the owning side to null (unless already changed)
+            if ($delivery->getUsers() === $this) {
+                $delivery->setUsers(null);
+            }
+        }
 
         return $this;
     }
