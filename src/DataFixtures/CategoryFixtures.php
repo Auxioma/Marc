@@ -46,6 +46,7 @@ class CategoryFixtures extends Fixture
 
             $manager->persist($p);
 
+            $this->addReference('category_'. $key, $p);
         }
 
         $manager->flush();

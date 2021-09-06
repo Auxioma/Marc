@@ -6,6 +6,7 @@ use App\Repository\AnnouncementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=AnnouncementRepository::class)
@@ -51,11 +52,17 @@ class Announcement
     private $Category;
 
     /**
+     * @var \DateTime $created_at
+     * 
+     * @Gedmo\Timestampable(on="create")     
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
+     * @var \DateTime $created_at
+     * 
+     * @Gedmo\Timestampable(on="update") 
      * @ORM\Column(type="datetime")
      */
     private $UpdatedAt;

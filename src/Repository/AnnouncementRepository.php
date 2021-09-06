@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use DateInterval;
 use App\Entity\Announcement;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository; 
 
 /**
  * @method Announcement|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,22 +20,29 @@ class AnnouncementRepository extends ServiceEntityRepository
         parent::__construct($registry, Announcement::class);
     }
 
-    // /**
-    //  * @return Announcement[] Returns an array of Announcement objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function PreniumOffert()
     {
+        $to   = new \DateTime();
+        $to->add(new DateInterval('P20D'));
+        
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('a.IsVerified = :val')
+            ->setParameter('val', '1')
+            ->andWhere('a.Offert = :Offert')
+            ->setParameter('Offert', '1') // 1 the VIP offert
+            ->andWhere('a.StartAt BETWEEN :from AND :to')
+            ->setParameter('from', new \DateTime('now'))
+            ->setParameter('to', $to)
+
+            ->setMaxResults(50)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Announcement

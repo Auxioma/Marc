@@ -2,7 +2,9 @@
 
 namespace App\Controller\Site;
 
+use App\Repository\CategoryRepository;
 use App\Repository\AdversingRepository;
+use App\Repository\AnnouncementRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ReplacementAdvertisingRepository;
@@ -12,11 +14,15 @@ class HomePageController extends AbstractController
 {
     private $AdversingRepository;
     private $ReplacementAdvertisingRepository;
+    private $AnnouncementRepository;
+    private $CategoryRepository;
     
-    public function __construct(AdversingRepository $AdversingRepository, ReplacementAdvertisingRepository $ReplacementAdvertisingRepository)
+    public function __construct(CategoryRepository $CategoryRepository, AdversingRepository $AdversingRepository, ReplacementAdvertisingRepository $ReplacementAdvertisingRepository, AnnouncementRepository $AnnouncementRepository)
     {
         $this->AdversingRepository = $AdversingRepository;
         $this->ReplacementAdvertisingRepository = $ReplacementAdvertisingRepository;
+        $this->AnnouncementRepository = $AnnouncementRepository;
+        $this->CategoryRepository = $CategoryRepository;
     }
 
     /**
@@ -60,9 +66,17 @@ class HomePageController extends AbstractController
             }
         }
 
+        // select the VIP annoucement for the homepage  "Offre prenium"
+        $category = $this->CategoryRepository->RandCategory();
+        $Offert = $this->AnnouncementRepository->PreniumOffert();
+
+        dump($category);
+
         return $this->render('site/home_page/index.html.twig', [
             'controller_name' => 'HomePageController',
-            'AllAdPictures' => $AllAdPictures
+            'AllAdPictures' => $AllAdPictures,
+            'category' => $category,
+            'PreniumOffert' => $Offert,
         ]);
     }
 }
