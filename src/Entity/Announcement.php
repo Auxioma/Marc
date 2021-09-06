@@ -50,6 +50,36 @@ class Announcement
      */
     private $Category;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $UpdatedAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $StartAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $EndAt;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $IsVerified;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Offert;
+
     public function __construct()
     {
         $this->Picture = new ArrayCollection();
@@ -146,6 +176,78 @@ class Announcement
     public function setCategory(?Category $Category): self
     {
         $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->UpdatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $UpdatedAt): self
+    {
+        $this->UpdatedAt = $UpdatedAt;
+
+        return $this;
+    }
+
+    public function getStartAt(): ?\DateTimeInterface
+    {
+        return $this->StartAt;
+    }
+
+    public function setStartAt(\DateTimeInterface $StartAt): self
+    {
+        $this->StartAt = $StartAt;
+
+        return $this;
+    }
+
+    public function getEndAt(): ?\DateTimeInterface
+    {
+        return $this->EndAt;
+    }
+
+    public function setEndAt(\DateTimeInterface $EndAt): self
+    {
+        $this->EndAt = $EndAt;
+
+        return $this;
+    }
+
+    public function getIsVerified(): ?bool
+    {
+        return $this->IsVerified;
+    }
+
+    public function setIsVerified(bool $IsVerified): self
+    {
+        $this->IsVerified = $IsVerified;
+
+        return $this;
+    }
+
+    public function getOffert(): ?string
+    {
+        return $this->Offert;
+    }
+
+    public function setOffert(string $Offert): self
+    {
+        $this->Offert = $Offert;
 
         return $this;
     }
