@@ -28,6 +28,7 @@ class HomePageController extends AbstractController
         $ReplacementAdvertising = $this->ReplacementAdvertisingRepository->AdversingRemplacement();
 
         // Initialization of all replacement advertisements
+        $AllAdPictures = [];
         foreach($ReplacementAdvertising as $e){
             $AllAdPictures[]  = [
                 'src'=> 'img/remplacement/' . $e->getPicture(),
