@@ -47,6 +47,12 @@ class AnnouncementRepository extends ServiceEntityRepository
      */
     public function AnnonceForTheCategory($id)
     {
+        
+        // TODO 
+        // 1er page en rand (10jours) + gold limit 32 annonce/page
+        // 2eme page en rand (10 jours) + silver   32/page
+        // 3eme gratuite (21 jours)
+        
         $to   = new \DateTime();
         $to->add(new DateInterval('P20D'));
         
@@ -56,7 +62,7 @@ class AnnouncementRepository extends ServiceEntityRepository
 
             ->andWhere('a.Category = :Category')
             ->setParameter('Category', $id)   
-
+            //->addSelect('id')->orderBy('RAND()')
 
             //->andWhere('a.StartAt BETWEEN :from AND :to')
             //->setParameter('from', new \DateTime('now'))

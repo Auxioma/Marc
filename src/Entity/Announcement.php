@@ -93,6 +93,12 @@ class Announcement
      */
     private $users;
 
+    /**
+     * @Gedmo\Slug(fields={"Title"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Slug;
+
     public function __construct()
     {
         $this->Picture = new ArrayCollection();
@@ -273,6 +279,18 @@ class Announcement
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->Slug;
+    }
+
+    public function setSlug(string $Slug): self
+    {
+        $this->Slug = $Slug;
 
         return $this;
     }

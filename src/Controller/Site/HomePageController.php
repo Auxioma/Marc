@@ -70,7 +70,6 @@ class HomePageController extends AbstractController
         $category = $this->CategoryRepository->RandCategory();
         $Offert = $this->AnnouncementRepository->PreniumOffert();
 
-        dump($category);
 
         return $this->render('site/home_page/index.html.twig', [
             'controller_name' => 'HomePageController',

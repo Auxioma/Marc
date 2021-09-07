@@ -3955,7 +3955,7 @@ button.fs-map-btn.button {
 	font-size: 20px;
 	position: relative;
 	z-index: 101;
-	left: 45px;
+	left: 0px;
 	width: 36px;
 	height: 36px;
 	bottom: -2px;
@@ -3975,7 +3975,7 @@ span.compare-button:after {
 }
 span.video-button{
 	margin-left:4px;
-	background:#429523;
+	background:#5f88cf;
 }
 span.video-button:after {
 	font-family: 'Feather-Icons';
@@ -3994,7 +3994,7 @@ span.video-button:after {
 	font-weight: 600;
 }
 .utf-listing-title span.utf-listing-price {
-	background: #429523;
+	background: #f02727;
 	padding: 3px 12px;
 	line-height:26px;
 	border-radius: 4px;
@@ -4051,7 +4051,7 @@ span.video-button:after {
 	position: absolute;	
 }
 .utf-listing-badges-item span.featured {
-	background-color: #f02727;
+	background-color: #ce872b;
 	float: left;
 	transform: rotate(-45deg);
 	left: -70px;
@@ -4109,7 +4109,7 @@ span.like-icon {
 	font-weight:600;
 }
 .utf-listing-title h4 a {
-	font-size: 20px;
+	font-size: 18px;
 	color: #333;
 	line-height: 31px;
 }
@@ -14693,4 +14693,18 @@ section.fullwidth .headline-box {
 		-webkit-transform:translateY(0);
 		transform:translateY(0)
 	}
+}
+
+.offer {
+	background: #f02727;
+    padding: 3px 12px;
+    line-height: 26px;
+    border-radius: 4px;
+    color: #ffffff!important;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+}
+.annoncement {
+	columns: 1!important;
 }

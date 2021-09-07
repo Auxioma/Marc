@@ -110,14 +110,40 @@
         <!-- Sorting -->
         <div class="utf-sort-box-aera">
             <div class="sort-by">
-              <label>Sort By:</label>
+              <label>{%trans %} Filter par {% endtrans %}</label>
               <div class="sort-by-select">
-                <select data-placeholder="Default Properties" class="utf-chosen-select-single-item" >
-                  <option>Default Properties</option>
+                <select data-placeholder="{%trans %} Cantons {% endtrans %}" class="utf-chosen-select-single-item" >
+                  <option>{%trans %} Cantons {% endtrans %}</option>
                   <option>Low to High Price</option>
-                  <option>High to Low Price</option>
-                  <option>Newest Properties</option>
-                  <option>Oldest Properties</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+                  <option>Low to High Price</option>
+
                 </select>
               </div>
             </div>
@@ -130,27 +156,39 @@
           <div class="col-md-3">
 			<div class="utf-listing-item"> <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
 				<div class="utf-listing-badges-item">
-					<span class="featured">Featured</span>
-				  <span class="for-rent">{{ Announcement.users.Compagny }}</span>
+					<span class="featured">GOLD</span>
+				  
 				</div>
 				<div class="utf-listing-img-content-item">
-				  <span class="like-icon with-tip" data-tip-content="Bookmark"><div class="tip-content">Bookmark</div></span>
 				  <span class="video-button with-tip" data-tip-content="Video"><div class="tip-content">Video</div></span>
 				</div>
 				<img src="{{ asset('img/announcement/1.jpg') }}" width="520" height="397" alt="">
 			  </a>
 			  <div class="utf-listing-content">
 				<div class="utf-listing-title">
-				  <span class="utf-listing-price">{{ Announcement.Discount }} %</span>
-				  <h4><a href="single-property-page-2.html">{{ Announcement.Title }}</a></h4>
-				  <span class="utf-listing-address"><i class="icon-material-outline-location-on"></i> 
-            {{ Announcement.users.Address }}, {{ Announcement.users.CodePost }} {{ Announcement.users.City }} 
-        </span>
+				  <span class="utf-listing-price">
+            {% if Announcement.Discount is defined %}
+              {{ Announcement.Discount }} %
+            {% else %} 
+              {% trans %} Promotion {% endtrans %}
+            {% endif %}
+          </span>
+				  <h4><a href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.Title, 'slug':Announcement.Slug}) }}">{{ Announcement.Title }}</a></h4>
+				 
+          <!--   <span class="utf-listing-address">
+            <i class="icon-material-outline-location-on"></i> 
+            A voir si on affiche l'adresse
+          </span>-->
+
+        
 				</div>
-				<div class="utf-listing-features">
-				  {{ Announcement.ShortDescription }}
+				<div class="utf-listing-features annoncement">
+				  <p>{{ Announcement.ShortDescription }}</p>
 				</div>
-				<div class="utf-listing-user-info"><a href="agents-profile.html"><i class="icon-line-awesome-user"></i> John Williams</a> <span>1 Days Ago</span></div>
+				<div class="utf-listing-user-info text-center">
+          <a class="offer" href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.Title, slug:Announcement.Slug}) }}">Voir l'offre</a></span>
+        
+        </div>
 			  </div>
 			</div>
           </div>
