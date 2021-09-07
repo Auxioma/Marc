@@ -87,6 +87,12 @@ class Announcement
      */
     private $Offert;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="Announcement")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $users;
+
     public function __construct()
     {
         $this->Picture = new ArrayCollection();
@@ -255,6 +261,18 @@ class Announcement
     public function setOffert(string $Offert): self
     {
         $this->Offert = $Offert;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }

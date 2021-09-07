@@ -36,23 +36,37 @@ class AnnouncementRepository extends ServiceEntityRepository
             ->andWhere('a.StartAt BETWEEN :from AND :to')
             ->setParameter('from', new \DateTime('now'))
             ->setParameter('to', $to)
-
             ->setMaxResults(50)
             ->getQuery()
             ->getResult()
         ;
     }
     
-
-    /*
-    public function findOneBySomeField($value): ?Announcement
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function AnnonceForTheCategory($id)
     {
+        $to   = new \DateTime();
+        $to->add(new DateInterval('P20D'));
+        
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('a.IsVerified = :val')
+            ->setParameter('val', '1')
+
+            ->andWhere('a.Category = :Category')
+            ->setParameter('Category', $id)   
+
+
+            //->andWhere('a.StartAt BETWEEN :from AND :to')
+            //->setParameter('from', new \DateTime('now'))
+            //->setParameter('to', $to)
+
+
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
+
+
 }

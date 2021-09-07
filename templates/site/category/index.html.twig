@@ -126,202 +126,37 @@
         <!-- Listings Container -->
         <div class="row"> 
           <!-- Listing Item -->
+		  {% for Announcement in Announcement %}
           <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-01.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
+			<div class="utf-listing-item"> <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
+				<div class="utf-listing-badges-item">
+					<span class="featured">Featured</span>
+				  <span class="for-rent">{{ Announcement.users.Compagny }}</span>
+				</div>
+				<div class="utf-listing-img-content-item">
+				  <span class="like-icon with-tip" data-tip-content="Bookmark"><div class="tip-content">Bookmark</div></span>
+				  <span class="video-button with-tip" data-tip-content="Video"><div class="tip-content">Video</div></span>
+				</div>
+				<img src="{{ asset('img/announcement/1.jpg') }}" width="520" height="397" alt="">
+			  </a>
+			  <div class="utf-listing-content">
+				<div class="utf-listing-title">
+				  <span class="utf-listing-price">{{ Announcement.Discount }} %</span>
+				  <h4><a href="single-property-page-2.html">{{ Announcement.Title }}</a></h4>
+				  <span class="utf-listing-address"><i class="icon-material-outline-location-on"></i> 
+            {{ Announcement.users.Address }}, {{ Announcement.users.CodePost }} {{ Announcement.users.City }} 
+        </span>
+				</div>
+				<div class="utf-listing-features">
+				  {{ Announcement.ShortDescription }}
+				</div>
+				<div class="utf-listing-user-info"><a href="agents-profile.html"><i class="icon-line-awesome-user"></i> John Williams</a> <span>1 Days Ago</span></div>
+			  </div>
 			</div>
           </div>
+		  {% endfor %}
           <!-- Listing Item / End --> 
           
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-02.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-          <!-- Listing Item / End --> 
-          
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-03.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-          <!-- Listing Item / End --> 
-          
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-04.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-          <!-- Listing Item / End --> 
-          
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-05.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-          <!-- Listing Item / End --> 
-          
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-06.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-		
-		  <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-01.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-          <!-- Listing Item / End --> 
-          
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-02.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-          <!-- Listing Item / End --> 
-          
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-03.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
-          <!-- Listing Item / End --> 
-          
-          <!-- Listing Item -->
-          <div class="col-md-3">
-            <div class="utf-listing-item compact"> 
-			  <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				  <div class="utf-listing-badges-item"> <span class="featured">Featured</span> <span class="for-sale">For Sale</span> </div>
-				  <div class="utf-listing-img-content-item"> 
-					 <span class="utf-listing-compact-title-item">Renovated Luxury Apartment <i>$18,000/mo</i></span>
-				  </div>
-				  <img src="images/listing-04.jpg" alt=""> 
-				  <ul class="listing-hidden-content">
-					  <li><i class="fa fa-bed"></i> Beds <span>3</span></li>
-					  <li><i class="icon-feather-codepen"></i> Baths <span>2</span></li>
-					  <li><i class="fa fa-car"></i> Garages <span>2</span></li>
-					  <li><i class="fa fa-arrows-alt"></i> Sq Ft <span>780</span></li>
-				  </ul>
-			  </a> 
-			</div>
-          </div>
         </div>
         <!-- Listings Container / End --> 
         

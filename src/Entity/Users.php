@@ -109,9 +109,15 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $Delivery;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="users", orphanRemoval=true)
+     */
+    private $Announcement;
+
     public function __construct()
     {
         $this->Delivery = new ArrayCollection();
+        $this->Announcement = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -383,6 +389,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($delivery->getUsers() === $this) {
                 $delivery->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncement(): Collection
+    {
+        return $this->Announcement;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->Announcement->contains($announcement)) {
+            $this->Announcement[] = $announcement;
+            $announcement->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->Announcement->removeElement($announcement)) {
+            // set the owning side to null (unless already changed)
+            if ($announcement->getUsers() === $this) {
+                $announcement->setUsers(null);
             }
         }
 

@@ -24,6 +24,7 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
             $to->add(new DateInterval('P' .rand(10,20). 'D'));
 
             $category = $this->getReference('category_' . random_int(0, 8));    
+            $user = $this->getReference('user_' . '1');
             
             $annoncement = new Announcement();
             $annoncement->setTitle('Annonce N° ');
@@ -31,6 +32,7 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
             $annoncement->setShortDescription('petite description');
             $annoncement->setLongDescription('longue description');
             $annoncement->setCategory($category);
+            $annoncement->setUsers($user);
             $annoncement->setStartAt($from);
             $annoncement->setEndAt($to);
             $annoncement->setIsVerified(rand(0,1));
@@ -56,6 +58,7 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
     {
         return [
             CategoryFixtures::class,
+            UsersFixtures::class,
         ];
     }
 }

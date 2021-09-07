@@ -31,16 +31,29 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
     
-
-    /*
-    public function findOneBySomeField($value): ?Category
+    /**
+     * @return Category[] Returns an array of Category objects
+     */
+    public function Menu()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('c.Parent = :val')
+            ->setParameter('val', '1')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
+
+    /**
+     * @return Category[] Returns an array of Category objects
+     */
+    public function SubMenu($SubCategory)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.Parent = :val')
+            ->setParameter('val', $SubCategory)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
