@@ -114,53 +114,177 @@
           <div class="utf-submit-page-inner-box">
             <h3>Horaire d'ouverture</h3>
             <div class="content with-padding">
-              <div class="col-md-6">
-                <label><i class="icon-brand-facebook"></i> lundi</label>
-                <div class="row">
-                  <div class="col-md-4">Matin</div>
-                  <div class="col-md-4">{{ form_widget(form.LundiMatinOuverture) }}</div>
-                  <div class="col-md-4">{{ form_widget(form.LundiMidiFermeture) }} </div>
-
-                </div>
-                <div class="row">
-                  <div class="col-md-4">Après midi</div>
-                  <div class="col-md-4">{{ form_widget(form.LundiAPMOuverture) }}</div>
-                  <div class="col-md-4">{{ form_widget(form.LundiAPMFermeture) }} </div>
-                </div>
 
 
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-twitter"></i> mardi</label>
-                <div class="row">
-                  <div class="col-md-4">Matin</div>
-                  <div class="col-md-4">{{ form_widget(form.MardiMatinOuverture) }}</div>
-                  <div class="col-md-4">{{ form_widget(form.MardiMidiFermeture) }} </div>
+
+
+              <!-- horaire ligne -->
+              <div class="row ligneHoraire">
+                <div class="col-md-3 margin-top-15 horaireBlock">
+                  <label class="w-100">Lundi</label>
+                  <span class="switch">
+                      <input type="checkbox" class="switch s-check" id="switch-normalLundi">
+                      <label for="switch-normalLundi">Overt</label>
+                    </span>
                 </div>
-                <div class="row">
-                  <div class="col-md-4">Après midi</div>
-                  <div class="col-md-4">{{ form_widget(form.MardiAPMOuverture) }}</div>
-                  <div class="col-md-4">{{ form_widget(form.MardiAPMFermeture) }} </div>
+                <div class="col-md-9">
+                  <div class="row horaireBlock">
+                    {{ form_widget(form.LundiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.LundiMidiFermeture) }}
+                    <a class="add-new-horaire">Ajouter des horaires</a>
+                  </div>
+                  <div class="row horaireBlock part2 notVisible">
+                    {{ form_widget(form.LundiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.LundiAPMFermeture) }}
+                    <a class="remove-horaire">x</a>
+                  </div>
                 </div>
               </div>
+              <!-- end horaire ligne -->
+              <!-- horaire ligne -->
+              <div class="row ligneHoraire">
+                  <div class="col-md-3 margin-top-15 horaireBlock">
+                    <label class="w-100">Mardi</label>
+                    <span class="switch">
+                      <input type="checkbox" class="switch s-check" id="switch-normalMardi">
+                      <label for="switch-normalMardi">Overt</label>
+                    </span>
+                  </div>
+                  <div class="col-md-9 horaires">
+                    <div class="row horaireBlock">
+                      {{ form_widget(form.MardiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiMidiFermeture) }}
+                      <a class="add-new-horaire">Ajouter des horaires</a>
+                    </div>
+                    <div class="row horaireBlock part2 notVisible" >
+                      {{ form_widget(form.MardiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiAPMFermeture) }}
+                      <a class="remove-horaire">x</a>
+                    </div>
+                  </div>
+              </div>
+              <!-- end horaire ligne -->
+              <!-- horaire ligne -->
+              <div class="row ligneHoraire">
+                <div class="col-md-3 margin-top-15 horaireBlock">
+                  <label class="w-100">Mercredi</label>
+                  <span class="switch">
+                      <input type="checkbox" class="switch s-check" id="switch-normalMercredi">
+                      <label for="switch-normalMercredi">Overt</label>
+                    </span>
+                </div>
+                <div class="col-md-9 horaires">
+                  <div class="row horaireBlock">
+                    {{ form_widget(form.MercrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.MercrediMidiFermeture) }}
+                    <a class="add-new-horaire">Ajouter des horaires</a>
+                  </div>
+                  <div class="row horaireBlock part2 notVisible">
+                    {{ form_widget(form.MercrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.MercrediAPMFermeture) }}
+                    <a class="remove-horaire">x</a>
+                  </div>
+                </div>
+              </div>
+              <!-- end horaire ligne -->
+              <!-- horaire ligne -->
+              <div class="row ligneHoraire">
+                <div class="col-md-3 margin-top-15 horaireBlock">
+                  <label class="w-100">Jeudi</label>
+                  <span class="switch">
+                      <input type="checkbox" class="switch s-check" id="switch-normalJeudi">
+                      <label for="switch-normalJeudi">Overt</label>
+                    </span>
+                </div>
+                <div class="col-md-9 horaires">
+                  <div class="row horaireBlock">
+                    {{ form_widget(form.JeudiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.JeudiMidiFermeture) }}
+                    <a class="add-new-horaire">Ajouter des horaires</a>
+                  </div>
+                  <div class="row horaireBlock part2 notVisible">
+                    {{ form_widget(form.JeudiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.JeudiAPMFermeture) }}
+                    <a class="remove-horaire">x</a>
+                  </div>
+                </div>
+              </div>
+              <!-- end horaire ligne -->
+              <!-- horaire ligne -->
+              <div class="row ligneHoraire">
+                <div class="col-md-3 margin-top-15 horaireBlock">
+                  <label class="w-100">Vendredi</label>
+                  <span class="switch">
+                      <input type="checkbox" class="switch s-check" id="switch-normalVendredi">
+                      <label for="switch-normalVendredi">Overt</label>
+                    </span>
+                </div>
+                <div class="col-md-9 horaires">
+                  <div class="row horaireBlock">
+                    {{ form_widget(form.VendrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.VendrediMidiFermeture) }}
+                    <a class="add-new-horaire">Ajouter des horaires</a>
+                  </div>
+                  <div class="row horaireBlock part2 notVisible">
+                    {{ form_widget(form.VendrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.VendrediAPMFermeture) }}
+                    <a class="remove-horaire">x</a>
+                  </div>
+                </div>
+              </div>
+              <!-- end horaire ligne -->
+              <!-- horaire ligne -->
+              <div class="row ligneHoraire">
+                <div class="col-md-3 margin-top-15 horaireBlock">
+                  <label class="w-100">Samedi</label>
+                  <span class="switch">
+                      <input type="checkbox" class="switch s-check" id="switch-normalSamedi">
+                      <label for="switch-normalSamedi">Overt</label>
+                    </span>
+                </div>
+                <div class="col-md-9 horaires">
+                  <div class="row horaireBlock">
+                    {{ form_widget(form.SamediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.SamediMidiFermeture) }}
+                    <a class="add-new-horaire">Ajouter des horaires</a>
+                  </div>
+                  <div class="row horaireBlock part2 notVisible">
+                    {{ form_widget(form.SamediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.SamediAPMFermeture) }}
+                    <a class="remove-horaire">x</a>
+                  </div>
+                </div>
+              </div>
+              <!-- end horaire ligne -->
+              <!-- horaire ligne -->
+              <div class="row ligneHoraire">
+                <div class="col-md-3 margin-top-15 horaireBlock">
+                  <label class="w-100">Dimanche</label>
+                  <span class="switch">
+                      <input type="checkbox" class="switch s-check" id="switch-normalDimanche">
+                      <label for="switch-normalDimanche">Overt</label>
+                    </span>
+                </div>
+                <div class="col-md-9 horaires">
+                  <div class="row horaireBlock">
+                    {{ form_widget(form.DimancheMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.DimancheMidiFermeture) }}
+                    <a class="add-new-horaire">Ajouter des horaires</a>
+                  </div>
+                  <div class="row horaireBlock part2 notVisible">
+                    {{ form_widget(form.DimancheAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.DimancheAPMFermeture) }}
+                    <a class="remove-horaire">x</a>
+                  </div>
+                </div>
+              </div>
+              <!-- end horaire ligne -->
 
+              {#
+                <div class="col-md-6">
+                  <label><i class="icon-brand-linkedin"></i> mercredi</label>
+                  <input value="https://www.linkedin.com" type="text">
+                </div>
+                <div class="col-md-6">
+                  <label><i class="icon-brand-google"></i> Jeudi</label>
+                  <input value="https://www.google.com" type="text">
+                </div>
+                <div class="col-md-6">
+                  <label><i class="icon-brand-pinterest"></i> Vendredi</label>
+                  <input value="https://www.pinterest.com" type="text">
+                </div>
+                <div class="col-md-6">
+                  <label><i class="icon-feather-instagram"></i> Samidi</label>
+                  <input value="https://www.instagram.com" type="text">
+                </div>
 
-              <div class="col-md-6">
-                <label><i class="icon-brand-linkedin"></i> mercredi</label>
-                <input value="https://www.linkedin.com" type="text">
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-google"></i> Jeudi</label>
-                <input value="https://www.google.com" type="text">
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-pinterest"></i> Vendredi</label>
-                <input value="https://www.pinterest.com" type="text">
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-feather-instagram"></i> Samidi</label>
-                <input value="https://www.instagram.com" type="text">
-              </div>
+              #}
             </div>
           </div>
 
@@ -297,5 +421,38 @@
       })
     })
 
+  </script>
+
+  // le javascript des horaires
+  <script>
+    function InitChangeHoraire(){
+      $('.ligneHoraire').each(function (){
+        var el = $(this);
+        el.find('.s-check').each(function (){
+          var check = $(this);
+          if (check.is(':checked')){
+            check.next().html('Overt') ;
+            check.closest('.horaireBlock').next().css('display','block');
+          }
+          else{
+            check.closest('.horaireBlock').next().css('display','none');
+            check.next().html('Fermé') ;
+          }
+
+        })
+      })
+    }
+    changeHoraire();
+    $(document).on('change','.s-check',function(){
+      changeHoraire()
+    });
+    $(document).on('click','.remove-horaire',function(){
+      $(this).parent().addClass('notVisible');
+      $(this).closest('.ligneHoraire').find('.add-new-horaire').toggle();
+    });
+    $(document).on('click','.add-new-horaire',function(){
+      $(this).toggle();
+      $(this).closest('.ligneHoraire').find('.part2').removeClass('notVisible');
+    });
   </script>
   {% endblock %}
