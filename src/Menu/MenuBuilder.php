@@ -16,7 +16,6 @@ class MenuBuilder
     {
         $this->factory            = $factory;
         $this->CategoryRepository = $CategoryRepository;
-        
     }
 
     public function createMainMenu()
@@ -27,7 +26,7 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
         foreach($MenuCategory as $e) {
             $menu->addChild($e->getName(), 
-                ['uri' => $e->getId().'-'.$e->getSlug()]
+                ['uri' => '/'.$e->getId().'-'.$e->getSlug()]
             );
 
             $SubCategory = $e->getId();
@@ -36,7 +35,7 @@ class MenuBuilder
             if($MenuCategory != '') {
                 foreach($MenuCategory as $r) {
                     $menu[$e->getName()]->addChild($r->getName(), [
-                        'uri' => $r->getId().'-'.$r->getSlug()]
+                        'uri' => '/'.$r->getId().'-'.$r->getSlug()]
                     );
                 }
             }
