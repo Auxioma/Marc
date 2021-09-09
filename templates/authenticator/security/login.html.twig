@@ -6,101 +6,105 @@
 
 {#
 <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+  {% if error %}
+  <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+  {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+  {% if app.user %}
+  <div class="mb-3">
+    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+  </div>
+  {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <label for="inputEmail">Email</label>
+  <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email"
+    required autofocus>
+  <label for="inputPassword">Password</label>
+  <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"
+    required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+  {#
+  Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+  See https://symfony.com/doc/current/security/remember_me.html
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" name="_remember_me"> Remember me
+    </label>
+  </div>
 
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+  <button class="btn btn-lg btn-primary" type="submit">
+    Sign in
+  </button>
 </form>
-    #}
+#}
 
-  <!-- Titlebar -->
-  <div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)" data-color-opacity="0.8" data-img-width="800" data-img-height="505">
-    <div id="titlebar">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Log In</h2>
-            <!-- Breadcrumbs -->
-            <nav id="breadcrumbs">
-              <ul>
-                <li><a href="index.html">Home</a></li>
-                <li>Log In</li>
-              </ul>
-            </nav>
-          </div>
+<!-- Titlebar -->
+<div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
+  data-color-opacity="0.8" data-img-width="800" data-img-height="505">
+  <div id="titlebar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Log In</h2>
+          <!-- Breadcrumbs -->
+          <nav id="breadcrumbs">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li>Log In</li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- Contact --> 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="my-account">
-          <div class="tabs-container"> 
-            <!-- Login -->
-			  <div class="utf-welcome-text-item">
-				<h3>Welcome Back Sign in to Continue</h3>
-				<span>Don't Have an Account? <a href="{{ path('app_register') }}">Créer un compte</a></span> 
-			  </div>
-              <form method="post" class="login">
-                <div class="form-row form-row-wide">
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email Address" class="input-text" autocomplete="email" required autofocus>
-                </div>
-                <div class="form-row form-row-wide">
-                    <input type="password" name="password" id="inputPassword" class="input-text" placeholder="Password" autocomplete="current-password" required>
-                </div>
-                <div class="form-row">
-                  <div class="checkbox margin-top-10 margin-bottom-10">
-					<input type="checkbox" name="_remember_me" id="two-step"> 
-					<label for="two-step"><span class="checkbox-icon"></span> Remember Me</label>
-				  </div>
-				  <a class="lost_password" href="forgot_password.html">Forgot Password?</a>	
-                </div>
-				<input type="submit" class="button full-width border margin-top-10" name="login" value="Login" />
-				<div class="utf-social-login-separator-item"><span>Or Login in With</span></div>
-				<div class="utf-social-login-buttons-block">
-					<button class="button social-login via-twitter"><i class="icon-brand-facebook-f"></i> Facebook</button>
-					<button class="button social-login via-gplus"><i class="icon-brand-google"></i> Google</button>
-					<button class="button social-login via-facebook"><i class="icon-brand-twitter"></i> Twitter</button>
-				</div>	
-              </form>
+</div>
+
+<!-- Contact -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="my-account">
+        <div class="tabs-container">
+          <!-- Login -->
+          <div class="utf-welcome-text-item">
+            <h3>Welcome Back Sign in to Continue</h3>
+            <span>Don't Have an Account? <a href="{{ path('app_register') }}">Créer un compte</a></span>
           </div>
+          <form method="post" class="login">
+            <div class="form-row form-row-wide">
+              <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email Address"
+                class="input-text" autocomplete="email" required autofocus>
+            </div>
+            <div class="form-row form-row-wide">
+              <input type="password" name="password" id="inputPassword" class="input-text" placeholder="Password"
+                autocomplete="current-password" required>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </div>
+            <div class="form-row">
+              <div class="checkbox margin-top-10 margin-bottom-10">
+                <input type="checkbox" name="_remember_me" id="two-step">
+                <label for="two-step"><span class="checkbox-icon"></span> Remember Me</label>
+              </div>
+              <a class="lost_password" href="forgot_password.html">Forgot Password?</a>
+            </div>
+            <input type="submit" class="button full-width border margin-top-10" name="login" value="Login" />
+            <div class="utf-social-login-separator-item"><span>Or Login in With</span></div>
+            <div class="utf-social-login-buttons-block">
+              <button class="button social-login via-twitter"><i class="icon-brand-facebook-f"></i> Facebook</button>
+              <button class="button social-login via-gplus"><i class="icon-brand-google"></i> Google</button>
+              <button class="button social-login via-facebook"><i class="icon-brand-twitter"></i> Twitter</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  <!-- Container / End --> 
+</div>
+<!-- Container / End -->
 
 {% endblock %}

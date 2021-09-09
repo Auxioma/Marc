@@ -69,13 +69,14 @@ class HomePageController extends AbstractController
         // select the VIP annoucement for the homepage  "Offre prenium"
         $category = $this->CategoryRepository->RandCategory();
         $Offert = $this->AnnouncementRepository->PreniumOffert();
-
+        $NewOffert = $this->AnnouncementRepository->NewOffert();
 
         return $this->render('site/home_page/index.html.twig', [
             'controller_name' => 'HomePageController',
             'AllAdPictures' => $AllAdPictures,
             'category' => $category,
             'PreniumOffert' => $Offert,
+            'NewOffert' => $NewOffert,
         ]);
     }
 }

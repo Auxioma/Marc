@@ -4,252 +4,245 @@
 
 {% block body %}
 
-  <!-- Titlebar -->
-  <div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)" data-color-opacity="0.8" data-img-width="800" data-img-height="505">
-    <div id="titlebar">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Listings Grid Compact</h2>
-            <!-- Breadcrumbs -->
-            <nav id="breadcrumbs">
-              <ul>
-                <li><a href="index.html">Home</a></li>
-                <li>Listings Grid Compact</li>
-              </ul>
-            </nav>
-          </div>
+<!-- Titlebar -->
+<div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
+  data-color-opacity="0.8" data-img-width="800" data-img-height="505">
+  <div id="titlebar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Listings Grid Compact</h2>
+          <!-- Breadcrumbs -->
+          <nav id="breadcrumbs">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li>Listings Grid Compact</li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- Main Search Container -->
-    <div class="utf-main-search-container-area inner-map-search-block inner-search-item">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">             
-            <form class="utf-main-search-form-item">              
-              <!-- Type -->
-              <div class="utf-search-type-block-area margin-top-35">
-				<div class="search-type">
-				  <label class="active">
-					<input class="first-tab" name="tab" checked="checked" type="radio">Buy</label>
-				  <label>
-					<input name="tab" type="radio">Rent</label>
-				  <label>
-					<input name="tab" type="radio">Sale</label>
-					<div class="utf-search-type-arrow"></div>
-				</div>
-			  </div>
-              
-              <!-- Box -->
-              <div class="utf-main-search-box-area"> 
-                <!-- Row With Forms -->
-                <div class="row with-forms"> 
-                  <!-- Status -->
-                  <div class="col-md-2 col-sm-4">
-                      <select data-placeholder="Select City" title="Select City" class="utf-chosen-select-single-item">
-						<option>Select City</option>
-						<option>Afghanistan</option>
-						<option>Albania</option>
-						<option>Algeria</option>
-						<option>Brazil</option>
-						<option>Burundi</option>
-						<option>Bulgaria</option>
-						<option>California</option>
-						<option>Germany</option>
-						<option>Grenada</option>
-						<option>Guatemala</option>
-						<option>Iceland</option>                        
-					  </select>
-                  </div>
-                  
-                  <!-- Property Type -->
-                  <div class="col-md-2 col-sm-4">
-                    <select data-placeholder="Property Type" class="utf-chosen-select-single-item">
-					  <option>Property Type</option>
-					  <option>Residential</option>
-					  <option>Apartments</option>
-					  <option>Houses</option>
-					  <option>Commercial</option>
-					  <option>Land</option>
-					</select>
-                  </div>
-				  
-				  <!-- Status -->
-                  <div class="col-md-2 col-sm-4">
-                    <select data-placeholder="Any Status" class="utf-chosen-select-single-item">
-					  <option>Any Status</option>
-					  <option>For Sale</option>
-					  <option>For Rent</option>
-					</select>
-                  </div>
-                  
-                  <!-- Main Search Input -->
-                  <div class="col-md-6">
-                    <div class="utf-main-search-input-item">
-                      <input type="text" placeholder="Enter Keywords..." value=""/>
-                      <button class="button"><i class="fa fa-search"></i> Search</button>
-                    </div>
-                  </div>
+</div>
+
+<!-- Main Search Container -->
+<div class="utf-main-search-container-area inner-map-search-block inner-search-item">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form class="utf-main-search-form-item">
+          <!-- Type -->
+          <div class="utf-search-type-block-area margin-top-35">
+            <div class="search-type">
+              <label class="active">
+                <input class="first-tab" name="tab" checked="checked" type="radio">Buy</label>
+              <label>
+                <input name="tab" type="radio">Rent</label>
+              <label>
+                <input name="tab" type="radio">Sale</label>
+              <div class="utf-search-type-arrow"></div>
+            </div>
+          </div>
+
+          <!-- Box -->
+          <div class="utf-main-search-box-area">
+            <!-- Row With Forms -->
+            <div class="row with-forms">
+              <!-- Status -->
+              <div class="col-md-2 col-sm-4">
+                <select data-placeholder="Select City" title="Select City" class="utf-chosen-select-single-item">
+                  <option>Select City</option>
+                  <option>Afghanistan</option>
+                  <option>Albania</option>
+                  <option>Algeria</option>
+                  <option>Brazil</option>
+                  <option>Burundi</option>
+                  <option>Bulgaria</option>
+                  <option>California</option>
+                  <option>Germany</option>
+                  <option>Grenada</option>
+                  <option>Guatemala</option>
+                  <option>Iceland</option>
+                </select>
+              </div>
+
+              <!-- Property Type -->
+              <div class="col-md-2 col-sm-4">
+                <select data-placeholder="Property Type" class="utf-chosen-select-single-item">
+                  <option>Property Type</option>
+                  <option>Residential</option>
+                  <option>Apartments</option>
+                  <option>Houses</option>
+                  <option>Commercial</option>
+                  <option>Land</option>
+                </select>
+              </div>
+
+              <!-- Status -->
+              <div class="col-md-2 col-sm-4">
+                <select data-placeholder="Any Status" class="utf-chosen-select-single-item">
+                  <option>Any Status</option>
+                  <option>For Sale</option>
+                  <option>For Rent</option>
+                </select>
+              </div>
+
+              <!-- Main Search Input -->
+              <div class="col-md-6">
+                <div class="utf-main-search-input-item">
+                  <input type="text" placeholder="Enter Keywords..." value="" />
+                  <button class="button"><i class="fa fa-search"></i> Search</button>
                 </div>
-                <!-- Row With Forms / End -->                                
-              </div>              
-            </form>            
+              </div>
+            </div>
+            <!-- Row With Forms / End -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Main Search Container / End -->
+<!-- Content -->
+<div class="container">
+  <div class="row sticky-wrapper">
+    <div class="col-md-12">
+      <!-- Sorting -->
+      <div class="utf-sort-box-aera">
+        <div class="sort-by">
+          <label>{%trans %} Filter par {% endtrans %}    {{ pagination.getTotalItemCount }} </label>
+          <div class="sort-by-select">
+            <select data-placeholder="{%trans %} Cantons {% endtrans %}" class="utf-chosen-select-single-item">
+              <option>{%trans %} Cantons {% endtrans %}</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+              <option>Low to High Price</option>
+
+            </select>
           </div>
         </div>
       </div>
-    </div>
-  <!-- Main Search Container / End -->
-  
-  <!-- Content -->
-  <div class="container">
-    <div class="row sticky-wrapper">
-      <div class="col-md-12"> 
-        <!-- Sorting -->
-        <div class="utf-sort-box-aera">
-            <div class="sort-by">
-              <label>{%trans %} Filter par {% endtrans %}</label>
-              <div class="sort-by-select">
-                <select data-placeholder="{%trans %} Cantons {% endtrans %}" class="utf-chosen-select-single-item" >
-                  <option>{%trans %} Cantons {% endtrans %}</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
-                  <option>Low to High Price</option>
+      <!-- Listings Container -->
+      <div class="row">
+        <!-- Listing Item -->
+        {% for Announcement in Announcement %}
+        <div class="col-md-3">
+          <div class="utf-listing-item"> <a href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.Title, 'slug':Announcement.Slug}) }}" class="utf-smt-listing-img-container">
+              <div class="utf-listing-badges-item">
+                <span class="featured">GOLD</span>
 
-                </select>
               </div>
-            </div>
-        </div>
-        
-        <!-- Listings Container -->
-        <div class="row"> 
-          <!-- Listing Item -->
-		  {% for Announcement in Announcement %}
-          <div class="col-md-3">
-			<div class="utf-listing-item"> <a href="single-property-page-2.html" class="utf-smt-listing-img-container">
-				<div class="utf-listing-badges-item">
-					<span class="featured">GOLD</span>
-				  
-				</div>
-				<div class="utf-listing-img-content-item">
-				  <span class="video-button with-tip" data-tip-content="Video"><div class="tip-content">Video</div></span>
-				</div>
-				<img src="{{ asset('img/announcement/1.jpg') }}" width="520" height="397" alt="">
-			  </a>
-			  <div class="utf-listing-content">
-				<div class="utf-listing-title">
-				  <span class="utf-listing-price">
-            {% if Announcement.Discount is defined %}
-              {{ Announcement.Discount }} %
-            {% else %} 
-              {% trans %} Promotion {% endtrans %}
-            {% endif %}
-          </span>
-				  <h4><a href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.Title, 'slug':Announcement.Slug}) }}">{{ Announcement.Title }}</a></h4>
-				 
-          <!--   <span class="utf-listing-address">
+              <div class="utf-listing-img-content-item">
+                <span class="video-button with-tip" data-tip-content="Video">
+                  <div class="tip-content">Video</div>
+                </span>
+              </div>
+              <img src="{{ asset('img/announcement/1.jpg') }}" width="520" height="397" alt="">
+            </a>
+            <div class="utf-listing-content">
+              <div class="utf-listing-title">
+                <span class="utf-listing-price">
+                  {% if Announcement.Discount is defined %}
+                  {{ Announcement.Discount }} %
+                  {% else %}
+                  {% trans %} Promotion {% endtrans %}
+                  {% endif %}
+                </span>
+                <h4><a
+                    href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.Title, 'slug':Announcement.Slug}) }}">{{
+                    Announcement.Title }}</a></h4>
+                <!--   <span class="utf-listing-address">
             <i class="icon-material-outline-location-on"></i> 
             A voir si on affiche l'adresse
           </span>-->
+              </div>
+              <div class="utf-listing-features annoncement">
+                <p>{{ Announcement.ShortDescription }}</p>
+              </div>
+              <div class="utf-listing-user-info text-center">
+                <a class="offer"
+                  href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.Title, slug:Announcement.Slug}) }}">Voir
+                  l'offre</a></span>
 
-        
-				</div>
-				<div class="utf-listing-features annoncement">
-				  <p>{{ Announcement.ShortDescription }}</p>
-				</div>
-				<div class="utf-listing-user-info text-center">
-          <a class="offer" href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.Title, slug:Announcement.Slug}) }}">Voir l'offre</a></span>
-        
-        </div>
-			  </div>
-			</div>
+              </div>
+            </div>
           </div>
-		  {% endfor %}
-          <!-- Listing Item / End --> 
-          
         </div>
-        <!-- Listings Container / End --> 
-        
-        <!-- Pagination -->
-        <div class="clearfix"></div>
-        <div class="utf-pagination-container margin-top-20">
-          <nav class="pagination">
-            <ul>
-              <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-			  <li><a href="#" class="current-page">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li class="blank">...</li>
-              <li><a href="#">10</a></li>
-			  <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
-          </nav>          
-        </div>
-        <!-- Pagination / End -->         
+        {% endfor %}
+        <!-- Listing Item / End -->
       </div>
-      
+      <!-- Listings Container / End -->
+      <!-- Pagination -->
+      <div class="clearfix"></div>
+      <div class="utf-pagination-container margin-top-20">
+        <nav class="pagination">
+          {{ knp_pagination_render(pagination) }}
+          <!--<ul>
+            <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+            <li><a href="#" class="current-page">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li class="blank">...</li>
+            <li><a href="#">10</a></li>
+            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+          </ul>-->
+        </nav>
+      </div>
+      <!-- Pagination / End -->
+    </div>
+    <!-- Sidebar / End -->
+  </div>
+</div>
 
-      <!-- Sidebar / End --> 
+<section class="fullwidth" data-background-color="#ffffff">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <a href="listings-list-with-sidebar.html" class="img-box">
+          <img src="images/popular-location-02.jpg" alt="" />
+          <div class="utf-cat-img-box-content visible">
+            <h4>Australia</h4>
+            <span>24 Properties</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <a href="listings-list-with-sidebar.html" class="img-box">
+          <img src="images/popular-location-02.jpg" alt="" />
+          <div class="utf-cat-img-box-content visible">
+            <h4>Australia</h4>
+            <span>24 Properties</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
- 
-  <section class="fullwidth" data-background-color="#ffffff">
-    <div class="container">
-      <div class="row">
-
-  
-  
-            <div class="col-md-6 col-sm-6"> 
-              <a href="listings-list-with-sidebar.html" class="img-box">
-                <img src="images/popular-location-02.jpg" alt="" />
-                <div class="utf-cat-img-box-content visible">
-                  <h4>Australia</h4>
-                  <span>24 Properties</span>
-                </div>
-              </a> 
-              </div>
-  
-  
-  
-              <div class="col-md-6 col-sm-6"> 
-                <a href="listings-list-with-sidebar.html" class="img-box">
-                  <img src="images/popular-location-02.jpg" alt="" />
-                  <div class="utf-cat-img-box-content visible">
-                    <h4>Australia</h4>
-                    <span>24 Properties</span>
-                  </div>
-                </a> 
-                </div>
-      </div>
-     </div>
-    </section>
+</section>
 
 {% endblock %}
