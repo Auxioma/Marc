@@ -336,6 +336,46 @@ class ProfileType extends AbstractType
                     'class' => 'upload tooltip top'
                 ]
             ])
+            ->add('UberEat', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('Eatch', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('smood', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('dealdind', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('Perso', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
         ;
 
         $builder->get('category')->addEventListener(

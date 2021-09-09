@@ -3,19 +3,25 @@
 namespace App\DataFixtures;
 
 use App\Entity\Users;
-use DateInterval;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UsersFixtures extends Fixture
 {
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+    
     public function load(ObjectManager $manager)
     {
         
         $user = new Users();
         $user->setEmail('guillaume@free.fr');
-        $user->setPassword('pp');
+        $user->setPassword($this->encoder->encodePassword($user, '123456789'));
         $user->setIsVerified('1');
         $user->setPhoneNumber('+33 7 66 06 80 09');
         $user->setCompagny('auxioma');

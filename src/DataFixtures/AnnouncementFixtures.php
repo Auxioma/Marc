@@ -8,12 +8,13 @@ use App\Entity\Picture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Faker;
 
 class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     { 
-
+        $faker = Faker\Factory::create('fr_CH');
 
         for($NbAdversing = 1; $NbAdversing <= 999; $NbAdversing++){
             
@@ -27,16 +28,24 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
             $user = $this->getReference('user_' . '1');
             
             $annoncement = new Announcement();
-            $annoncement->setTitle('Annonce N° ');
-            $annoncement->setDiscount(rand(0,99));
-            $annoncement->setShortDescription('petite description');
-            $annoncement->setLongDescription('longue description');
+            $annoncement->setTitle($faker->realText(25));
+
+            $discount = rand(0,50);
+            if ($discount == 25) {
+                $annoncement->setDiscount('');
+            } else {
+                $annoncement->setDiscount(rand(0,99));
+            }
+            
+            $annoncement->setShortDescription($faker->realText(50));
+            $annoncement->setLongDescription($faker->realText(500));
+
             $annoncement->setCategory($category);
             $annoncement->setUsers($user);
             $annoncement->setStartAt($from);
             $annoncement->setEndAt($to);
-            $annoncement->setIsVerified(rand(0,1));
-            $annoncement->setOffert(rand(0,4));
+            $annoncement->setIsVerified('1');
+            $annoncement->setOffert(rand(0,2));
 
             for($photo = 1; $photo <= rand(1,6); $photo++){
 

@@ -27,8 +27,8 @@
         <div class="header-widget">
           {% if app.user %}
           <div class="user-menu">
-            <div class="user-name"><span><img src="images/agent-03.jpg" alt=""></span>
-              <div class="user-name-title">Hi, John!</div>
+            <div class="user-name"><span><img src="{{ asset('img/logo/' ~ app.user.Picture ) }}" alt=""></span>
+              <div class="user-name-title">Bonjour, {{ app.user.Name }}!</div>
             </div>
             <ul>
               <li><a href="my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>

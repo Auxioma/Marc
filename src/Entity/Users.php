@@ -32,7 +32,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = ['ROLE_USER'];
+    private $roles = ['ROLE_ENR'];
 
     /**
      * @var string The hashed password

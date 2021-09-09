@@ -37,5 +37,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/users/profile/edit, roles: ROLE_ENR }
-        - { path: ^/users, roles: ROLE_USER }
+        - { path: ^/users/profile/edit, roles: ROLE_ENR, requires_channel: https }
+        - { path: ^/users, roles: ROLE_USER, requires_channel: https }

@@ -266,25 +266,6 @@
                 </div>
               </div>
               <!-- end horaire ligne -->
-
-              {#
-              <div class="col-md-6">
-                <label><i class="icon-brand-linkedin"></i> mercredi</label>
-                <input value="https://www.linkedin.com" type="text">
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-google"></i> Jeudi</label>
-                <input value="https://www.google.com" type="text">
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-pinterest"></i> Vendredi</label>
-                <input value="https://www.pinterest.com" type="text">
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-feather-instagram"></i> Samidi</label>
-                <input value="https://www.instagram.com" type="text">
-              </div>
-              #}
             </div>
           </div>
 
@@ -294,23 +275,23 @@
             <div class="content with-padding">
               <div class="col-md-6">
                 <label><i class="icon-brand-facebook"></i> huber-eat.ch</label>
-                <input value="https://www.facebook.com" type="text">
+                {{ form_widget(form.UberEat) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-twitter"></i> est.ch</label>
-                <input value="https://www.twitter.com" type="text">
+                {{ form_widget(form.Eatch) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-linkedin"></i> smood.ch</label>
-                <input value="https://www.linkedin.com" type="text">
+                {{ form_widget(form.smood) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-google"></i> deindeal.ch</label>
-                <input value="https://www.google.com" type="text">
+                {{ form_widget(form.dealdind) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-pinterest"></i> J'ai un service de livraison</label>
-                <input value="https://www.pinterest.com" type="text">
+                {{ form_widget(form.Perso) }}
               </div>
             </div>
           </div>
@@ -409,7 +390,7 @@
       data[$token.attr('name')] = $token.val()
       data[$profile_category.attr('name')] = $profile_category.val()
 
-      $.post([$form.attr('action')].data).then(function (response)
+      $.post([$form.attr('action')].data).then(function (response) 
       {
 
         $("#profile_sub_category").replaceWith(

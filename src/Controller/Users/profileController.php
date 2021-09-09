@@ -2,17 +2,20 @@
 
 namespace App\Controller\Users;
 
+use App\Entity\Delivery;
 use App\Entity\Users;
 use App\Form\Users\ProfileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class profileController extends AbstractController
 {
     
     /**
+     * @IsGranted("ROLE_ENR")
      * @Route("/users/profile/edit", name="users_profile")
      */
     public function index(Request $request): Response
@@ -97,8 +100,36 @@ class profileController extends AbstractController
             $Update_User->setCity($Profile->get('City')->getData());
             $Update_User->setOpenHours($openHour); 
 
+            // I change The USER ROLE for the customer FULL ACCESS
+            $Update_User->setRoles(['ROLE_USER']);
+
+            // Save the delivery
+            $insert_delivery = $this->getDoctrine()->getManager();
+            $delivery = new Delivery();
+
+            $delivery->setUsers($Update_User);
+            $delivery->setName('Eatch');
+            $delivery->setUrl($Profile->get('Eatch')->getData());
+
+            $delivery->setUsers($Update_User);
+            $delivery->setName('smood');
+            $delivery->setUrl($Profile->get('smood')->getData());
+
+            $delivery->setUsers($Update_User);
+            $delivery->setName('dealdind');
+            $delivery->setUrl($Profile->get('dealdind')->getData());
+
+            $delivery->setUsers($Update_User);
+            $delivery->setName('Perso');
+            $delivery->setUrl($Profile->get('Perso')->getData());
+
+
             $entityManager->persist($Update_User);
             $entityManager->flush();
+
+            $insert_delivery->persist($delivery);
+            $insert_delivery->flush();
+
             
             // Show message customer
             $this->addFlash(
@@ -119,6 +150,7 @@ class profileController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/users/profile", name="show_profile")
      */
     public function ShowProfile(Request $request): Response

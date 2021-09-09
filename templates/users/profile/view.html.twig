@@ -55,10 +55,9 @@
     </div>
     <div class="col-md-9">
       {% for message in app.flashes('ProfileMiseAJour') %}
-      <div class="alert alert-success" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-            aria-hidden="true">×</span></button>
-        {{ message }}
+      <div class="notification warning closeable">
+        <p>{{ message }}</p>
+        <a class="close" href="#"></a> </div>
       </div>
       {% endfor %}
       <div class="utf-user-profile-item">
@@ -115,7 +114,6 @@
               <div class="row">
                 <div class="col-12">
                   <div class="col-md-6">
-                    <label>Horaire d'ouverure</label>
                     Lundi: {% if Utilisateurs.OpenHours.LundiMatinOuverture[0] != '' %}
                     {{ Utilisateurs.OpenHours.LundiMatinOuverture[0]|format_datetime('none', 'short', locale='fr') }} à
                     {{
