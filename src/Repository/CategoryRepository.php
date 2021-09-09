@@ -18,19 +18,7 @@ class CategoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Category::class);
     }  
-  
-    /**
-     * @return Category[] Returns an array of Category objects
-     */
-    public function RandCategory()
-    {
-        // SELECT * FROM `category` a join `category` ON a.id = category.parent_id group by a.name 
-        return $this->createQueryBuilder('c')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    
+     
     /**
      * @return Category[] Returns an array of Category objects
      */

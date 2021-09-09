@@ -1,0 +1,98 @@
+<section class="fullwidth" data-background-color="#ffffff">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="utf-section-headline-item centered margin-bottom-30 margin-top-0">
+                    <div class="utf-headline-display-inner-item">{% trans %}Offre prenium{% endtrans %}</div>
+                    <p class="utf-slogan-text"></p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <ul class="tabs-nav">
+                    <li class="active"><a href="#2">Santé & beauté</a></li>
+                    <li><a href="#6">Restaurant</a></li>
+                    <li><a href="#10">Hôtel & Voyage</a></li>
+                    <li><a href="#13">Offres du net</a></li>
+                    <li><a href="#14">Sport & Loisir</a></li>
+                    <li><a href="#17">Offres Divers</a></li>
+                    <li><a href="#18">Services</a></li>
+                    <li><a href="#22">Commerces </a></li>
+                </ul>
+                <div class="tabs-container">
+                    <div class="tab-content" id="2">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Santé & beauté" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-content" id="6">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Restaurant" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>                   
+                    </div>
+                    <div class="tab-content" id="10">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Hôtel & Voyage" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div> 
+                    </div>
+                    <div class="tab-content" id="13">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Offres du net" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div> 
+                    </div>
+                    <div class="tab-content" id="14">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Sport & Loisir" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-content" id="17">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Offres Divers" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-content" id="18">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Services" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-content" id="22">
+                        <div class="carousel">
+                            {% for PreniumOffert in PreniumOffert %}
+                                {% if PreniumOffert.Category.Parent == "Commerces" %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
