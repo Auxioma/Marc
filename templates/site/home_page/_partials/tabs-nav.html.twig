@@ -4,13 +4,12 @@
             <div class="col-md-12">
                 <div class="utf-section-headline-item centered margin-bottom-30 margin-top-0">
                     <div class="utf-headline-display-inner-item">{% trans %}Offre premium{% endtrans %}</div>
-                    <p class="utf-slogan-text"></p>
+                    <p class="utf-slogan-text margin-bottom-40"></p>
                 </div>
             </div>
             <div class="col-md-12">
                 <ul class="tabs-nav">
                     {% set activ = random(8) %}
-                    <li></li>
                     <li {% if activ == 2 %}class="active"{% else %}class=""{% endif %}><a href="#2">Santé & beauté</a></li>
                     <li {% if activ == 1 %}class="active"{% else %}class=""{% endif %}><a href="#6">Restaurant</a></li>
                     <li {% if activ == 3 %}class="active"{% else %}class=""{% endif %}><a href="#10">Hôtel & Voyage</a></li>

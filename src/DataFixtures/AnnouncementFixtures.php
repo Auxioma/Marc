@@ -37,7 +37,7 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
                 $annoncement->setDiscount(rand(0,99));
             }
             
-            $annoncement->setShortDescription($faker->realText(50));
+            $annoncement->setShortDescription($faker->realText(70));
             $annoncement->setLongDescription($faker->realText(500));
 
             $annoncement->setCategory($category);
