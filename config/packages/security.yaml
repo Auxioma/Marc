@@ -20,8 +20,12 @@ security:
             security: false
         main:
             lazy: true
+            entry_point: App\Security\EntryPoint\CustomEntryPoint
+
             provider: app_user_provider
-            custom_authenticator: App\Security\UsersAuthenticator
+            custom_authenticator: 
+                - App\Security\UsersAuthenticator
+                - App\Security\GoogleAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout

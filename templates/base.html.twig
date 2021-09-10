@@ -11,7 +11,7 @@
         {% block css %}{% endblock %}
     </head>
     <body>
-
+        {{ app.request.headers.get('User-Agent')}}
         <!-- Preloader Start -->
         <div class="preloader">
             <div class="utf-preloader">
@@ -22,9 +22,6 @@
         </div>
         <!-- Preloader End -->
         <div id="wrapper"> 
-
-            
-            
             {% include '_partial/header.html.twig' %}
             {% block body %}{% endblock %}
             {% include '_partial/footer.html.twig' %}
