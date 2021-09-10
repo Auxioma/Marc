@@ -422,7 +422,7 @@
             adaptiveHeight: true,
 			items: 4,
             itemsDesktop: [1239, 4],
-            itemsTablet: [991, 2],
+            itemsTablet: [991, 3],
             itemsMobile: [767, 1]
         });
 		$('.testimonial-carousel').owlCarousel({

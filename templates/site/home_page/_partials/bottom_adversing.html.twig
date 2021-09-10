@@ -1,42 +1,84 @@
+{% do device.parse %}
+
+{% if device.isSmartphone %}
 <section class="fullwidth" data-background-color="#ffffff" style="margin-top:40px;">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="col-md-3 col-sm-6">
-                    <a href="listings-list-with-sidebar.html" class="img-box">
+            <div class="col-md-12">
+                <div style="width: 50%;float: left;padding: 0 7.5px 15px 0;">
+                    <a href="{{ AllAdPictures[3].url }}">
                         <img src="{{ AllAdPictures[3].src }}" alt="" />
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="listings-list-with-sidebar.html" class="img-box">
+                <div style="width: 50%;float: left;padding: 0 0 15px 7.5px">
+                    <a href="{{ AllAdPictures[4].url }}">
                         <img src="{{ AllAdPictures[4].src }}" alt="" />
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="listings-list-with-sidebar.html" class="img-box">
+                <div style="clear:both"></div>
+            </div>
+            <div class="col-md-12">
+                <div style="width: 50%;float: left;padding: 0 7.5px 15px 0;">
+                    <a href="{{ AllAdPictures[5].url }}" class="">
                         <img src="{{ AllAdPictures[5].src }}" alt="" />
                     </a>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="listings-list-with-sidebar.html" class="img-box">
+                <div style="width: 50%;float: left;padding: 0 0 15px 7.5px">
+                    <a href="{{ AllAdPictures[6].url }}" class="">
                         <img src="{{ AllAdPictures[6].src }}" alt="" />
                     </a>
                 </div>
+                <div style="clear:both"></div>
             </div>
-
-
-
             <div class="col-md-6 col-sm-6">
-                <a href="listings-list-with-sidebar.html" class="img-box">
+                <a href="{{ AllAdPictures[7].url }}" class="">
                     <img src="{{ AllAdPictures[7].src }}" alt="" />
-
                 </a>
             </div>
             <div class="col-md-6 col-sm-6">
-                <a href="listings-list-with-sidebar.html" class="img-box">
+                <a href="{{ AllAdPictures[8].url }}" class="img-box">
                     <img src="{{ AllAdPictures[8].src }}" alt="" />
                 </a>
             </div>
         </div>
     </div>
 </section>
+{% else %}
+<section class="fullwidth" data-background-color="#ffffff" style="margin-top:40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <a href="{{ AllAdPictures[3].url }}" class="img-box">
+                    <img src="{{ AllAdPictures[3].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{{ AllAdPictures[4].url }}" class="img-box">
+                    <img src="{{ AllAdPictures[4].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{{ AllAdPictures[5].url }}" class="img-box">
+                    <img src="{{ AllAdPictures[5].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{{ AllAdPictures[6].url }}" class="img-box">
+                    <img src="{{ AllAdPictures[6].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a href="{{ AllAdPictures[7].url }}" class="img-box">
+                    <img src="{{ AllAdPictures[7].src }}" alt="" />
+
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a href="{{ AllAdPictures[8].url }}" class="img-box">
+                    <img src="{{ AllAdPictures[8].src }}" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

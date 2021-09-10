@@ -1,4 +1,7 @@
 {
+    "acsiomatic/device-detector-bundle": {
+        "version": "0.2.0"
+    },
     "antishov/doctrine-extensions-bundle": {
         "version": "1.4",
         "recipe": {
@@ -169,8 +172,14 @@
     "league/oauth2-google": {
         "version": "4.0.0"
     },
+    "matomo/device-detector": {
+        "version": "4.3.0"
+    },
     "monolog/monolog": {
         "version": "2.3.2"
+    },
+    "mustangostang/spyc": {
+        "version": "0.6.3"
     },
     "myclabs/deep-copy": {
         "version": "1.10.2"

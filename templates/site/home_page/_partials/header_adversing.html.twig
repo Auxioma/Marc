@@ -1,3 +1,42 @@
+{% do device.parse %}
+
+{% if device.isSmartphone %}
+    
+{# Visu pour les téléphone #}
+
+<section class="fullwidth" data-background-color="#ffffff">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="utf-section-headline-item centered margin-top-0">
+                    <div class="utf-headline-display-inner-item"></div>
+                    <p class="utf-slogan-text">{% trans %}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley{% endtrans %}</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+                <a rel="nofollow" href="{{ AllAdPictures[1].url }}" >
+                    <img class="img-fluid" src="{{ AllAdPictures[1].src }}" alt="" />
+                </a>
+            </div>
+            <div style="width: 50%;float: left;padding: 15px 7.5px 15px 15px;">
+                <a rel="nofollow" href="{{ AllAdPictures[2].url }}" >
+                    <img class="img-fluid" src="{{ AllAdPictures[2].src }}" alt="" />
+                </a>
+            </div>
+            <div style="width: 50%;float: left;padding: 15px 15px 15px 7.5px">
+                <a rel="nofollow" href="{{ AllAdPictures[0].url }}" >
+                    <img class="img-fluid" src="{{ AllAdPictures[0].src }}" alt="" />
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{# visu pour les PC #}
+{% else %}
+
 <section class="fullwidth" data-background-color="#ffffff">
     <div class="container">
         <div class="row">
@@ -8,20 +47,22 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
-                <a href="listings-list-with-sidebar.html" class="img-box">
+                <a  rel="nofollow" href="{{ AllAdPictures[0].url }}" class="img-box">
                     <img src="{{ AllAdPictures[0].src }}" width="262" height="375" alt="" />
                 </a>
             </div>
             <div class="col-md-6 col-sm-6">
-                <a href="listings-list-with-sidebar.html" class="img-box">
+                <a  rel="nofollow" href="{{ AllAdPictures[1].url }}" class="img-box">
                     <img src="{{ AllAdPictures[1].src }}" width="570" height="375" alt="" />
                 </a>
             </div>
             <div class="col-md-3 col-sm-6">
-                <a href="listings-list-with-sidebar.html" class="img-box">
+                <a rel="nofollow" href="{{ AllAdPictures[2].url }}" class="img-box">
                     <img src="{{ AllAdPictures[2].src }}" width="262" height="375" alt="" />
                 </a>
             </div>
         </div>
     </div>
 </section>
+
+{% endif %}
