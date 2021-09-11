@@ -94,7 +94,7 @@
 
         function inlineCSS() {
             $(".some-classes, section.fullwidth, .img-box-background, .flip-banner, .property-slider .item, .fullwidth-property-slider .item, .fullwidth-home-slider .item, .address-container").each(function() {
-                var attrImageBG = $(this).attr('data-background-image');
+                var attrImageBG = $(this).attr('property-slider');
                 var attrColorBG = $(this).attr('data-background-color');
                 if (attrImageBG !== undefined) {
                     $(this).css('background-image', 'url(' + attrImageBG + ')');
@@ -516,6 +516,42 @@
                 }
             }]
         });
+        $('.produits').slick({
+            autoPlay: true,
+            slideSpeed: 800,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            dots: true,
+            arrows: true,
+			dataLoop:true,
+            centerMode: true,
+            focusOnSelect: true,
+            centerPadding: '90px',
+            slidesToShow: 1,
+
+            responsive: [
+              {
+                breakpoint: 768,
+                settings: {
+                  arrows: false,
+                  centerMode: true,
+                  centerPadding: '40px',
+                  slidesToShow: 3
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  arrows: false,
+                  centerMode: true,
+                  centerPadding: '40px',
+                  slidesToShow: 1
+                }
+              }
+            ]
+          });
+
+
         $('.fullwidth-property-slider').slick({
             centerMode: true,
             centerPadding: '10%',

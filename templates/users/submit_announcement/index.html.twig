@@ -4,252 +4,200 @@
 
 {% block body %}
 
-  <!-- Titlebar -->
-  <div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)" data-color-opacity="0.8" data-img-width="800" data-img-height="505">
-    <div id="titlebar">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Add New Property</h2>
-            <!-- Breadcrumbs -->
-            <nav id="breadcrumbs">
-              <ul>
-                <li><a href="index.html">Home</a></li>
-                <li>Add New Property</li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Content -->
-  <div class="container">
-    <div class="row"> 
-	  <div class="col-md-3">
-	    <div class="margin-bottom-20"> 
-			<div class="utf-edit-profile-photo-area"> <img src="images/agent-02.jpg" alt="">
-			  <div class="utf-change-photo-btn-item">
-				<div class="utf-user-photo-upload"> <span><i class="fa fa-upload"></i> Upload Photo</span>
-				  <input type="file" class="upload tooltip top" title="Upload Photo" />
+<div class="parallax titlebar" data-background="{{ asset('images/listings-parallax.jpg') }}" data-color="rgba(48, 48, 48, 1)"
+	data-color-opacity="0.8" data-img-width="800" data-img-height="505">
+	<div id="titlebar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Add New Property</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>Add New Property</li>
+						</ul>
+					</nav>
 				</div>
-			  </div>
 			</div>
-	    </div>
-		<div class="clearfix"></div>
-        <div class="sidebar margin-top-20">
-          <div class="user-smt-account-menu-container">
-            <ul class="user-account-nav-menu">
-              <li><a href="my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
-              <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmark Listing</a></li>
-			  <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Property</a></li>
-              <li><a href="add-new-property.html" class="current"><i class="sl sl-icon-action-redo"></i> New Property</a></li>
-			  <li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Change Password</a></li>
-              <li><a href="#"><i class="sl sl-icon-power"></i> Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-		<div class="widget utf-sidebar-widget-item">
-		  <div class="utf-detail-banner-add-section">
-			 <a href="#"><img src="images/banner-add-2.jpg" alt="banner-add-2"></a>
-		  </div>             
 		</div>
-      </div>	
-      <!-- Submit Page -->
-      <div class="col-md-9">
-        <div class="submit-page">
-          <!-- Section -->
-		  <div class="utf-submit-page-inner-box">
-			  <h3>Property Basic Information</h3>
-			  <div class="content with-padding">             
-				  <div class="col-md-12">
-					 <h5>Property Title</h5>
-					 <input class="search-field" placeholder="Property Title" type="text" value=""/>				  
-				  </div>
-				
-				  <div class="col-md-6">
-					<h5>Status</h5>
-					<select class="utf-chosen-select-single-item">
-					  <option label="blank"></option>
-					  <option>For Sale</option>
-					  <option>For Rent</option>
-					</select>
-				  </div>
-				  
-				  <div class="col-md-6">
-					<h5>Type</h5>
-					<select class="utf-chosen-select-single-item">
-					  <option label="blank"></option>
-					  <option>Apartment</option>
-					  <option>House</option>
-					  <option>Commercial</option>
-					  <option>Garage</option>
-					  <option>Lot</option>
-					</select>
-				  </div>
-				  
-				  <div class="col-md-4">
-					<h5>Price</h5>
-					<div class="select-input disabled-first-option">
-					  <input type="text" placeholder="00000" data-unit="USD">
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		{% include 'users/_partial/menu.html.twig' %}
+		{{ form_start(form) }}
+		<div class="col-md-9">
+			<div class="submit-page">
+				<!-- Section -->
+				<div class="utf-submit-page-inner-box">
+					<h3>Property Basic Information</h3>
+					<div class="content with-padding">
+
+						<div class="col-md-6">
+							<h5>Titre de votre promotion</h5>
+							{{ form_widget(form.Title) }}
+						</div>
+						<div class="col-md-6">
+							<h5>Proposez vous un rabais %</h5>
+							{{ form_widget(form.Discount) }}
+						</div>
+						<div class="col-md-6">
+							<h5>petite description</h5>
+							{{ form_widget(form.ShortDescription) }}
+							<span id="characters"
+								style="color:#999;color: #999;position: absolute;bottom: 15px;right: 55px;">0</span>
+							<span style="color:#999;color: #999;position: absolute;bottom: 15px;right: 30px;">/25</span>
+						</div>
+
+						<div class="col-md-6">
+							<h5>Grande descriptin</h5>
+							{{ form_widget(form.LongDescription) }}
+						</div>
 					</div>
-				  </div>
-				  
-				  <div class="col-md-4">
-					<h5>Area</h5>
-					<div class="select-input disabled-first-option">
-					  <input type="text" placeholder="00000" data-unit="Sq Ft">
+				</div>
+				<!-- Section / End -->
+
+				<!-- Section -->
+				<div class="utf-submit-page-inner-box">
+					<h3>Gallerie photo</h3>
+					<div class="content with-padding">
+						<div class="col-md-12 submit-section">
+							<div class="dropzone"></div>
+						</div>
 					</div>
-				  </div>
-				  
-				  <div class="col-md-4">
-					<h5>Rooms</h5>
-					<select class="utf-chosen-select-single-item">
-					  <option label="blank"></option>
-					  <option>1</option>
-					  <option>2</option>
-					  <option>3</option>
-					  <option>4</option>
-					  <option>5</option>
-					  <option>More than 5</option>
-					</select>
-				  </div>
-			  </div>
-		  </div>
-          <!-- Section / End --> 
-          
-          <!-- Section -->
-		  <div class="utf-submit-page-inner-box">
-			  <h3>Property Gallery</h3>
-			  <div class="content with-padding">   
-				  <div class="col-md-12 submit-section">
-					<form action="file-upload" class="dropzone"></form>
-				  </div>
-			  </div>
-		  </div>
-          <!-- Section / End --> 
-          
-          <!-- Section -->
-		  <div class="utf-submit-page-inner-box">
-			  <h3>Property Location</h3>
-			  <div class="content with-padding">             
-				  <div class="col-md-6">
-					<h5>Address</h5>
-					<input type="text" placeholder="Address">
-				  </div>
-				  <div class="col-md-6">
-					<h5>City Name</h5>
-					<input type="text" placeholder="City Name">
-				  </div>
-				  <div class="col-md-6">
-					<h5>State</h5>
-					<input type="text" placeholder="State">
-				  </div>
-				  <div class="col-md-6">
-					<h5>Zip-Code</h5>
-					<input type="text" placeholder="000000">
-				  </div>
-			  </div>
-		  </div>
-          <!-- Section / End --> 
-          
-          <!-- Section -->
-		  <div class="utf-submit-page-inner-box">
-			  <h3>Property Information</h3>
-			  <div class="content with-padding">             
-				  <div class="col-md-12">
-					<h5>Property Description</h5>
-					<textarea name="summary" cols="20" rows="2" id="summary"></textarea>
-				  </div>
-				  <div class="col-md-4">
-					<h5>Building Age</h5>
-					<select class="utf-chosen-select-single-item">
-					  <option label="blank"></option>
-					  <option>0 - 1 Years</option>
-					  <option>0 - 5 Years</option>
-					  <option>0 - 10 Years</option>
-					  <option>0 - 20 Years</option>
-					  <option>0 - 50 Years</option>
-					  <option>50 + Years</option>
-					</select>
-				  </div>
-				  
-				  <div class="col-md-4">
-					<h5>Bed Rooms</h5>
-					<select class="utf-chosen-select-single-item">
-					  <option label="blank"></option>
-					  <option>1</option>
-					  <option>2</option>
-					  <option>3</option>
-					  <option>4</option>
-					  <option>5</option>
-					</select>
-				  </div>
-				  
-				  <div class="col-md-4">
-					<h5>Bath Rooms</h5>
-					<select class="utf-chosen-select-single-item">
-					  <option label="blank"></option>
-					  <option>1</option>
-					  <option>2</option>
-					  <option>3</option>
-					  <option>4</option>
-					  <option>5</option>
-					</select>
-				  </div>
-				<div class="col-md-12">	
-				  <h5 class="margin-top-15">Other Features <span>(optional)</span></h5>
-				  <div class="checkboxes in-row margin-bottom-20">
-					  <input id="check-2" type="checkbox" name="check">
-					  <label for="check-2">Air Conditioning</label>
-					  <input id="check-3" type="checkbox" name="check">
-					  <label for="check-3">Swimming Pool</label>
-					  <input id="check-4" type="checkbox" name="check" >
-					  <label for="check-4">Central Heating</label>
-					  <input id="check-5" type="checkbox" name="check">
-					  <label for="check-5">Laundry Room</label>
-					  <input id="check-6" type="checkbox" name="check">
-					  <label for="check-6">Gym</label>
-					  <input id="check-7" type="checkbox" name="check">
-					  <label for="check-7">Alarm</label>
-					  <input id="check-8" type="checkbox" name="check">
-					  <label for="check-8">Window Covering</label>
-				  </div>
-				</div>  
-			  </div>
-		  </div>  
-          <!-- Section / End --> 
-          
-          <!-- Section -->
-		  <div class="utf-submit-page-inner-box">
-			  <h3>Property Contact Details</h3>
-			  <div class="content with-padding">             
-				  <div class="col-md-4">
-					<h5>Full Name</h5>
-					<input type="text" placeholder="Name">
-				  </div>
-				  <div class="col-md-4">
-					<h5>Email Address</h5>
-					<input type="text" placeholder="Email Address">
-				  </div>
-				  <div class="col-md-4">
-					<h5>Phone Number</h5>
-					<input type="text"  placeholder="Phone Number">
-				  </div>
-			  </div>
-		  </div>		
-		  <div class="row">
-			<div class="col-md-12">
-				<a href="add-new-property.html" class="utf-centered-button button">Submit Property</a>
-			</div>	
-		  </div>
+				</div>
+				<div class="row">
+					<div class="utf-pricing-container-area margin-top-5">
+						<div class="col-md-3 col-sm-6 col-xs-12">
+							<div class="plan">
+								<div class="utf-plan-price">
+									<h3>PRENIUM</h3>
+									<span class="value">$59<sub>/Par Month</sub></span> <span class="period">Business
+										User Membership for 60 days</span>
+								</div>
+								<div class="utf-plan-features">
+									<ul>
+										<li>One Time Fee</li>
+										<li>One Listing</li>
+										<li>60 Days Availability</li>
+										<li>Featured In Search Results</li>
+										<li>Limited Support</li>
+										<li>24/7 Support</li>
+									</ul>
+									<a class="button border" href="add-new-property.html">Purchase Now</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12">
+							<div class="plan">
+								<div class="utf-plan-price">
+									<h3>GOLD</h3>
+									<span class="value">$59<sub>/Par Month</sub></span> <span class="period">Business
+										User Membership for 60 days</span>
+								</div>
+								<div class="utf-plan-features">
+									<ul>
+										<li>One Time Fee</li>
+										<li>One Listing</li>
+										<li>60 Days Availability</li>
+										<li>Featured In Search Results</li>
+										<li>Limited Support</li>
+										<li>24/7 Support</li>
+									</ul>
+									<a class="button border" href="add-new-property.html">Purchase Now</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12">
+							<div class="plan featured">
+								<div class="utf-listing-badges-item"> <span class="featured">Featured</span> </div>
+								<div class="utf-plan-price">
+									<h3>SILVER</h3>
+									<span class="value">$89<sub>/Par Month</sub></span> <span class="period">Premium
+										User Membership for 180 days</span>
+								</div>
+								<div class="utf-plan-features">
+									<ul>
+										<li>One Time Fee</li>
+										<li>One Listing</li>
+										<li>180 Days Availability</li>
+										<li>Featured In Search Results</li>
+										<li>Limited Support</li>
+										<li>24/7 Support</li>
+									</ul>
+									<a class="button border" href="add-new-property.html">Purchase Now</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12">
+							<div class="plan">
+								<div class="utf-plan-price">
+									<h3>GRATUIT</h3>
+									<span class="value">$99<sub>/Par Month</sub></span> <span class="period">Platinum
+										User Membership for 365 days</span>
+								</div>
+								<div class="utf-plan-features">
+									<ul>
+										<li>One Time Fee</li>
+										<li>One Listing</li>
+										<li>365 Days Availability</li>
+										<li>Featured In Search Results</li>
+										<li>Limited Support</li>
+										<li>24/7 Support</li>
+									</ul>
+									<a class="button border" href="add-new-property.html">Purchase Now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<a href="add-new-property.html" class="utf-centered-button button">Submit Property</a>
+					</div>
+				</div>
+			</div>
 		</div>
-      </div>
-    </div>
-  </div>
-  
- 
+	</div>
+	{{ form_end(form) }}
+</div>
+{% endblock %}
+{% block javascript %}
+	<script>
+		$('#submit_announcement_ShortDescription').keyup(updateCount);
+		$('#submit_announcement_ShortDescription').keydown(updateCount);
 
-
+		function updateCount() {
+			var cs = [25 + $(this).val().length];
+			$('#characters').text(cs);
+		}
+	</script>
+	<script src="{{ asset('scripts/dropzone.js') }}"></script> 
+	<script>
+        // init,configure dropzone
+        Dropzone.autoDiscover = false;
+        let dropzone_default = new Dropzone(".dropzone", {
+            url: '/users/submit/api' ,
+            maxFiles: 6,
+            dictMaxFilesExceeded: 'Only 1 Image can be uploaded',
+            acceptedFiles: 'image/*',
+            maxFilesize: 8,  // in Mb
+            addRemoveLinks: true,
+            init: function () {
+                this.on("maxfilesexceeded", function(file) {
+                    this.removeFile(file);
+                });
+                this.on("sending", function(file, xhr, formData) {
+                    // send additional data with the file as POST data if needed.
+                     alet(formData.append("key", "value"));
+                });
+                this.on("success", function(file, response) {
+                    if (response.uploaded) 
+                        alert('File Uploaded: ' + response.fileName);
+                });
+            }
+        });
+    </script>
+	
 {% endblock %}

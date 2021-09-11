@@ -16,7 +16,7 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
     { 
         $faker = Faker\Factory::create('fr_CH');
 
-        for($NbAdversing = 1; $NbAdversing <= 999; $NbAdversing++){
+        for($NbAdversing = 1; $NbAdversing <= 900; $NbAdversing++){
             
             $from   = new \DateTime();
             $from->add(new DateInterval('P' .$NbAdversing. 'D'));
