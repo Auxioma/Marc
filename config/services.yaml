@@ -6,6 +6,8 @@
 parameters:
     maintenanceFilePath: '%kernel.project_dir%/public/.maintenance'
     imagelogo: '%kernel.project_dir%/public/img/logo'
+    announcement: '%kernel.project_dir%/public/img/announcement'
+    
 services:
     # default configuration for services in *this* file
     _defaults:

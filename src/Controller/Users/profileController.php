@@ -27,7 +27,6 @@ class profileController extends AbstractController
         $Profile->handleRequest($request);
 
         if ($Profile->isSubmitted() && $Profile->isValid()) {
-            //dd($Profile);
 
             // Upload picture
             $image = $Profile->get('image')->getData();

@@ -7,8 +7,6 @@
 <div class="container">
   <div class="row margin-bottom-50">
     <div class="col-md-12">
-
-
       <div class="produits">
         <div><img src="{{ asset('images/single-property-02.jpg') }}" alt=""></div>
         <div><img src="{{ asset('images/single-property-02.jpg') }}" alt=""></div>
@@ -16,9 +14,7 @@
         <div><img src="{{ asset('images/single-property-04.jpg') }}" alt=""></div>
         <div><img src="{{ asset('images/single-property-05.jpg') }}" alt=""></div>
         <div><img src="{{ asset('images/single-property-06.jpg') }}" alt=""></div>
-
       </div>
-
     </div>
   </div>
 </div>
@@ -30,9 +26,10 @@
       <!-- Titlebar -->
       <div id="titlebar-dtl-item" class="property-titlebar margin-bottom-0">
         <div class="property-title">
-          <div class="property-pricing">$22,000/mo</div>
-          <h2>Renovated Luxury Apartment <span class="property-badge-sale">For Sale</span></h2>
-          <span class="utf-listing-address"><i class="icon-material-outline-location-on"></i> 2021 San Pedro, Los
+          <div class="property-pricing">- {{ product.Discount }} %</div>
+          <h2>{{ product.Title }}</h2>
+          <span class="utf-listing-address"><i class="icon-material-outline-location-on"></i>
+            {{ product.users.Address }} {{ product.users.CodePost }} {{ product.users.City }}
             Angeles 90015</span>
         </div>
       </div>
@@ -43,28 +40,8 @@
           <h3><i class="icon-material-outline-description"></i> Property Description</h3>
         </div>
         <div class="show-more">
-          <p> Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac
-            maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum,
-            est elit finibus tellus, ut tristique elit risus at metus. Sed fermentum, lorem vitae efficitur imperdiet,
-            neque velit tristique turpis, et iaculis mi tortor finibus turpis. </p>
-          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus
-            lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi
-            tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa
-            faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et
-            nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor
-            lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et
-            fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas
-            dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur. </p>
-          <p> Nam mattis lobortis felis eu blandit. Morbi tellus ligula, interdum sit amet ipsum et, viverra hendrerit
-            lectus. Nunc efficitur sem vel est laoreet, sed bibendum eros viverra. Vestibulum finibus, ligula sed
-            euismod tincidunt, lacus libero lobortis ligula, sit amet molestie ipsum purus ut tortor. Nunc varius, dui
-            et sollicitudin facilisis, erat felis imperdiet felis, et iaculis dui magna vitae diam. Donec mattis diam
-            nisl, quis ullamcorper enim malesuada non. Curabitur lobortis eu mauris nec vestibulum. Nam efficitur, ex ac
-            semper malesuada, nisi odio consequat dui, hendrerit vulputate odio dui vitae massa. Aliquam tortor urna,
-            tincidunt ut euismod quis, semper vel ipsum. Ut non vestibulum mauris. Morbi euismod, felis non hendrerit
-            viverra, nunc sapien bibendum ligula, eget vehicula nunc dolor eu ex. Quisque in semper odio. Donec auctor
-            blandit ligula. Integer id lectus non nibh vulputate efficitur quis at arcu. </p>
-          <a href="#" class="show-more-button">Show More <i class="sl sl-icon-plus"></i></a>
+          <p>{{ product.LongDescription }}</p>
+          <a href="#" class="show-more-button">Voir plus... <i class="sl sl-icon-plus"></i></a>
         </div>
 
         <!-- Details -->
@@ -99,7 +76,7 @@
 
         <!-- Features -->
         <div class="utf-desc-headline-item">
-          <h3><i class="sl sl-icon-briefcase"></i> Property Features</h3>
+          <h3><i class="sl sl-icon-briefcase"></i> Services de livraison</h3>
         </div>
         <ul class="property-features checkboxes margin-top-0">
           <li>Air Conditioning</li>
@@ -171,6 +148,8 @@
             <a href="#"><img src="{{ asset('images/banner-add-2.jpg') }}" alt="banner-add-2"></a>
           </div>
         </div>
+
+        {% include 'site/product/mignature/open_hours.html.twig' %}
 
         <!-- Widget -->
         <div class="widget utf-sidebar-widget-item">
