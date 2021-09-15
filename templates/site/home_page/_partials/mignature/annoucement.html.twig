@@ -1,0 +1,44 @@
+<div class="utf-carousel-item-area">
+    <div class="utf-listing-item">
+        <a href="{{ path('site_product', {'idcat':PreniumOffert.Category.slug, 'id':PreniumOffert.Id, 'slug':PreniumOffert.Slug}) }}"
+            class="utf-smt-listing-img-container">
+            <div class="utf-listing-badges-item">
+                {% if PreniumOffert.Offert == '0' %}
+                <span class="featured">GOLD</span>
+                {% endif %}
+                {% if PreniumOffert.Offert == '1' %}
+                <span class="featured">GOLD</span>
+                {% endif %}
+            </div>
+            <div class="utf-listing-img-content-item">
+
+                <span class="video-button with-tip" data-tip-content="Video"></span>
+            </div>
+            <div class="utf-listing-carousel-item">
+                <div><img src="images/listing-01.jpg" alt=""></div>
+                <div><img src="images/listing-01.jpg" alt=""></div>
+                <div><img src="images/listing-01.jpg" alt=""></div>
+            </div>
+        </a>
+        <div class="utf-listing-content">
+            <div class="utf-listing-title">
+                <span class="utf-listing-price">
+                    {% if PreniumOffert.Discount is defined %}
+                    {{ PreniumOffert.Discount }} %
+                    {% else %}
+                    {% trans %} Promotion {% endtrans %}
+                    {% endif %}
+                </span>
+                <h4><a
+                        href="{{ path('site_product', {'idcat':PreniumOffert.Category.slug, 'id':PreniumOffert.Id, 'slug':PreniumOffert.Slug}) }}">{{
+                        PreniumOffert.Title }}</a></h4>
+            </div>
+            <div class="utf-listing-features annoncement">
+                <p>{{ PreniumOffert.ShortDescription }}</p>
+            </div>
+            <div class="utf-listing-user-info text-center"><a class="offer"
+                    href="{{ path('site_product', {'idcat':PreniumOffert.Category.slug, 'id':PreniumOffert.Id, 'slug':PreniumOffert.Slug}) }}">
+                    Voir l'offre</a></div>
+        </div>
+    </div>
+</div>

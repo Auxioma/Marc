@@ -4,26 +4,26 @@
 
 {% block body %}
 
-<!-- Titlebar -->
-<div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
-  data-color-opacity="0.8" data-img-width="800" data-img-height="505">
-  <div id="titlebar">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>My Profile</h2>
-          <!-- Breadcrumbs -->
-          <nav id="breadcrumbs">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li>My Profile</li>
-            </ul>
-          </nav>
+  <!-- Titlebar -->
+  <div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
+       data-color-opacity="0.8" data-img-width="800" data-img-height="505">
+    <div id="titlebar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>My Profile</h2>
+            <!-- Breadcrumbs -->
+            <nav id="breadcrumbs">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>My Profile</li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 <!-- Content -->
 <div class="container">
@@ -35,7 +35,7 @@
         <div class="utf-edit-profile-photo-area"> <img src="{{ asset('images/agent-02.jpg') }}" alt="">
           <div class="utf-change-photo-btn-item">
             <div class="utf-user-photo-upload"> <span><i class="fa fa-upload"></i>{% trans %}Téléchargement du logo{%
-                endtrans %}</span>
+                  endtrans %}</span>
               {{ form_widget(form.image) }}
             </div>
           </div>
@@ -45,12 +45,12 @@
       <div class="sidebar margin-top-20">
         <div class="user-smt-account-menu-container">
           <ul class="user-account-nav-menu">
-            <li><a href="my-profile.html" class="current"><i class="sl sl-icon-user"></i> My Profile</a></li>
-            <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmark Listing</a></li>
-            <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Property</a></li>
-            <li><a href="add-new-property.html"><i class="sl sl-icon-action-redo"></i> New Property</a></li>
-            <li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Change Password</a></li>
-            <li><a href="#"><i class="sl sl-icon-power"></i> Log Out</a></li>
+            <li class="active"><a href="{{ path('users_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
+            <li><a href="#"><i class="sl sl-icon-star"></i> Ajouter une annonces</a></li>
+            <li><a href="#"><i class="sl sl-icon-docs"></i> Ajouter une publicité</a></li>
+            <li><a href="#"><i class="sl sl-icon-action-redo"></i> Historique</a></li>
+            <li><a href="#"><i class="sl sl-icon-lock"></i> Chenger de MDP</a></li>
+            <li><a href="#"><i class="sl sl-icon-power"></i> Deconnection</a></li>
           </ul>
         </div>
       </div>
@@ -70,9 +70,10 @@
               <label>Votre catégorie</label>
               {{ form_widget(form.category) }}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" id="profile_sub_category">
               <label>Votre sous catégorie</label>
               {# {{ form_widget(form.sub_category) }} #}
+              <p id="profile_sub_category"></p>
             </div>
           </div>
         </div>
@@ -141,23 +142,23 @@
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
               <div class="row ligneHoraire">
-                  <div class="col-md-3 margin-top-15 horaireBlock">
-                    <label class="w-100">Mardi</label>
-                    <span class="switch">
+                <div class="col-md-3 margin-top-15 horaireBlock">
+                  <label class="w-100">Mardi</label>
+                  <span class="switch">
                       <input type="checkbox" class="switch s-check" id="switch-normalMardi">
                       <label for="switch-normalMardi">Overt</label>
                     </span>
+                </div>
+                <div class="col-md-9 horaires">
+                  <div class="row horaireBlock">
+                    {{ form_widget(form.MardiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiMidiFermeture) }}
+                    <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
-                  <div class="col-md-9 horaires">
-                    <div class="row horaireBlock">
-                      {{ form_widget(form.MardiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiMidiFermeture) }}
-                      <a class="add-new-horaire">Ajouter des horaires</a>
-                    </div>
-                    <div class="row horaireBlock part2 notVisible" >
-                      {{ form_widget(form.MardiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiAPMFermeture) }}
-                      <a class="remove-horaire">x</a>
-                    </div>
+                  <div class="row horaireBlock part2 notVisible" >
+                    {{ form_widget(form.MardiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiAPMFermeture) }}
+                    <a class="remove-horaire">x</a>
                   </div>
+                </div>
               </div>
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
@@ -265,26 +266,6 @@
                 </div>
               </div>
               <!-- end horaire ligne -->
-
-              {#
-                <div class="col-md-6">
-                  <label><i class="icon-brand-linkedin"></i> mercredi</label>
-                  <input value="https://www.linkedin.com" type="text">
-                </div>
-                <div class="col-md-6">
-                  <label><i class="icon-brand-google"></i> Jeudi</label>
-                  <input value="https://www.google.com" type="text">
-                </div>
-                <div class="col-md-6">
-                  <label><i class="icon-brand-pinterest"></i> Vendredi</label>
-                  <input value="https://www.pinterest.com" type="text">
-                </div>
-                <div class="col-md-6">
-                  <label><i class="icon-feather-instagram"></i> Samidi</label>
-                  <input value="https://www.instagram.com" type="text">
-                </div>
-
-              #}
             </div>
           </div>
 
@@ -294,23 +275,23 @@
             <div class="content with-padding">
               <div class="col-md-6">
                 <label><i class="icon-brand-facebook"></i> huber-eat.ch</label>
-                <input value="https://www.facebook.com" type="text">
+                {{ form_widget(form.UberEat) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-twitter"></i> est.ch</label>
-                <input value="https://www.twitter.com" type="text">
+                {{ form_widget(form.Eatch) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-linkedin"></i> smood.ch</label>
-                <input value="https://www.linkedin.com" type="text">
+                {{ form_widget(form.smood) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-google"></i> deindeal.ch</label>
-                <input value="https://www.google.com" type="text">
+                {{ form_widget(form.dealdind) }}
               </div>
               <div class="col-md-6">
                 <label><i class="icon-brand-pinterest"></i> J'ai un service de livraison</label>
-                <input value="https://www.pinterest.com" type="text">
+                {{ form_widget(form.Perso) }}
               </div>
             </div>
           </div>
@@ -348,21 +329,18 @@
       country: 'long_name',
       postal_code: 'short_name'
     };
-
     function initAutocomplete() {
       // Create the autocomplete object, restricting the search to geographical
       // location types.
       autocomplete = new google.maps.places.Autocomplete(
-                  /** @type {!HTMLInputElement} */(document.getElementById('profile_GooglePlaceID')),
-        { types: ['geocode'] });
+              /** @type {!HTMLInputElement} */(document.getElementById('profile_GooglePlaceID')),
+              { types: ['geocode'] });
       autocomplete.addListener('place_changed', fillInAddress);
     }
-
     function fillInAddress() {
       var place = autocomplete.getPlace();
       document.getElementById('profile_Latitude').value = place.geometry.location.lat();
       document.getElementById('profile_Longitude').value = place.geometry.location.lng();
-
       var components = place.address_components;
       var street = null;
       for (var i = 0, component; component = components[i]; i++) {
@@ -381,7 +359,6 @@
         }
       }
     }
-
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
     function geolocate() {
@@ -401,29 +378,30 @@
     }
   </script>
   <script>
-    
+
     var $profile_category = $("#profile_category")
     var $token = $("#profile_token")
 
-    $profile_category.change(function() 
+    $profile_category.change(function()
     {
       var $form = $(this).closest('form')
       var data = {}
-
-      data[$token.attr('name')] = $token.val() 
+      
+      data[$token.attr('name')] = $token.val()
       data[$profile_category.attr('name')] = $profile_category.val()
 
-      $.post($form.attr('action').data).then(function (response)
+      $.post([$form.attr('action')].data).then(function (response) 
       {
+
         $("#profile_sub_category").replaceWith(
-          $(response).find("profile_sub_category")
+                $(response).find("#profile_sub_category")
         )
       })
-    })
 
+    })
   </script>
 
-  // le javascript des horaires
+
   <script>
     function InitChangeHoraire(){
       $('.ligneHoraire').each(function (){
@@ -438,7 +416,6 @@
             check.closest('.horaireBlock').next().css('display','none');
             check.next().html('Fermé') ;
           }
-
         })
       })
     }
@@ -455,4 +432,4 @@
       $(this).closest('.ligneHoraire').find('.part2').removeClass('notVisible');
     });
   </script>
-  {% endblock %}
+{% endblock %}

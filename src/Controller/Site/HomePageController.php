@@ -15,14 +15,12 @@ class HomePageController extends AbstractController
     private $AdversingRepository;
     private $ReplacementAdvertisingRepository;
     private $AnnouncementRepository;
-    private $CategoryRepository;
     
-    public function __construct(CategoryRepository $CategoryRepository, AdversingRepository $AdversingRepository, ReplacementAdvertisingRepository $ReplacementAdvertisingRepository, AnnouncementRepository $AnnouncementRepository)
+    public function __construct(AdversingRepository $AdversingRepository, ReplacementAdvertisingRepository $ReplacementAdvertisingRepository, AnnouncementRepository $AnnouncementRepository)
     {
         $this->AdversingRepository = $AdversingRepository;
         $this->ReplacementAdvertisingRepository = $ReplacementAdvertisingRepository;
         $this->AnnouncementRepository = $AnnouncementRepository;
-        $this->CategoryRepository = $CategoryRepository;
     }
 
     /**
@@ -67,16 +65,14 @@ class HomePageController extends AbstractController
         }
 
         // select the VIP annoucement for the homepage  "Offre prenium"
-        $category = $this->CategoryRepository->RandCategory();
         $Offert = $this->AnnouncementRepository->PreniumOffert();
-
-        dump($category);
+        $NewOffert = $this->AnnouncementRepository->NewOffert();
 
         return $this->render('site/home_page/index.html.twig', [
             'controller_name' => 'HomePageController',
             'AllAdPictures' => $AllAdPictures,
-            'category' => $category,
             'PreniumOffert' => $Offert,
+            'NewOffert' => $NewOffert,
         ]);
     }
 }

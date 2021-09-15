@@ -20,15 +20,15 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {       
+    {
         $builder
             ->add('category', EntityType::class, [
                 'mapped' => false,
                 'class' => Category::class,
                 'query_builder' => function (CategoryRepository $er) {
                     return $er->createQueryBuilder('u')
-                    ->andWhere('u.Parent = :val')
-                    ->setParameter('val', '1');
+                        ->andWhere('u.Parent = :val')
+                        ->setParameter('val', '1');
                 }
             ])
 
@@ -68,7 +68,6 @@ class ProfileType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'https://'
-                    
                 ],
             ])
             ->add('LundiMatinOuverture', TimeType::class, [
@@ -337,9 +336,49 @@ class ProfileType extends AbstractType
                     'class' => 'upload tooltip top'
                 ]
             ])
+            ->add('UberEat', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('Eatch', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('smood', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('dealdind', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
+            ->add('Perso', UrlType::class, [
+                'label' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'https://'
+                ],
+            ])
         ;
 
-       $builder->get('category')->addEventListener(
+        $builder->get('category')->addEventListener(
             FormEvents::POST_SUBMIT,
             function (FormEvent $event){
                 $form = $event->getForm();
@@ -350,8 +389,8 @@ class ProfileType extends AbstractType
                     'mapped' => false,
                     'query_builder' => function (CategoryRepository $er) use ($idd)  {
                         return $er->createQueryBuilder('u')
-                        ->andWhere('u.Parent = :val')
-                        ->setParameter('val', $idd);
+                            ->andWhere('u.Parent = :val')
+                            ->setParameter('val', $idd);
                     }
                 ]);
             }

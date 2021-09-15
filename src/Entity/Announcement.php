@@ -87,6 +87,23 @@ class Announcement
      */
     private $Offert;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="Announcement")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $users;
+
+    /**
+     * @Gedmo\Slug(fields={"Title"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Slug;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $YouTube;
+
     public function __construct()
     {
         $this->Picture = new ArrayCollection();
@@ -255,6 +272,42 @@ class Announcement
     public function setOffert(string $Offert): self
     {
         $this->Offert = $Offert;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->Slug;
+    }
+
+    public function setSlug(string $Slug): self
+    {
+        $this->Slug = $Slug;
+
+        return $this;
+    }
+
+    public function getYouTube(): ?string
+    {
+        return $this->YouTube;
+    }
+
+    public function setYouTube(?string $YouTube): self
+    {
+        $this->YouTube = $YouTube;
 
         return $this;
     }

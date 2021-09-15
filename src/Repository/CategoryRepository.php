@@ -18,29 +18,30 @@ class CategoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Category::class);
     }  
-  
+     
     /**
      * @return Category[] Returns an array of Category objects
      */
-    public function RandCategory()
+    public function Menu()
     {
-        // SELECT * FROM `category` a join `category` ON a.id = category.parent_id group by a.name 
         return $this->createQueryBuilder('c')
+            ->andWhere('c.Parent = :val')
+            ->setParameter('val', '1')
             ->getQuery()
             ->getResult()
         ;
     }
-    
 
-    /*
-    public function findOneBySomeField($value): ?Category
+    /**
+     * @return Category[] Returns an array of Category objects
+     */
+    public function SubMenu($SubCategory)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('c.Parent = :val')
+            ->setParameter('val', $SubCategory)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
 }

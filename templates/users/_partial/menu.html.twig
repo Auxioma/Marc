@@ -1,0 +1,25 @@
+<div class="col-md-3">
+    <div class="margin-bottom-20">
+        <div class="utf-edit-profile-photo-area">
+            <img src="{{ asset('img/logo/' ~ app.user.Picture ) }}" alt="">
+        </div>
+    </div> 
+    <div class="clearfix"></div>
+    <div class="sidebar margin-top-20">
+        <div class="user-smt-account-menu-container">
+            <ul class="user-account-nav-menu">
+                <li><a href="{{ path('users_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
+                <li><a href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-star"></i> Ajouter une annonces</a></li>
+                <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> Ajouter une publicité</a></li>
+                <li><a href="add-new-property.html" class="current"><i class="sl sl-icon-action-redo"></i> Historique</a></li>
+                <li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Chenger de MDP</a></li>
+                <li><a href="{{ path('app_logout') }}"><i class="sl sl-icon-power"></i> Deconnection</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="widget utf-sidebar-widget-item">
+        <div class="utf-detail-banner-add-section">
+            <a href="#"><img src="{{ asset('images/banner-add-2.jpg') }}" alt="banner-add-2"></a>
+        </div>
+    </div>
+</div>

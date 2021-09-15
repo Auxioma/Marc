@@ -36,23 +36,68 @@ class AnnouncementRepository extends ServiceEntityRepository
             ->andWhere('a.StartAt BETWEEN :from AND :to')
             ->setParameter('from', new \DateTime('now'))
             ->setParameter('to', $to)
-
             ->setMaxResults(50)
             ->getQuery()
             ->getResult()
         ;
     }
     
-
-    /*
-    public function findOneBySomeField($value): ?Announcement
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function AnnonceForTheCategory($id, $filter)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+        $to   = new \DateTime();
+        $to->add(new DateInterval('P20D'));
+        
+        $db =  $this->createQueryBuilder('a');
+        $db->andWhere('a.IsVerified = :val');
+        $db->setParameter('val', '1');
+
+        $db->andWhere('a.Category = :Category');
+        $db->setParameter('Category', $id);
+
+        if ($filter > 2) {
+            $db->andWhere('a.Offert = :offert');
+            $db->setParameter('offert', '2') ; 
+        } 
+        
+        if ($filter == '1' ) {
+            $db->andWhere('a.Offert = :offert');
+            $db->setParameter('offert', '0') ; 
+        }
+        if ($filter == 2 ) {
+            $db->andWhere('a.Offert = :offert');
+            $db->setParameter('offert', '1') ; 
+        }              
+        if ($filter == 0 ) {
+            $db->andWhere('a.Offert = :offert');
+            $db->setParameter('offert', '0') ; 
+        }
+
+        return $db;
+
+    }
+    public function pagination($id)
+    {
+        $db =  $this->createQueryBuilder('a');
+        $db->andWhere('a.IsVerified = :val');
+        $db->setParameter('val', '1');
+        $db->andWhere('a.Category = :Category');
+        $db->setParameter('Category', $id);                 
+        return $db;
+    }
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function NewOffert()
+    {
+        return   $this->createQueryBuilder('a')
+            ->andWhere('a.IsVerified = :val')
+            ->setParameter('val', '1')
+            ->setMaxResults(10)                
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
 }

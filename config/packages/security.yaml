@@ -20,12 +20,16 @@ security:
             security: false
         main:
             lazy: true
+            entry_point: App\Security\EntryPoint\CustomEntryPoint
+
             provider: app_user_provider
-            custom_authenticator: App\Security\UsersAuthenticator
+            custom_authenticator: 
+                - App\Security\UsersAuthenticator
+                - App\Security\GoogleAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -37,4 +41,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/users/profile/edit, roles: ROLE_ENR, requires_channel: https }
+        - { path: ^/users, roles: ROLE_USER, requires_channel: https }

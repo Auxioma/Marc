@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
@@ -31,7 +32,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = ['ROLE_USER'];
+    private $roles = ['ROLE_ENR'];
 
     /**
      * @var string The hashed password
@@ -109,9 +110,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $Delivery;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="users", orphanRemoval=true)
+     */
+    private $Announcement;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $OpenHours = [];
+
+    /**
+     * @var \DateTime $created_at
+     * 
+     * @Gedmo\Timestampable(on="create")     
+     * @ORM\Column(type="datetime")
+     */
+    private $CreatedAt;
+
+    /**
+     * @var \DateTime $updated_at
+     * 
+     * @Gedmo\Timestampable(on="update") 
+     * @ORM\Column(type="datetime")
+     */
+    private $UpdatedAt;
+
     public function __construct()
     {
         $this->Delivery = new ArrayCollection();
+        $this->Announcement = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -385,6 +413,72 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $delivery->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncement(): Collection
+    {
+        return $this->Announcement;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->Announcement->contains($announcement)) {
+            $this->Announcement[] = $announcement;
+            $announcement->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->Announcement->removeElement($announcement)) {
+            // set the owning side to null (unless already changed)
+            if ($announcement->getUsers() === $this) {
+                $announcement->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getOpenHours(): ?array
+    {
+        return $this->OpenHours;
+    }
+
+    public function setOpenHours(?array $OpenHours): self
+    {
+        $this->OpenHours = $OpenHours;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $CreatedAt): self
+    {
+        $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->UpdatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $UpdatedAt): self
+    {
+        $this->UpdatedAt = $UpdatedAt;
 
         return $this;
     }
