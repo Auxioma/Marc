@@ -25,8 +25,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function Menu()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.Parent = :val')
-            ->setParameter('val', '1')
+            ->andWhere('c.Parent is NULL')
             ->getQuery()
             ->getResult()
         ;

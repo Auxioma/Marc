@@ -6,7 +6,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <meta name="description" content="{% block description %}Welcome!{% endblock %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="images/favicon.png">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
         <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
         {% block css %}{% endblock %}
     </head>

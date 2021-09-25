@@ -10,6 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ReplacementAdvertisingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/**
+ * @Route("/apqapqa")
+ */
 class HomePageController extends AbstractController
 {
     private $AdversingRepository;
@@ -65,14 +68,29 @@ class HomePageController extends AbstractController
         }
 
         // select the VIP annoucement for the homepage  "Offre prenium"
+        $groupedOfferts = [];
         $Offert = $this->AnnouncementRepository->PreniumOffert();
+        foreach ($Offert as $offer){
+            if (isset($groupedOfferts[$offer->getCategory()->getId()]))
+                $groupedOfferts[$offer->getCategory()->getId()]['annonces'][] = $offer;
+            else
+                $groupedOfferts[$offer->getCategory()->getId()] = [
+                    'id' => $offer->getCategory()->getId(),
+                    'category' => $offer->getCategory()->getName(),
+                    'annonces' => [
+                        $offer
+                    ]
+                ];
+        }
+
         $NewOffert = $this->AnnouncementRepository->NewOffert();
 
         return $this->render('site/home_page/index.html.twig', [
-            'controller_name' => 'HomePageController',
+            'controller_name' => 'Zimboo.ch',
             'AllAdPictures' => $AllAdPictures,
             'PreniumOffert' => $Offert,
             'NewOffert' => $NewOffert,
+            'groupedOfferts' => $groupedOfferts
         ]);
     }
 }

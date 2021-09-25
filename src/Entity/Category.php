@@ -38,6 +38,7 @@ class Category
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="categories")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $Parent;
 

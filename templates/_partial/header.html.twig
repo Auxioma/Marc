@@ -14,7 +14,29 @@
 
         <!-- Main Navigation -->
         <nav id="navigation" class="style-1">
-          {{ knp_menu_render('main') }}
+          {% set allCategories = getCategories() %}
+          <ul id="responsive">
+            <li class="active navCategorie">
+              <a>Choisissez votre Catégorie</a>
+              <ul>
+                {% for categorie in allCategories %}
+                  <li>
+                    <a href="{{ categorie.uri }}">{{ categorie.name }}</a>
+                    {% if categorie.submenus|length != 0 %}
+                      <ul>
+                        {% for submenu in categorie.submenus %}
+                          <li>
+                            <a href="{{ submenu.uri }}">{{ submenu.name }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          </ul>
+
         </nav>
         <!-- Main Navigation -->
 
@@ -41,9 +63,9 @@
           </div>
           {% else %}
           <a href="#utf-signin-dialog-block" class="popup-with-zoom-anim log-in-button sign-in">
-            <i class="icon-line-awesome-user"></i> <span>Sign In</span></a>
+            <i class="icon-line-awesome-user"></i> <span>Se connecter</span></a>
           {% endif %}
-          <a href="add-new-property.html" class="button border"><i class="icon-feather-plus-circle"></i> <span>Create Property</span></a> 
+          <a href="add-new-property.html" class="button border"><i class="icon-feather-plus-circle"></i><span>Mettre une annonce</span></a>
 
         </div>
       </div>

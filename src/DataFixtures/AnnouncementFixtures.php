@@ -16,15 +16,17 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
     { 
         $faker = Faker\Factory::create('fr_CH');
 
+        $idcat = 1;
         for($NbAdversing = 1; $NbAdversing <= 900; $NbAdversing++){
-            
+            $idcat = ($idcat < 8 ? $idcat + 1 : 1);
             $from   = new \DateTime();
-            $from->add(new DateInterval('P' .$NbAdversing. 'D'));
+            $from->modify('-1 day');
+            //$from->add(new DateInterval('P' .$NbAdversing. 'D'));
                 
             $to   = new \DateTime();
             $to->add(new DateInterval('P' .rand(10,20). 'D'));
 
-            $category = $this->getReference('category_' . random_int(0, 8));    
+            $category = $this->getReference('category_' . $idcat);
             $user = $this->getReference('user_' . '1');
             
             $annoncement = new Announcement();

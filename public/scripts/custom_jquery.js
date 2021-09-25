@@ -264,7 +264,7 @@
         function searchTypeButtons() {
             $('.search-type label.active input[type="radio"]').prop('checked', true);
             var buttonWidth = $('.search-type label.active').width();
-            var arrowDist = $('.search-type label.active').position().left;
+            var arrowDist = $('.search-type label.active').position() ? $('.search-type label.active').position().left : 0;
             $('.utf-search-type-arrow').css('left', arrowDist + (buttonWidth / 2));
             $('.search-type label').on('change', function() {
                 $('.search-type input[type="radio"]').parent('label').removeClass('active');
@@ -407,6 +407,7 @@
             }, scrollSpeed);
             return false;
         });
+
         $('.carousel').owlCarousel({
             autoPlay: true,
             navigation: true,
@@ -423,7 +424,9 @@
 			items: 4,
             itemsDesktop: [1239, 4],
             itemsTablet: [991, 3],
-            itemsMobile: [767, 1]
+            itemsMobile: [767, 1],
+            margin: 10,
+            stagePadding: 200,
         });
 		$('.testimonial-carousel').owlCarousel({
             autoPlay: true,
@@ -527,7 +530,6 @@
             centerMode: true,
             focusOnSelect: true,
             centerPadding: '90px',
-            slidesToShow: 1,
 
             responsive: [
               {
@@ -860,7 +862,7 @@
         $tabsNav.each(function() {
             var $this = $(this);
             $this.next().children('.tab-content').stop(true, true).hide().first().show();
-            $this.children('li').first().addClass('active').stop(true, true).show();
+            $this.children('li').first().stop(true, true).show();
         });
         $tabsNavLis.on('click', function(e) {
             var $this = $(this);
@@ -871,7 +873,7 @@
         var hash = window.location.hash;
         var anchor = $('.tabs-nav a[href="' + hash + '"]');
         if (anchor.length === 0) {
-            $(".tabs-nav li:first").addClass("active").show();
+            //$(".tabs-nav li:first").addClass("active").show();
             $(".tab-content:first").show();
         } else {
             console.log(anchor);
