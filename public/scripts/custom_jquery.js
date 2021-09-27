@@ -414,20 +414,19 @@
                 navigation: true,
                 slideSpeed: 600,
                 centerMode: true,
-                slidesToShow: 5,
+                slidesToShow: 4,
                 slidesToScroll: 1,
                 dots: true,
                 arrows: true,
                 nav: true,
                 rewind: true,
+                dataLoop:true,
                 autoplayHoverPause: true,
                 adaptiveHeight: true,
                 items: 4,
                 itemsDesktop: [1239, 4],
                 itemsTablet: [991, 2],
-                itemsMobile: [767, 1],
-                margin: 10,
-                stagePadding: 200,
+                itemsMobile: [767, 1.16],
             });
         });
 
@@ -469,7 +468,7 @@
             itemsTablet: [991, 3],
             itemsMobile: [767, 1]
         });
-        $('.utf-listing-carousel-item').owlCarousel({
+        $('.utf-listing-carousel-itemA').owlCarousel({
             autoPlay: true,
             navigation: true,
             slideSpeed: 800,
@@ -788,7 +787,7 @@
 
             function owlReload() {
                 $('.utf-listing-carousel-item').each(function() {
-                    $(this).data('owlCarousel').reload();
+                   // $(this).data('owlCarousel').reload();
                 });
             }
             $('.utf-layout-switcher a').on('click', function(e) {
@@ -1042,6 +1041,7 @@
             $('#webTabs').css('display', 'block');
             $('#mobileTabs').css('display', 'none');
         }
+        $('#webTabs').find('li.active').click();
     }
     $('.tabs-nav1').owlCarousel({
         loop: false,
@@ -1066,6 +1066,8 @@
     /*  Preloader
     -----------------------------------------*/
     $(window).on('load', function() {
+        $('#webTabs').find('li.active').click();
+
 		setTimeout(function () {
 			$(".preloader").delay(700).fadeOut(700).addClass('loaded');
 		}, 800);

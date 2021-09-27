@@ -31,7 +31,7 @@ class HomePageController extends AbstractController
      */
     public function index(): Response
     {
-       
+
         $Adversing = $this->AdversingRepository->AdversingHomePage();
         $ReplacementAdvertising = $this->ReplacementAdvertisingRepository->AdversingRemplacement();
 

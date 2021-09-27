@@ -32,7 +32,7 @@
             </ul>
             <div class="tabs-container">
                 {%  for groupeOfferts in groupedOfferts %}
-                    <div class="tab-content {{ loop.index > 4 ? 'hidden' : '' }}" id="webTabs{{ loop.index }}">
+                    <div class="tab-content {{ loop.index > 4 ? 'hiddenweb' : '' }}" id="webTabs{{ loop.index }}">
                         <div class="carousel">
                             {% for PreniumOffert in groupeOfferts.annonces %}
                                 {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}

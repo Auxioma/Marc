@@ -15656,3 +15656,25 @@ added styles
 	margin-left: 10%;
 	margin-right: 10%;
 }
+
+@media only screen and (max-width: 767px) {
+	.owl-wrapper{
+		left:6.8% !important;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	a.button.border-success {
+		font-size: 14px;
+		white-space: nowrap;
+	}
+	#logo img{
+		margin-top: 2px;
+	}
+	.header-widget .sign-in {
+		top: 12px !important;
+	}
+	.header-widget .user-menu {
+		top: 12px !important;
+	}
+}
