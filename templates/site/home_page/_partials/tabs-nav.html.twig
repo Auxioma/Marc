@@ -1,53 +1,70 @@
 <section class="fullwidth" data-background-color="#ffffff">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="utf-section-headline-item centered margin-bottom-30 margin-top-0">
-                    <div class="utf-headline-display-inner-item">{% trans %}Offre premium{% endtrans %}</div>
-                    <p class="utf-slogan-text margin-bottom-40"></p>
+            <div class="col-md-12 margin-top-50">
+                <div class="utf-section-headline-item centered ">
+                    <div class="utf-headline-display-inner-item" style="position: unset !important;">{% trans %}Offre premium{% endtrans %}</div>
                 </div>
             </div>
         </div>
-        {% do device.parse %}
 
-        {% if device.isSmartphone %}
-        <div class="col-md-12">
-
-        {%  for groupeOfferts in groupedOfferts %}
-            <div class="row">
-                <div class="col-md-12 submit-page margin-top-25"><h3 class="">{{ groupeOfferts.category }}</h3></div>
-                <div class="carousel">
-                    {% for PreniumOffert in groupeOfferts.annonces %}
-                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
-                    {% endfor %}
+        <div id="mobileTabs" class="col-md-12" style="display: none;">
+            {%  for groupeOfferts in groupedOfferts %}
+                <div class="row">
+                    <div class="col-md-12 titleCentered submit-page {{ loop.index == 1 ? '' : 'margin-top-25' }}"><h3 class="">{{ groupeOfferts.category }}</h3></div>
+                    <div class="carousel">
+                        {% for PreniumOffert in groupeOfferts.annonces %}
+                            {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
 
-    </div>
-
-{% else %}
-
-<div class="col-md-12">
-    <ul class="tabs-nav" style="justify-content: center;display: flex;">
         {% set activ = random(8) %}
-        {%  for groupeOfferts in groupedOfferts %}
-            <li {% if activ == loop.index %}class="active"{% endif %}><a style="white-space: nowrap;" href="#{{ loop.index }}">{{ groupeOfferts.category }}</a></li>
-        {% endfor %}
-    </ul>
-    <div class="tabs-container">
-        {%  for groupeOfferts in groupedOfferts %}
-            <div class="tab-content" id="{{ loop.index }}">
-                <div class="carousel">
-                    {% for PreniumOffert in groupeOfferts.annonces %}
-                        {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
-{% endif %}
-</div>
 
+
+        <div id="webTabs" class="margin-top-60" style="display: none;">
+            <ul class="tabs-nav">
+                {%  for groupeOfferts in groupedOfferts %}
+                    <li class="{{ loop.index > 4 ? 'hiddenweb' : '' }} {% if activ == loop.index %}active{% endif %}" ><a style="white-space: nowrap;" href="#webTabs{{ loop.index }}">{{ groupeOfferts.category }}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="tabs-container">
+                {%  for groupeOfferts in groupedOfferts %}
+                    <div class="tab-content {{ loop.index > 4 ? 'hidden' : '' }}" id="webTabs{{ loop.index }}">
+                        <div class="carousel">
+                            {% for PreniumOffert in groupeOfferts.annonces %}
+                                {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="tabletteTabs" style="display: none">
+            <ul class="tabs-nav">
+                {%  for groupeOfferts in groupedOfferts %}
+                    {% if loop.index > 4 %}
+                        <li {% if activ == loop.index %}class="active"{% endif %}><a style="white-space: nowrap;" href="#tabletteTabs{{ loop.index }}">{{ groupeOfferts.category }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="tabs-container">
+                {%  for groupeOfferts in groupedOfferts %}
+                    {% if loop.index > 4 %}
+                        <div class="tab-content" id="tabletteTabs{{ loop.index }}">
+                            <div class="carousel">
+                                {% for PreniumOffert in groupeOfferts.annonces %}
+                                    {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
 </section>

@@ -250,12 +250,12 @@ header.fullwidth .container {
 }
 .left-side {
 	float: left;
-	width: 70%;
+	width: 60%;
 	display: inline-block;
 }
 .right-side {
 	float: right;
-	width: 30%;
+	width: 40%;
 	display: inline-block;
 }
 #logo, #navigation {
@@ -9933,6 +9933,17 @@ a.button.border:hover {
 	color: #fff;
 	opacity: 1;
 }
+a.button.border-success {
+	background-color: #00bd36;
+	color: #ffffff;
+	border: 2px solid #00bd36;
+	padding: 7.5px 18px;
+}
+a.button.border-success:hover {
+	background-color: #00bd36;
+	color: #fff;
+	opacity: 1;
+}
 a.button.border.white {
 	border-color: #fff;
 	color: #fff;
@@ -10420,7 +10431,7 @@ body .style-2 .ui-accordion .ui-accordion-header, body .style-2 .trigger a {
 	float: left;
 	line-height: 40px;
 	padding: 0;
-	margin-right: 4px;
+	margin-right: 2px;
 	position: relative;
 	z-index: 12;
 }
@@ -14084,11 +14095,11 @@ section.fullwidth .blog-post {
 	border-radius:30px;
 }
 #header .left-side{
-	width:85%;
+	width:75%;
 	position:relative;
 }
 #header .right-side{
-	width:15%;
+	width:25%;
 	position:relative;
 }
 #navigation.style-1 ul a {
@@ -14121,7 +14132,7 @@ section.fullwidth .blog-post {
 }
 #navigation.style-1 {
     margin:0;
-    width: 78%;
+    width: 75%;
     padding-top:0;
     position: relative;
 }
@@ -14208,12 +14219,13 @@ section.fullwidth .blog-post {
 #logo{
 	left:0;
 	margin:0;
-	margin-left:100px;
+	margin-left: 60px;
 	width:180px;
 	text-align:left;
 }
 .mmenu-trigger{
 	margin:0;
+	margin-top: 5px;
 }
 .header-widget {
     padding:2px 0;
@@ -14221,12 +14233,15 @@ section.fullwidth .blog-post {
 }
 }
 @media (max-width: 767px) {
+#logo img {
+	width: 120px;
+}
 #logo{
 	left:0;
 	top:-1px;
 	margin:0;
 	width:160px;
-	margin-left: 65px;
+	margin-left: 50px;
 }
 .checkboxes.in-row label{
 	width:48%;
@@ -15314,7 +15329,11 @@ added styles
 		font-size: 20px;
 		margin-bottom: 18px
 	}
-
+	a.button.border-success {
+		padding: 8.5px 10px;
+		font-size: 14px;
+		white-space: nowrap;
+	}
 }
 
 
@@ -15366,7 +15385,7 @@ added styles
 	-webkit-box-orient: vertical;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px){
+@media only screen and (min-width: 768px) and (max-width: 1218px){
 	.talent-content {
 		text-align: center;
 		margin-left: 0;
@@ -15538,4 +15557,102 @@ added styles
 
 .default-btn.btn-two {
 	background-color: #e33324;
+}
+.parentLayer {
+	width: 1161.11px;
+	height: 480px;
+	margin: 0px auto;
+	position: relative;
+	visibility: visible;
+	margin-top: 25px;
+}
+.ls-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-position: center center;
+	z-index: 30;
+}
+.ls-layers {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	-o-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+.firstEl {
+	z-index: 101;
+	margin-left: 0px;
+	margin-top: 0px;
+	width: 860.823px;
+	height: 100% !important;
+	left: 0px;
+	top: 0px;
+	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	transform-origin: 50% 50% 0px;
+	opacity: 1;
+	display: block;
+}
+
+.secondEl{
+	position: absolute;
+	z-index: 103;
+	margin-left: 0px;
+	margin-top: 0px;
+	width: 276.264px;
+	height: 287.275px;
+	right: 0px;
+	top: 0px;
+	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	transform-origin: 50% 50% 0px;
+	opacity: 1;
+	display: block;
+}
+
+.thirdEl {
+	position: absolute;
+	z-index: 102;
+	margin-left: 0px;
+	margin-top: 0px;
+	width: 276.264px;
+	height: 175.167px;
+	right: 0px;
+	bottom: 0px;
+	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	transform-origin: 50% 50% 0px;
+	opacity: 1;
+	display: block;
+}
+@media (max-width: 389px){ .parentLayer{ height: 136px; width: 326.234px; } .firstEl{ height: 134.12px; width: 241.424px; } .secondEl{ height: 79.88px; width: 77.28px; } .thirdEl{ height: 49.088px; width: 77.28px; } }
+@media (min-width: 390px) and (max-width: 396px){ .parentLayer{ height: 139px; width: 333.234px; } .firstEl{ height: 137.01px; width: 246.602px; } .secondEl{ height: 81.615px; width: 78.94px; } .thirdEl{ height: 50.224px; width: 78.94px; } }
+@media (min-width: 397px) and (max-width: 403px){ .parentLayer{ height: 142px; width: 340.234px; } .firstEl{ height: 139.9px; width: 251.78px; } .secondEl{ height: 83.35px; width: 80.6px; } .thirdEl{ height: 51.36px; width: 80.6px; } } @media (min-width: 404px) and (max-width: 410px){ .parentLayer{ height: 145px; width: 347.234px; } .firstEl{ height: 142.79px; width: 256.958px; } .secondEl{ height: 85.085px; width: 82.26px; } .thirdEl{ height: 52.496px; width: 82.26px; } }
+@media (min-width: 411px) and (max-width: 417px){ .parentLayer{ height: 148px; width: 354.234px; } .firstEl{ height: 145.68px; width: 262.136px; } .secondEl{ height: 86.82px; width: 83.92px; } .thirdEl{ height: 53.632px; width: 83.92px; } }
+@media (min-width: 418px) and (max-width: 424px){ .parentLayer{ height: 151px; width: 361.234px; } .firstEl{ height: 148.57px; width: 267.314px; } .secondEl{ height: 88.555px; width: 85.58px; } .thirdEl{ height: 54.768px; width: 85.58px; } }
+@media (min-width: 425px) and (max-width: 431px){ .parentLayer{ height: 154px; width: 368.234px; } .firstEl{ height: 151.46px; width: 272.492px; } .secondEl{ height: 90.29px; width: 87.24px; } .thirdEl{ height: 55.904px; width: 87.24px; } }
+@media (min-width: 432px) and (max-width: 438px){ .parentLayer{ height: 157px; width: 375.234px; } .firstEl{ height: 154.35px; width: 277.67px; } .secondEl{ height: 92.025px; width: 88.9px; } .thirdEl{ height: 57.04px; width: 88.9px; } }
+@media (min-width: 439px) and (max-width: 445px){ .parentLayer{ height: 160px; width: 382.234px; } .firstEl{ height: 157.24px; width: 282.848px; } .secondEl{ height: 93.76px; width: 90.56px; } .thirdEl{ height: 58.176px; width: 90.56px; } }
+@media (min-width: 446px) and (max-width: 452px){ .parentLayer{ height: 163px; width: 389.234px; } .firstEl{ height: 160.13px; width: 288.026px; } .secondEl{ height: 95.495px; width: 92.22px; } .thirdEl{ height: 59.312px; width: 92.22px; } } @media (min-width: 453px) and (max-width: 459px){ .parentLayer{ height: 166px; width: 396.234px; } .firstEl{ height: 163.02px; width: 293.204px; } .secondEl{ height: 97.23px; width: 93.88px; } .thirdEl{ height: 60.448px; width: 93.88px; } } @media (min-width: 460px) and (max-width: 466px){ .parentLayer{ height: 169px; width: 403.234px; } .firstEl{ height: 165.91px; width: 298.382px; } .secondEl{ height: 98.965px; width: 95.54px; } .thirdEl{ height: 61.584px; width: 95.54px; } } @media (min-width: 467px) and (max-width: 473px){ .parentLayer{ height: 172px; width: 410.234px; } .firstEl{ height: 168.8px; width: 303.56px; } .secondEl{ height: 100.7px; width: 97.2px; } .thirdEl{ height: 62.72px; width: 97.2px; } } @media (min-width: 474px) and (max-width: 480px){ .parentLayer{ height: 175px; width: 417.234px; } .firstEl{ height: 171.69px; width: 308.738px; } .secondEl{ height: 102.435px; width: 98.86px; } .thirdEl{ height: 63.856px; width: 98.86px; } } @media (min-width: 481px) and (max-width: 487px){ .parentLayer{ height: 178px; width: 424.234px; } .firstEl{ height: 174.58px; width: 313.916px; } .secondEl{ height: 104.17px; width: 100.52px; } .thirdEl{ height: 64.992px; width: 100.52px; } } @media (min-width: 488px) and (max-width: 494px){ .parentLayer{ height: 181px; width: 431.234px; } .firstEl{ height: 177.47px; width: 319.094px; } .secondEl{ height: 105.905px; width: 102.18px; } .thirdEl{ height: 66.128px; width: 102.18px; } } @media (min-width: 495px) and (max-width: 501px){ .parentLayer{ height: 184px; width: 438.234px; } .firstEl{ height: 180.36px; width: 324.272px; } .secondEl{ height: 107.64px; width: 103.84px; } .thirdEl{ height: 67.264px; width: 103.84px; } } @media (min-width: 502px) and (max-width: 508px){ .parentLayer{ height: 187px; width: 445.234px; } .firstEl{ height: 183.25px; width: 329.45px; } .secondEl{ height: 109.375px; width: 105.5px; } .thirdEl{ height: 68.4px; width: 105.5px; } } @media (min-width: 509px) and (max-width: 515px){ .parentLayer{ height: 190px; width: 452.234px; } .firstEl{ height: 186.14px; width: 334.628px; } .secondEl{ height: 111.11px; width: 107.16px; } .thirdEl{ height: 69.536px; width: 107.16px; } } @media (min-width: 516px) and (max-width: 522px){ .parentLayer{ height: 193px; width: 459.234px; } .firstEl{ height: 189.03px; width: 339.806px; } .secondEl{ height: 112.845px; width: 108.82px; } .thirdEl{ height: 70.672px; width: 108.82px; } } @media (min-width: 523px) and (max-width: 529px){ .parentLayer{ height: 196px; width: 466.234px; } .firstEl{ height: 191.92px; width: 344.984px; } .secondEl{ height: 114.58px; width: 110.48px; } .thirdEl{ height: 71.808px; width: 110.48px; } } @media (min-width: 530px) and (max-width: 536px){ .parentLayer{ height: 199px; width: 473.234px; } .firstEl{ height: 194.81px; width: 350.162px; } .secondEl{ height: 116.315px; width: 112.14px; } .thirdEl{ height: 72.944px; width: 112.14px; } } @media (min-width: 537px) and (max-width: 543px){ .parentLayer{ height: 202px; width: 480.234px; } .firstEl{ height: 197.7px; width: 355.34px; } .secondEl{ height: 118.05px; width: 113.8px; } .thirdEl{ height: 74.08px; width: 113.8px; } } @media (min-width: 544px) and (max-width: 550px){ .parentLayer{ height: 205px; width: 487.234px; } .firstEl{ height: 200.59px; width: 360.518px; } .secondEl{ height: 119.785px; width: 115.46px; } .thirdEl{ height: 75.216px; width: 115.46px; } } @media (min-width: 551px) and (max-width: 557px){ .parentLayer{ height: 208px; width: 494.234px; } .firstEl{ height: 203.48px; width: 365.696px; } .secondEl{ height: 121.52px; width: 117.12px; } .thirdEl{ height: 76.352px; width: 117.12px; } } @media (min-width: 558px) and (max-width: 564px){ .parentLayer{ height: 211px; width: 501.234px; } .firstEl{ height: 206.37px; width: 370.874px; } .secondEl{ height: 123.255px; width: 118.78px; } .thirdEl{ height: 77.488px; width: 118.78px; } } @media (min-width: 565px) and (max-width: 571px){ .parentLayer{ height: 214px; width: 508.234px; } .firstEl{ height: 209.26px; width: 376.052px; } .secondEl{ height: 124.99px; width: 120.44px; } .thirdEl{ height: 78.624px; width: 120.44px; } } @media (min-width: 572px) and (max-width: 578px){ .parentLayer{ height: 217px; width: 515.234px; } .firstEl{ height: 212.15px; width: 381.23px; } .secondEl{ height: 126.725px; width: 122.1px; } .thirdEl{ height: 79.76px; width: 122.1px; } } @media (min-width: 579px) and (max-width: 585px){ .parentLayer{ height: 220px; width: 522.234px; } .firstEl{ height: 215.04px; width: 386.408px; } .secondEl{ height: 128.46px; width: 123.76px; } .thirdEl{ height: 80.896px; width: 123.76px; } } @media (min-width: 586px) and (max-width: 592px){ .parentLayer{ height: 223px; width: 529.234px; } .firstEl{ height: 217.93px; width: 391.586px; } .secondEl{ height: 130.195px; width: 125.42px; } .thirdEl{ height: 82.032px; width: 125.42px; } } @media (min-width: 593px) and (max-width: 599px){ .parentLayer{ height: 226px; width: 536.234px; } .firstEl{ height: 220.82px; width: 396.764px; } .secondEl{ height: 131.93px; width: 127.08px; } .thirdEl{ height: 83.168px; width: 127.08px; } } @media (min-width: 600px) and (max-width: 606px){ .parentLayer{ height: 229px; width: 543.234px; } .firstEl{ height: 223.71px; width: 401.942px; } .secondEl{ height: 133.665px; width: 128.74px; } .thirdEl{ height: 84.304px; width: 128.74px; } } @media (min-width: 607px) and (max-width: 613px){ .parentLayer{ height: 232px; width: 550.234px; } .firstEl{ height: 226.6px; width: 407.12px; } .secondEl{ height: 135.4px; width: 130.4px; } .thirdEl{ height: 85.44px; width: 130.4px; } } @media (min-width: 614px) and (max-width: 620px){ .parentLayer{ height: 235px; width: 557.234px; } .firstEl{ height: 229.49px; width: 412.298px; } .secondEl{ height: 137.135px; width: 132.06px; } .thirdEl{ height: 86.576px; width: 132.06px; } } @media (min-width: 621px) and (max-width: 627px){ .parentLayer{ height: 238px; width: 564.234px; } .firstEl{ height: 232.38px; width: 417.476px; } .secondEl{ height: 138.87px; width: 133.72px; } .thirdEl{ height: 87.712px; width: 133.72px; } } @media (min-width: 628px) and (max-width: 634px){ .parentLayer{ height: 241px; width: 571.234px; } .firstEl{ height: 235.27px; width: 422.654px; } .secondEl{ height: 140.605px; width: 135.38px; } .thirdEl{ height: 88.848px; width: 135.38px; } } @media (min-width: 635px) and (max-width: 641px){ .parentLayer{ height: 244px; width: 578.234px; } .firstEl{ height: 238.16px; width: 427.832px; } .secondEl{ height: 142.34px; width: 137.04px; } .thirdEl{ height: 89.984px; width: 137.04px; } } @media (min-width: 642px) and (max-width: 648px){ .parentLayer{ height: 247px; width: 585.234px; } .firstEl{ height: 241.05px; width: 433.01px; } .secondEl{ height: 144.075px; width: 138.7px; } .thirdEl{ height: 91.12px; width: 138.7px; } } @media (min-width: 649px) and (max-width: 655px){ .parentLayer{ height: 250px; width: 592.234px; } .firstEl{ height: 243.94px; width: 438.188px; } .secondEl{ height: 145.81px; width: 140.36px; } .thirdEl{ height: 92.256px; width: 140.36px; } } @media (min-width: 656px) and (max-width: 662px){ .parentLayer{ height: 253px; width: 599.234px; } .firstEl{ height: 246.83px; width: 443.366px; } .secondEl{ height: 147.545px; width: 142.02px; } .thirdEl{ height: 93.392px; width: 142.02px; } } @media (min-width: 663px) and (max-width: 669px){ .parentLayer{ height: 256px; width: 606.234px; } .firstEl{ height: 249.72px; width: 448.544px; } .secondEl{ height: 149.28px; width: 143.68px; } .thirdEl{ height: 94.528px; width: 143.68px; } } @media (min-width: 670px) and (max-width: 676px){ .parentLayer{ height: 259px; width: 613.234px; } .firstEl{ height: 252.61px; width: 453.722px; } .secondEl{ height: 151.015px; width: 145.34px; } .thirdEl{ height: 95.664px; width: 145.34px; } } @media (min-width: 677px) and (max-width: 683px){ .parentLayer{ height: 262px; width: 620.234px; } .firstEl{ height: 255.5px; width: 458.9px; } .secondEl{ height: 152.75px; width: 147px; } .thirdEl{ height: 96.8px; width: 147px; } } @media (min-width: 684px) and (max-width: 690px){ .parentLayer{ height: 265px; width: 627.234px; } .firstEl{ height: 258.39px; width: 464.078px; } .secondEl{ height: 154.485px; width: 148.66px; } .thirdEl{ height: 97.936px; width: 148.66px; } } @media (min-width: 691px) and (max-width: 697px){ .parentLayer{ height: 268px; width: 634.234px; } .firstEl{ height: 261.28px; width: 469.256px; } .secondEl{ height: 156.22px; width: 150.32px; } .thirdEl{ height: 99.072px; width: 150.32px; } } @media (min-width: 698px) and (max-width: 704px){ .parentLayer{ height: 271px; width: 641.234px; } .firstEl{ height: 264.17px; width: 474.434px; } .secondEl{ height: 157.955px; width: 151.98px; } .thirdEl{ height: 100.208px; width: 151.98px; } } @media (min-width: 705px) and (max-width: 711px){ .parentLayer{ height: 274px; width: 648.234px; } .firstEl{ height: 267.06px; width: 479.612px; } .secondEl{ height: 159.69px; width: 153.64px; } .thirdEl{ height: 101.344px; width: 153.64px; } } @media (min-width: 712px) and (max-width: 718px){ .parentLayer{ height: 277px; width: 655.234px; } .firstEl{ height: 269.95px; width: 484.79px; } .secondEl{ height: 161.425px; width: 155.3px; } .thirdEl{ height: 102.48px; width: 155.3px; } } @media (min-width: 719px) and (max-width: 725px){ .parentLayer{ height: 280px; width: 662.234px; } .firstEl{ height: 272.84px; width: 489.968px; } .secondEl{ height: 163.16px; width: 156.96px; } .thirdEl{ height: 103.616px; width: 156.96px; } } @media (min-width: 726px) and (max-width: 732px){ .parentLayer{ height: 283px; width: 669.234px; } .firstEl{ height: 275.73px; width: 495.146px; } .secondEl{ height: 164.895px; width: 158.62px; } .thirdEl{ height: 104.752px; width: 158.62px; } } @media (min-width: 733px) and (max-width: 739px){ .parentLayer{ height: 286px; width: 676.234px; } .firstEl{ height: 278.62px; width: 500.324px; } .secondEl{ height: 166.63px; width: 160.28px; } .thirdEl{ height: 105.888px; width: 160.28px; } } @media (min-width: 740px) and (max-width: 746px){ .parentLayer{ height: 289px; width: 683.234px; } .firstEl{ height: 281.51px; width: 505.502px; } .secondEl{ height: 168.365px; width: 161.94px; } .thirdEl{ height: 107.024px; width: 161.94px; } } @media (min-width: 747px) and (max-width: 753px){ .parentLayer{ height: 292px; width: 690.234px; } .firstEl{ height: 284.4px; width: 510.68px; } .secondEl{ height: 170.1px; width: 163.6px; } .thirdEl{ height: 108.16px; width: 163.6px; } } @media (min-width: 754px) and (max-width: 760px){ .parentLayer{ height: 295px; width: 697.234px; } .firstEl{ height: 287.29px; width: 515.858px; } .secondEl{ height: 171.835px; width: 165.26px; } .thirdEl{ height: 109.296px; width: 165.26px; } } @media (min-width: 761px) and (max-width: 767px){ .parentLayer{ height: 298px; width: 704.234px; } .firstEl{ height: 290.18px; width: 521.036px; } .secondEl{ height: 173.57px; width: 166.92px; } .thirdEl{ height: 110.432px; width: 166.92px; } } @media (min-width: 768px) and (max-width: 774px){ .parentLayer{ height: 301px; width: 711.234px; } .firstEl{ height: 293.07px; width: 526.214px; } .secondEl{ height: 175.305px; width: 168.58px; } .thirdEl{ height: 111.568px; width: 168.58px; } } @media (min-width: 775px) and (max-width: 781px){ .parentLayer{ height: 304px; width: 718.234px; } .firstEl{ height: 295.96px; width: 531.392px; } .secondEl{ height: 177.04px; width: 170.24px; } .thirdEl{ height: 112.704px; width: 170.24px; } } @media (min-width: 782px) and (max-width: 788px){ .parentLayer{ height: 307px; width: 725.234px; } .firstEl{ height: 298.85px; width: 536.57px; } .secondEl{ height: 178.775px; width: 171.9px; } .thirdEl{ height: 113.84px; width: 171.9px; } } @media (min-width: 789px) and (max-width: 795px){ .parentLayer{ height: 310px; width: 732.234px; } .firstEl{ height: 301.74px; width: 541.748px; } .secondEl{ height: 180.51px; width: 173.56px; } .thirdEl{ height: 114.976px; width: 173.56px; } } @media (min-width: 796px) and (max-width: 802px){ .parentLayer{ height: 313px; width: 739.234px; } .firstEl{ height: 304.63px; width: 546.926px; } .secondEl{ height: 182.245px; width: 175.22px; } .thirdEl{ height: 116.112px; width: 175.22px; } } @media (min-width: 803px) and (max-width: 809px){ .parentLayer{ height: 316px; width: 746.234px; } .firstEl{ height: 307.52px; width: 552.104px; } .secondEl{ height: 183.98px; width: 176.88px; } .thirdEl{ height: 117.248px; width: 176.88px; } } @media (min-width: 810px) and (max-width: 816px){ .parentLayer{ height: 319px; width: 753.234px; } .firstEl{ height: 310.41px; width: 557.282px; } .secondEl{ height: 185.715px; width: 178.54px; } .thirdEl{ height: 118.384px; width: 178.54px; } } @media (min-width: 817px) and (max-width: 823px){ .parentLayer{ height: 322px; width: 760.234px; } .firstEl{ height: 313.3px; width: 562.46px; } .secondEl{ height: 187.45px; width: 180.2px; } .thirdEl{ height: 119.52px; width: 180.2px; } } @media (min-width: 824px) and (max-width: 830px){ .parentLayer{ height: 325px; width: 767.234px; } .firstEl{ height: 316.19px; width: 567.638px; } .secondEl{ height: 189.185px; width: 181.86px; } .thirdEl{ height: 120.656px; width: 181.86px; } } @media (min-width: 831px) and (max-width: 837px){ .parentLayer{ height: 328px; width: 774.234px; } .firstEl{ height: 319.08px; width: 572.816px; } .secondEl{ height: 190.92px; width: 183.52px; } .thirdEl{ height: 121.792px; width: 183.52px; } } @media (min-width: 838px) and (max-width: 844px){ .parentLayer{ height: 331px; width: 781.234px; } .firstEl{ height: 321.97px; width: 577.994px; } .secondEl{ height: 192.655px; width: 185.18px; } .thirdEl{ height: 122.928px; width: 185.18px; } } @media (min-width: 845px) and (max-width: 851px){ .parentLayer{ height: 334px; width: 788.234px; } .firstEl{ height: 324.86px; width: 583.172px; } .secondEl{ height: 194.39px; width: 186.84px; } .thirdEl{ height: 124.064px; width: 186.84px; } } @media (min-width: 852px) and (max-width: 858px){ .parentLayer{ height: 337px; width: 795.234px; } .firstEl{ height: 327.75px; width: 588.35px; } .secondEl{ height: 196.125px; width: 188.5px; } .thirdEl{ height: 125.2px; width: 188.5px; } } @media (min-width: 859px) and (max-width: 865px){ .parentLayer{ height: 340px; width: 802.234px; } .firstEl{ height: 330.64px; width: 593.528px; } .secondEl{ height: 197.86px; width: 190.16px; } .thirdEl{ height: 126.336px; width: 190.16px; } } @media (min-width: 866px) and (max-width: 872px){ .parentLayer{ height: 343px; width: 809.234px; } .firstEl{ height: 333.53px; width: 598.706px; } .secondEl{ height: 199.595px; width: 191.82px; } .thirdEl{ height: 127.472px; width: 191.82px; } } @media (min-width: 873px) and (max-width: 879px){ .parentLayer{ height: 346px; width: 816.234px; } .firstEl{ height: 336.42px; width: 603.884px; } .secondEl{ height: 201.33px; width: 193.48px; } .thirdEl{ height: 128.608px; width: 193.48px; } } @media (min-width: 880px) and (max-width: 886px){ .parentLayer{ height: 349px; width: 823.234px; } .firstEl{ height: 339.31px; width: 609.062px; } .secondEl{ height: 203.065px; width: 195.14px; } .thirdEl{ height: 129.744px; width: 195.14px; } } @media (min-width: 887px) and (max-width: 893px){ .parentLayer{ height: 352px; width: 830.234px; } .firstEl{ height: 342.2px; width: 614.24px; } .secondEl{ height: 204.8px; width: 196.8px; } .thirdEl{ height: 130.88px; width: 196.8px; } } @media (min-width: 894px) and (max-width: 900px){ .parentLayer{ height: 355px; width: 837.234px; } .firstEl{ height: 345.09px; width: 619.418px; } .secondEl{ height: 206.535px; width: 198.46px; } .thirdEl{ height: 132.016px; width: 198.46px; } } @media (min-width: 901px) and (max-width: 907px){ .parentLayer{ height: 358px; width: 844.234px; } .firstEl{ height: 347.98px; width: 624.596px; } .secondEl{ height: 208.27px; width: 200.12px; } .thirdEl{ height: 133.152px; width: 200.12px; } } @media (min-width: 908px) and (max-width: 914px){ .parentLayer{ height: 361px; width: 851.234px; } .firstEl{ height: 350.87px; width: 629.774px; } .secondEl{ height: 210.005px; width: 201.78px; } .thirdEl{ height: 134.288px; width: 201.78px; } } @media (min-width: 915px) and (max-width: 921px){ .parentLayer{ height: 364px; width: 858.234px; } .firstEl{ height: 353.76px; width: 634.952px; } .secondEl{ height: 211.74px; width: 203.44px; } .thirdEl{ height: 135.424px; width: 203.44px; } } @media (min-width: 922px) and (max-width: 928px){ .parentLayer{ height: 367px; width: 865.234px; } .firstEl{ height: 356.65px; width: 640.13px; } .secondEl{ height: 213.475px; width: 205.1px; } .thirdEl{ height: 136.56px; width: 205.1px; } } @media (min-width: 929px) and (max-width: 935px){ .parentLayer{ height: 370px; width: 872.234px; } .firstEl{ height: 359.54px; width: 645.308px; } .secondEl{ height: 215.21px; width: 206.76px; } .thirdEl{ height: 137.696px; width: 206.76px; } } @media (min-width: 936px) and (max-width: 942px){ .parentLayer{ height: 373px; width: 879.234px; } .firstEl{ height: 362.43px; width: 650.486px; } .secondEl{ height: 216.945px; width: 208.42px; } .thirdEl{ height: 138.832px; width: 208.42px; } } @media (min-width: 943px) and (max-width: 949px){ .parentLayer{ height: 376px; width: 886.234px; } .firstEl{ height: 365.32px; width: 655.664px; } .secondEl{ height: 218.68px; width: 210.08px; } .thirdEl{ height: 139.968px; width: 210.08px; } } @media (min-width: 950px) and (max-width: 956px){ .parentLayer{ height: 379px; width: 893.234px; } .firstEl{ height: 368.21px; width: 660.842px; } .secondEl{ height: 220.415px; width: 211.74px; } .thirdEl{ height: 141.104px; width: 211.74px; } } @media (min-width: 957px) and (max-width: 963px){ .parentLayer{ height: 382px; width: 900.234px; } .firstEl{ height: 371.1px; width: 666.02px; } .secondEl{ height: 222.15px; width: 213.4px; } .thirdEl{ height: 142.24px; width: 213.4px; } } @media (min-width: 964px) and (max-width: 970px){ .parentLayer{ height: 385px; width: 907.234px; } .firstEl{ height: 373.99px; width: 671.198px; } .secondEl{ height: 223.885px; width: 215.06px; } .thirdEl{ height: 143.376px; width: 215.06px; } } @media (min-width: 971px) and (max-width: 977px){ .parentLayer{ height: 388px; width: 914.234px; } .firstEl{ height: 376.88px; width: 676.376px; } .secondEl{ height: 225.62px; width: 216.72px; } .thirdEl{ height: 144.512px; width: 216.72px; } } @media (min-width: 978px) and (max-width: 984px){ .parentLayer{ height: 391px; width: 921.234px; } .firstEl{ height: 379.77px; width: 681.554px; } .secondEl{ height: 227.355px; width: 218.38px; } .thirdEl{ height: 145.648px; width: 218.38px; } } @media (min-width: 985px) and (max-width: 991px){ .parentLayer{ height: 394px; width: 928.234px; } .firstEl{ height: 382.66px; width: 686.732px; } .secondEl{ height: 229.09px; width: 220.04px; } .thirdEl{ height: 146.784px; width: 220.04px; } } @media (min-width: 992px) and (max-width: 998px){ .parentLayer{ height: 397px; width: 935.234px; } .firstEl{ height: 385.55px; width: 691.91px; } .secondEl{ height: 230.825px; width: 221.7px; } .thirdEl{ height: 147.92px; width: 221.7px; } } @media (min-width: 999px) and (max-width: 1005px){ .parentLayer{ height: 400px; width: 942.234px; } .firstEl{ height: 388.44px; width: 697.088px; } .secondEl{ height: 232.56px; width: 223.36px; } .thirdEl{ height: 149.056px; width: 223.36px; } } @media (min-width: 1006px) and (max-width: 1012px){ .parentLayer{ height: 403px; width: 949.234px; } .firstEl{ height: 391.33px; width: 702.266px; } .secondEl{ height: 234.295px; width: 225.02px; } .thirdEl{ height: 150.192px; width: 225.02px; } } @media (min-width: 1013px) and (max-width: 1019px){ .parentLayer{ height: 406px; width: 956.234px; } .firstEl{ height: 394.22px; width: 707.444px; } .secondEl{ height: 236.03px; width: 226.68px; } .thirdEl{ height: 151.328px; width: 226.68px; } } @media (min-width: 1020px) and (max-width: 1026px){ .parentLayer{ height: 409px; width: 963.234px; } .firstEl{ height: 397.11px; width: 712.622px; } .secondEl{ height: 237.765px; width: 228.34px; } .thirdEl{ height: 152.464px; width: 228.34px; } } @media (min-width: 1027px) and (max-width: 1033px){ .parentLayer{ height: 412px; width: 970.234px; } .firstEl{ height: 400px; width: 717.8px; } .secondEl{ height: 239.5px; width: 230px; } .thirdEl{ height: 153.6px; width: 230px; } } @media (min-width: 1034px) and (max-width: 1040px){ .parentLayer{ height: 415px; width: 977.234px; } .firstEl{ height: 402.89px; width: 722.978px; } .secondEl{ height: 241.235px; width: 231.66px; } .thirdEl{ height: 154.736px; width: 231.66px; } } @media (min-width: 1041px) and (max-width: 1047px){ .parentLayer{ height: 418px; width: 984.234px; } .firstEl{ height: 405.78px; width: 728.156px; } .secondEl{ height: 242.97px; width: 233.32px; } .thirdEl{ height: 155.872px; width: 233.32px; } } @media (min-width: 1048px) and (max-width: 1054px){ .parentLayer{ height: 421px; width: 991.234px; } .firstEl{ height: 408.67px; width: 733.334px; } .secondEl{ height: 244.705px; width: 234.98px; } .thirdEl{ height: 157.008px; width: 234.98px; } } @media (min-width: 1055px) and (max-width: 1061px){ .parentLayer{ height: 424px; width: 998.234px; } .firstEl{ height: 411.56px; width: 738.512px; } .secondEl{ height: 246.44px; width: 236.64px; } .thirdEl{ height: 158.144px; width: 236.64px; } } @media (min-width: 1062px) and (max-width: 1068px){ .parentLayer{ height: 427px; width: 1005.234px; } .firstEl{ height: 414.45px; width: 743.69px; } .secondEl{ height: 248.175px; width: 238.3px; } .thirdEl{ height: 159.28px; width: 238.3px; } } @media (min-width: 1069px) and (max-width: 1075px){ .parentLayer{ height: 430px; width: 1012.234px; } .firstEl{ height: 417.34px; width: 748.868px; } .secondEl{ height: 249.91px; width: 239.96px; } .thirdEl{ height: 160.416px; width: 239.96px; } } @media (min-width: 1076px) and (max-width: 1082px){ .parentLayer{ height: 433px; width: 1019.234px; } .firstEl{ height: 420.23px; width: 754.046px; } .secondEl{ height: 251.645px; width: 241.62px; } .thirdEl{ height: 161.552px; width: 241.62px; } } @media (min-width: 1083px) and (max-width: 1089px){ .parentLayer{ height: 436px; width: 1026.234px; } .firstEl{ height: 423.12px; width: 759.224px; } .secondEl{ height: 253.38px; width: 243.28px; } .thirdEl{ height: 162.688px; width: 243.28px; } } @media (min-width: 1090px) and (max-width: 1096px){ .parentLayer{ height: 439px; width: 1033.234px; } .firstEl{ height: 426.01px; width: 764.402px; } .secondEl{ height: 255.115px; width: 244.94px; } .thirdEl{ height: 163.824px; width: 244.94px; } } @media (min-width: 1097px) and (max-width: 1103px){ .parentLayer{ height: 442px; width: 1040.234px; } .firstEl{ height: 428.9px; width: 769.58px; } .secondEl{ height: 256.85px; width: 246.6px; } .thirdEl{ height: 164.96px; width: 246.6px; } } @media (min-width: 1104px) and (max-width: 1110px){ .parentLayer{ height: 445px; width: 1047.234px; } .firstEl{ height: 431.79px; width: 774.758px; } .secondEl{ height: 258.585px; width: 248.26px; } .thirdEl{ height: 166.096px; width: 248.26px; } } @media (min-width: 1111px) and (max-width: 1117px){ .parentLayer{ height: 448px; width: 1054.234px; } .firstEl{ height: 434.68px; width: 779.936px; } .secondEl{ height: 260.32px; width: 249.92px; } .thirdEl{ height: 167.232px; width: 249.92px; } } @media (min-width: 1118px) and (max-width: 1124px){ .parentLayer{ height: 451px; width: 1061.234px; } .firstEl{ height: 437.57px; width: 785.114px; } .secondEl{ height: 262.055px; width: 251.58px; } .thirdEl{ height: 168.368px; width: 251.58px; } } @media (min-width: 1125px) and (max-width: 1131px){ .parentLayer{ height: 454px; width: 1068.234px; } .firstEl{ height: 440.46px; width: 790.292px; } .secondEl{ height: 263.79px; width: 253.24px; } .thirdEl{ height: 169.504px; width: 253.24px; } } @media (min-width: 1132px) and (max-width: 1138px){ .parentLayer{ height: 457px; width: 1075.234px; } .firstEl{ height: 443.35px; width: 795.47px; } .secondEl{ height: 265.525px; width: 254.9px; } .thirdEl{ height: 170.64px; width: 254.9px; } } @media (min-width: 1139px) and (max-width: 1145px){ .parentLayer{ height: 460px; width: 1082.234px; } .firstEl{ height: 446.24px; width: 800.648px; } .secondEl{ height: 267.26px; width: 256.56px; } .thirdEl{ height: 171.776px; width: 256.56px; } } @media (min-width: 1146px) and (max-width: 1152px){ .parentLayer{ height: 463px; width: 1089.234px; } .firstEl{ height: 449.13px; width: 805.826px; } .secondEl{ height: 268.995px; width: 258.22px; } .thirdEl{ height: 172.912px; width: 258.22px; } } @media (min-width: 1153px) and (max-width: 1159px){ .parentLayer{ height: 466px; width: 1096.234px; } .firstEl{ height: 452.02px; width: 811.004px; } .secondEl{ height: 270.73px; width: 259.88px; } .thirdEl{ height: 174.048px; width: 259.88px; } } @media (min-width: 1160px) and (max-width: 1166px){ .parentLayer{ height: 469px; width: 1103.234px; } .firstEl{ height: 454.91px; width: 816.182px; } .secondEl{ height: 272.465px; width: 261.54px; } .thirdEl{ height: 175.184px; width: 261.54px; } } @media (min-width: 1167px) and (max-width: 1173px){ .parentLayer{ height: 472px; width: 1110.234px; } .firstEl{ height: 457.8px; width: 821.36px; } .secondEl{ height: 274.2px; width: 263.2px; } .thirdEl{ height: 176.32px; width: 263.2px; } } @media (min-width: 1174px) and (max-width: 1180px){ .parentLayer{ height: 475px; width: 1117.234px; } .firstEl{ height: 460.69px; width: 826.538px; } .secondEl{ height: 275.935px; width: 264.86px; } .thirdEl{ height: 177.456px; width: 264.86px; } } @media (min-width: 1181px) and (max-width: 1187px){ .parentLayer{ height: 478px; width: 1124.234px; } .firstEl{ height: 463.58px; width: 831.716px; } .secondEl{ height: 277.67px; width: 266.52px; } .thirdEl{ height: 178.592px; width: 266.52px; } } @media (min-width: 1188px) and (max-width: 1194px){ .parentLayer{ height: 481px; width: 1131.234px; } .firstEl{ height: 466.47px; width: 836.894px; } .secondEl{ height: 279.405px; width: 268.18px; } .thirdEl{ height: 179.728px; width: 268.18px; } } @media (min-width: 1195px) and (max-width: 1201px){ .parentLayer{ height: 484px; width: 1138.234px; } .firstEl{ height: 469.36px; width: 842.072px; } .secondEl{ height: 281.14px; width: 269.84px; } .thirdEl{ height: 180.864px; width: 269.84px; } } @media (min-width: 1202px) and (max-width: 1208px){ .parentLayer{ height: 487px; width: 1145.234px; } .firstEl{ height: 472.25px; width: 847.25px; } .secondEl{ height: 282.875px; width: 271.5px; } .thirdEl{ height: 182px; width: 271.5px; } } @media (min-width: 1209px) and (max-width: 1215px){ .parentLayer{ height: 490px; width: 1152.234px; } .firstEl{ height: 475.14px; width: 852.428px; } .secondEl{ height: 284.61px; width: 273.16px; } .thirdEl{ height: 183.136px; width: 273.16px; } } @media (min-width: 1216px) and (max-width: 1222px){ .parentLayer{ height: 493px; width: 1159.234px; } .firstEl{ height: 478.03px; width: 857.606px; } .secondEl{ height: 286.345px; width: 274.82px; } .thirdEl{ height: 184.272px; width: 274.82px; } }
+
+.img-box-res{
+	height: 100%;
+	width: 100%;
+}
+.responsiveTabs{
+	justify-content: center;
+	display: flex;
+	max-width: 100%;
+	overflow: auto;
+	overflow-y: hidden;
+}
+
+.titleCentered{
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
 }
