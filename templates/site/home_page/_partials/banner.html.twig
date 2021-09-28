@@ -1,5 +1,5 @@
 <!-- Banner -->
-<div class="parallax" data-background="images/home-parallax-1.jpg" data-color="#36383e" data-color-opacity="0.72"
+<div class="parallax" data-background="{{ asset('images/home-parallax-1.jpg') }}" data-color="#36383e" data-color-opacity="0.72"
   data-img-width="2500" data-img-height="1600">
   <div class="utf-parallax-content-area">
     <div class="container">
@@ -11,44 +11,24 @@
               <span>From as low as $10 per day with limited time offer discounts.</span>
             </div>
             <form class="utf-main-search-form-item">
-              <div class="utf-search-type-block-area">
-                <div class="search-type">
-                  <label class="active">
-                    <input class="first-tab" name="tab" checked="checked" type="radio">annonce</label>
-                  <label class="active">
-                    <input name="tab" type="radio">autour de vous</label>
-                  <div class="utf-search-type-arrow"></div>
-                </div>
-              </div>
               <div class="utf-main-search-box-area">
                 <div class="row with-forms">
                   <div class="col-md-4 col-sm-12">
-                    <input type="text" class="ico-01" placeholder="Enter Keywords..." value="" />
+                    <input type="text" class="ico-01" placeholder="Que recherchez vous" value="" />
                   </div>
-                  <div class="col-md-4 col-sm-6">
-                    <select data-placeholder="Select Area" title="Select Area" class="utf-chosen-select-single-item">
-                      <option>Select Area</option>
-                      <option>Afghanistan</option>
-                      <option>Albania</option>
-                      <option>Algeria</option>
-                      <option>Brazil</option>
-                      <option>Burundi</option>
-                      <option>Bulgaria</option>
-                      <option>California</option>
-                      <option>Germany</option>
-                      <option>Grenada</option>
-                      <option>Guatemala</option>
-                      <option>Iceland</option>
-                    </select>
+                  <div class="col-md-3 col-sm-12">
+                    <input type="text" class="ico-01" placeholder="Canton ou Code postal" value="" />
                   </div>
 
                   <div class="col-md-2 col-sm-6">
                     <button class="button utf-search-btn-item"><i class="fa fa-search"></i>{% trans %}Rechercher{%
                       endtrans %}</button>
                   </div>
-                  <div class="col-md-2 col-sm-6">
-                    <button class="button utf-search-btn-item"><i class="fa fa-search"></i>{% trans %}Rechercher{%
-                      endtrans %}</button>
+                  <div class="col-md-3 col-sm-6">
+                    <a class="button border border-r-btn">
+                        <i class="icon-feather-plus-circle"></i>{% trans %}Autour de vous{%
+                          endtrans %}
+                    </a>
                   </div>
                 </div>
               </div>

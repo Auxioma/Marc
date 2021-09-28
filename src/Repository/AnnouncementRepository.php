@@ -33,9 +33,8 @@ class AnnouncementRepository extends ServiceEntityRepository
             ->setParameter('val', '1')
             ->andWhere('a.Offert = :Offert')
             ->setParameter('Offert', '1') // 1 the VIP offert
-            ->andWhere('a.StartAt BETWEEN :from AND :to')
-            ->setParameter('from', new \DateTime('now'))
-            ->setParameter('to', $to)
+            ->andWhere(':now BETWEEN a.StartAt AND a.EndAt')
+            ->setParameter('now', new \DateTime('now'))
             ->setMaxResults(50)
             ->getQuery()
             ->getResult()

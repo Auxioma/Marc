@@ -14,7 +14,40 @@
 
         <!-- Main Navigation -->
         <nav id="navigation" class="style-1">
-          {{ knp_menu_render('main') }}
+          {% set allCategories = getCategories() %}
+          <ul id="responsive">
+            <li class="active navCategorie">
+              <a>Choisissez votre Catégorie</a>
+              <ul>
+                {% for categorie in allCategories %}
+                  <li>
+                    <a href="{{ categorie.uri }}">{{ categorie.name }}</a>
+                    {% if categorie.submenus|length != 0 %}
+                      <ul>
+                        {% for submenu in categorie.submenus %}
+                          <li>
+                            <a href="{{ submenu.uri }}">{{ submenu.name }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+            {% if app.user %}
+              <li class="visible-xs"><a href="my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
+              <li class="visible-xs"><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
+              <li class="visible-xs"><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Property</a></li>
+              <li class="visible-xs"><a href="add-new-property.html"><i class="sl sl-icon-docs"></i> New Property</a></li>
+              <li class="visible-xs"><a href="change-password.html"><i class="sl sl-icon-docs"></i> Change Password</a></li>
+              <li class="visible-xs"><a href="index-2.html"><i class="sl sl-icon-power"></i> Log Out</a></li>
+            {% else %}
+            <li class="visible-xs"><a href="{{ path('app_login') }}" class="popup-with-zoom-anim log-in-button sign-in">
+                <i class="icon-line-awesome-user"></i> <span>Se connecter</span></a></li>
+            {% endif %}
+          </ul>
+
         </nav>
         <!-- Main Navigation -->
 
@@ -26,9 +59,9 @@
       <div class="right-side">
         <div class="header-widget">
           {% if app.user %}
-          <div class="user-menu">
-            <div class="user-name"><span><img src="{{ asset('img/logo/' ~ app.user.Picture ) }}" alt=""></span>
-              <div class="user-name-title">Bonjour, {{ app.user.Name }}!</div>
+          <div class="user-menu hidden-xs">
+            <div class="user-name"><span><img src="{{ asset('images/agent-02.jpg') }}" alt=""></span>
+              <div class="user-name-title">{{ app.user.Name }}!</div>
             </div>
             <ul>
               <li><a href="my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
@@ -40,10 +73,10 @@
             </ul>
           </div>
           {% else %}
-          <a href="#utf-signin-dialog-block" class="popup-with-zoom-anim log-in-button sign-in">
-            <i class="icon-line-awesome-user"></i> <span>Sign In</span></a>
+          <a href="#utf-signin-dialog-block" class="popup-with-zoom-anim log-in-button sign-in hidden-xs">
+            <i class="icon-line-awesome-user"></i> <span>Se connecter</span></a>
           {% endif %}
-          <a href="add-new-property.html" class="button border"><i class="icon-feather-plus-circle"></i> <span>Create Property</span></a> 
+          <a href="add-new-property.html" class="button border-success"><i class="icon-feather-plus-circle"></i><span>Mettre une annonce</span></a>
 
         </div>
       </div>

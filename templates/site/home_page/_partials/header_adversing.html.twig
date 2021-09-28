@@ -1,8 +1,25 @@
+<div class="">
+    <div class="parentLayer">
+        <div class="ls-inner">
+            <div class="ls-layers">
+                <div class="firstEl">
+                    <img class="img-box-res" src="{{ asset('img/announcement/33.png') }}">
+                </div>
+                <div class="secondEl">
+                    <img class="img-box-res" src="{{ asset('img/announcement/22.png') }}">
+                </div>
+                <div class="thirdEl">
+                    <img class="img-box-res" src="{{ asset('img/announcement/44.png') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#
 {% do device.parse %}
-
 {% if device.isSmartphone %}
     
-{# Visu pour les téléphone #}
+Visu pour les téléphone
 
 <section class="fullwidth" data-background-color="#ffffff">
     <div class="container">
@@ -10,31 +27,31 @@
             <div class="col-md-12">
                 <div class="utf-section-headline-item centered margin-top-0">
                     <div class="utf-headline-display-inner-item"></div>
-                    <p class="utf-slogan-text">{% trans %}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley{% endtrans %}</p>
+                    <p class="utf-slogan-text"></p>
                 </div>
             </div>
 
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <a rel="nofollow" href="{{ AllAdPictures[1].url }}" >
-                    <img class="img-fluid" src="{{ AllAdPictures[1].src }}" alt="" />
+                    <img height="240" style="width: 100%;" class="img-fluid" src="{{ asset('') }}{{ AllAdPictures[1].src }}" alt="" />
                 </a>
             </div>
             <div style="width: 50%;float: left;padding: 15px 7.5px 15px 15px;">
                 <a rel="nofollow" href="{{ AllAdPictures[2].url }}" >
-                    <img class="img-fluid" src="{{ AllAdPictures[2].src }}" alt="" />
+                    <img height="240" class="img-fluid" src="{{ asset('') }}{{ AllAdPictures[2].src }}" alt="" />
                 </a>
             </div>
             <div style="width: 50%;float: left;padding: 15px 15px 15px 7.5px">
                 <a rel="nofollow" href="{{ AllAdPictures[0].url }}" >
-                    <img class="img-fluid" src="{{ AllAdPictures[0].src }}" alt="" />
+                    <img height="240" class="img-fluid" src="{{ asset('') }}{{ AllAdPictures[0].src }}" alt="" />
                 </a>
             </div>
 
         </div>
     </div>
 </section>
-
-{# visu pour les PC #}
+#}
+{# visu pour les PC
 {% else %}
 
 <section class="fullwidth" data-background-color="#ffffff">
@@ -43,26 +60,40 @@
             <div class="col-md-12">
                 <div class="utf-section-headline-item centered margin-top-0">
                     <div class="utf-headline-display-inner-item"></div>
-                    <p class="utf-slogan-text">{% trans %}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley{% endtrans %}</p>
+                    <p class="utf-slogan-text">
+                    </p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+
+
+
+            <!-- hiden picture from >sm -->
+            <div class="visible hidden-xs hidden-sm col-sm-6 col-md-3 col-lg-3 col-xl-3 topad--spacing need-pt-3">
                 <a  rel="nofollow" href="{{ AllAdPictures[0].url }}" class="img-box">
-                    <img src="{{ AllAdPictures[0].src }}" width="262" height="375" alt="" />
+                    <img src="{{ asset('') }}{{ AllAdPictures[0].src }}" width="262" height="375" alt="" />
                 </a>
             </div>
-            <div class="col-md-6 col-sm-6">
+            <!-- end -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <a  rel="nofollow" href="{{ AllAdPictures[1].url }}" class="img-box">
-                    <img src="{{ AllAdPictures[1].src }}" width="570" height="375" alt="" />
+                    <img src="{{ asset('') }}{{ AllAdPictures[1].src }}" width="570" height="375" alt="" />
                 </a>
             </div>
-            <div class="col-md-3 col-sm-6">
+
+            <div class="hidden visible-xs visible-sm col-xs-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                <a  rel="nofollow" href="{{ AllAdPictures[0].url }}" class="img-box">
+                    <img src="{{ asset('') }}{{ AllAdPictures[0].src }}" width="262" height="375" alt="" />
+                </a>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 topad--spacing need-pt-3">
                 <a rel="nofollow" href="{{ AllAdPictures[2].url }}" class="img-box">
-                    <img src="{{ AllAdPictures[2].src }}" width="262" height="375" alt="" />
+                    <img src="{{ asset('') }}{{ AllAdPictures[2].src }}" width="262" height="375" alt="" />
                 </a>
             </div>
+
         </div>
     </div>
 </section>
 
-{% endif %}
+{% endif %}#}

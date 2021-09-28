@@ -11,7 +11,7 @@
         <div class="carousel">
           {% for NewOffert in NewOffert %}
           <div class="utf-carousel-item-area">
-            <div class="utf-listing-item">
+            <div class="utf-listing-item" style="border: 1px solid #b9b9b9;">
               <a href="{{ path('site_product', {'idcat':NewOffert.Category.slug, 'id':NewOffert.Id, 'slug':NewOffert.Slug}) }}" class="utf-smt-listing-img-container">
                 <div class="utf-listing-badges-item">
                   {% if NewOffert.Offert == '0' %}
@@ -26,9 +26,7 @@
                   <span class="video-button with-tip" data-tip-content="Video"></span>
                 </div>
                 <div class="utf-listing-carousel-item">
-                  <div><img src="images/listing-01.jpg" alt=""></div>
-                  <div><img src="images/listing-01.jpg" alt=""></div>
-                  <div><img src="images/listing-01.jpg" alt=""></div>
+                  <div><img src="{{ asset('images/listing-01.jpg') }}" alt=""></div>
                 </div>
               </a>
               <div class="utf-listing-content">
@@ -40,10 +38,10 @@
                     {% trans %} Promotion {% endtrans %}
                     {% endif %} 
                   </span>
-                  <h4><a href="{{ path('site_product', {'idcat':NewOffert.Category.slug, 'id':NewOffert.Id, 'slug':NewOffert.Slug}) }}">{{ NewOffert.Title }}</a></h4>
+                  <h4><a class="oneline-text" href="{{ path('site_product', {'idcat':NewOffert.Category.slug, 'id':NewOffert.Id, 'slug':NewOffert.Slug}) }}">{{ NewOffert.Title }}</a></h4>
                 </div>
                 <div class="utf-listing-features annoncement">
-                  <p>{{ NewOffert.ShortDescription }}</p>
+                  <p class="threelines-text">{{ NewOffert.ShortDescription }}</p>
                 </div>
                 <div class="utf-listing-user-info text-center"><a class="offer" href="{{ path('site_product', {'idcat':NewOffert.Category.slug, 'id':NewOffert.Id, 'slug':NewOffert.Slug}) }}">
                   Voir l'offre</a></div>
@@ -56,4 +54,5 @@
       </div>
     </div>
   </div>
+
 </section>

@@ -15,6 +15,9 @@ class AdversingFixtures extends Fixture
         
         $faker = Faker\Factory::create('fr_FR');
 
+        $imgs = [
+            1 => '11'
+        ];
         for($NbAdversing = 1; $NbAdversing <= 20; $NbAdversing++){
 
             $from   = new \DateTime();
@@ -24,12 +27,14 @@ class AdversingFixtures extends Fixture
             $to->add(new DateInterval('P' .rand(10,20). 'D'));
 
 
+            $pos = rand(1,7);
+
             $Adversing = new Adversing();
             $Adversing->setUrl($faker->url);
             $Adversing->setPicture('1.jpg');
             $Adversing->setStartAt($from);
             $Adversing->setEndAt($to);
-            $Adversing->setPosition(rand(1,7));
+            $Adversing->setPosition($pos);
             $Adversing->setIsValid(rand(0,1));
 
             $manager->persist($Adversing);

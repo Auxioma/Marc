@@ -6,7 +6,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <meta name="description" content="{% block description %}Welcome!{% endblock %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="images/favicon.png">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
         <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
         {% block css %}{% endblock %}
     </head>
@@ -39,7 +39,8 @@
         <script src="{{ asset('scripts/mmenu.min.js') }}"></script> 
         <script src="{{ asset('scripts/tooltips.min.js') }}"></script> 
         <script src="{{ asset('scripts/typed.js') }}"></script>
-        <script src="{{ asset('scripts/custom_jquery.js') }}"></script> 
+        <script src="{{ asset('scripts/custom_jquery.js') }}"></script>
+
         {% block javascript %}{% endblock %}
     </body>
 </html>
