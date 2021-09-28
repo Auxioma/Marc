@@ -15655,4 +15655,30 @@ added styles
 	text-align: center;
 	margin-left: 10%;
 	margin-right: 10%;
+<<<<<<< HEAD
 }
+=======
+}
+
+@media only screen and (max-width: 767px) {
+	.owl-wrapper{
+		left:6.8% !important;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	a.button.border-success {
+		font-size: 14px;
+		white-space: nowrap;
+	}
+	#logo img{
+		margin-top: 2px;
+	}
+	.header-widget .sign-in {
+		top: 12px !important;
+	}
+	.header-widget .user-menu {
+		top: 12px !important;
+	}
+}
+>>>>>>> b77446d261b587c25accde789f1563cd06777193

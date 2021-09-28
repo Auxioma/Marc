@@ -31,6 +31,7 @@ class HomePageController extends AbstractController
      */
     public function index(): Response
     {
+<<<<<<< HEAD
         $firstResolution = 327;
         $lastResolution = 1990;
         $pas = 7;
@@ -83,6 +84,9 @@ class HomePageController extends AbstractController
 
 
        // die($css);
+=======
+
+>>>>>>> b77446d261b587c25accde789f1563cd06777193
         $Adversing = $this->AdversingRepository->AdversingHomePage();
         $ReplacementAdvertising = $this->ReplacementAdvertisingRepository->AdversingRemplacement();
 
