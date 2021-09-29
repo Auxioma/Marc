@@ -17,4 +17,15 @@ class AdminCustomerListController extends AbstractController
             'controller_name' => 'AdminCustomerListController',
         ]);
     }
+
+    /**
+     * @Route("/admin/admin/customer/list/view", name="admin_admin_customer_list_view")
+     */
+    public function view(): Response
+    {
+        return $this->render('admin/admin_customer_list/view.html.twig', [
+            'controller_name' => 'AdminCustomerListController',
+        ]);
+    }
+
 }
