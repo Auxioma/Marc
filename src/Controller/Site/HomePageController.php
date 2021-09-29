@@ -105,8 +105,6 @@ class HomePageController extends AbstractController
 
         }
 
-
-        //die($css);
         $Adversing = $this->AdversingRepository->AdversingHomePage();
         $ReplacementAdvertising = $this->ReplacementAdvertisingRepository->AdversingRemplacement();
 
