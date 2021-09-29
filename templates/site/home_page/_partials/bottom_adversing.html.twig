@@ -1,3 +1,4 @@
+{#
 {% do device.parse %}
 
 {% if device.isSmartphone %}
@@ -81,3 +82,41 @@
     </div>
 </section>
 {% endif %}
+#}
+
+<section class="fullwidth" data-background-color="#ffffff" style="margin-top:40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <a href="{{ AllAdPictures[3].url }}" class="img-box">
+                    <img src="{{ asset('') }}{{ AllAdPictures[3].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <a href="{{ AllAdPictures[4].url }}" class="img-box">
+                    <img src="{{ asset('') }}{{ AllAdPictures[4].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <a href="{{ AllAdPictures[5].url }}" class="img-box">
+                    <img src="{{ asset('') }}{{ AllAdPictures[5].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <a href="{{ AllAdPictures[6].url }}" class="img-box">
+                    <img src="{{ asset('') }}{{ AllAdPictures[6].src }}" alt="" />
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                <a href="{{ AllAdPictures[7].url }}" class="img-box">
+                    <img src="{{ asset('img/announcement/zimboo1.png') }} {# {{ asset('') }}{{ AllAdPictures[7].src }} #}" alt="" />
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                <a href="{{ AllAdPictures[8].url }}" class="img-box">
+                    <img src="{{ asset('img/announcement/zimboo3.png') }} {#{{ asset('') }}{{ AllAdPictures[8].src }}#}" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

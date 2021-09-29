@@ -424,8 +424,9 @@
                 autoplayHoverPause: true,
                 adaptiveHeight: true,
                 items: 4,
-                itemsDesktop: [1239, 4],
-                itemsTablet: [991, 2],
+                itemsDesktop: [1339, 4],
+                itemsTabletSmall: [991, 2],
+                itemsTablet: [1339, 3],
                 itemsMobile: [767, 1.16],
             });
         });
@@ -1025,13 +1026,15 @@
 
     function detectResolutions(){
         if (window.matchMedia('(min-width: 973px) and (max-width: 1352px)').matches){
-            $('#tabletteTabs .tabs-nav').css('display','flex').css('justify-content','center');
-            $('#tabletteTabs').css('display','block');
+           // $('#tabletteTabs .tabs-nav').css('display','flex').css('justify-content','center');
+           // $('#tabletteTabs').css('display','block');
             $('#webTabs').find('.hiddenweb').css('display','none');
             $('#webTabs .tabs-nav').css('display','flex').css('justify-content','center');
+            $('#webTabsParent').find('.arrownav').css('display','block');
         }else{
-            $('#tabletteTabs').css('display','none');
+            //$('#tabletteTabs').css('display','none');
             $('#webTabs').find('.hiddenweb').css('display','block');
+            $('#webTabsParent').find('.arrownav').css('display','none');
         }
         if (window.matchMedia('(max-width: 972px)').matches) {
             $('#webTabs').css('display', 'none');
@@ -1041,7 +1044,7 @@
             $('#webTabs').css('display', 'block');
             $('#mobileTabs').css('display', 'none');
         }
-        $('#webTabs').find('li.active').click();
+        //$('#webTabs').find('li.active').click();
     }
     $('.tabs-nav1').owlCarousel({
         loop: false,
