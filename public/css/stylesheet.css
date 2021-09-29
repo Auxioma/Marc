@@ -5674,8 +5674,11 @@ body .bookmarks-table td.action a.delete i {
 	display:inline-block;
 	width:100%;
 }
+.bgRed{
+	background-color: #f02727 !important;
+}
 .submit-page h3, .utf-user-profile-item h3 {
-    background-color: #f02727;
+    background-color: #424242;
 	color:#ffffff;
 	font-size:20px;
 	font-weight:600;

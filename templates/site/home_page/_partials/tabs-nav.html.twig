@@ -11,7 +11,7 @@
         <div id="mobileTabs" class="col-md-12" style="display: none;">
             {%  for groupeOfferts in groupedOfferts %}
                 <div class="row">
-                    <div class="col-md-12 titleCentered submit-page {{ loop.index == 1 ? '' : 'margin-top-25' }}"><h3 class="">{{ groupeOfferts.category }}</h3></div>
+                    <div class="col-md-12 titleCentered submit-page {{ loop.index == 1 ? '' : 'margin-top-25' }}"><h3 class="bgRed">{{ groupeOfferts.category }}</h3></div>
                     <div class="carousel">
                         {% for PreniumOffert in groupeOfferts.annonces %}
                             {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
