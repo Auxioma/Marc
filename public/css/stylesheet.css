@@ -1115,12 +1115,16 @@ button.widget-button {
 }
 
 #navigation li.navCategorie{
-	background:rgba(249, 25, 66, .06);
+	background: #e33324;
 	color: #e33324;
 	border: 1px solid;
 }
+
 #navigation li.navCategorie a{
-	color: #e33324;
+	color: #FFFFFF;
+}
+#navigation li.navCategorie:hover a.parent{
+	color: #FFFFFF !important;
 }
 /* ---------------------------------- */
 /* User Menu
@@ -4661,7 +4665,9 @@ section.fullwidth.border-bottom {
 	line-height: 20px;
 }
 .pagination ul li a {
-	width: 40px;
+	min-width: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 .pagination ul li.blank {
 	color: #a0a0a0;
@@ -5669,7 +5675,7 @@ body .bookmarks-table td.action a.delete i {
 	width:100%;
 }
 .submit-page h3, .utf-user-profile-item h3 {
-    background-color: #424242;
+    background-color: #f02727;
 	color:#ffffff;
 	font-size:20px;
 	font-weight:600;
@@ -7274,7 +7280,7 @@ body .carousel {
 	position: relative;
 	zoom: 1;
 	padding: 0px;
-	background: #e33324;
+	background: #727272;
 	font-family: "Feather-Icons";
 	font-size: 24px;
 	transition: all 0.2s;
@@ -13778,7 +13784,7 @@ opacity: 0;
 ---------------------------------------------------------------------- */
 @media only screen and (max-width: 1366px) and (min-width: 1240px) {
 .utf-parallax-content-area {
-	padding: 140px 0;
+	padding: 60px 0;
 }
 .search-container {
 	padding: 125px 0;
@@ -15678,7 +15684,7 @@ added styles
 	font-family: "Feather-Icons";
 	left: 30px;
 	top: 12px;
-	background: #e33324;
+	background: #727272;
 	border-radius: 5px;
 	color: #fff;
 	cursor: pointer;
@@ -15697,7 +15703,7 @@ added styles
 	font-family: "Feather-Icons";
 	right: 30px;
 	top: 12px;
-	background: #e33324;
+	background: #727272;
 	border-radius: 5px;
 	color: #fff;
 	cursor: pointer;

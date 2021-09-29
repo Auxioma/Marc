@@ -5,7 +5,7 @@
 {% block body %}
 
 <!-- Titlebar -->
-<div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
+<div class="parallax titlebar" data-background="{{ asset('') }}images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
   data-color-opacity="0.8" data-img-width="800" data-img-height="505">
   <div id="titlebar">
     <div class="container">
@@ -153,17 +153,13 @@
         <!-- Listing Item -->
         {% for Announcement in Announcement %}
         <div class="col-md-3">
-          <div class="utf-listing-item"> <a href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.id, 'slug':Announcement.Slug}) }}" class="utf-smt-listing-img-container">
+          <div class="utf-listing-item" style="border: 1px solid #b9b9b9;">
+            <a href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.id, 'slug':Announcement.Slug}) }}" class="utf-smt-listing-img-container">
               <div class="utf-listing-badges-item">
                 <span class="featured">GOLD</span>
-
               </div>
-              <div class="utf-listing-img-content-item">
-                <span class="video-button with-tip" data-tip-content="Video">
-                  <div class="tip-content">Video</div>
-                </span>
-              </div>
-              <img src="{{ asset('img/announcement/1.jpg') }}" width="520" height="397" alt="">
+              <div class="utf-listing-img-content-item"></div>
+              <img src="{{ asset('') }}images/listing-01.jpg" alt="">
             </a>
             <div class="utf-listing-content">
               <div class="utf-listing-title">
@@ -174,22 +170,23 @@
                   {% trans %} Promotion {% endtrans %}
                   {% endif %}
                 </span>
-                <h4><a
+                <h4><a class="oneline-text"
                     href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.id, 'slug':Announcement.Slug}) }}">{{
                     Announcement.Title }}</a></h4>
-                <!--   <span class="utf-listing-address">
-            <i class="icon-material-outline-location-on"></i> 
-            A voir si on affiche l'adresse
-          </span>-->
+                <!--
+                <span class="utf-listing-address">
+                        <i class="icon-material-outline-location-on"></i>
+                        A voir si on affiche l'adresse
+                </span>
+                -->
               </div>
               <div class="utf-listing-features annoncement">
-                <p>{{ Announcement.ShortDescription }}</p>
+                <p class="threelines-text">{{ Announcement.ShortDescription }}</p>
               </div>
               <div class="utf-listing-user-info text-center">
                 <a class="offer"
                   href="{{ path('site_product', {'idcat':Announcement.Category.slug, 'id':Announcement.id, slug:Announcement.Slug}) }}">Voir
-                  l'offre</a></span>
-
+                  l'offre</a>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@
           {% set allCategories = getCategories() %}
           <ul id="responsive">
             <li class="active navCategorie">
-              <a>Choisissez votre Catégorie</a>
+              <a class="parent">Choisissez votre Catégorie</a>
               <ul>
                 {% for categorie in allCategories %}
                   <li>
@@ -59,11 +59,8 @@
       <div class="right-side">
         <div class="header-widget">
           {% if app.user %}
-<<<<<<< HEAD
-          <div class="user-menu hidden-xs">
-=======
+
           <div class="user-menu">
->>>>>>> b77446d261b587c25accde789f1563cd06777193
             <div class="user-name"><span><img src="{{ asset('images/agent-02.jpg') }}" alt=""></span>
               <div class="user-name-title">{{ app.user.Name }}!</div>
             </div>
@@ -77,17 +74,12 @@
             </ul>
           </div>
           {% else %}
-<<<<<<< HEAD
-          <a href="#utf-signin-dialog-block" class="popup-with-zoom-anim log-in-button sign-in hidden-xs">
-            <i class="icon-line-awesome-user"></i> <span>Se connecter</span></a>
-          {% endif %}
-          <a href="add-new-property.html" class="button border-success"><i class="icon-feather-plus-circle"></i><span>Mettre une annonce</span></a>
-=======
+
           <a href="#utf-signin-dialog-block" class="popup-with-zoom-anim log-in-button sign-in">
             <i class="icon-line-awesome-user"></i> <span>Se connecter</span></a>
           {% endif %}
           <a href="add-new-property.html" class="button border-success"><i class="icon-feather-plus-circle"></i><span>Publier</span></a>
->>>>>>> b77446d261b587c25accde789f1563cd06777193
+
 
         </div>
       </div>

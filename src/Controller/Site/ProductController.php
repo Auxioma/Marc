@@ -20,8 +20,6 @@ class ProductController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Announcement::class);
         $product = $repo->find($id);
 
-dump($product)   ;
-
         return $this->render('site/product/index.html.twig', [
             'controller_name' => 'ProductController',
             'product' => $product,
