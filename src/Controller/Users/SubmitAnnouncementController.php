@@ -28,7 +28,7 @@ class SubmitAnnouncementController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // I find the information from PriceAnnouncement
-            $Price = $this->entityManager->getRepository(Users::class)->findOneBy(['email' => $email]);
+            //$Price = $this->entityManager->getRepository(Users::class)->findOneBy(['email' => $email]);
 
             //$em = $this->getDoctrine()->getManager();
             //$Announcement->setTitle($form->getData('Title'));
@@ -37,8 +37,6 @@ class SubmitAnnouncementController extends AbstractController
             //$Announcement->setTitle($form->getData('LongDescription'));
             //$Announcement->setTitle($form->getData('LongDescription'));
             //$Announcement->setOffert($form->getData('Offert'));
-            
-
         }
 
         return $this->render('users/submit_announcement/index.html.twig', [

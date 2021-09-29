@@ -5,7 +5,7 @@
 {% block body %}
 
   <!-- Titlebar -->
-  <div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
+  <div class="parallax titlebar" data-background="{{ asset('') }}images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
        data-color-opacity="0.8" data-img-width="800" data-img-height="505">
     <div id="titlebar">
       <div class="container">
@@ -15,7 +15,7 @@
             <!-- Breadcrumbs -->
             <nav id="breadcrumbs">
               <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ path('site_home_page') }}">Home</a></li>
                 <li>My Profile</li>
               </ul>
             </nav>
@@ -44,14 +44,7 @@
       <div class="clearfix"></div>
       <div class="sidebar margin-top-20">
         <div class="user-smt-account-menu-container">
-          <ul class="user-account-nav-menu">
-            <li><a href="my-profile.html" class="current"><i class="sl sl-icon-user"></i> My Profile</a></li>
-            <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmark Listing</a></li>
-            <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Property</a></li>
-            <li><a href="add-new-property.html"><i class="sl sl-icon-action-redo"></i> New Property</a></li>
-            <li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Change Password</a></li>
-            <li><a href="#"><i class="sl sl-icon-power"></i> Log Out</a></li>
-          </ul>
+            {% include 'users/_partial/navigation.html.twig' %}
         </div>
       </div>
       <div class="widget utf-sidebar-widget-item">

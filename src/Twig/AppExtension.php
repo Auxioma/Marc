@@ -3,15 +3,20 @@
 namespace App\Twig;
 
 use App\Repository\CategoryRepository;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class AppExtension extends AbstractExtension
 {
     private CategoryRepository $CategoryRepository;
-    public function __construct(CategoryRepository $repository)
+    private UrlGeneratorInterface $urlGenerator;
+
+    public function __construct(CategoryRepository $repository,UrlGeneratorInterface $urlGenerator)
     {
         $this->CategoryRepository = $repository;
+        $this->urlGenerator = $urlGenerator;
     }
 
     public function getFunctions(): array
@@ -29,7 +34,7 @@ class AppExtension extends AbstractExtension
         foreach($MenuCategory as $e) {
             $menu = [
                 'name' => $e->getName(),
-                'uri' => '/'.$e->getId().'-'.$e->getSlug(),
+                'uri' => $this->urlGenerator->generate('site_category',['id'=>$e->getId(),'slug'=>$e->getSlug()]),
                 'submenus' => []
             ];
             $SubCategory = $e->getId();
@@ -39,7 +44,7 @@ class AppExtension extends AbstractExtension
                 foreach($MenuCategory as $r) {
                     $submenu = [
                         'name' => $r->getName(),
-                        'uri' => '/'.$r->getId().'-'.$r->getSlug(),
+                        'uri' => $this->urlGenerator->generate('site_category',['id'=>$e->getId(),'slug'=>$e->getSlug()]),
                     ];
                     $menu['submenus'][] = $submenu;
                 }

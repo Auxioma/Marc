@@ -11,7 +11,7 @@
         <div id="mobileTabs" class="col-md-12" style="display: none;">
             {%  for groupeOfferts in groupedOfferts %}
                 <div class="row">
-                    <div class="col-md-12 titleCentered submit-page {{ loop.index == 1 ? '' : 'margin-top-25' }}"><h3 class="">{{ groupeOfferts.category }}</h3></div>
+                    <div class="col-md-12 titleCentered submit-page {{ loop.index == 1 ? '' : 'margin-top-25' }}"><h3 class="bgRed">{{ groupeOfferts.category }}</h3></div>
                     <div class="carousel">
                         {% for PreniumOffert in groupeOfferts.annonces %}
                             {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
@@ -22,57 +22,27 @@
         </div>
 
         {% set activ = random(8) %}
-
-
-        <div id="webTabs" class="margin-top-60" style="display: none;">
-            <ul class="tabs-nav">
-                {%  for groupeOfferts in groupedOfferts %}
-                    <li class="{{ loop.index > 4 ? 'hiddenweb' : '' }} {% if activ == loop.index %}active{% endif %}" ><a style="white-space: nowrap;" href="#webTabs{{ loop.index }}">{{ groupeOfferts.category }}</a></li>
-                {% endfor %}
-            </ul>
-            <div class="tabs-container">
-                {%  for groupeOfferts in groupedOfferts %}
-<<<<<<< HEAD
-                    <div class="tab-content {{ loop.index > 4 ? 'hidden' : '' }}" id="webTabs{{ loop.index }}">
-=======
-                    <div class="tab-content {{ loop.index > 4 ? 'hiddenweb' : '' }}" id="webTabs{{ loop.index }}">
->>>>>>> b77446d261b587c25accde789f1563cd06777193
-                        <div class="carousel">
-                            {% for PreniumOffert in groupeOfferts.annonces %}
-                                {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div id="tabletteTabs" style="display: none">
-            <ul class="tabs-nav">
-                {%  for groupeOfferts in groupedOfferts %}
-                    {% if loop.index > 4 %}
-                        <li {% if activ == loop.index %}class="active"{% endif %}><a style="white-space: nowrap;" href="#tabletteTabs{{ loop.index }}">{{ groupeOfferts.category }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <div class="tabs-container">
-                {%  for groupeOfferts in groupedOfferts %}
-                    {% if loop.index > 4 %}
-                        <div class="tab-content" id="tabletteTabs{{ loop.index }}">
+        <div id="webTabsParent" class="tabsContainer" style="position:relative;">
+            <span class="arrowLeft arrownav"></span><span class="arrowRight arrownav"></span>
+            <div id="webTabs" class="margin-top-60" style="display: none;">
+                <ul class="tabs-nav">
+                    {%  for groupeOfferts in groupedOfferts %}
+                        <li class="{{ loop.index > 4 ? 'hiddenweb1' : 'hiddenweb2' }} {% if activ == loop.index %}active{% endif %}" ><a style="white-space: nowrap;" href="#webTabs{{ loop.index }}">{{ groupeOfferts.category }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="tabs-container">
+                    {%  for groupeOfferts in groupedOfferts %}
+                        <div class="tab-content" id="webTabs{{ loop.index }}">
                             <div class="carousel">
                                 {% for PreniumOffert in groupeOfferts.annonces %}
                                     {% include 'site/home_page/_partials/mignature/annoucement.html.twig' %}
                                 {% endfor %}
                             </div>
                         </div>
-                    {% endif %}
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
 
     </div>
-<<<<<<< HEAD
 </section>
-=======
-</section>
->>>>>>> b77446d261b587c25accde789f1563cd06777193

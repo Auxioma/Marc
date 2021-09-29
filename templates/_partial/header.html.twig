@@ -17,7 +17,7 @@
           {% set allCategories = getCategories() %}
           <ul id="responsive">
             <li class="active navCategorie">
-              <a>Choisissez votre Catégorie</a>
+              <a class="parent">Choisissez votre Catégorie</a>
               <ul>
                 {% for categorie in allCategories %}
                   <li>
@@ -32,16 +32,16 @@
                       </ul>
                     {% endif %}
                   </li>
-                {% endfor %} 
+                {% endfor %}
               </ul>
             </li>
             {% if app.user %}
-              <li class="visible-xs"><a href="my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
-              <li class="visible-xs"><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
-              <li class="visible-xs"><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Property</a></li>
-              <li class="visible-xs"><a href="add-new-property.html"><i class="sl sl-icon-docs"></i> New Property</a></li>
-              <li class="visible-xs"><a href="change-password.html"><i class="sl sl-icon-docs"></i> Change Password</a></li>
-              <li class="visible-xs"><a href="index-2.html"><i class="sl sl-icon-power"></i> Log Out</a></li>
+              <li class="visible-xs"><a class="{{ app.request.get('_route') == 'users_profile' ? 'current' : '' }}" href="{{ path('users_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
+              <li class="visible-xs"><a class="{{ app.request.get('_route') == 'users_submit_announcement' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-star"></i> Ajouter une annonce</a></li>
+              <li class="visible-xs"><a class="{{ app.request.get('_route') == 'api_users_submit_announcement_pictures' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-docs"></i> Ajouter une publicité</a></li>
+              <li class="visible-xs"><a class="{{ app.request.get('_route') == 'users_my_history' ? 'current' : '' }}" href="{{ path('users_my_history') }}"><i class="sl sl-icon-action-redo"></i> Historique</a></li>
+              <li class="visible-xs"><a class="{{ app.request.get('_route') == '' ? 'current' : '' }}" href="{{ path('users_profile') }}"><i class="sl sl-icon-lock"></i> Chenger de MDP</a></li>
+              <li class="visible-xs"><a href="{{ path('app_logout') }}"><i class="sl sl-icon-power"></i> Deconnection</a></li>
             {% else %}
             <li class="visible-xs"><a href="{{ path('app_login') }}" class="popup-with-zoom-anim log-in-button sign-in">
                 <i class="icon-line-awesome-user"></i> <span>Se connecter</span></a></li>
@@ -59,24 +59,27 @@
       <div class="right-side">
         <div class="header-widget">
           {% if app.user %}
-          <div class="user-menu hidden-xs">
+
+          <div class="user-menu">
             <div class="user-name"><span><img src="{{ asset('images/agent-02.jpg') }}" alt=""></span>
               <div class="user-name-title">{{ app.user.Name }}!</div>
             </div>
             <ul>
-              <li><a href="my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
-              <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
-              <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Property</a></li>
-              <li><a href="add-new-property.html"><i class="sl sl-icon-docs"></i> New Property</a></li>
-              <li><a href="change-password.html"><i class="sl sl-icon-docs"></i> Change Password</a></li>
-              <li><a href="index-2.html"><i class="sl sl-icon-power"></i> Log Out</a></li>
+              <li><a class="{{ app.request.get('_route') == 'users_profile' ? 'current' : '' }}" href="{{ path('users_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
+              <li><a class="{{ app.request.get('_route') == 'users_submit_announcement' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-star"></i> Ajouter une annonce</a></li>
+              <li><a class="{{ app.request.get('_route') == 'api_users_submit_announcement_pictures' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-docs"></i> Ajouter une publicité</a></li>
+              <li><a class="{{ app.request.get('_route') == 'users_my_history' ? 'current' : '' }}" href="{{ path('users_my_history') }}"><i class="sl sl-icon-action-redo"></i> Historique</a></li>
+              <li><a class="{{ app.request.get('_route') == '' ? 'current' : '' }}" href="{{ path('users_profile') }}"><i class="sl sl-icon-lock"></i> Chenger de MDP</a></li>
+              <li><a href="{{ path('app_logout') }}"><i class="sl sl-icon-power"></i> Deconnection</a></li>
             </ul>
           </div>
           {% else %}
+
           <a href="#utf-signin-dialog-block" class="popup-with-zoom-anim log-in-button sign-in">
             <i class="icon-line-awesome-user"></i> <span>Se connecter</span></a>
           {% endif %}
           <a href="add-new-property.html" class="button border-success"><i class="icon-feather-plus-circle"></i><span>Publier</span></a>
+
 
         </div>
       </div>
