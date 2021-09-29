@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      SSHPASS: ${{ secrets.APP_PASS }}
+      SSHPASS: Guigui2021
 
     steps:
       - uses: actions/checkout@v2
@@ -17,9 +17,9 @@ jobs:
         run: 
           sudo apt update && sudo apt install sshpass
           
-      - name: deploy
+      - name: Marc
         run: 
-          sshpass -e ssh -o stricthostkeychecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST }}
+          sshpass -e ssh -o stricthostkeychecking=no rq1s0_guigui@rq1s0.ftp.infomaniak.com
           "cd sites/zimboo.ch/ &&
           git pull &&
           composer install &&

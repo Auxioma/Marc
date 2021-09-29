@@ -414,32 +414,20 @@
                 navigation: true,
                 slideSpeed: 600,
                 centerMode: true,
-<<<<<<< HEAD
                 slidesToShow: 5,
-=======
-                slidesToShow: 4,
->>>>>>> b77446d261b587c25accde789f1563cd06777193
                 slidesToScroll: 1,
                 dots: true,
                 arrows: true,
                 nav: true,
                 rewind: true,
-<<<<<<< HEAD
-=======
-                dataLoop:true,
->>>>>>> b77446d261b587c25accde789f1563cd06777193
                 autoplayHoverPause: true,
                 adaptiveHeight: true,
                 items: 4,
                 itemsDesktop: [1239, 4],
                 itemsTablet: [991, 2],
-<<<<<<< HEAD
                 itemsMobile: [767, 1],
                 margin: 10,
                 stagePadding: 200,
-=======
-                itemsMobile: [767, 1.16],
->>>>>>> b77446d261b587c25accde789f1563cd06777193
             });
         });
 
@@ -1054,10 +1042,6 @@
             $('#webTabs').css('display', 'block');
             $('#mobileTabs').css('display', 'none');
         }
-<<<<<<< HEAD
-=======
-        $('#webTabs').find('li.active').click();
->>>>>>> b77446d261b587c25accde789f1563cd06777193
     }
     $('.tabs-nav1').owlCarousel({
         loop: false,
