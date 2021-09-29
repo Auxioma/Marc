@@ -1,7 +1,7 @@
 name: CD
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   deploy:
@@ -17,7 +17,7 @@ jobs:
         run: 
           sudo apt update && sudo apt install sshpass
           
-      - name: deploy
+      - name: Marc
         run: 
           sshpass -e ssh -o stricthostkeychecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST }}
           "cd sites/zimboo.ch/ &&
