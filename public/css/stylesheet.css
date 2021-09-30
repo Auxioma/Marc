@@ -15343,6 +15343,14 @@ added styles
 		font-size: 14px;
 		white-space: nowrap;
 	}
+
+}
+@media only screen and (max-width:530px) {
+	.add-new-horaire{
+		position: absolute;
+		top: -36px;
+		right: 30px;
+	}
 }
 
 
@@ -15716,4 +15724,26 @@ added styles
 	position: absolute;
 	text-align: center;
 	width: 3.5rem;
+}
+
+
+.radioButtons{
+	display: flex;
+	justify-content: flex-start;
+	align-items: baseline;
+	height: 70px;
+}
+.radioButtons input{
+	width: 45px;
+	height: auto;
+ }
+.profiletext{
+	margin-top: 0;
+	margin-bottom: 2.5rem;
+	font-weight: 600;
+	line-height: 1.2;
+	font-size: 1.25em;
+}
+.parentUrlPartner{
+	margin-bottom: 10px;
 }

@@ -61,7 +61,7 @@
           {% if app.user %}
 
           <div class="user-menu">
-            <div class="user-name"><span><img src="{{ asset('images/agent-02.jpg') }}" alt=""></span>
+            <div class="user-name"><span><img src="{{ asset('img/logo/') }}{{ app.user.Picture ? app.user.Picture : 'profile.png' }}" alt=""></span>
               <div class="user-name-title">{{ app.user.Name }}!</div>
             </div>
             <ul>
