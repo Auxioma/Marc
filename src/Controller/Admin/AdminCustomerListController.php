@@ -2,30 +2,76 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Users;
+use App\Repository\UsersRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminCustomerListController extends AbstractController
 {
+    private $Users;
+
+    public function __construct(UsersRepository $Users)
+    {
+        $this->Users = $Users;
+    }
+
     /**
      * @Route("/admin/admin/customer/list", name="admin_admin_customer_list")
      */
-    public function index(): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
+        $ListUserAdmin = $paginator->paginate(
+            $this->Users->ListUserAdmin(),
+            $request->query->getInt('page', 1),
+            32
+        );
+
         return $this->render('admin/admin_customer_list/index.html.twig', [
             'controller_name' => 'AdminCustomerListController',
+            'users' => $ListUserAdmin,
         ]);
     }
 
     /**
-     * @Route("/admin/admin/customer/list/view", name="admin_admin_customer_list_view")
+     * @Route("/admin/admin/customer/list/view/{id}", name="admin_admin_customer_list_view")
      */
-    public function view(): Response
+    public function view($id): Response
     {
         return $this->render('admin/admin_customer_list/view.html.twig', [
             'controller_name' => 'AdminCustomerListController',
+            'users' => $this->getDoctrine()->getManager()->getRepository(Users::class)->find($id),
         ]);
     }
 
+    /**
+     * @Route("/admin/admin/customer/list/view/{id}/{statuts}", name="admin_admin_customer_change_statuts")
+     */
+    public function ChangeStatuts($id, $statuts): Response
+    {
+        // Update the User
+        $entityManager   = $this->getDoctrine()->getManager();
+        $Update_User  = $entityManager->getRepository(Users::class)->find($id);
+
+        if (!$Update_User) {
+            throw $this->createNotFoundException(
+                'No product found for id ' . $id
+            );
+        }
+        $Update_User->setIsVerified($statuts);
+        $entityManager->persist($Update_User);
+        $entityManager->flush();
+
+        // Show message customer
+        $this->addFlash(
+            'ProfileMiseAJour',
+            'Le profile à bien été mise a jour.'
+        );
+
+        // Go to the show profile
+        return $this->redirectToRoute('admin_admin_customer_list');
+    }
 }
