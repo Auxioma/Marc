@@ -414,20 +414,20 @@
                 navigation: true,
                 slideSpeed: 600,
                 centerMode: true,
-                slidesToShow: 4,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 dots: true,
                 arrows: true,
                 nav: true,
                 rewind: true,
-                dataLoop:true,
                 autoplayHoverPause: true,
                 adaptiveHeight: true,
                 items: 4,
-                itemsDesktop: [1339, 4],
-                itemsTabletSmall: [991, 2],
-                itemsTablet: [1339, 3],
-                itemsMobile: [767, 1.16],
+                itemsDesktop: [1239, 4],
+                itemsTablet: [991, 2],
+                itemsMobile: [767, 1],
+                margin: 10,
+                stagePadding: 200,
             });
         });
 
@@ -1043,7 +1043,6 @@
             $('#webTabs').css('display', 'block');
             $('#mobileTabs').css('display', 'none');
         }
-        //$('#webTabs').find('li.active').click();
     }
     $(document).on('click','.arrowLeft',function (){
         $('#webTabs').find('.hiddenweb1').css('display','block');

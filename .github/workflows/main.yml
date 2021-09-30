@@ -1,7 +1,7 @@
 name: CD
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
           
       - name: Marc
         run: 
-          sshpass -e ssh -o stricthostkeychecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST }}
+          sshpass -e ssh 22 -o stricthostkeychecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST }}
           "cd sites/zimboo.ch/ &&
           git pull &&
           composer install &&
