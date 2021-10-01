@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      SSHPASS: ${{ secrets.APP_PASS }}
+      SSHPASS: ${{ secrets.ZAPP_PASS }}
 
     steps:
       - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
           
       - name: Marc
         run: 
-          sshpass -e ssh 22 -o stricthostkeychecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST }}
+          sshpass -e ssh -o stricthostkeychecking=no ${{ secrets.ZAPP_USER }}@${{ secrets.ZAPP_HOST }}
           "cd sites/zimboo.ch/ &&
           git pull &&
           composer install &&
