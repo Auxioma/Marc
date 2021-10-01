@@ -18,59 +18,113 @@ class Delivery
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Name;
+    private $service;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Url;
+    private $hubereat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="Delivery")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $users;
+    private $est;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $smood;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $deindeal;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getService()
     {
-        return $this->Name;
+        return $this->service;
     }
 
-    public function setName(string $Name): self
+    /**
+     * @param mixed $service
+     */
+    public function setService($service): void
     {
-        $this->Name = $Name;
-
-        return $this;
+        $this->service = $service;
     }
 
-    public function getUrl(): ?string
+    /**
+     * @return mixed
+     */
+    public function getHubereat()
     {
-        return $this->Url;
+        return $this->hubereat;
     }
 
-    public function setUrl(string $Url): self
+    /**
+     * @param mixed $hubereat
+     */
+    public function setHubereat($hubereat): void
     {
-        $this->Url = $Url;
-
-        return $this;
+        $this->hubereat = $hubereat;
     }
 
-    public function getUsers(): ?Users
+    /**
+     * @return mixed
+     */
+    public function getEst()
     {
-        return $this->users;
+        return $this->est;
     }
 
-    public function setUsers(?Users $users): self
+    /**
+     * @param mixed $est
+     */
+    public function setEst($est): void
     {
-        $this->users = $users;
-
-        return $this;
+        $this->est = $est;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSmood()
+    {
+        return $this->smood;
+    }
+
+    /**
+     * @param mixed $smood
+     */
+    public function setSmood($smood): void
+    {
+        $this->smood = $smood;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeindeal()
+    {
+        return $this->deindeal;
+    }
+
+    /**
+     * @param mixed $deindeal
+     */
+    public function setDeindeal($deindeal): void
+    {
+        $this->deindeal = $deindeal;
+    }
+
 }

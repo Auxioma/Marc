@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello profileController!{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block body %}
 
@@ -32,10 +32,13 @@
     <!-- Widget -->
     <div class="col-md-3">
       <div class="margin-bottom-20">
-        <div class="utf-edit-profile-photo-area"> <img src="{{ asset('images/agent-02.jpg') }}" alt="">
+        <div class="utf-edit-profile-photo-area"> <img id="imgprofile" src="{{ asset('img/logo/') }}{{ app.user.Picture ? app.user.Picture : 'profile.png' }}" alt="">
           <div class="utf-change-photo-btn-item">
-            <div class="utf-user-photo-upload"> <span><i class="fa fa-upload"></i>{% trans %}Téléchargement du logo{%
-                  endtrans %}</span>
+            <div class="utf-user-photo-upload">
+              <span>
+                <i class="fa fa-upload"></i>
+                {% trans %}Téléchargement du logo{% endtrans %}
+              </span>
               {{ form_widget(form.image) }}
             </div>
           </div>
@@ -56,26 +59,31 @@
     <div class="col-md-9">
 
       <div class="utf-user-profile-item">
-        <div class="utf-submit-page-inner-box">
-          <h3>Mon activité</h3>
-          <div class="content with-padding">
-            <div class="col-md-6">
-              <label>Votre catégorie</label>
-              {{ form_widget(form.category) }}
-            </div>
-            <div class="col-md-6" id="profile_sub_category">
-              <label>Votre sous catégorie</label>
-              {# {{ form_widget(form.sub_category) }} #}
-              <p id="profile_sub_category"></p>
-            </div>
-          </div>
-        </div>
-
 
         <div class="utf-user-profile-item">
           <div class="utf-submit-page-inner-box">
             <h3>Mes information</h3>
             <div class="content with-padding">
+              <div class="col-md-6">
+                <label>Nom de la société ou établissement</label>
+                {{ form_widget(form.Compagny) }}
+              </div>
+              <div class="col-md-6">
+                <label>Civilité</label>
+                {{ form_widget(form.civilite) }}
+              </div>
+              <div class="col-md-5">
+                <label>Date de naissance</label>
+                {{ form_widget(form.dateNaissance) }}
+              </div>
+              <div class="col-md-5">
+                <label>Téléphone </label>
+                {{ form_widget(form.phoneNumber) }}
+              </div>
+              <div class="col-md-2">
+                <label>Affiché </label>
+                {{ form_widget(form.afficheTelephone) }}
+              </div>
               <div class="col-md-6">
                 <label>Nom</label>
                 {{ form_widget(form.Name) }}
@@ -85,10 +93,6 @@
                 {{ form_widget(form.FirstName) }}
               </div>
               <div class="col-md-6">
-                <label>Entreprise</label>
-                {{ form_widget(form.Compagny) }}
-              </div>
-              <div class="col-md-6">
                 <label>Adresse</label>
                 {{ form_widget(form.GooglePlaceID) }}
               </div>
@@ -96,12 +100,11 @@
                 <label>Mon site internet</label>
                 {{ form_widget(form.Url) }}
               </div>
-              <!--
-              <div class="col-md-6">
-                <label>Adresse</label>
-                <input value="info@example.com" type="text">
-              </div>
-              -->
+              {{ form_widget(form.Address) }}
+              {{ form_widget(form.CodePost) }}
+              {{ form_widget(form.Department) }}
+              {{ form_widget(form.Latitude) }}
+              {{ form_widget(form.Longitude) }}
             </div>
           </div>
 
@@ -109,151 +112,148 @@
             <h3>Horaire d'ouverture</h3>
             <div class="content with-padding">
 
-
-
-
               <!-- horaire ligne -->
-              <div class="row ligneHoraire">
+              <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Lundi</label>
                   <span class="switch">
-                      <input type="checkbox" class="switch s-check" id="switch-normalLundi">
+                      <input {{ app.user.openHoraire('lundi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalLundi">
                       <label for="switch-normalLundi">Overt</label>
-                    </span>
+                  </span>
                 </div>
                 <div class="col-md-9">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.LundiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.LundiMidiFermeture) }}
+                    {{ form_widget(form.horaires.LundiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.LundiMidiFermeture) }}
                     <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.LundiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.LundiAPMFermeture) }}
+                    {{ form_widget(form.horaires.LundiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.LundiAPMFermeture) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
               </div>
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
-              <div class="row ligneHoraire">
+              <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Mardi</label>
                   <span class="switch">
-                      <input type="checkbox" class="switch s-check" id="switch-normalMardi">
+                      <input {{ app.user.openHoraire('mardi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalMardi">
                       <label for="switch-normalMardi">Overt</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.MardiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiMidiFermeture) }}
+                    {{ form_widget(form.horaires.MardiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MardiMidiFermeture) }}
                     <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible" >
-                    {{ form_widget(form.MardiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.MardiAPMFermeture) }}
+                    {{ form_widget(form.horaires.MardiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MardiAPMFermeture) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
               </div>
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
-              <div class="row ligneHoraire">
+              <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Mercredi</label>
                   <span class="switch">
-                      <input type="checkbox" class="switch s-check" id="switch-normalMercredi">
+                      <input {{ app.user.openHoraire('mercredi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalMercredi">
                       <label for="switch-normalMercredi">Overt</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.MercrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.MercrediMidiFermeture) }}
+                    {{ form_widget(form.horaires.MercrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MercrediMidiFermeture) }}
                     <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.MercrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.MercrediAPMFermeture) }}
+                    {{ form_widget(form.horaires.MercrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MercrediAPMFermeture) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
               </div>
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
-              <div class="row ligneHoraire">
+              <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Jeudi</label>
                   <span class="switch">
-                      <input type="checkbox" class="switch s-check" id="switch-normalJeudi">
+                      <input {{ app.user.openHoraire('jeudi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalJeudi">
                       <label for="switch-normalJeudi">Overt</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.JeudiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.JeudiMidiFermeture) }}
+                    {{ form_widget(form.horaires.JeudiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.JeudiMidiFermeture) }}
                     <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.JeudiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.JeudiAPMFermeture) }}
+                    {{ form_widget(form.horaires.JeudiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.JeudiAPMFermeture) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
               </div>
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
-              <div class="row ligneHoraire">
+              <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Vendredi</label>
                   <span class="switch">
-                      <input type="checkbox" class="switch s-check" id="switch-normalVendredi">
+                      <input {{ app.user.openHoraire('vendredi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalVendredi">
                       <label for="switch-normalVendredi">Overt</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.VendrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.VendrediMidiFermeture) }}
+                    {{ form_widget(form.horaires.VendrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.VendrediMidiFermeture) }}
                     <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.VendrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.VendrediAPMFermeture) }}
+                    {{ form_widget(form.horaires.VendrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.VendrediAPMFermeture) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
               </div>
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
-              <div class="row ligneHoraire">
+              <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Samedi</label>
                   <span class="switch">
-                      <input type="checkbox" class="switch s-check" id="switch-normalSamedi">
+                      <input {{ app.user.openHoraire('samedi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalSamedi">
                       <label for="switch-normalSamedi">Overt</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.SamediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.SamediMidiFermeture) }}
+                    {{ form_widget(form.horaires.SamediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.SamediMidiFermeture) }}
                     <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.SamediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.SamediAPMFermeture) }}
+                    {{ form_widget(form.horaires.SamediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.SamediAPMFermeture) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
               </div>
               <!-- end horaire ligne -->
               <!-- horaire ligne -->
-              <div class="row ligneHoraire">
+              <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Dimanche</label>
                   <span class="switch">
-                      <input type="checkbox" class="switch s-check" id="switch-normalDimanche">
+                      <input {{ app.user.openHoraire('dimanche') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalDimanche">
                       <label for="switch-normalDimanche">Overt</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.DimancheMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.DimancheMidiFermeture) }}
+                    {{ form_widget(form.horaires.DimancheMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.DimancheMidiFermeture) }}
                     <a class="add-new-horaire">Ajouter des horaires</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.DimancheAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.DimancheAPMFermeture) }}
+                    {{ form_widget(form.horaires.DimancheAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.DimancheAPMFermeture) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -262,29 +262,55 @@
             </div>
           </div>
 
-
           <div class="utf-submit-page-inner-box">
-            <h3>{% trans %}Service de livraison{% endtrans %}</h3>
+            <h3>{% trans %}Option service de livraison{% endtrans %}</h3>
             <div class="content with-padding">
-              <div class="col-md-6">
-                <label><i class="icon-brand-facebook"></i> huber-eat.ch</label>
-                {{ form_widget(form.UberEat) }}
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-twitter"></i> est.ch</label>
-                {{ form_widget(form.Eatch) }}
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-linkedin"></i> smood.ch</label>
-                {{ form_widget(form.smood) }}
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-google"></i> deindeal.ch</label>
-                {{ form_widget(form.dealdind) }}
-              </div>
-              <div class="col-md-6">
-                <label><i class="icon-brand-pinterest"></i> J'ai un service de livraison</label>
-                {{ form_widget(form.Perso) }}
+              <div class="row">
+                <div class="col-md-6">
+                  <h5 class="profiletext">Option pour les restaurants <i class="fa fa-question-circle"></i></h5>
+                  <div class="row">
+                    <div class="col-md-12 parentUrlPartner">
+                      <span class="switch">
+                        <input {{  app.user.delivery and app.user.delivery.hubereat ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalhuber-eat">
+                        <label for="switch-normalhuber-eat">Je travaille avec  huber-eat.ch</label>
+                      </span>
+                      {{ form_widget(form.delivery.hubereat) }}
+                    </div>
+                    <div class="col-md-12 parentUrlPartner">
+                      <span class="switch">
+                        <input {{  app.user.delivery and app.user.delivery.est ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalestch">
+                        <label for="switch-normalestch">Je travaille avec  est.ch</label>
+                      </span>
+                      {{ form_widget(form.delivery.est) }}
+                    </div>
+                    <div class="col-md-12 parentUrlPartner">
+                      <span class="switch">
+                        <input {{  app.user.delivery and app.user.delivery.smood ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalsmoodch">
+                        <label for="switch-normalsmoodch">Je travaille avec  smood.ch</label>
+                      </span>
+                      {{ form_widget(form.delivery.smood) }}
+                    </div>
+                    <div class="col-md-12 parentUrlPartner">
+                      <span class="switch">
+                        <input {{  app.user.delivery and app.user.delivery.deindeal ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normaldeindeal">
+                        <label for="switch-normaldeindeal">Je travaille avec  deindeal.ch</label>
+                      </span>
+                      {{ form_widget(form.delivery.deindeal) }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="profiletext">Service de livraison <i class="fa fa-question-circle"></i></h5>
+                  <div class="row">
+                    <div class="col-md-12 parentUrlPartner">
+                      <span class="switch">
+                        <input {{ app.user.delivery and app.user.delivery.service ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normallivraison">
+                        <label for="switch-normallivraison">J'ai un service de livraison</label>
+                      </span>
+                      {{ form_widget(form.delivery.service) }}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -300,11 +326,7 @@
       </div>
     </div>
   </div>
-  {{ form_widget(form.Address) }}
-  {{ form_widget(form.CodePost) }}
-  {{ form_widget(form.Department) }}
-  {{ form_widget(form.Latitude) }}
-  {{ form_widget(form.Longitude) }}
+
   {{ form_end(form) }}
 </div>
   {% endblock %}
@@ -370,30 +392,6 @@
       }
     }
   </script>
-  <script>
-
-    var $profile_category = $("#profile_category")
-    var $token = $("#profile_token")
-
-    $profile_category.change(function()
-    {
-      var $form = $(this).closest('form')
-      var data = {}
-      
-      data[$token.attr('name')] = $token.val()
-      data[$profile_category.attr('name')] = $profile_category.val()
-
-      $.post([$form.attr('action')].data).then(function (response) 
-      {
-
-        $("#profile_sub_category").replaceWith(
-                $(response).find("#profile_sub_category")
-        )
-      })
-
-    })
-  </script>
-
 
   <script>
     function InitChangeHoraire(){
@@ -402,7 +400,7 @@
         el.find('.s-check').each(function (){
           var check = $(this);
           if (check.is(':checked')){
-            check.next().html('Overt') ;
+            check.next().html('Overt');
             check.closest('.horaireBlock').next().css('display','block');
           }
           else{
@@ -424,5 +422,42 @@
       $(this).toggle();
       $(this).closest('.ligneHoraire').find('.part2').removeClass('notVisible');
     });
+
+    function InitProfileLinks(){
+      $('.parentUrlPartner').each(function (){
+        var el = $(this);
+        el.find('.s-check').each(function (){
+          var check = $(this);
+          if (check.is(':checked')){
+            el.find('.urlPartner').css('display','block');
+          }
+          else{
+            el.find('.urlPartner').css('display','none');
+          }
+        })
+      })
+    }
+    InitProfileLinks();
+    $(document).on('change','.parentUrlPartner .s-check',function(){
+      InitProfileLinks();
+    });
+
+    $(document).on('change','#profile_image',function(){
+        var input = this;
+        var url = $(this).val();
+        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg"))
+          {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              $('#imgprofile').attr('src', e.target.result);
+            }
+
+           reader.readAsDataURL(input.files[0]);
+        }
+    });
+
+
   </script>
 {% endblock %}

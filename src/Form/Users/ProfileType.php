@@ -4,6 +4,12 @@ namespace App\Form\Users;
 
 use App\Entity\Users;
 use App\Entity\Category;
+use App\Form\DeliveryType;
+use App\Form\HorairesType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormEvent;
 use App\Repository\CategoryRepository;
 use Symfony\Component\Form\FormEvents;
@@ -22,16 +28,6 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', EntityType::class, [
-                'mapped' => false,
-                'class' => Category::class,
-                'query_builder' => function (CategoryRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->andWhere('u.Parent = :val')
-                        ->setParameter('val', '1');
-                }
-            ])
-
             ->add('Name', TextType::class, [
                 'label' => false,
                 'attr' => [
@@ -44,6 +40,40 @@ class ProfileType extends AbstractType
                     'placeholder' => 'John'
                 ],
             ])
+            ->add('civilite', ChoiceType::class,
+                [
+                    'choices' => ['Monsieur' => "Mr", 'Madame' => 'Mme'],
+                    'expanded' => true,
+                    'label' => false,
+                    'data' => "Mr",
+                    'attr' => [
+                        'class' => 'radioButtons',
+                    ],
+                ]
+            )
+            ->add('dateNaissance', DateType::class,
+                [
+                    'label' => false,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control',
+                    ]
+                ]
+            )
+            ->add('phoneNumber', TelType::class, [
+                    'label' => false,
+                    'attr' => [
+                        'class' => 'form-control border-start-0',
+                    ]
+                ]
+            )
+            ->add('afficheTelephone', ChoiceType::class,
+                [
+                    'choices' => ['OUI' => "1", 'NON' => '0'],
+                    'label' => false,
+                    'attr' => ['class' => 'form-control form-select']
+                ])
             ->add('Compagny', TextType::class, [
                 'label' => false,
                 'attr' => [
@@ -53,6 +83,7 @@ class ProfileType extends AbstractType
             ->add('GooglePlaceID', TextType::class, [
                 'label' => false,
                 'mapped' => false,
+                'data' => $options['data']->getAddress(),
                 'attr' => [
                     'placeholder' => 'Votre adresse'
                 ],
@@ -70,331 +101,20 @@ class ProfileType extends AbstractType
                     'placeholder' => 'https://'
                 ],
             ])
-            ->add('LundiMatinOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('LundiMidiFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('LundiAPMOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('LundiAPMFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
 
-            ->add('MardiMatinOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('MardiMidiFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('MardiAPMOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('MardiAPMFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-
-            ->add('MercrediMatinOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('MercrediMidiFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('MercrediAPMOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('MercrediAPMFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-
-            ->add('JeudiMatinOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('JeudiMidiFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('JeudiAPMOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('JeudiAPMFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-
-            ->add('VendrediMatinOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('VendrediMidiFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('VendrediAPMOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('VendrediAPMFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-
-            ->add('SamediMatinOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('SamediMidiFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('SamediAPMOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('SamediAPMFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-
-            ->add('DimancheMatinOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('DimancheMidiFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('DimancheAPMOuverture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
-            ->add('DimancheAPMFermeture', TimeType::class, [
-                'mapped' => false,
-                'required' => false,
-                'widget' => 'single_text',
-                'attr' => [
-                    'label' => false,
-                    'class' => 'horaire-control inputhoraire'
-                ]
-            ])
 
             ->add('image', FileType::class, [
-                'label' => false,
+                'required' => $options['data'] and !$options['data']->getId(),
                 'mapped' => false,
+                'label' => false,
                 'attr' => [
-                    'class' => 'upload tooltip top'
+                    'class' => 'upload'
                 ]
             ])
-            ->add('UberEat', UrlType::class, [
-                'label' => false,
-                'mapped' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'https://'
-                ],
-            ])
-            ->add('Eatch', UrlType::class, [
-                'label' => false,
-                'mapped' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'https://'
-                ],
-            ])
-            ->add('smood', UrlType::class, [
-                'label' => false,
-                'mapped' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'https://'
-                ],
-            ])
-            ->add('dealdind', UrlType::class, [
-                'label' => false,
-                'mapped' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'https://'
-                ],
-            ])
-            ->add('Perso', UrlType::class, [
-                'label' => false,
-                'mapped' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'https://'
-                ],
-            ])
+            ->add('horaires', HorairesType::class)
+            ->add('delivery', DeliveryType::class)
         ;
 
-        $builder->get('category')->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function (FormEvent $event){
-                $form = $event->getForm();
-                $idd = $event->getForm()->getData()->getId();
-
-                $form->getParent()->add('sub_category', EntityType::class, [
-                    'class' => Category::class,
-                    'mapped' => false,
-                    'query_builder' => function (CategoryRepository $er) use ($idd)  {
-                        return $er->createQueryBuilder('u')
-                            ->andWhere('u.Parent = :val')
-                            ->setParameter('val', $idd);
-                    }
-                ]);
-            }
-        );
     }
 
     public function configureOptions(OptionsResolver $resolver)

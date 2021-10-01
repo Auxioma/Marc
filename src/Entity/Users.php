@@ -51,6 +51,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $PhoneNumber;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $afficheTelephone;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateNaissance;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Compagny;
@@ -64,6 +74,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $FirstName;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $civilite;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -106,11 +121,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $City;
 
     /**
-     * @ORM\OneToMany(targetEntity=Delivery::class, mappedBy="users")
-     */
-    private $Delivery;
-
-    /**
      * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="users", orphanRemoval=true)
      */
     private $Announcement;
@@ -136,9 +146,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $UpdatedAt;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Delivery::class, cascade={"persist", "remove"})
+     */
+    private $delivery;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Horaires::class, cascade={"persist", "remove"})
+     */
+    private $horaires;
+
     public function __construct()
     {
-        $this->Delivery = new ArrayCollection();
         $this->Announcement = new ArrayCollection();
     }
 
@@ -388,36 +407,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection|Delivery[]
-     */
-    public function getDelivery(): Collection
-    {
-        return $this->Delivery;
-    }
-
-    public function addDelivery(Delivery $delivery): self
-    {
-        if (!$this->Delivery->contains($delivery)) {
-            $this->Delivery[] = $delivery;
-            $delivery->setUsers($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDelivery(Delivery $delivery): self
-    {
-        if ($this->Delivery->removeElement($delivery)) {
-            // set the owning side to null (unless already changed)
-            if ($delivery->getUsers() === $this) {
-                $delivery->setUsers(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Announcement[]
      */
     public function getAnnouncement(): Collection
@@ -482,4 +471,97 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCivilite()
+    {
+        return $this->civilite;
+    }
+
+    /**
+     * @param mixed $civilite
+     */
+    public function setCivilite($civilite): void
+    {
+        $this->civilite = $civilite;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAfficheTelephone()
+    {
+        return $this->afficheTelephone;
+    }
+
+    /**
+     * @param mixed $afficheTelephone
+     */
+    public function setAfficheTelephone($afficheTelephone): void
+    {
+        $this->afficheTelephone = $afficheTelephone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateNaissance()
+    {
+        return $this->dateNaissance;
+    }
+
+    /**
+     * @param mixed $dateNaissance
+     */
+    public function setDateNaissance($dateNaissance): void
+    {
+        $this->dateNaissance = $dateNaissance;
+    }
+
+    public function getDelivery(): ?Delivery
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(?Delivery $delivery): self
+    {
+        $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHoraires()
+    {
+        return $this->horaires;
+    }
+
+    /**
+     * @param mixed $horaires
+     */
+    public function setHoraires($horaires): void
+    {
+        $this->horaires = $horaires;
+    }
+
+
+    public function openHoraire($day){
+        if (!$this->horaires) return false;
+
+        switch ($day){
+            case 'lundi' : return $this->getHoraires()->getLundiMatinOuverture() and $this->getHoraires()->getLundiMidiFermeture();
+            case 'mardi' : return $this->getHoraires()->getMardiMatinOuverture() and $this->getHoraires()->getMardiMidiFermeture();
+            case 'mercredi' : return $this->getHoraires()->getMercrediMatinOuverture() and $this->getHoraires()->getMercrediMidiFermeture();
+            case 'jeudi' : return $this->getHoraires()->getJeudiMatinOuverture() and $this->getHoraires()->getJeudiMidiFermeture();
+            case 'vendredi' : return $this->getHoraires()->getVendrediMatinOuverture() and $this->getHoraires()->getVendrediMidiFermeture();
+            case 'samedi' : return $this->getHoraires()->getSamediMatinOuverture() and $this->getHoraires()->getSamediMidiFermeture();
+            case 'dimanche' : return $this->getHoraires()->getDimancheMatinOuverture() and $this->getHoraires()->getDimancheMidiFermeture();
+        }
+
+    }
+
 }
