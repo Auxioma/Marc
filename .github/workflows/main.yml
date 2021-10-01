@@ -17,10 +17,10 @@ jobs:
         run: 
           sudo apt update && sudo apt install sshpass
           
-      - name: Marc
+      - name: MarcGuillaume
         run: 
           sshpass -e ssh -o stricthostkeychecking=no ${{ secrets.ZAPP_USER }}@${{ secrets.ZAPP_HOST }}
-          "cd /sites/zimboo.ch/ &&
+          "cd sites/zimboo.ch/ &&
           git pull &&
           composer install &&
           php bin/console d:m:m -n"
