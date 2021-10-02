@@ -29,7 +29,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => [
                     'class'         =>  'input-text',
-                    'placeholder'   =>  'Entré votre Email',
+                    'placeholder'   =>  'Entrez votre Email',
                 ],
                 'label'             =>  false
             ])

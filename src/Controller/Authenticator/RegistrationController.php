@@ -66,6 +66,17 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+    public function loadRegisterForm(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $user = new Users();
+        $form = $this->createForm(RegistrationFormType::class, $user, ['action'=>$this->generateUrl('app_register')]);
+        return $this->render('authenticator/registration/loadregister.html.twig', [
+            'registrationForm' => $form->createView(),
+        ]);
+    }
+
+
+
     /**
      * @Route("/verify/email", name="app_verify_email")
      */

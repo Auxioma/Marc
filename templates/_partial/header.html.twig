@@ -69,7 +69,7 @@
               <li><a class="{{ app.request.get('_route') == 'users_submit_announcement' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-star"></i> Ajouter une annonce</a></li>
               <li><a class="{{ app.request.get('_route') == 'api_users_submit_announcement_pictures' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-docs"></i> Ajouter une publicité</a></li>
               <li><a class="{{ app.request.get('_route') == 'users_my_history' ? 'current' : '' }}" href="{{ path('users_my_history') }}"><i class="sl sl-icon-action-redo"></i> Historique</a></li>
-              <li><a class="{{ app.request.get('_route') == '' ? 'current' : '' }}" href="{{ path('users_profile') }}"><i class="sl sl-icon-lock"></i> Chenger de MDP</a></li>
+              <li><a class="{{ app.request.get('_route') == 'security_edit' ? 'current' : '' }}" href="{{ path('security_edit') }}"><i class="sl sl-icon-lock"></i> Chenger de MDP</a></li>
               <li><a href="{{ path('app_logout') }}"><i class="sl sl-icon-power"></i> Deconnection</a></li>
             </ul>
           </div>
@@ -90,3 +90,5 @@
 </header>
 <div class="clearfix"></div>
 <!-- Header Container / End -->
+{% include 'site/home_page/_partials/banner.html.twig' %}
+<div class="clearfix"></div>

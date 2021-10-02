@@ -9,25 +9,27 @@
             <!-- Login -->
             <div class="utf-popup-tab-content-item" id="login">
                 <div class="utf-welcome-text-item">
-                    <h3>Logez vous </h3>
-                    <span>Don't Have an Account? <a href="#" class="register-tab">Sign Up!</a></span>
+                    <h3>Bienvenu sur zimboo.ch</h3>
+                    <span>Vous n'avez pas d'acompte? <a href="#" class="register-tab">Créer un compte</a></span>
                 </div>
                 <form action="{{ path('app_login') }}" method="post" id="login-form">
                     <div class="utf-no-border">
-                        <input type="email" value="" name="email" id="inputEmail" placeholder="Votre Email de connection" class="input-text" autocomplete="email" required="" autofocus="">
+                        <input type="email" value="" name="email" id="inputEmail" placeholder="Votre Email" class="input-text" autocomplete="email" required="" autofocus="">
                     </div>
                     <div class="utf-no-border">
-                        <input type="password" name="password" id="inputPassword" class="input-text" placeholder="Mots de passe" autocomplete="current-password" required="">
+                        <input type="password" name="password" id="inputPassword" class="input-text" placeholder="Mot de passe" autocomplete="current-password" required="">
                     </div>
                     <div class="checkbox margin-top-0">
                         <input type="checkbox" id="two-step">
                         <label for="two-step"><span class="checkbox-icon"></span> Se souvenir de moi</label>
                     </div>
-                    <a href="forgot_password.html" class="forgot-password">Mot fr pazsse publmier?</a>
+                    <a href="{{ path('app_forgot_password_request') }}" class="forgot-password">Mot de passe oublier?</a>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <button class="button full-width utf-button-sliding-icon ripple-effect" type="submit"
+                            form="login-form">Log In <i class="icon-feather-chevrons-right"></i></button>
                 </form>
-                <button class="button full-width utf-button-sliding-icon ripple-effect" type="submit"
-                    form="login-form">Log In <i class="icon-feather-chevrons-right"></i></button>
-                <div class="utf-social-login-separator-item"><span>Or Login in With</span></div>
+
+                <div class="utf-social-login-separator-item"><span>CONNEXION AVEC</span></div>
                 <div class="utf-social-login-buttons-block">
                     <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Facebook</button>
                     <button onclick="location.href='/connect/google'" class="google-login ripple-effect"><i class="icon-brand-google"></i> Google</button>
@@ -38,30 +40,13 @@
             <!-- Register -->
             <div class="utf-popup-tab-content-item" id="register">
                 <div class="utf-welcome-text-item">
-                    <h3>Creer votre compte!</h3>
-                    <span>Don't Have an Account? <a href="#" class="register-tab">Sign Up!</a></span>
+                    <h3>Créer votre compte</h3>
+                    <span>J’ai déjà un compte ? <a href="#" class="register-tab">Se connecter!</a></span>
                 </div>
-                <form action="{{ path('app_register') }}" method="post" id="utf-register-account-form">
-                    <div class="utf-no-border">
-                        <input type="tel" id="registration_form_PhoneNumber" name="registration_form[PhoneNumber]" required="required" class="input-text" placeholder="+41 00 000 00 00">
-                    </div>
-                    <div class="utf-no-border">
-                        <input type="email" id="registration_form_email" name="registration_form[email]" required="required" class="input-text" placeholder="Entré votre Email">
-                    </div>
-                    <div class="utf-no-border">
-                        <input type="password" id="registration_form_plainPassword" name="registration_form[plainPassword]" required="required" autocomplete="new-password" class="input-text" placeholder="Votre mot de passe">
-                    </div>
-                    <div class="utf-no-border">
-                        <input class="input-text" type="password" name="password" placeholder="repetez votre MDP" id="repeat_password">
-                    </div>
-                    <div class="checkbox margin-top-0">
-                        <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" value="1">
-                        <label for="registration_form_agreeTerms"><span class="checkbox-icon"></span> By Registering You Confirm That You
-                            Accept <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
-                    </div>
-                </form>
-                <button class="margin-top-10 button full-width utf-button-sliding-icon ripple-effect" type="submit"
-                    form="utf-register-account-form">Register <i class="icon-feather-chevrons-right"></i></button>
+                {{ render(controller(
+                    'App\\Controller\\Authenticator\\RegistrationController::loadRegisterForm'
+                )) }}
+
             </div>
         </div>
     </div>

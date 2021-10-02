@@ -21,14 +21,13 @@
 
 #}
 
-  <!-- Titlebar -->
+  <!-- Titlebar
   <div class="parallax titlebar" data-background="images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)" data-color-opacity="0.8" data-img-width="800" data-img-height="505">
     <div id="titlebar">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <h2>Register</h2>
-            <!-- Breadcrumbs -->
             <nav id="breadcrumbs">
               <ul>
                 <li><a href="index.html">Home</a></li>
@@ -40,17 +39,17 @@
       </div>
     </div>
   </div>
-  
+    -->
   <!-- Contact --> 
-  <div class="container">
+  <div class="container margin-top-25">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="my-account">
           <div class="tabs-container"> 
             <!-- Register -->
 			  <div class="utf-welcome-text-item">
-				<h3>Create Your New Account!</h3>
-				<span>Don't Have an Account? <a href="{{ path('app_login') }}">Se connecté</a></span> 
+				<h3>Créer votre compte</h3>
+				<span>J’ai déjà un compte ? <a href="{{ path('app_login') }}">Se connecter</a></span>
 			  </div>
               {{ form_start(registrationForm) }}
 
@@ -64,11 +63,15 @@
                     {{ form_row(registrationForm.plainPassword) }}
                 </div>
 				<div class="form-row form-row-wide">
-                    <input class="input-text" type="password" name="password" placeholder="Repeat Password" id="repeat_password"/>
+                    <label for="repeat_password">Confirmer le mot de passe</label>
+                    <input class="input-text" type="password" name="password" placeholder="Repeat Password" id="repeat_password">
                 </div>
                 <div class="form-row checkbox margin-top-10 margin-bottom-10">
 					{{ form_widget(registrationForm.agreeTerms) }}
-					<label for="registration_form_agreeTerms"><span class="checkbox-icon"></span> By Registering You Confirm That You Accept <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+					<label for="registration_form_agreeTerms"><span class="checkbox-icon"></span>
+                        En cliquant sur "Je crée mon compte", vous indiquez avoir lu et
+                        accepté <a href="#">les conditions d'utilisation</a> et <a href="#">Conditions générales</a> de vente.
+                    </label>
 				</div>
 				<input type="submit" class="button full-width border margin-top-10" name="Create An Account" value="Créer votre compte" />				
                 {{ form_end(registrationForm) }}

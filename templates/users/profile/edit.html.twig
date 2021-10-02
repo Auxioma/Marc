@@ -4,7 +4,7 @@
 
 {% block body %}
 
-  <!-- Titlebar -->
+  <!-- Titlebar
   <div class="parallax titlebar" data-background="{{ asset('') }}images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)"
        data-color-opacity="0.8" data-img-width="800" data-img-height="505">
     <div id="titlebar">
@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-md-12">
             <h2>My Profile</h2>
-            <!-- Breadcrumbs -->
+
             <nav id="breadcrumbs">
               <ul>
                 <li><a href="{{ path('site_home_page') }}">Home</a></li>
@@ -24,9 +24,9 @@
       </div>
     </div>
   </div>
-
+  -->
 <!-- Content -->
-<div class="container">
+<div class="container margin-top-25">
   {{ form_start(form) }}
   <div class="row">
     <!-- Widget -->
@@ -85,7 +85,7 @@
                 {{ form_widget(form.afficheTelephone) }}
               </div>
               <div class="col-md-6">
-                <label>Nom</label>
+                <label>Nom de responsable</label>
                 {{ form_widget(form.Name) }}
               </div>
               <div class="col-md-6">
@@ -318,8 +318,8 @@
 
 
           <div class="row">
-            <div class="col-md-12">
-              <button class="utf-centered-button button margin-top-0 margin-bottom-20">Save Changes</button>
+            <div class="col-md-12 text-right">
+              <button class="button margin-top-0 margin-bottom-20 bg-green">Save Changes</button>
             </div>
           </div>
         </div>
@@ -328,12 +328,12 @@
   </div>
 
   {{ form_end(form) }}
-</div>
   {% endblock %}
 
 
   {% block javascript %}
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQof89PvlorQqi57C4mXWVhLXCSm1uwpQ&libraries=places&callback=initAutocomplete" async defer></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQof89PvlorQqi57C4mXWVhLXCSm1uwpQ&libraries=places&callback=initAutocomplete" async defer />
   <script>
     var placeSearch, autocomplete;
     var componentForm = {
@@ -441,23 +441,6 @@
     $(document).on('change','.parentUrlPartner .s-check',function(){
       InitProfileLinks();
     });
-
-    $(document).on('change','#profile_image',function(){
-        var input = this;
-        var url = $(this).val();
-        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-        if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg"))
-          {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-              $('#imgprofile').attr('src', e.target.result);
-            }
-
-           reader.readAsDataURL(input.files[0]);
-        }
-    });
-
 
   </script>
 {% endblock %}

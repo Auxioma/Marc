@@ -1,0 +1,25 @@
+{{ form_start(registrationForm) }}
+
+<div class="form-row form-row-wide margin-bottom-15">
+    {{ form_row(registrationForm.PhoneNumber) }}
+</div>
+<div class="form-row form-row-wide">
+    {{ form_row(registrationForm.email) }}
+</div>
+<div class="form-row form-row-wide">
+    {{ form_row(registrationForm.plainPassword) }}
+</div>
+<div class="form-row form-row-wide">
+    <label for="repeat_password">Confirmer le mot de passe</label>
+    <input class="input-text" type="password" name="password" placeholder="Repeat Password" id="repeat_password">
+</div>
+<div class="form-row checkbox margin-top-10 margin-bottom-10">
+    {{ form_widget(registrationForm.agreeTerms) }}
+    <label for="registration_form_agreeTerms"><span class="checkbox-icon"></span>
+        En cliquant sur "Je crée mon compte", vous indiquez avoir lu et
+        accepté <a href="#">les conditions d'utilisation</a> et <a href="#">Conditions générales</a> de vente.
+    </label>
+</div>
+<button class="margin-top-10 button full-width utf-button-sliding-icon ripple-effect" type="submit"
+        form="utf-register-account-form">Créer votre compte <i class="icon-feather-chevrons-right"></i></button>
+{{ form_end(registrationForm) }}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Changement de mot de passe{% endblock %}
+
+{% block body %}
+    <div class="container margin-top-25">
+        <div class="row">
+            {% include 'users/_partial/menu.html.twig' %}
+            <!-- Submit Page -->
+            <div class="col-md-9">
+                <div class="submit-page">
+                    <!-- Section -->
+                    {{ form_start(form) }}
+                    <div class="utf-submit-page-inner-box">
+                        <h3>Changer votre mot de passe</h3>
+                        <div class="content with-padding">
+                            <div class="col-md-12">
+                                <h5>Current Password</h5>
+                                <input class="pi-input" type="password" id="password" name="currentPassword" placeholder="Current Password" autocomplete="off" />
+                            </div>
+                            <div class="col-md-12">
+                                <h5>New Password</h5>
+                                {{ form_widget(form.plainPassword.first) }}
+                            </div>
+                            <div class="col-md-12">
+                                <h5>Confirm New Password</h5>
+                                {{ form_widget(form.plainPassword.second) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green">Save Changes</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
