@@ -3,104 +3,158 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
-<!-- Titlebar
-<div class="parallax titlebar" data-background="{{ asset('') }}images/listings-parallax.jpg" data-color="rgba(48, 48, 48, 1)" data-color-opacity="0.8" data-img-width="800" data-img-height="505">
-    <div id="titlebar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Add New Property</h2>
 
-                    <nav id="breadcrumbs">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li>Add New Property</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+<div class="container margin-top-25">
+    <div class="row">
+        <div class="col-md-12">
+            <style>
+                #breadcrumbs ul li:before{
+                    border-left: 5px solid #a3a3a3 !important;
+                }
+            </style>
+            <nav id="breadcrumbs" style="left: 0px;right: unset;">
+                <ul>
+                    <li><a href="{{ path('site_home_page') }}">Home</a></li>
+                    <li>Annonce</li>
+                </ul>
+            </nav>
+
+            <h2 style="float: right;">Crée une annonce</h2>
         </div>
     </div>
-</div>-->
-<!-- Content -->
-<div class="container margin-top-25">
     <div class="row">
         {% include 'users/_partial/menu.html.twig' %}
         <!-- Submit Page -->
-        <div class="col-md-9">
+        <div class="col-md-6">
             <div class="submit-page">
                 <!-- Section -->
                 <div class="utf-submit-page-inner-box">
-                    <h3>Property Basic Information</h3>
+                    <h3>Passez votre annonce en 4 étapes.</h3>
                     <div class="content with-padding">
-                        <div class="col-md-12">
-                            <h5>Property Title</h5>
-                            <input class="search-field" placeholder="Property Title" type="text" value=""/>
+                        <div class="pos-relative margin-4 margin-bottom-35">
+                            <div class="progress" style="height: 2px;">
+                                <div class="progress-bar bg-red w-25"></div>
+                            </div>
+                            <button type="button" class="pos-absolute topb-0 start-0 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">0
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-25 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">1
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-50 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">2
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-75 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">3
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-100 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">4
+                            </button>
                         </div>
 
-                        <div class="col-md-6">
-                            <h5>Status</h5>
-                            <select class="utf-chosen-select-single-item">
-                                <option label="blank"></option>
-                                <option>For Sale</option>
-                                <option>For Rent</option>
-                            </select>
-                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Catégorie</h5>
+                                <select class="utf-chosen-select-single-item">
+                                    <option label="blank"></option>
+                                    <option>For Sale</option>
+                                    <option>For Rent</option>
+                                </select>
+                            </div>
 
-                        <div class="col-md-6">
-                            <h5>Type</h5>
-                            <select class="utf-chosen-select-single-item">
-                                <option label="blank"></option>
-                                <option>Apartment</option>
-                                <option>House</option>
-                                <option>Commercial</option>
-                                <option>Garage</option>
-                                <option>Lot</option>
-                            </select>
-                        </div>
+                            <div class="col-md-6">
+                                <h5>Sous Catégorie</h5>
+                                <select class="utf-chosen-select-single-item">
+                                    <option label="blank"></option>
+                                    <option>For Sale</option>
+                                    <option>For Rent</option>
+                                </select>
+                            </div>
 
-                        <div class="col-md-4">
-                            <h5>Price</h5>
-                            <div class="select-input disabled-first-option">
-                                <input type="text" placeholder="00000" data-unit="USD">
+
+
+                            <div class="col-md-8">
+                                <h5>Votre promotion en texte avec un %</h5>
+                                <div class="select-input disabled-first-option">
+                                    <input type="text" placeholder="Sur tout le magasin" data-unit="0/20">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h5>Promo</h5>
+                                <div class="select-input disabled-first-option">
+                                    <input type="text" placeholder="Promo" data-unit="%">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <h5>Petit texte de présentation</h5>
+                                <div class="select-input disabled-first-option">
+                                    <textarea type="text" data-unit="0/20"></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <h5>Area</h5>
-                            <div class="select-input disabled-first-option">
-                                <input type="text" placeholder="00000" data-unit="Sq Ft">
+                        <div class="pos-relative margin-4 margin-bottom-35">
+                            <div class="progress" style="height: 2px;">
+                                <div class="progress-bar bg-red w-50"></div>
+                            </div>
+                            <button type="button" class="pos-absolute topb-0 start-0 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">0
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-25 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">1
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-50 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">2
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-75 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">3
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-100 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">4
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="select-input disabled-first-option">
+                                    <textarea type="text" data-unit="0/20"></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <h5>Rooms</h5>
-                            <select class="utf-chosen-select-single-item">
-                                <option label="blank"></option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>More than 5</option>
-                            </select>
+                        <div class="pos-relative margin-4 margin-bottom-35">
+                            <div class="progress" style="height: 2px;">
+                                <div class="progress-bar bg-red w-75"></div>
+                            </div>
+                            <button type="button" class="pos-absolute topb-0 start-0 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">0
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-25 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">1
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-50 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">2
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-75 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">3
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-100 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">4
+                            </button>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="file" class="dropzone"/>
+                            </div>
+                        </div>
+                        <div class="pos-relative margin-4 margin-bottom-35">
+                            <div class="progress" style="height: 2px;">
+                                <div class="progress-bar bg-red w-100p"></div>
+                            </div>
+                            <button type="button" class="pos-absolute topb-0 start-0 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">0
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-25 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">1
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-50 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">2
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-75 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">3
+                            </button>
+                            <button type="button" class="pos-absolute topb-0 start-100 translate-middle btnz btn-sm btn-red rounded-pill text-white" style="width: 3rem; height:3rem;">4
+                            </button>
+                        </div>
+
                     </div>
                 </div>
-                <!-- Section / End -->
 
-                <!-- Section -->
-                <div class="utf-submit-page-inner-box">
-                    <h3>Property Gallery</h3>
-                    <div class="content with-padding">
-                        <div class="col-md-12 submit-section">
-                            <form action="file-upload" class="dropzone"></form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Section / End -->
+               {#
 
-                <!-- Section -->
+               <!-- Section -->
                 <div class="utf-submit-page-inner-box">
                     <h3>Property Location</h3>
                     <div class="content with-padding">
@@ -209,6 +263,7 @@
                         </div>
                     </div>
                 </div>
+               #}
                 <div class="row">
                     <div class="col-md-12">
                         <a href="add-new-property.html" class="utf-centered-button button">Submit Property</a>
@@ -216,6 +271,44 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3">
+
+                <div class="utf-listing-item" style="border: 1px solid #b9b9b9;">
+                    <a href=""
+                       class="utf-smt-listing-img-container">
+                        <div class="utf-listing-badges-item">
+
+                        </div>
+                        <div class="utf-listing-img-content-item">
+                        </div>
+                        <div class="utf-listing-carousel-item">
+                            <div><img src="http://via.placeholder.com/260x230" alt=""></div>
+                        </div>
+                    </a>
+                    <div class="utf-listing-content">
+                        <div class="utf-listing-title">
+                            <span class="utf-listing-price">
+                                    14%
+                            </span>
+                            <h4>
+                                <a  class="oneline-text" href="">
+                                    Lorem ipsum dolor sit
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="utf-listing-features annoncement">
+                            <p class="threelines-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis comm</p>
+                        </div>
+                        <div class="utf-listing-user-info text-center">
+                            <a class="offer"
+                               href="">
+                                Voir l'offre</a>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
     </div>
 </div>
 

@@ -5,6 +5,23 @@
 {% block body %}
     <div class="container margin-top-25">
         <div class="row">
+            <div class="col-md-12">
+                <style>
+                    #breadcrumbs ul li:before{
+                        border-left: 5px solid #a3a3a3 !important;
+                    }
+                </style>
+                <nav id="breadcrumbs" style="left: 0px;right: unset;">
+                    <ul>
+                        <li><a href="{{ path('site_home_page') }}">Home</a></li>
+                        <li>Sécurité</li>
+                    </ul>
+                </nav>
+
+                <h2 style="float: right;">Mot de passe</h2>
+            </div>
+        </div>
+        <div class="row">
             {% include 'users/_partial/menu.html.twig' %}
             <!-- Submit Page -->
             <div class="col-md-9">

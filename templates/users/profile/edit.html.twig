@@ -27,6 +27,23 @@
   -->
 <!-- Content -->
 <div class="container margin-top-25">
+  <div class="row">
+    <div class="col-md-12">
+      <style>
+        #breadcrumbs ul li:before{
+          border-left: 5px solid #a3a3a3 !important;
+        }
+      </style>
+      <nav id="breadcrumbs" style="left: 0px;right: unset;">
+        <ul>
+          <li><a href="{{ path('site_home_page') }}">Home</a></li>
+          <li>My Profile</li>
+        </ul>
+      </nav>
+
+      <h2 style="float: right;">My Profile</h2>
+    </div>
+  </div>
   {{ form_start(form) }}
   <div class="row">
     <!-- Widget -->
@@ -68,7 +85,7 @@
                 <label>Nom de la société ou établissement</label>
                 {{ form_widget(form.Compagny) }}
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 {{ isView ? 'inputdisabled' : '' }}">
                 <label>Civilité</label>
                 {{ form_widget(form.civilite) }}
               </div>
@@ -85,7 +102,7 @@
                 {{ form_widget(form.afficheTelephone) }}
               </div>
               <div class="col-md-6">
-                <label>Nom de responsable</label>
+                <label>Nom du responsable</label>
                 {{ form_widget(form.Name) }}
               </div>
               <div class="col-md-6">
@@ -116,18 +133,18 @@
               <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Lundi</label>
-                  <span class="switch">
+                  <span class="switch {{ isView ? 'disabled' : '' }}">
                       <input {{ app.user.openHoraire('lundi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalLundi">
-                      <label for="switch-normalLundi">Overt</label>
+                      <label for="switch-normalLundi">Ouvert</label>
                   </span>
                 </div>
                 <div class="col-md-9">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.horaires.LundiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.LundiMidiFermeture) }}
+                    {{ form_widget(form.horaires.LundiMatinOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.LundiMidiFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="add-new-horaire">Ajouter</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.horaires.LundiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.LundiAPMFermeture) }}
+                    {{ form_widget(form.horaires.LundiAPMOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.LundiAPMFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -137,18 +154,18 @@
               <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Mardi</label>
-                  <span class="switch">
+                  <span class="switch {{ isView ? 'disabled' : '' }}">
                       <input {{ app.user.openHoraire('mardi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalMardi">
-                      <label for="switch-normalMardi">Overt</label>
+                      <label for="switch-normalMardi">Ouvert</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.horaires.MardiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MardiMidiFermeture) }}
+                    {{ form_widget(form.horaires.MardiMatinOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.MardiMidiFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="add-new-horaire">Ajouter</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible" >
-                    {{ form_widget(form.horaires.MardiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MardiAPMFermeture) }}
+                    {{ form_widget(form.horaires.MardiAPMOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.MardiAPMFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -158,18 +175,18 @@
               <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Mercredi</label>
-                  <span class="switch">
+                  <span class="switch {{ isView ? 'disabled' : '' }}">
                       <input {{ app.user.openHoraire('mercredi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalMercredi">
-                      <label for="switch-normalMercredi">Overt</label>
+                      <label for="switch-normalMercredi">Ouvert</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.horaires.MercrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MercrediMidiFermeture) }}
+                    {{ form_widget(form.horaires.MercrediMatinOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.MercrediMidiFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="add-new-horaire">Ajouter</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.horaires.MercrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.MercrediAPMFermeture) }}
+                    {{ form_widget(form.horaires.MercrediAPMOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.MercrediAPMFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -179,18 +196,18 @@
               <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Jeudi</label>
-                  <span class="switch">
+                  <span class="switch {{ isView ? 'disabled' : '' }}">
                       <input {{ app.user.openHoraire('jeudi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalJeudi">
-                      <label for="switch-normalJeudi">Overt</label>
+                      <label for="switch-normalJeudi">Ouvert</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.horaires.JeudiMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.JeudiMidiFermeture) }}
+                    {{ form_widget(form.horaires.JeudiMatinOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.JeudiMidiFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="add-new-horaire">Ajouter</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.horaires.JeudiAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.JeudiAPMFermeture) }}
+                    {{ form_widget(form.horaires.JeudiAPMOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.JeudiAPMFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -200,18 +217,18 @@
               <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Vendredi</label>
-                  <span class="switch">
+                  <span class="switch {{ isView ? 'disabled' : '' }}">
                       <input {{ app.user.openHoraire('vendredi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalVendredi">
-                      <label for="switch-normalVendredi">Overt</label>
+                      <label for="switch-normalVendredi">Ouvert</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.horaires.VendrediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.VendrediMidiFermeture) }}
+                    {{ form_widget(form.horaires.VendrediMatinOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.VendrediMidiFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="add-new-horaire">Ajouter</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.horaires.VendrediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.VendrediAPMFermeture) }}
+                    {{ form_widget(form.horaires.VendrediAPMOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.VendrediAPMFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -221,18 +238,18 @@
               <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Samedi</label>
-                  <span class="switch">
+                  <span class="switch {{ isView ? 'disabled' : '' }}">
                       <input {{ app.user.openHoraire('samedi') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalSamedi">
-                      <label for="switch-normalSamedi">Overt</label>
+                      <label for="switch-normalSamedi">Ouvert</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.horaires.SamediMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.SamediMidiFermeture) }}
+                    {{ form_widget(form.horaires.SamediMatinOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.SamediMidiFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="add-new-horaire">Ajouter</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.horaires.SamediAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.SamediAPMFermeture) }}
+                    {{ form_widget(form.horaires.SamediAPMOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.SamediAPMFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -242,18 +259,18 @@
               <div class="row ligneHoraire margin-left-0">
                 <div class="col-md-3 margin-top-15 horaireBlock">
                   <label class="w-100">Dimanche</label>
-                  <span class="switch">
+                  <span class="switch {{ isView ? 'disabled' : '' }}">
                       <input {{ app.user.openHoraire('dimanche') ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalDimanche">
-                      <label for="switch-normalDimanche">Overt</label>
+                      <label for="switch-normalDimanche">Ouvert</label>
                     </span>
                 </div>
                 <div class="col-md-9 horaires">
                   <div class="row horaireBlock">
-                    {{ form_widget(form.horaires.DimancheMatinOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.DimancheMidiFermeture) }}
+                    {{ form_widget(form.horaires.DimancheMatinOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.DimancheMidiFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="add-new-horaire">Ajouter</a>
                   </div>
                   <div class="row horaireBlock part2 notVisible">
-                    {{ form_widget(form.horaires.DimancheAPMOuverture) }} <span class="dash">_</span> {{ form_widget(form.horaires.DimancheAPMFermeture) }}
+                    {{ form_widget(form.horaires.DimancheAPMOuverture,{'attr': {'disabled':isView}}) }} <span class="dash">_</span> {{ form_widget(form.horaires.DimancheAPMFermeture,{'attr': {'disabled':isView}}) }}
                     <a class="remove-horaire">x</a>
                   </div>
                 </div>
@@ -270,32 +287,32 @@
                   <h5 class="profiletext">Option pour les restaurants <i class="fa fa-question-circle"></i></h5>
                   <div class="row">
                     <div class="col-md-12 parentUrlPartner">
-                      <span class="switch">
+                      <span class="switch {{ isView ? 'disabled' : '' }}">
                         <input {{  app.user.delivery and app.user.delivery.hubereat ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalhuber-eat">
                         <label for="switch-normalhuber-eat">Je travaille avec  huber-eat.ch</label>
                       </span>
-                      {{ form_widget(form.delivery.hubereat) }}
+                      {{ form_widget(form.delivery.hubereat,{'attr': {'disabled':isView}}) }}
                     </div>
                     <div class="col-md-12 parentUrlPartner">
-                      <span class="switch">
+                      <span class="switch {{ isView ? 'disabled' : '' }}">
                         <input {{  app.user.delivery and app.user.delivery.est ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalestch">
                         <label for="switch-normalestch">Je travaille avec  est.ch</label>
                       </span>
-                      {{ form_widget(form.delivery.est) }}
+                      {{ form_widget(form.delivery.est,{'attr': {'disabled':isView}}) }}
                     </div>
                     <div class="col-md-12 parentUrlPartner">
-                      <span class="switch">
+                      <span class="switch {{ isView ? 'disabled' : '' }}">
                         <input {{  app.user.delivery and app.user.delivery.smood ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normalsmoodch">
                         <label for="switch-normalsmoodch">Je travaille avec  smood.ch</label>
                       </span>
-                      {{ form_widget(form.delivery.smood) }}
+                      {{ form_widget(form.delivery.smood,{'attr': {'disabled':isView}}) }}
                     </div>
                     <div class="col-md-12 parentUrlPartner">
-                      <span class="switch">
+                      <span class="switch {{ isView ? 'disabled' : '' }}">
                         <input {{  app.user.delivery and app.user.delivery.deindeal ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normaldeindeal">
                         <label for="switch-normaldeindeal">Je travaille avec  deindeal.ch</label>
                       </span>
-                      {{ form_widget(form.delivery.deindeal) }}
+                      {{ form_widget(form.delivery.deindeal,{'attr': {'disabled':isView}}) }}
                     </div>
                   </div>
                 </div>
@@ -303,11 +320,11 @@
                   <h5 class="profiletext">Service de livraison <i class="fa fa-question-circle"></i></h5>
                   <div class="row">
                     <div class="col-md-12 parentUrlPartner">
-                      <span class="switch">
+                      <span class="switch {{ isView ? 'disabled' : '' }}">
                         <input {{ app.user.delivery and app.user.delivery.service ? 'checked' : '' }} type="checkbox" class="switch s-check" id="switch-normallivraison">
                         <label for="switch-normallivraison">J'ai un service de livraison</label>
                       </span>
-                      {{ form_widget(form.delivery.service) }}
+                      {{ form_widget(form.delivery.service,{'attr': {'disabled':isView}}) }}
                     </div>
                   </div>
                 </div>
@@ -318,9 +335,30 @@
 
 
           <div class="row">
-            <div class="col-md-12 text-right">
-              <button class="button margin-top-0 margin-bottom-20 bg-green">Save Changes</button>
-            </div>
+
+              {% if not app.user.profileCreated() %}
+              <div class="col-md-12 text-right">
+                  <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green">
+                    Je crée mon compte professionnel
+                  </button>
+              </div>
+              {% else %}
+
+                {% if isView %}
+                <div class="col-md-6">
+                  <a href="{{ path('users_profile') }}" class="button margin-top-0 margin-bottom-20 bg-green">Je modifie mon compte</a>
+                </div>
+                <div class="col-md-6 text-right">
+                  <button disabled type="submit" class="button margin-top-0 margin-bottom-20 bg-green disabled">Enregistrer les informations</button>
+                </div>
+                {% else %}
+                <div class="col-md-12 text-right">
+                  <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green">Enregistrer les informations</button>
+                </div>
+                {% endif %}
+
+              {% endif %}
+
           </div>
         </div>
       </div>
@@ -400,7 +438,7 @@
         el.find('.s-check').each(function (){
           var check = $(this);
           if (check.is(':checked')){
-            check.next().html('Overt');
+            check.next().html('Ouvert');
             check.closest('.horaireBlock').next().css('display','block');
           }
           else{

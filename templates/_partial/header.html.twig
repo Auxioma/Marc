@@ -36,7 +36,7 @@
               </ul>
             </li>
             {% if app.user %}
-              <li class="visible-xs"><a class="{{ app.request.get('_route') == 'users_profile' ? 'current' : '' }}" href="{{ path('users_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
+              <li class="visible-xs"><a class="{{ app.request.get('_route') == 'show_profile' or app.request.get('_route') == 'users_profile' ? 'current' : '' }}" href="{{ path('show_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
               <li class="visible-xs"><a class="{{ app.request.get('_route') == 'users_submit_announcement' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-star"></i> Ajouter une annonce</a></li>
               <li class="visible-xs"><a class="{{ app.request.get('_route') == 'api_users_submit_announcement_pictures' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-docs"></i> Ajouter une publicité</a></li>
               <li class="visible-xs"><a class="{{ app.request.get('_route') == 'users_my_history' ? 'current' : '' }}" href="{{ path('users_my_history') }}"><i class="sl sl-icon-action-redo"></i> Historique</a></li>
@@ -65,7 +65,7 @@
               <div class="user-name-title">{{ app.user.Name }}!</div>
             </div>
             <ul>
-              <li><a class="{{ app.request.get('_route') == 'users_profile' ? 'current' : '' }}" href="{{ path('users_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
+              <li><a class="{{ app.request.get('_route') == 'show_profile' or app.request.get('_route') == 'users_profile' ? 'current' : '' }}" href="{{ path('show_profile') }}"><i class="sl sl-icon-user"></i> Mon profile</a></li>
               <li><a class="{{ app.request.get('_route') == 'users_submit_announcement' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-star"></i> Ajouter une annonce</a></li>
               <li><a class="{{ app.request.get('_route') == 'api_users_submit_announcement_pictures' ? 'current' : '' }}" href="{{ path('users_submit_announcement') }}"><i class="sl sl-icon-docs"></i> Ajouter une publicité</a></li>
               <li><a class="{{ app.request.get('_route') == 'users_my_history' ? 'current' : '' }}" href="{{ path('users_my_history') }}"><i class="sl sl-icon-action-redo"></i> Historique</a></li>
@@ -91,4 +91,3 @@
 <div class="clearfix"></div>
 <!-- Header Container / End -->
 {% include 'site/home_page/_partials/banner.html.twig' %}
-<div class="clearfix"></div>

@@ -564,4 +564,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     }
 
+    public function profileCreated(){
+        return true;
+    }
+
 }

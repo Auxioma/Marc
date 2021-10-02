@@ -30,7 +30,7 @@ class profileController extends AbstractController
             );
         }
 
-        $form = $this->createForm(ProfileType::class, $Profile);
+        $form = $this->createForm(ProfileType::class, $Profile, ['isReadOnly' => false]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,12 +54,13 @@ class profileController extends AbstractController
                 'Votre profile à bien été enregistré..'
             );
             // Go to the show profile
-            return $this->redirectToRoute('users_profile');
+            return $this->redirectToRoute('show_profile');
         }
         
         return $this->render('users/profile/edit.html.twig', [
             'controller_name' => 'profileController',
             'form' => $form->createView(),
+            'isView' => false
         ]);
     }
 
@@ -69,9 +70,19 @@ class profileController extends AbstractController
      */
     public function ShowProfile(Request $request): Response
     {
-        return $this->render('users/profile/view.html.twig', [
-            'controller_name' => 'ProfileController',
-            'Utilisateurs' => $this->getDoctrine()->getRepository(Users::class)->find($this->getUser()->getId()),
+        $Profile = $this->getUser();
+        if (!$Profile) {
+            throw $this->createNotFoundException(
+                'No product found for id ' . $this->getUser()->getId()
+            );
+        }
+
+        $form = $this->createForm(ProfileType::class, $Profile, ['isReadOnly' => true]);
+        $form->handleRequest($request);
+        return $this->render('users/profile/edit.html.twig', [
+            'controller_name' => 'profileController',
+            'form' => $form->createView(),
+            'isView' => true
         ]);
     }
 }

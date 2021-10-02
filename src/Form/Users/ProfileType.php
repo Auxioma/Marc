@@ -31,13 +31,15 @@ class ProfileType extends AbstractType
             ->add('Name', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Doe'
+                    'placeholder' => 'Doe',
+                    'readOnly' => $options['isReadOnly']
                 ],
             ])
             ->add('FirstName', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'John'
+                    'placeholder' => 'John',
+                    'readOnly' => $options['isReadOnly']
                 ],
             ])
             ->add('civilite', ChoiceType::class,
@@ -48,6 +50,7 @@ class ProfileType extends AbstractType
                     'data' => "Mr",
                     'attr' => [
                         'class' => 'radioButtons',
+                        'disabled' => $options['isReadOnly']
                     ],
                 ]
             )
@@ -58,6 +61,7 @@ class ProfileType extends AbstractType
                     'format' => 'yyyy-MM-dd',
                     'attr' => [
                         'class' => 'form-control',
+                        'readOnly' => $options['isReadOnly']
                     ]
                 ]
             )
@@ -65,6 +69,7 @@ class ProfileType extends AbstractType
                     'label' => false,
                     'attr' => [
                         'class' => 'form-control border-start-0',
+                        'readOnly' => $options['isReadOnly']
                     ]
                 ]
             )
@@ -72,12 +77,14 @@ class ProfileType extends AbstractType
                 [
                     'choices' => ['OUI' => "1", 'NON' => '0'],
                     'label' => false,
-                    'attr' => ['class' => 'form-control form-select']
+                    'attr' => ['class' => 'form-control form-select',
+                        'disabled' => $options['isReadOnly']]
                 ])
             ->add('Compagny', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'ZIMBOO'
+                    'placeholder' => 'ZIMBOO',
+                    'readOnly' => $options['isReadOnly']
                 ],
             ])
             ->add('GooglePlaceID', TextType::class, [
@@ -85,7 +92,8 @@ class ProfileType extends AbstractType
                 'mapped' => false,
                 'data' => $options['data']->getAddress(),
                 'attr' => [
-                    'placeholder' => 'Votre adresse'
+                    'placeholder' => 'Votre adresse',
+                    'readOnly' => $options['isReadOnly']
                 ],
             ])
             ->add('Address', HiddenType::class)
@@ -98,7 +106,8 @@ class ProfileType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'https://'
+                    'placeholder' => 'https://',
+                    'readOnly' => $options['isReadOnly']
                 ],
             ])
 
@@ -108,7 +117,8 @@ class ProfileType extends AbstractType
                 'mapped' => false,
                 'label' => false,
                 'attr' => [
-                    'class' => 'upload'
+                    'class' => 'upload',
+                    'readOnly' => $options['isReadOnly']
                 ]
             ])
             ->add('horaires', HorairesType::class)
@@ -121,6 +131,7 @@ class ProfileType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Users::class,
+            'isReadOnly' => false
         ]);
     }
 }

@@ -1,5 +1,7 @@
 <!-- Banner -->
-<div class="parallax" data-background="{{ asset('images/home-parallax-1.jpg') }}" data-color="#36383e" data-color-opacity="0.72"
+
+{% if app.request.get('_route') != 'site_category' %}
+<div class="parallax {{ app.request.get('_route') != 'site_home_page' ? 'hidden-xs hidden-sm' : ''  }}" data-background="{{ asset('images/home-parallax-1.jpg') }}" data-color="#36383e" data-color-opacity="0.72"
   data-img-width="2500" data-img-height="1600">
   <div class="utf-parallax-content-area">
     <div class="container">
@@ -39,3 +41,4 @@
     </div>
   </div>
 </div>
+{% endif %}
