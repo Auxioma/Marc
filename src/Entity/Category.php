@@ -52,10 +52,16 @@ class Category
      */
     private $announcements;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Announcement::class, mappedBy="subCategory")
+     */
+    private $subAnnouncements;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->announcements = new ArrayCollection();
+        $this->subAnnouncements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,6 +159,36 @@ class Category
             // set the owning side to null (unless already changed)
             if ($announcement->getCategory() === $this) {
                 $announcement->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getSubAnnouncements(): Collection
+    {
+        return $this->subAnnouncements;
+    }
+
+    public function addSubAnnouncement(Announcement $subAnnouncement): self
+    {
+        if (!$this->subAnnouncements->contains($subAnnouncement)) {
+            $this->subAnnouncements[] = $subAnnouncement;
+            $subAnnouncement->setSubCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubAnnouncement(Announcement $subAnnouncement): self
+    {
+        if ($this->subAnnouncements->removeElement($subAnnouncement)) {
+            // set the owning side to null (unless already changed)
+            if ($subAnnouncement->getSubCategory() === $this) {
+                $subAnnouncement->setSubCategory(null);
             }
         }
 

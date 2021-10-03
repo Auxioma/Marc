@@ -121,6 +121,7 @@ class ProfileType extends AbstractType
                     'readOnly' => $options['isReadOnly']
                 ]
             ])
+            ->add('imgBase64', HiddenType::class, ['mapped' => false,])
             ->add('horaires', HorairesType::class)
             ->add('delivery', DeliveryType::class)
         ;

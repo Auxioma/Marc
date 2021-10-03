@@ -149,7 +149,8 @@
             });
         }
         $(document).on('change', function() {
-            $("#interest").val($("#interest").val().replace(/,/g, '.'));
+            if($("#interest").val() !== undefined)
+                $("#interest").val($("#interest").val().replace(/,/g, '.'));
         });
 
         function mortgageCalc() {

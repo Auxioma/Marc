@@ -35,12 +35,10 @@ class profileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $Profile = $form->getData();
-            $image = $form->get('image')->getData();
+            $image = $form->get('imgBase64')->getData();
+
             if ($image){
-                $fichier = md5(uniqid()).'.'.$image->guessExtension();
-                $image->move(
-                    $this->getParameter('imagelogo'), $fichier
-                );
+                $fichier = self::uploadImageBase64($image);
                 $Profile->setPicture($fichier);
             }
 
@@ -84,5 +82,25 @@ class profileController extends AbstractController
             'form' => $form->createView(),
             'isView' => true
         ]);
+    }
+
+    public function uploadImageBase64($image){
+        $data = $image;
+
+        $image_array_1 = explode(";", $data);
+
+        $image_array_2 = explode(",", $image_array_1[1]);
+
+        $data = base64_decode($image_array_2[1]);
+
+        $uploadDir = $this->getParameter('imagelogo').'/';
+
+        $image_name = 'logo_'. time() . '.png';
+
+        $image_complete_name = $uploadDir . $image_name;
+
+        file_put_contents($image_complete_name, $data);
+
+        return $image_name;
     }
 }

@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
         <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/cropper.css') }}">
         {% block css %}{% endblock %}
     </head>
     <body>
@@ -39,8 +40,9 @@
         <script src="{{ asset('scripts/mmenu.min.js') }}"></script> 
         <script src="{{ asset('scripts/tooltips.min.js') }}"></script> 
         <script src="{{ asset('scripts/typed.js') }}"></script>
+        <script src="{{ asset('scripts/cropper.js') }}"></script>
+        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
         <script src="{{ asset('scripts/custom_jquery.js') }}"></script>
-
         {% block javascript %}{% endblock %}
     </body>
 </html>

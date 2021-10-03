@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}Crée annonce{% endblock %}
 
 {% block body %}
 
@@ -27,6 +27,7 @@
         <!-- Submit Page -->
         <div class="col-md-6">
             <div class="submit-page">
+                {{ form_start(form) }}
                 <!-- Section -->
                 <div class="utf-submit-page-inner-box">
                     <h3>Passez votre annonce en 4 étapes.</h3>
@@ -50,41 +51,39 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h5>Catégorie</h5>
-                                <select class="utf-chosen-select-single-item">
-                                    <option label="blank"></option>
-                                    <option>For Sale</option>
-                                    <option>For Rent</option>
-                                </select>
+                                {{ form_widget(form.Category) }}
                             </div>
 
                             <div class="col-md-6">
                                 <h5>Sous Catégorie</h5>
-                                <select class="utf-chosen-select-single-item">
-                                    <option label="blank"></option>
-                                    <option>For Sale</option>
-                                    <option>For Rent</option>
-                                </select>
+                                {{ form_widget(form.subCategory) }}
+
                             </div>
 
-
+                            <div class="col-md-12">
+                                <h5>Votre promotion en texte</h5>
+                                <div class="select-input disabled-first-option">
+                                    {{ form_widget(form.Title) }}
+                                </div>
+                            </div>
 
                             <div class="col-md-8">
                                 <h5>Votre promotion en texte avec un %</h5>
                                 <div class="select-input disabled-first-option">
-                                    <input type="text" placeholder="Sur tout le magasin" data-unit="0/20">
+                                    {{ form_widget(form.titlediscount) }}
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <h5>Promo</h5>
                                 <div class="select-input disabled-first-option">
-                                    <input type="text" placeholder="Promo" data-unit="%">
+                                    {{ form_widget(form.Discount) }}
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <h5>Petit texte de présentation</h5>
                                 <div class="select-input disabled-first-option">
-                                    <textarea type="text" data-unit="0/20"></textarea>
+                                    {{ form_widget(form.ShortDescription) }}
                                 </div>
                             </div>
                         </div>
@@ -105,10 +104,10 @@
                             </button>
                         </div>
 
-                        <div class="row">
+                        <div class="row margin-bottom-35">
                             <div class="col-md-12">
                                 <div class="select-input disabled-first-option">
-                                    <textarea type="text" data-unit="0/20"></textarea>
+                                    {{ form_widget(form.LongDescription) }}
                                 </div>
                             </div>
                         </div>
@@ -128,10 +127,17 @@
                             <button type="button" class="pos-absolute topb-0 start-100 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">4
                             </button>
                         </div>
-                        <div class="row">
+                        <div class="row margin-bottom-25">
                             <div class="col-md-12">
-                                <input type="file" class="dropzone"/>
+                                <input type="file" class="dropzone" id="annonce_picture"/>
                             </div>
+                            <div id="uploadedPictures" class="">
+                                {% for picture in form.Picture.children %}
+                                    {{ _self.macro_Picture(doc) }}
+                                {% endfor %}
+                            </div>
+
+                            <div id="picturePrototype" data-prototype="{{ _self.macro_Picture(form.Picture.vars.prototype)|e }}"></div>
                         </div>
                         <div class="pos-relative margin-4 margin-bottom-35">
                             <div class="progress" style="height: 2px;">
@@ -152,123 +158,12 @@
                     </div>
                 </div>
 
-               {#
-
-               <!-- Section -->
-                <div class="utf-submit-page-inner-box">
-                    <h3>Property Location</h3>
-                    <div class="content with-padding">
-                        <div class="col-md-6">
-                            <h5>Address</h5>
-                            <input type="text" placeholder="Address">
-                        </div>
-                        <div class="col-md-6">
-                            <h5>City Name</h5>
-                            <input type="text" placeholder="City Name">
-                        </div>
-                        <div class="col-md-6">
-                            <h5>State</h5>
-                            <input type="text" placeholder="State">
-                        </div>
-                        <div class="col-md-6">
-                            <h5>Zip-Code</h5>
-                            <input type="text" placeholder="000000">
-                        </div>
-                    </div>
-                </div>
-                <!-- Section / End -->
-
-                <!-- Section -->
-                <div class="utf-submit-page-inner-box">
-                    <h3>Property Information</h3>
-                    <div class="content with-padding">
-                        <div class="col-md-12">
-                            <h5>Property Description</h5>
-                            <textarea name="summary" cols="20" rows="2" id="summary"></textarea>
-                        </div>
-                        <div class="col-md-4">
-                            <h5>Building Age</h5>
-                            <select class="utf-chosen-select-single-item">
-                                <option label="blank"></option>
-                                <option>0 - 1 Years</option>
-                                <option>0 - 5 Years</option>
-                                <option>0 - 10 Years</option>
-                                <option>0 - 20 Years</option>
-                                <option>0 - 50 Years</option>
-                                <option>50 + Years</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4">
-                            <h5>Bed Rooms</h5>
-                            <select class="utf-chosen-select-single-item">
-                                <option label="blank"></option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4">
-                            <h5>Bath Rooms</h5>
-                            <select class="utf-chosen-select-single-item">
-                                <option label="blank"></option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12">
-                            <h5 class="margin-top-15">Other Features <span>(optional)</span></h5>
-                            <div class="checkboxes in-row margin-bottom-20">
-                                <input id="check-2" type="checkbox" name="check">
-                                <label for="check-2">Air Conditioning</label>
-                                <input id="check-3" type="checkbox" name="check">
-                                <label for="check-3">Swimming Pool</label>
-                                <input id="check-4" type="checkbox" name="check" >
-                                <label for="check-4">Central Heating</label>
-                                <input id="check-5" type="checkbox" name="check">
-                                <label for="check-5">Laundry Room</label>
-                                <input id="check-6" type="checkbox" name="check">
-                                <label for="check-6">Gym</label>
-                                <input id="check-7" type="checkbox" name="check">
-                                <label for="check-7">Alarm</label>
-                                <input id="check-8" type="checkbox" name="check">
-                                <label for="check-8">Window Covering</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Section / End -->
-
-                <!-- Section -->
-                <div class="utf-submit-page-inner-box">
-                    <h3>Property Contact Details</h3>
-                    <div class="content with-padding">
-                        <div class="col-md-4">
-                            <h5>Full Name</h5>
-                            <input type="text" placeholder="Name">
-                        </div>
-                        <div class="col-md-4">
-                            <h5>Email Address</h5>
-                            <input type="text" placeholder="Email Address">
-                        </div>
-                        <div class="col-md-4">
-                            <h5>Phone Number</h5>
-                            <input type="text"  placeholder="Phone Number">
-                        </div>
-                    </div>
-                </div>
-               #}
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="add-new-property.html" class="utf-centered-button button">Submit Property</a>
+                        <button type="submit" class="utf-centered-button button">Suivant</button>
                     </div>
                 </div>
+                {{ form_end(form) }}
             </div>
         </div>
         <div class="col-md-3">
@@ -282,22 +177,22 @@
                         <div class="utf-listing-img-content-item">
                         </div>
                         <div class="utf-listing-carousel-item">
-                            <div><img src="http://via.placeholder.com/260x230" alt=""></div>
+                            <div><img id="vignette-preview-img" src="http://via.placeholder.com/260x230" alt=""></div>
                         </div>
                     </a>
                     <div class="utf-listing-content">
                         <div class="utf-listing-title">
-                            <span class="utf-listing-price">
+                            <span id="prev_adtextual_discount" class="utf-listing-price">
                                     14%
                             </span>
                             <h4>
-                                <a  class="oneline-text" href="">
+                                <a id="prev_adtextual_titlead" class="oneline-text" href="">
                                     Lorem ipsum dolor sit
                                 </a>
                             </h4>
                         </div>
                         <div class="utf-listing-features annoncement">
-                            <p class="threelines-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis comm</p>
+                            <p id="prev_adtextual_shortdescription" class="threelines-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis comm</p>
                         </div>
                         <div class="utf-listing-user-info text-center">
                             <a class="offer"
@@ -308,8 +203,221 @@
                 </div>
 
         </div>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Crop Image Before Upload</h4>
+                    </div>
+                    <div class="modal-body">
 
+                        <div class="row p-2 d-flex justify-content-center align-items-center">
+                            <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-9">
+                                <img src="" id="sample_image" class="crop-image"/>
+                            </div>
+                            <div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+                                <div class="preview crop-image mx-auto " style="overflow: hidden;width: 160px;height: 160px;margin: 10px;border: 1px solid #ff7f04;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+{% endblock %}
+{% macro macro_Picture(picture) %}
+    <div class="pictureEl col-md-3">
+        <img src="_img_" width="100" height="100" />
+        {{ form_widget(picture.imgBase64) }}
+        <a class="deleteMe"><i style="font-size: 18px;" class="fa fa-trash pr-2" aria-hidden="true"></i></a>
+    </div>
+
+{% endmacro %}
+{% block javascript %}
+
+    <script>
+        $(document).ready(function () {
+            var $ = jQuery.noConflict();
+            $('#submit_announcement_Category').change();
+
+            $('#submit_announcement_Title').on('keyup keypress keydown', function(e) {
+                var title = $('#submit_announcement_Title').val();
+                if(title !== "") {
+                    $('#prev_adtextual_titlead').text(title);
+                    $('#submit_announcement_titlediscount').val("");
+                    $('#submit_announcement_Title').attr("required","required");
+                    $('#submit_announcement_titlediscount').removeAttr("required");
+                    $('#submit_announcement_Discount').removeAttr("required");
+                    $('#submit_announcement_titlediscount').attr("disabled","true");
+                    $('#submit_announcement_Discount').val("");
+                    $('#submit_announcement_Discount').attr("disabled","true");
+                    $('#prev_adtextual_discount').fadeOut(1000,function (){});
+                }
+                else {
+                    $('#submit_announcement_titlediscount').removeAttr("disabled");
+                    $('#submit_announcement_Discount').removeAttr("disabled");
+                    $('#prev_adtextual_titlead').text("Lorem ipsum dolor sit");
+                }
+                $('#submit_announcement_Title').prev().text(title.toString().length + "/20");
+            });
+
+            $('#adtextual_titlediscount').on('keyup keypress keydown', function(e) {
+                var title = $('#adtextual_titlediscount').val();
+                if(title !== "") {
+                    $('#prev_adtextual_titlead').text(title);
+                    $('#submit_announcement_Title').val("");
+                    $('#submit_announcement_titlediscount').attr("required","required");
+                    $('#submit_announcement_Discount').attr("required","required");
+                    $('#submit_announcement_Title').attr("disabled","true");
+                    $('#submit_announcement_Title').removeAttr("required");
+                }
+                else
+                {
+                    $('#submit_announcement_Title').removeAttr("disabled");
+                    $('#prev_adtextual_titlead').text("Lorem ipsum dolor sit");
+                }
+                $('#adtextual_titlediscount').prev().text(title.toString().length+"/20");
+
+            });
+            $('#submit_announcement_Discount').on('keyup keypress keydown change', function(e) {
+                var discount = $('#submit_announcement_Discount').val();
+                if(discount !== "") {
+                    if(parseInt(discount) <= 100) {
+                        $('#prev_adtextual_discount').text("-" + discount + "%");
+                        $('#prev_adtextual_discount').fadeIn(1000, function () {});
+                    }
+                }else
+                $('#prev_adtextual_discount').text("-50%");
+
+            });
+
+            $('#submit_announcement_ShortDescription').on('keyup keypress keydown change', function(e) {
+                var text = $('#submit_announcement_ShortDescription').val();
+                if(text !== "")
+                    $('#prev_adtextual_shortdescription').text(text);
+                else
+                    $('#prev_adtextual_shortdescription').text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis comm...");
+
+                $('#span_adtextual_shortdescription').text(text.toString().length+"/100");
+
+            });
+        });
+        $(document).on('change','#submit_announcement_Category',function (){
+        var $ = jQuery.noConflict();
+        var category = $('#submit_announcement_Category').val();
+        var subcategory = $('#submit_announcement_subCategory');
+        subcategory.empty();
+        subcategory.attr('disabled',true);
+        subcategory.data('placeholder', 'Loading ...');
+
+        $.ajax({
+            url: '{{ path('load_subcategory') }}',
+            data: {'category': category},
+            type: 'POST',
+            dataType: 'json',
+                success: function (json) {
+                    subcategory.empty();
+                    subcategory.append('<option value="">Sélectionner une sous catégorie</option>');
+                    if (json.length !== 0) {
+                        $.each(json, function (index, value) {
+                            subcategory.append('<option value="' + value.id + '">' + value.libelle + '</option>');
+                        });
+                    }
+                    subcategory.attr('disabled',false);
+                }
+            });
+        });
+
+
+    var fileCount = '{{ form.Picture|length }}';
+
+    function removeFile(ob)
+    {
+        ob.closest('.pictureEl').remove();
+        fileCount--;
+    }
+    function createPicture(fileCount,img)
+    {
+        var j = jQuery.noConflict();
+        // grab the prototype template
+        var newWidget = j("#picturePrototype").attr('data-prototype');
+        // replace the "__name__" used in the id and name of the prototype
+        newWidget = newWidget.replace(/__name__/g, fileCount);
+        newWidget = newWidget.replace(/_img_/g, img);
+
+        j("#uploadedPictures").append( newWidget );
+
+        //createAddFile(parseInt(fileCount)+1);
+    }
+
+    $(document).ready(function () {
+
+      var crop = jQuery.noConflict();
+      var $modal = crop('#modal');
+      var image = document.getElementById('sample_image');
+      var cropper;
+
+      crop('#annonce_picture').change(function (event) {
+        var files = event.target.files;
+
+        var done = function (url) {
+          image.src = url;
+          $modal.modal('show');
+        };
+
+        if (files && files.length > 0) {
+          reader = new FileReader();
+          reader.onload = function (event) {
+            done(reader.result);
+          };
+          reader.readAsDataURL(files[0]);
+        }
+      });
+
+      $modal.on('shown.bs.modal', function () {
+        cropper = new Cropper(image, {
+          aspectRatio: 1,
+          viewMode: 2,
+          preview: '.preview'
+        });
+      }).on('hidden.bs.modal', function () {
+        cropper.destroy();
+        cropper = null;
+      });
+
+      crop('#crop').click(function () {
+
+        $modal.modal('hide');
+        canvas = cropper.getCroppedCanvas({
+          width: 400,
+          height: 400
+        });
+
+        canvas.toBlob(function (blob) {
+          url = URL.createObjectURL(blob);
+          var reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = function () {
+            var base64data = reader.result;
+            createPicture(parseInt(fileCount)+1,base64data);
+            crop('#submit_announcement_Picture_'+fileCount+'_imgBase64').val(base64data);
+            if (fileCount == 0)
+                crop('#vignette-preview-img').attr('src',base64data);
+            fileCount ++;
+          };
+        });
+
+      });
+
+    });
+
+
+    </script>
 {% endblock %}

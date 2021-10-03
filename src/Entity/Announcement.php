@@ -26,6 +26,11 @@ class Announcement
     private $Title;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $titlediscount;
+
+    /**
      * @ORM\Column(type="string", length=3, nullable=true)
      */
     private $Discount;
@@ -103,6 +108,21 @@ class Announcement
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $YouTube;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="subAnnouncements")
+     */
+    private $subCategory;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=PackageAdTextual::class, inversedBy="Announcement")
+     */
+    private $packageAdTextual;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $options;
 
     public function __construct()
     {
@@ -311,4 +331,61 @@ class Announcement
 
         return $this;
     }
+
+    public function getSubCategory(): ?Category
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(?Category $subCategory): self
+    {
+        $this->subCategory = $subCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitlediscount()
+    {
+        return $this->titlediscount;
+    }
+
+    /**
+     * @param mixed $titlediscount
+     */
+    public function setTitlediscount($titlediscount): void
+    {
+        $this->titlediscount = $titlediscount;
+    }
+
+    public function getPackageAdTextual(): ?PackageAdTextual
+    {
+        return $this->packageAdTextual;
+    }
+
+    public function setPackageAdTextual(?PackageAdTextual $packageAdTextual): self
+    {
+        $this->packageAdTextual = $packageAdTextual;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param mixed $options
+     */
+    public function setOptions($options): void
+    {
+        $this->options = $options;
+    }
+
 }

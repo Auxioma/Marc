@@ -49,7 +49,8 @@
     <!-- Widget -->
     <div class="col-md-3">
       <div class="margin-bottom-20">
-        <div class="utf-edit-profile-photo-area"> <img id="imgprofile" src="{{ asset('img/logo/') }}{{ app.user.Picture ? app.user.Picture : 'profile.png' }}" alt="">
+        <div class="utf-edit-profile-photo-area">
+          <img id="imgprofile" src="{{ asset('img/logo/') }}{{ app.user.Picture ? app.user.Picture : 'profile.png' }}" alt="">
           <div class="utf-change-photo-btn-item">
             <div class="utf-user-photo-upload">
               <span>
@@ -57,6 +58,7 @@
                 {% trans %}Téléchargement du logo{% endtrans %}
               </span>
               {{ form_widget(form.image) }}
+              {{ form_widget(form.imgBase64) }}
             </div>
           </div>
         </div>
@@ -366,6 +368,33 @@
   </div>
 
   {{ form_end(form) }}
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Crop Image Before Upload</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="row p-2 d-flex justify-content-center align-items-center">
+              <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-9">
+                <img src="" id="sample_image" class="crop-image"/>
+              </div>
+              <div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+                <div class="preview crop-image mx-auto " style="overflow: hidden;width: 160px;height: 160px;margin: 10px;border: 1px solid #ff7f04;"></div>
+              </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="crop">Crop</button>
+        </div>
+      </div>
+    </div>
+  </div>
   {% endblock %}
 
 
@@ -479,6 +508,62 @@
     $(document).on('change','.parentUrlPartner .s-check',function(){
       InitProfileLinks();
     });
+    $(document).ready(function () {
 
+      var crop = jQuery.noConflict();
+      var $modal = crop('#modal');
+      var image = document.getElementById('sample_image');
+      var cropper;
+
+      crop('#profile_image').change(function (event) {
+        var files = event.target.files;
+
+        var done = function (url) {
+          image.src = url;
+          $modal.modal('show');
+        };
+
+        if (files && files.length > 0) {
+          reader = new FileReader();
+          reader.onload = function (event) {
+            done(reader.result);
+          };
+          reader.readAsDataURL(files[0]);
+        }
+      });
+
+      $modal.on('shown.bs.modal', function () {
+        cropper = new Cropper(image, {
+          aspectRatio: 1,
+          viewMode: 2,
+          preview: '.preview'
+        });
+      }).on('hidden.bs.modal', function () {
+        cropper.destroy();
+        cropper = null;
+      });
+
+      crop('#crop').click(function () {
+
+        $modal.modal('hide');
+        canvas = cropper.getCroppedCanvas({
+          width: 400,
+          height: 400
+        });
+
+        canvas.toBlob(function (blob) {
+          url = URL.createObjectURL(blob);
+          var reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = function () {
+            var base64data = reader.result;
+            crop('#imgprofile').attr('src',base64data);
+            crop('#profile_imgBase64').val(base64data)
+          };
+        });
+
+      });
+
+    });
   </script>
 {% endblock %}
