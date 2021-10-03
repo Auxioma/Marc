@@ -27,6 +27,16 @@ class ReplacementAdvertising
      */
     private $position;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $TitlePossition;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Size;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +62,30 @@ class ReplacementAdvertising
     public function setPosition(string $position): self
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function getTitlePossition(): ?string
+    {
+        return $this->TitlePossition;
+    }
+
+    public function setTitlePossition(string $TitlePossition): self
+    {
+        $this->TitlePossition = $TitlePossition;
+
+        return $this;
+    }
+
+    public function getSize(): ?string
+    {
+        return $this->Size;
+    }
+
+    public function setSize(string $Size): self
+    {
+        $this->Size = $Size;
 
         return $this;
     }
