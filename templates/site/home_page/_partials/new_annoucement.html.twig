@@ -14,11 +14,11 @@
             <div class="utf-listing-item" style="border: 1px solid #b9b9b9;">
               <a href="{{ path('site_product', {'idcat':NewOffert.Category.slug, 'id':NewOffert.Id, 'slug':NewOffert.Slug}) }}" class="utf-smt-listing-img-container">
                 <div class="utf-listing-badges-item">
-                  {% if NewOffert.Offert == '0' %}
+                  {% if NewOffert.options == 0 %}
                     <span class="featured">GOLD</span>
                   {% endif %}
-                  {% if NewOffert.Offert == '1' %}
-                    <span class="featured">GOLD</span>
+                  {% if NewOffert.options == 1 %}
+                    <span class="featured">SILVER</span>
                   {% endif %}
                 </div>
                 <div class="utf-listing-img-content-item"></div>

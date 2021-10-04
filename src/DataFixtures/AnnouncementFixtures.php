@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\PackageAdTextual;
 use DateInterval;
 use App\Entity\Announcement;
 use App\Entity\Picture;
@@ -15,6 +16,16 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     { 
         $faker = Faker\Factory::create('fr_CH');
+
+
+        for($nbPack = 1; $nbPack <= 8; $nbPack++){
+            $pack = new PackageAdTextual();
+            $pack->setNbrDays(rand(4,16));
+            $pack->setPricePerDay(rand(5,14));
+            $pack->setType(rand(1,2));
+            $pack->setName('Custom pack'. rand(1,5));
+            $manager->persist($pack);
+        }
 
         $idcat = 1;
         for($NbAdversing = 1; $NbAdversing <= 900; $NbAdversing++){
@@ -47,7 +58,7 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
             $annoncement->setStartAt($from);
             $annoncement->setEndAt($to);
             $annoncement->setIsVerified('1');
-            $annoncement->setOffert(rand(0,2));
+            $annoncement->setOptions(rand(0,2));
 
             for($photo = 1; $photo <= rand(1,6); $photo++){
 
