@@ -4,10 +4,12 @@ namespace App;
 
 class datatrans
 {
-    public $apiUrl;
+
+    private $apiUrl;
     private $basicAuth;
     private $currency;
 
+    const payUrl = "https://pay.sandbox.datatrans.com/v1/start/";
     const transactionsPath = "transactions";
     const paymentMethods = ["VIS","ECA","PAP","TWI"];
 

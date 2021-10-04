@@ -91,7 +91,7 @@ class SubmitAnnouncementController extends AbstractController
                     dd('error');
                 }else{
                    $transactionId = $response['transactionId'];
-                   return new RedirectResponse($datatrans->apiUrl.'start/'.$transactionId);
+                   return new RedirectResponse($datatrans::payUrl.$transactionId);
                 }
 
             }
