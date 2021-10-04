@@ -38,6 +38,12 @@ class Announcement
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $promoTitle;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $ShortDescription;
 
     /**
@@ -46,7 +52,7 @@ class Announcement
     private $LongDescription;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="announcement", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="announcement", orphanRemoval=true ,cascade={"persist"})
      */
     private $Picture;
 
@@ -68,29 +74,29 @@ class Announcement
      * @var \DateTime $created_at
      * 
      * @Gedmo\Timestampable(on="update") 
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $UpdatedAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $StartAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $EndAt;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $IsVerified;
+    private $IsVerified = false;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      */
-    private $Offert;
+    private $IsPaid = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="Announcement")
@@ -120,9 +126,14 @@ class Announcement
     private $packageAdTextual;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $options;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $montantTotal = 0;
 
     public function __construct()
     {
@@ -284,18 +295,6 @@ class Announcement
         return $this;
     }
 
-    public function getOffert(): ?string
-    {
-        return $this->Offert;
-    }
-
-    public function setOffert(string $Offert): self
-    {
-        $this->Offert = $Offert;
-
-        return $this;
-    }
-
     public function getUsers(): ?Users
     {
         return $this->users;
@@ -386,6 +385,54 @@ class Announcement
     public function setOptions($options): void
     {
         $this->options = $options;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPromoTitle()
+    {
+        return $this->promoTitle;
+    }
+
+    /**
+     * @param mixed $promoTitle
+     */
+    public function setPromoTitle($promoTitle): void
+    {
+        $this->promoTitle = $promoTitle;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsPaid(): bool
+    {
+        return $this->IsPaid;
+    }
+
+    /**
+     * @param bool $IsPaid
+     */
+    public function setIsPaid(bool $IsPaid): void
+    {
+        $this->IsPaid = $IsPaid;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMontantTotal(): int
+    {
+        return $this->montantTotal;
+    }
+
+    /**
+     * @param int $montantTotal
+     */
+    public function setMontantTotal(int $montantTotal): void
+    {
+        $this->montantTotal = $montantTotal;
     }
 
 }

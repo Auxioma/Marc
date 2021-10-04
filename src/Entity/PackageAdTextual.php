@@ -34,7 +34,6 @@ class PackageAdTextual
      */
     private $pricePerDay;
 
-
     /**
      * @ORM\Column(type="integer")
      */

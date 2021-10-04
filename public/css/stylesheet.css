@@ -9093,6 +9093,7 @@ img.mfp-img {
 	border: 2px solid rgba(0, 0, 0, 0.3);
 	background: white;
 	padding: 20px 20px;
+	opacity: 0;
 }
 .dropzone.dz-clickable {
 	cursor: pointer;
@@ -9350,11 +9351,13 @@ img.mfp-img {
 	margin-bottom: 15px;
 	display: inline-block;
 	width: 100%;
+	opacity: 0;
 }
 .dropzone:hover {
 	border: 2px dashed #e33324;
 	background: #fff;
 	transition: all 0.35s linear;
+	opacity: 0;
 }
 .dropzone:before {
 	position: absolute;
@@ -9389,6 +9392,14 @@ img.mfp-img {
 	display: block;
 	font-size: 32px;
 	margin-bottom: 15px;
+}
+.dropzone-container {
+	position: relative;
+	display: flex;
+	min-height: 100px;
+	border: 2px dashed #bbb;
+	align-items: center;
+	padding: 20px 10px;
 }
 /* ---------------------------------- */
 /* Chosen Plugin
@@ -15351,6 +15362,12 @@ added styles
 		top: -36px;
 		right: 30px;
 	}
+	.promoTitle{
+		display: block !important;
+	}
+	.promoTitle .radioButtons {
+		margin-top: 10px;
+	}
 }
 
 
@@ -15755,7 +15772,7 @@ added styles
 	pointer-events: none;
 	opacity: 0.65;
 }
-button:disabled {
+button:disabled,input:disabled {
 	 pointer-events: none;
 	 opacity: 0.65;
  }
@@ -15861,4 +15878,11 @@ button:disabled {
 	position: absolute;
 	right: 35px;
 	color: #e33324;
+}
+
+.promoTitle{
+	display: flex;
+}
+.promoTitle .radioButtons{
+    height: 10px !important;
 }

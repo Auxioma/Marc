@@ -13,7 +13,7 @@ class PictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imgBase64', HiddenType::class, ['mapped' => false,])
+            ->add('imgBase64', HiddenType::class)
         ;
     }
 

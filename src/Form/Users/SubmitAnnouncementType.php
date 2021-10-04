@@ -11,6 +11,7 @@ use App\Repository\PriceAnnouncementRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -88,6 +89,18 @@ class SubmitAnnouncementType extends AbstractType
                     'uiColor' => '#ffffff',
                     //...
                 )]
+            )
+
+            ->add('promoTitle', ChoiceType::class,
+                [
+                    'choices' => ['Promo' => "Promo", 'Option' => 'Option','Offre'=>'Offre'],
+                    'expanded' => true,
+                    'label' => false,
+                    'data' => "Promo",
+                    'attr' => [
+                        'class' => 'radioButtons'
+                    ],
+                ]
             )
 
             ->add('Picture',CollectionType::class, array(
