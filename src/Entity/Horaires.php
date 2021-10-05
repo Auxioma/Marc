@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HorairesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass=HorairesRepository::class)

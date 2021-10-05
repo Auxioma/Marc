@@ -31,8 +31,8 @@ class AnnouncementRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->andWhere('a.IsVerified = :val')
             ->setParameter('val', '1')
-            ->andWhere('a.Offert = :Offert')
-            ->setParameter('Offert', '1') // 1 the VIP offert
+            ->andWhere('a.options = :Offert')
+            ->setParameter('Offert', 1) // 1 the VIP offert
             ->andWhere(':now BETWEEN a.StartAt AND a.EndAt')
             ->setParameter('now', new \DateTime('now'))
             ->setMaxResults(50)
@@ -57,21 +57,21 @@ class AnnouncementRepository extends ServiceEntityRepository
         $db->setParameter('Category', $id);
 
         if ($filter > 2) {
-            $db->andWhere('a.Offert = :offert');
-            $db->setParameter('offert', '2') ; 
+            $db->andWhere('a.options = :offert');
+            $db->setParameter('offert', 2) ;
         } 
         
         if ($filter == '1' ) {
-            $db->andWhere('a.Offert = :offert');
-            $db->setParameter('offert', '0') ; 
+            $db->andWhere('a.options = :offert');
+            $db->setParameter('offert', 0) ;
         }
         if ($filter == 2 ) {
-            $db->andWhere('a.Offert = :offert');
-            $db->setParameter('offert', '1') ; 
+            $db->andWhere('a.options = :offert');
+            $db->setParameter('offert', 1) ;
         }              
         if ($filter == 0 ) {
-            $db->andWhere('a.Offert = :offert');
-            $db->setParameter('offert', '0') ; 
+            $db->andWhere('a.options = :offert');
+            $db->setParameter('offert', 0) ;
         }
 
         return $db;

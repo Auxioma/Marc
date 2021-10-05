@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <h5>Votre promotion en texte</h5>
+                                <h5 class="promoTitle">Votre promotion en texte <span class="promotitle">{{ form_widget(form.promoTitle) }}</span></h5>
                                 <div class="select-input disabled-first-option">
                                     {{ form_widget(form.Title) }}
                                 </div>
@@ -84,6 +84,7 @@
                                 <h5>Petit texte de présentation</h5>
                                 <div class="select-input disabled-first-option">
                                     {{ form_widget(form.ShortDescription) }}
+                                    <span id="span_adtextual_shortdescription" style="position: absolute;bottom: 4px;right: 10px;">0/100</span>
                                 </div>
                             </div>
                         </div>
@@ -127,8 +128,8 @@
                             <button type="button" class="pos-absolute topb-0 start-100 translate-middle btnz btn-sm btn-secondary rounded-pill text-white" style="width: 3rem; height:3rem;">4
                             </button>
                         </div>
-                        <div class="row margin-bottom-25">
-                            <div class="col-md-12">
+                        <div class="row margin-bottom-25" style="padding: 15px;">
+                            <div class="col-md-12 dropzone-container">
                                 <input type="file" class="dropzone" id="annonce_picture"/>
                             </div>
                             <div id="uploadedPictures" class="">
@@ -232,14 +233,16 @@
 </div>
 
 {% endblock %}
+
 {% macro macro_Picture(picture) %}
-    <div class="pictureEl col-md-3">
+    <div class="pictureEl col-md-3 margin-top-10">
         <img src="_img_" width="100" height="100" />
         {{ form_widget(picture.imgBase64) }}
         <a class="deleteMe"><i style="font-size: 18px;" class="fa fa-trash pr-2" aria-hidden="true"></i></a>
     </div>
 
 {% endmacro %}
+
 {% block javascript %}
 
     <script>
@@ -247,6 +250,10 @@
             var $ = jQuery.noConflict();
             $('#submit_announcement_Category').change();
 
+            $("input[name='submit_announcement[promoTitle]").on('change', function(){
+                var prom = $("input[name='submit_announcement[promoTitle]']:checked").val();
+                $('#prev_adtextual_discount').text(prom);
+            });
             $('#submit_announcement_Title').on('keyup keypress keydown', function(e) {
                 var title = $('#submit_announcement_Title').val();
                 if(title !== "") {
@@ -258,7 +265,10 @@
                     $('#submit_announcement_titlediscount').attr("disabled","true");
                     $('#submit_announcement_Discount').val("");
                     $('#submit_announcement_Discount').attr("disabled","true");
-                    $('#prev_adtextual_discount').fadeOut(1000,function (){});
+                    //$('#prev_adtextual_discount').fadeOut(1000,function (){});
+                    var prom = $("input[name='submit_announcement[promoTitle]']:checked").val();
+                    $('#prev_adtextual_discount').text(prom);
+
                 }
                 else {
                     $('#submit_announcement_titlediscount').removeAttr("disabled");
@@ -268,8 +278,8 @@
                 $('#submit_announcement_Title').prev().text(title.toString().length + "/20");
             });
 
-            $('#adtextual_titlediscount').on('keyup keypress keydown', function(e) {
-                var title = $('#adtextual_titlediscount').val();
+            $('#submit_announcement_titlediscount').on('keyup keypress keydown', function(e) {
+                var title = $('#submit_announcement_titlediscount').val();
                 if(title !== "") {
                     $('#prev_adtextual_titlead').text(title);
                     $('#submit_announcement_Title').val("");
@@ -277,10 +287,16 @@
                     $('#submit_announcement_Discount').attr("required","required");
                     $('#submit_announcement_Title').attr("disabled","true");
                     $('#submit_announcement_Title').removeAttr("required");
+                    $('.promotitle').find('input').each(function(){
+                        $(this).attr("disabled","true");
+                    })
                 }
                 else
                 {
                     $('#submit_announcement_Title').removeAttr("disabled");
+                    $('.promotitle').find('input').each(function(){
+                        $(this).removeAttr("disabled");
+                    })
                     $('#prev_adtextual_titlead').text("Lorem ipsum dolor sit");
                 }
                 $('#adtextual_titlediscount').prev().text(title.toString().length+"/20");
@@ -406,7 +422,7 @@
           reader.readAsDataURL(blob);
           reader.onloadend = function () {
             var base64data = reader.result;
-            createPicture(parseInt(fileCount)+1,base64data);
+            createPicture(parseInt(fileCount),base64data);
             crop('#submit_announcement_Picture_'+fileCount+'_imgBase64').val(base64data);
             if (fileCount == 0)
                 crop('#vignette-preview-img').attr('src',base64data);
@@ -417,7 +433,10 @@
       });
 
     });
-
+    $(document).on('click','.deleteMe',function (){
+        var j = jQuery.noConflict();
+        j(this).closest('.pictureEl').remove();
+    });
 
     </script>
 {% endblock %}

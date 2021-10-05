@@ -33,6 +33,11 @@ class Picture
     private $Alt;
 
     /**
+     * @var
+     */
+    private $imgBase64;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Announcement::class, inversedBy="Picture")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -87,7 +92,23 @@ class Picture
     public function setAnnouncement(?Announcement $announcement): self
     {
         $this->announcement = $announcement;
-
+        $announcement->addPicture($this);
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgBase64()
+    {
+        return $this->imgBase64;
+    }
+
+    /**
+     * @param mixed $imgBase64
+     */
+    public function setImgBase64($imgBase64): void
+    {
+        $this->imgBase64 = $imgBase64;
     }
 }

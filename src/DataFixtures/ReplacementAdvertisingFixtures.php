@@ -16,7 +16,8 @@ class ReplacementAdvertisingFixtures extends Fixture
             $ReplacementAdvertising = new ReplacementAdvertising();
             $ReplacementAdvertising->setPicture('1.jpg');
             $ReplacementAdvertising->setPosition($NbAdversing);
-
+            $ReplacementAdvertising->setSize("200X200");
+            $ReplacementAdvertising->setTitlePossition('test');
             $manager->persist($ReplacementAdvertising);
 
         }

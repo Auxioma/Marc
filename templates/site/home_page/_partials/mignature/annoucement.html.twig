@@ -3,10 +3,10 @@
         <a href="{{ path('site_product', {'idcat':PreniumOffert.Category.slug, 'id':PreniumOffert.Id, 'slug':PreniumOffert.Slug}) }}"
             class="utf-smt-listing-img-container">
             <div class="utf-listing-badges-item">
-                {% if PreniumOffert.Offert == '0' %}
+                {% if PreniumOffert.options == 0 %}
                 <span class="featured">GOLD</span>
                 {% endif %}
-                {% if PreniumOffert.Offert == '1' %}
+                {% if PreniumOffert.options == 1 %}
                 <span class="featured">SILVER</span>
                 {% endif %}
             </div>

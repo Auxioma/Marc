@@ -6,6 +6,7 @@ use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -51,7 +52,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $PhoneNumber;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean",nullable=true)
      */
     private $afficheTelephone;
 
@@ -76,7 +77,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $FirstName;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $civilite;
 
@@ -153,6 +154,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=Horaires::class, cascade={"persist", "remove"})
+     * @JoinColumn(onDelete="SET NULL")
      */
     private $horaires;
 

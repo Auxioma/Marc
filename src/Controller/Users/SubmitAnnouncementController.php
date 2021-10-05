@@ -3,20 +3,19 @@
 namespace App\Controller\Users;
 
 
+use App\datatrans;
 use App\Entity\TempPicture;
 use App\Entity\Announcement;
 use App\Form\Users\SubmitAnnouncementType;
 use App\Repository\CategoryRepository;
 use App\Repository\PackageAdTextualRepository;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
- * @Route("/apqapqa")
- */
 class SubmitAnnouncementController extends AbstractController
 {
     /**
@@ -24,15 +23,26 @@ class SubmitAnnouncementController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $Announcement = new Announcement();
 
+        $Announcement = new Announcement();
         $form = $this->createForm(SubmitAnnouncementType::class, $Announcement);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $unique = 'createdAnnonce'. uniqid();
-            $session = $this->get('session');
-            $session->set($unique,$Announcement);
-            return $this->redirectToRoute('users_submit_announcement_finalStep',['uuid'=>$unique]);
+            foreach ($Announcement->getPicture() as $k => $pic){
+                $base = $pic->getImgBase64();
+                if ($base){
+                    $name = self::uploadImageBase64($base);
+                    $pic->setName($name);
+                    $pic->setAlt('annonce');
+                    $pic->setPosition($k);
+                }
+            }
+            $Announcement->setCreatedAt(new \DateTime());
+            $Announcement->setUsers($this->getUser());
+            $this->getDoctrine()->getManager()->persist($Announcement);
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('users_submit_announcement_finalStep',['id'=>$Announcement->getId()]);
         }
 
         return $this->render('users/submit_announcement/index.html.twig', [
@@ -42,13 +52,54 @@ class SubmitAnnouncementController extends AbstractController
     }
 
     /**
-     * @Route("/users/announcement/finalStep/{uuid}", name="users_submit_announcement_finalStep")
+     * @Route("/users/announcement/finalStep/{id}", name="users_submit_announcement_finalStep")
      */
-    public function finalStep(Request $request,PackageAdTextualRepository $repPack,$uuid): Response
+    public function finalStep(Request $request,PackageAdTextualRepository $repPack,datatrans $datatrans,$id)
     {
-        $session = $this->get('session');
-        $Announcement = $session->get($uuid);
+        $Announcement = $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id);
+        if ($request->isMethod('POST')){
 
+            $proceedPaiment = false;
+            if (isset($_POST['GOLD'])) {
+                $pack = $repPack->findOneBy(['id'=>$request->request->get('packGold')]);
+                $Announcement->setMontantTotal($pack->getNbrDays()*$pack->getPricePerDay());
+                $Announcement->setPackageAdTextual($pack);
+                $Announcement->setOptions(1);
+                $proceedPaiment = true;
+            }
+            if (isset($_POST['PREMIUM'])) {
+                $pack = $repPack->findOneBy(['id'=>$request->request->get('packPremium')]);
+                $Announcement->setMontantTotal($pack->getNbrDays()*$pack->getPricePerDay());
+                $Announcement->setPackageAdTextual($pack);
+                $Announcement->setOptions(2);
+                $proceedPaiment = true;
+
+            }
+            if (!isset($_POST['PREMIUM']) and !isset($_POST['GOLD'])){
+                $Announcement->setIsPaid(true);
+                $Announcement->setMontantTotal(0);
+            }
+            if ($proceedPaiment){
+
+                $successPath = "https://zimboo.ch/paiement/success?annonceId=".$Announcement->getId();
+                $cancelPath = "https://zimboo.ch/paiement/error?annonceId=".$Announcement->getId();
+                $errorPath = "https://zimboo.ch/paiement/cancel?annonceId=".$Announcement->getId();
+
+                $montant = $Announcement->getMontantTotal()*100;
+
+                $response = $datatrans->CreateTransaction("zimboo-".$Announcement->getId(),$montant,$successPath,$cancelPath,$errorPath);
+
+                if(isset($response['error'])){
+                    dd('error');
+                }else{
+                   $transactionId = $response['transactionId'];
+                   return new RedirectResponse($datatrans::payUrl.$transactionId);
+                }
+
+            }
+
+            return$this->redirectToRoute('users_my_history');
+        }
 
         $packsGold = $repPack->findBytypeAsc(1);
         $packsPremium = $repPack->findBytypeAsc(2);
@@ -63,33 +114,59 @@ class SubmitAnnouncementController extends AbstractController
     }
 
     /**
-     * @Route("/users/submit/api", name="api_users_submit_announcement_pictures")
+     * @Route("/paiement/success", name="users_submit_announcement_success")
      */
-    public function ApiPictureAnnoucement(Request $request) 
+    public function paiement_success(Request $request): Response
     {
-        $temp = new TempPicture();
-        $em = $this->getDoctrine()->getManager();
+        $id = $request->get('annonceId');
+        $Announcement = $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id);
+        dump('good news!');
+        $Announcement->setIsPaid(true);
+        dd($Announcement);
+    }
 
-        $session_user = $this->getUser()->getId();
+    /**
+     * @Route("/paiement/error", name="users_submit_announcement_error")
+     */
+    public function paiement_error(Request $request): Response
+    {
+        $id = $request->get('annonceId');
+        $Announcement = $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id);
+        dump('bad news! paiement failed');
+        $Announcement->setIsPaid(false);
+        dd($Announcement);
+    }
 
-        $output = array('uploaded' => false);
+    /**
+     * @Route("/paiement/cancel", name="users_submit_announcement_cancel")
+     */
+    public function paiement_cancel(Request $request): Response
+    {
+        $id = $request->get('annonceId');
+        $Announcement = $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id);
+        dump('bad news! paiement cancled');
+        $Announcement->setIsPaid(false);
+        dd($Announcement);
+    }
 
-        $file = $request->files->get('file');
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+    public function uploadImageBase64($image){
+        $data = $image;
 
-        $file->move(
-            $this->getParameter('announcement'), $fileName
-        );
+        $image_array_1 = explode(";", $data);
 
-        $temp->setUsers($session_user);
-        $temp->setName($fileName);
-        $em->persist($temp);
-        $em->flush();
+        $image_array_2 = explode(",", $image_array_1[1]);
 
-        $output['uploaded'] = true;
-        $output['fileName'] = $fileName;
+        $data = base64_decode($image_array_2[1]);
 
-        return new JsonResponse($output);
+        $uploadDir = $this->getParameter('announcement').'/';
+
+        $image_name = 'annonce_'. time() . '.png';
+
+        $image_complete_name = $uploadDir . $image_name;
+
+        file_put_contents($image_complete_name, $data);
+
+        return $image_name;
     }
 
 
