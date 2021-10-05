@@ -1,0 +1,149 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Hello AdminCategoryController!{% endblock %}
+
+{% block body %}
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="toolbar" id="kt_toolbar">
+
+        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Tables</h1>
+
+                <span class="h-20px border-gray-200 border-start mx-4"></span>
+
+                <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+
+                    <li class="breadcrumb-item text-muted">
+                        <a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-200 w-5px h-2px"></span>
+                    </li>
+
+                    <li class="breadcrumb-item text-muted">Widgets</li>
+
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-200 w-5px h-2px"></span>
+                    </li>
+
+                    <li class="breadcrumb-item text-dark">Tables</li>
+
+                </ul>
+
+            </div>
+
+            <div class="d-flex align-items-center py-1">
+                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app"
+                    id="kt_toolbar_primary_button">Create</a>
+         
+            </div>
+       
+        </div>
+   
+    </div>
+
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+
+        <div id="kt_content_container" class="container-xxl">
+            <div class="card mb-5 mb-xl-8">
+
+                <div class="card-header border-0 pt-5">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label fw-bolder fs-3 mb-1">Catégories</span>
+
+                    </h3>
+                    <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
+                        {% if subcategory is defined %}
+                        <a href="{{ path('admin_admin_category_createSubcategory', {'id': id}) }}"
+                            class="btn btn-sm btn-light btn-active-primary">
+                            {% else %}
+                            <a href="{{ path('admin_admin_category_createcategory') }}"
+                                class="btn btn-sm btn-light btn-active-primary">
+                                {% endif %}
+                               
+                                <span class="svg-icon svg-icon-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
+                                            transform="rotate(-90 11.364 20.364)" fill="black" />
+                                        <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+                                    </svg>
+                                </span>
+                                Ajouter une catégorie principal
+                            </a>
+                    </div>
+                </div>
+
+                <div class="card-body py-3">
+               
+                    <div class="table-responsive">
+          
+                        <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                      
+                            <thead>
+                                <tr class="fw-bolder text-muted">
+                                    <th class="min-w-150px">Titre</th>
+                                    <th class="min-w-140px">NbJours</th>
+                                    <th class="min-w-120px">Prix</th>
+                                    <th class="min-w-100px text-end"></th>
+                                </tr>
+                            </thead>
+
+                            {{ form_start(form) }}
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex justify-content-start flex-column">
+                                                {{ form_row(form.name, { 'attr': {'value': Update_Catalog_Annoncement.name } } ) }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex justify-content-start flex-column">
+                                                {{ form_row(form.nbrDays, { 'attr': {'value': Update_Catalog_Annoncement.nbrDays } } ) }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex justify-content-start flex-column">
+                                                {{ form_row(form.pricePerDay, { 'attr': {'value': Update_Catalog_Annoncement.pricePerDay } } ) }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="text-end">
+                                    </td>
+                                    <td>
+                                        {{ form_row(form.submit) }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                            {{ form_end(form) }}
+                         
+                        </table>
+                   
+                    </div>
+                   
+                </div>
+             
+            </div>
+
+        </div>
+      
+    </div>
+
+</div>
+
+{% endblock %}
