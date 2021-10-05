@@ -80,10 +80,12 @@ class SubmitAnnouncementController extends AbstractController
                 $Announcement->setMontantTotal(0);
             }
             if ($proceedPaiment){
+
                 $successPath = "https://zimboo.ch/paiement/success?annonceId=".$Announcement->getId();
                 $cancelPath = "https://zimboo.ch/paiement/error?annonceId=".$Announcement->getId();
                 $errorPath = "https://zimboo.ch/paiement/cancel?annonceId=".$Announcement->getId();
-                $montant = $Announcement->getMontantTotal();
+
+                $montant = $Announcement->getMontantTotal()*100;
 
                 $response = $datatrans->CreateTransaction("zimboo-".$Announcement->getId(),$montant,$successPath,$cancelPath,$errorPath);
 

@@ -43,6 +43,9 @@
         <script src="{{ asset('scripts/cropper.js') }}"></script>
         <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
         <script src="{{ asset('scripts/custom_jquery.js') }}"></script>
+        <script>
+            $ = jQuery.noConflict();
+        </script>
         {% block javascript %}{% endblock %}
     </body>
 </html>
