@@ -69,8 +69,8 @@
 
                     </h3>
                     <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-                        {% if subcategory is defined %}
-                        <a href="{{ path('admin_admin_category_createSubcategory', {'id': id}) }}"
+                        {% if view is defined %}
+                        <a href="{{ path('admin_admin_catalog_announcement_new', {'id': id}) }}"
                             class="btn btn-sm btn-light btn-active-primary">
                             {% else %}
                             <a href="{{ path('admin_admin_category_createcategory') }}"

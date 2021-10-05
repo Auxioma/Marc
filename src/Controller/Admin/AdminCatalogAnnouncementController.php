@@ -30,8 +30,9 @@ class AdminCatalogAnnouncementController extends AbstractController
         $ViewPack  = $entityManager->getRepository(PackageAdTextual::class)->findBy(  array('type' => $id)  );
         
         return $this->render('admin/admin_catalog_announcement/view_package.html.twig', [
-            'controller_name' => 'AdminCatalogAnnouncementController',
+            'view' => 'view',
             'ViewPack' => $ViewPack,
+            'id' => $id,
 
         ]);
     }
@@ -76,6 +77,38 @@ class AdminCatalogAnnouncementController extends AbstractController
             'controller_name' => 'AdminCatalogAnnouncementController',
             'form' => $view->createView(),
             'Update_Catalog_Annoncement' => $Update_Catalog_Annoncement,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/admin/catalog/announcement/new/{id}", name="admin_admin_catalog_announcement_new")
+     */
+    public function new_catalog_annoncement($id, Request $request): Response
+    {
+        $view = new PackageAdTextual();
+        $view = $this->createForm(AdminCatalogAnnouncementType::class, $view);
+        $view->handleRequest($request);
+
+        if ($view->isSubmitted() && $view->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $updatecategory = new PackageAdTextual();
+
+            $updatecategory->setName($view->get('name')->getData());
+            $updatecategory->setNbrDays($view->get('nbrDays')->getData());
+            $updatecategory->setPricePerDay($view->get('pricePerDay')->getData());
+            $updatecategory->setType($id);
+
+            $entityManager->persist($updatecategory);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_admin_catalog_announcement');
+
+        }
+        
+        return $this->render('admin/admin_catalog_announcement/new_package.html.twig', [
+            'controller_name' => 'AdminCatalogAnnouncementController',
+            'form' => $view->createView(),
         ]);
     }
 
