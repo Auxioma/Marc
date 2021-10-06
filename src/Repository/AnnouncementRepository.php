@@ -86,6 +86,7 @@ class AnnouncementRepository extends ServiceEntityRepository
         $db->setParameter('Category', $id);                 
         return $db;
     }
+
     /**
      * @return Announcement[] Returns an array of Announcement objects
      */
@@ -99,4 +100,34 @@ class AnnouncementRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function ViewAnnoncementAdminForValidation()
+    {
+        return   $this->createQueryBuilder('a')
+            ->andWhere('a.IsVerified = :val')
+            ->setParameter('val', '0')
+            ->setMaxResults(10)                
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function WidgetDashBoardCAAnnonce($P1D)
+    {
+        return   $this->createQueryBuilder('a')
+            ->andWhere('a.IsVerified = :val')
+            ->setParameter('val', '1')  
+            ->andWhere('a.createdAt = :CreatedAt')
+            ->setParameter('CreatedAt', $P1D)  
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }
