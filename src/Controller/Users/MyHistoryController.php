@@ -20,4 +20,25 @@ class MyHistoryController extends AbstractController
             'controller_name' => 'MyHistoryController',
         ]);
     }
+
+    /**
+     * @Route("/users/my/factures", name="users_my_factures")
+     */
+    public function factures(): Response
+    {
+        return $this->render('users/my_history/factures.html.twig', [
+            'controller_name' => 'MyHistoryController',
+        ]);
+    }
+
+    /**
+     * @Route("/users/my/facture", name="users_my_facture")
+     */
+    public function facture(): Response
+    {
+        return $this->render('users/my_history/facture.html.twig', [
+            'controller_name' => 'MyHistoryController',
+        ]);
+    }
+
 }
