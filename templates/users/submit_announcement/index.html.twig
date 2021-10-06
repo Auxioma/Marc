@@ -130,7 +130,11 @@
                         </div>
                         <div class="row margin-bottom-25" style="padding: 15px;">
                             <div class="col-md-12 dropzone-container">
-                                <input type="file" class="dropzone" id="annonce_picture"/>
+                                <label class="filebutton">
+                                    Déposez ici!
+                                    <img src="{{ asset('img/site/upload.png') }}" />
+                                    <input type="file" class="dropzone" id="annonce_picture"/>
+                                </label>
                             </div>
                             <div id="uploadedPictures" class="">
                                 {% for picture in form.Picture.children %}
@@ -221,10 +225,39 @@
                             </div>
                         </div>
 
+                        <div class="row margin-top-5" id="actions">
+
+                            <div class="col-md-6 docs-buttons">
+                                <div class="btn-group">
+                                    <button id="rotateLeft" type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="rotate(-45)">
+                                          <span class="fa fa-undo"></span>
+                                        </span>
+                                    </button>
+                                    <button id="rotateRight" type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="rotate(45)">
+                                          <span class="fa fa-repeat"></span>
+                                        </span>
+                                    </button>
+                                    <button id="zoomIn" type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="zoom(0.1)">
+                                          <span class="fa fa-search-plus"></span>
+                                        </span>
+                                    </button>
+                                    <button id="zoomOut" type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="zoom(-0.1)">
+                                          <span class="fa fa-search-minus"></span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                        <button type="button" class="button" data-dismiss="modal">Close</button>
+                        <button type="button" class="button bg-green" id="crop">Valider</button>
                     </div>
                 </div>
             </div>
@@ -236,25 +269,45 @@
 
 {% macro macro_Picture(picture) %}
     <div class="pictureEl col-md-3 margin-top-10">
-        <img src="_img_" width="100" height="100" />
+        <img src="_img_" width="100" height="100" style="cursor: move;" />
         {{ form_widget(picture.imgBase64) }}
+        {{ form_widget(picture.position) }}
         <a class="deleteMe"><i style="font-size: 18px;" class="fa fa-trash pr-2" aria-hidden="true"></i></a>
     </div>
 
 {% endmacro %}
 
 {% block javascript %}
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
             var $ = jQuery.noConflict();
+            $("#uploadedPictures").sortable({
+                placeholder: "sortable-placeholder",
+                opacity: 0.5,
+                scrollSensitivity: 10,
+                update: function( event, ui ) {
+                    var i = 0;
+                    $('.positionImg').each(function (){
+                        $(this).val(i);
+                        i++;
+                    });
+                }
+            });
+            $("#uploadedPictures").disableSelection();
+
+
             $('#submit_announcement_Category').change();
 
             $("input[name='submit_announcement[promoTitle]").on('change', function(){
                 var prom = $("input[name='submit_announcement[promoTitle]']:checked").val();
                 $('#prev_adtextual_discount').text(prom);
+                verifyTitle();
             });
             $('#submit_announcement_Title').on('keyup keypress keydown', function(e) {
+                verifyTitle();
+            });
+            function verifyTitle(){
                 var title = $('#submit_announcement_Title').val();
                 if(title !== "") {
                     $('#prev_adtextual_titlead').text(title);
@@ -276,9 +329,10 @@
                     $('#prev_adtextual_titlead').text("Lorem ipsum dolor sit");
                 }
                 $('#submit_announcement_Title').prev().text(title.toString().length + "/20");
-            });
+            }
 
-            $('#submit_announcement_titlediscount').on('keyup keypress keydown', function(e) {
+
+            function verifyTitleDisount(){
                 var title = $('#submit_announcement_titlediscount').val();
                 if(title !== "") {
                     $('#prev_adtextual_titlead').text(title);
@@ -288,21 +342,18 @@
                     $('#submit_announcement_Title').attr("disabled","true");
                     $('#submit_announcement_Title').removeAttr("required");
                     $('.promotitle').find('input').each(function(){
-                        $(this).attr("disabled","true");
-                    })
+                    $(this).attr("disabled","true");
+                })
                 }
-                else
+                    else
                 {
                     $('#submit_announcement_Title').removeAttr("disabled");
                     $('.promotitle').find('input').each(function(){
-                        $(this).removeAttr("disabled");
-                    })
+                    $(this).removeAttr("disabled");
+                })
                     $('#prev_adtextual_titlead').text("Lorem ipsum dolor sit");
                 }
-                $('#adtextual_titlediscount').prev().text(title.toString().length+"/20");
-
-            });
-            $('#submit_announcement_Discount').on('keyup keypress keydown change', function(e) {
+                    $('#adtextual_titlediscount').prev().text(title.toString().length+"/20");
                 var discount = $('#submit_announcement_Discount').val();
                 if(discount !== "") {
                     if(parseInt(discount) <= 100) {
@@ -310,8 +361,13 @@
                         $('#prev_adtextual_discount').fadeIn(1000, function () {});
                     }
                 }else
-                $('#prev_adtextual_discount').text("-50%");
-
+                    $('#prev_adtextual_discount').text("-50%");
+                }
+            $('#submit_announcement_titlediscount').on('keyup keypress keydown', function(e) {
+                verifyTitleDisount();
+            });
+            $('#submit_announcement_Discount').on('keyup keypress keydown change', function(e) {
+                verifyTitleDisount();
             });
 
             $('#submit_announcement_ShortDescription').on('keyup keypress keydown change', function(e) {
@@ -403,11 +459,23 @@
           viewMode: 2,
           preview: '.preview'
         });
+
       }).on('hidden.bs.modal', function () {
         cropper.destroy();
         cropper = null;
       });
-
+      crop('#zoomIn').click(function (){
+          cropper.zoom(0.1);
+      });
+      crop('#zoomOut').click(function (){
+          cropper.zoom(-0.1);
+      });
+      crop('#rotateRight').click(function (){
+          cropper.rotate(45);
+      });
+      crop('#rotateLeft').click(function (){
+          cropper.rotate(-45);
+      });
       crop('#crop').click(function () {
 
         $modal.modal('hide');
@@ -424,6 +492,8 @@
             var base64data = reader.result;
             createPicture(parseInt(fileCount),base64data);
             crop('#submit_announcement_Picture_'+fileCount+'_imgBase64').val(base64data);
+            crop('#submit_announcement_Picture_'+fileCount+'_position').val(fileCount);
+
             if (fileCount == 0)
                 crop('#vignette-preview-img').attr('src',base64data);
             fileCount ++;
@@ -437,6 +507,7 @@
         var j = jQuery.noConflict();
         j(this).closest('.pictureEl').remove();
     });
+
 
     </script>
 {% endblock %}

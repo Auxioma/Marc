@@ -14,6 +14,11 @@ class PictureType extends AbstractType
     {
         $builder
             ->add('imgBase64', HiddenType::class)
+            ->add('position', HiddenType::class, [
+                'attr' => [
+                    'class' => 'positionImg'
+                ]
+            ])
         ;
     }
 

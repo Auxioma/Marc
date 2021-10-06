@@ -4,6 +4,7 @@ namespace App\Controller\Users;
 
 
 use App\datatrans;
+use App\Entity\Facture;
 use App\Entity\TempPicture;
 use App\Entity\Announcement;
 use App\Form\Users\SubmitAnnouncementType;
@@ -34,7 +35,6 @@ class SubmitAnnouncementController extends AbstractController
                     $name = self::uploadImageBase64($base);
                     $pic->setName($name);
                     $pic->setAlt('annonce');
-                    $pic->setPosition($k);
                 }
             }
             $Announcement->setCreatedAt(new \DateTime());
@@ -118,10 +118,20 @@ class SubmitAnnouncementController extends AbstractController
      */
     public function paiement_success(Request $request): Response
     {
+        $em = $this->getDoctrine()->getManager();
         $id = $request->get('annonceId');
-        $Announcement = $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id);
-        dump('good news!');
+        $Announcement = $em->getRepository(Announcement::class)->find($id);
         $Announcement->setIsPaid(true);
+        $facture = new Facture();
+        $facture->setAnnonce($Announcement);
+        $facture->setClient($this->getUser());
+        $facture->setCreatedAt(new \DateTimeImmutable());
+        $facture->setMontant($Announcement->getMontantTotal());
+        $facture->setDatatransID($request->get('datatransTrxId'));
+        $em->persist($facture);
+        $em->flush();
+
+        dump('good news');
         dd($Announcement);
     }
 
