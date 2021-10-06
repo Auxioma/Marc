@@ -289,6 +289,8 @@
                 update: function( event, ui ) {
                     var i = 0;
                     $('.positionImg').each(function (){
+                        if(i == 0)
+                            $('#vignette-preview-img').attr('src',$(this).val());
                         $(this).val(i);
                         i++;
                     });
