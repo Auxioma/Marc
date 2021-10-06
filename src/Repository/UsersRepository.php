@@ -45,4 +45,17 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
             ->getQuery()
         ;
     }
+
+    /**
+     * @return \Doctrine\ORM\Query Returns an array of Users objects
+     */
+    public function AdminListUserAdmin()
+    {
+        return $this->createQueryBuilder('u')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }
