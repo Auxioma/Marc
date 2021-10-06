@@ -144,6 +144,14 @@
     <!-- Sidebar -->
     <div class="col-lg-4 col-md-5">
       <div class="sidebar">
+        {% if ValidationAnnonce is defined %}
+        <div class="widget utf-sidebar-widget-item">
+          <a href="{{ path('admin_ValiderModifierRefuserAnnonce', {'id':'1', 'ids': id }) }}">Velider l'annonce</a><br>
+          <a href="{{ path('admin_ValiderModifierRefuserAnnonce', {'id':'2', 'ids': id}) }}">Annonce a modifier</a><br>
+          <a href="{{ path('admin_ValiderModifierRefuserAnnonce', {'id':'0', 'ids': id}) }}">Refuser l'annonce</a><br>
+        </div>
+        {% endif %}
+
         <div class="widget utf-sidebar-widget-item">
           <div class="utf-detail-banner-add-section">
             <a href="#"><img src="{{ asset('images/banner-add-2.jpg') }}" alt="banner-add-2"></a>

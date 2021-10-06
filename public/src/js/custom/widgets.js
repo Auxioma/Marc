@@ -22,7 +22,7 @@ var KTWidgets = function () {
             var options = {
                 series: [{
                     name: 'Net Profit',
-                    data: [30, 45, 32, 70, 40]
+                    data: [300, 45, 32, 70, 40]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -56,7 +56,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    categories: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
                     axisBorder: {
                         show: false,
                     },
@@ -126,7 +126,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return "$" + val + " CHF"
                         }
                     }
                 },
@@ -1744,6 +1744,8 @@ var KTWidgets = function () {
     var initMixedWidget5 = function() {
         var charts = document.querySelectorAll('.mixed-widget-5-chart');
 
+        alert(charts);
+
         [].slice.call(charts).map(function(element) {
             var height = parseInt(KTUtil.css(element, 'height'));
 
@@ -1760,8 +1762,8 @@ var KTWidgets = function () {
 
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [30, 30, 60, 25, 25, 40]
+                    name: 'CHF',
+                    data: [30, 30, 600, 25, 25, 40]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -1809,7 +1811,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    categories: ['Lundi', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                     axisBorder: {
                         show: false,
                     },
@@ -2056,7 +2058,7 @@ var KTWidgets = function () {
 
             var options = {
                 series: [{
-                    name: 'Net Profit',
+                    name: 'Net CA:',
                     data: [15, 25, 15, 40, 20, 50]
                 }],
                 chart: {

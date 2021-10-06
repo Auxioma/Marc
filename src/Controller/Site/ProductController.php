@@ -13,6 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
+     * @Route("/validationAnnonce/{id}-{slug}", name="site_product_validation_annonce")
+     */
+    public function ValidationAnnonce($id): Response
+    {
+        $repo = $this->getDoctrine()->getRepository(Announcement::class);
+        $product = $repo->find($id);
+
+        return $this->render('site/product/index.html.twig', [
+            'ValidationAnnonce' => 'ValidationAnnonce',
+            'product' => $product,
+            'id' => $id,
+        ]);
+    }    
+ 
+    /**
      * @Route("/{idcat}/{id}-{slug}", name="site_product")
      */
     public function index($id): Response

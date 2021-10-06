@@ -3,12 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Users;
+use App\Entity\Announcement;
 use App\Repository\UsersRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminCustomerListController extends AbstractController
 {
@@ -41,9 +42,11 @@ class AdminCustomerListController extends AbstractController
      */
     public function view($id): Response
     {
+        // dd($this->getDoctrine()->getManager()->getRepository(Announcement::class)->findBY( array('users' => $id) ));
         return $this->render('admin/admin_customer_list/view.html.twig', [
             'controller_name' => 'AdminCustomerListController',
             'users' => $this->getDoctrine()->getManager()->getRepository(Users::class)->find($id),
+            'annonce' => $this->getDoctrine()->getManager()->getRepository(Announcement::class)->findBY( array('users' => $id) ),
         ]);
     }
 
