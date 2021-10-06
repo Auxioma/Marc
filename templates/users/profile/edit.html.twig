@@ -91,6 +91,14 @@
                 <label>Civilité</label>
                 {{ form_widget(form.civilite) }}
               </div>
+              <div class="col-md-6">
+                <label>Nom du responsable</label>
+                {{ form_widget(form.Name) }}
+              </div>
+              <div class="col-md-6">
+                <label>Prénom</label>
+                {{ form_widget(form.FirstName) }}
+              </div>
               <div class="col-md-5">
                 <label>Date de naissance</label>
                 {{ form_widget(form.dateNaissance) }}
@@ -102,14 +110,6 @@
               <div class="col-md-2">
                 <label>Affiché </label>
                 {{ form_widget(form.afficheTelephone) }}
-              </div>
-              <div class="col-md-6">
-                <label>Nom du responsable</label>
-                {{ form_widget(form.Name) }}
-              </div>
-              <div class="col-md-6">
-                <label>Prénom</label>
-                {{ form_widget(form.FirstName) }}
               </div>
               <div class="col-md-6">
                 <label>Adresse</label>
