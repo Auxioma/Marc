@@ -24,244 +24,498 @@
                 <h2 style="float: right;">OFFRE</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 px-2 py-0 mb-3">
-        <form method="post">
-            <div class="row border rounded-4 margin-top-25 p-3">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 px-3 mb-3 text-start">
-                    <div class="alert alert-secondary" role="alert">
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Première page du site ZIMBOO.CH
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Booster par la visibilité
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Top catégorie première page
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Lien sur votre site (gratuit)
-                            </label>
-                        </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Logo sur votre annonce
-                            </label>
-                        </div>
-                    </div>
-                    <div class="border rounded-3 text-center {{ Announcement.options == 2 ? 'active-subscribtion' : '' }}">
-                        <div class="alert bg-dark-blue text-white mx-2 my-3 p-2" role="alert">
-                            <h5 class="m-0 p-0">OFFRES PREMIUM</h5>
-                        </div>
-                        <h5 class="h-40px mh-40px pt-2">Toujours en première page</h5>
-                        <div class="alert text-dark-blue bg-white mx-2 my-3 py-3 border rounded-3 h-200px mh-200px"
-                             role="alert">
-                            {% if minPP %}
-                                <h3 class="roboto-l fw-bold">{{ minPP.nbrDays }} Jours</h3>
-                                <h4 class="p-0 m-0 roboto-l">sur la première</h4>
-                                <h4 class="roboto-l">page</h4>
-                                <h4 class="fw-bold roboto-l">Dès: <span class="fw-normal">CHF</span> {{ minPP.pricePerDay|number_format(2,'.',',') }} par
-                                    jour</h4>
-                            {% else %}
-                                <a class="text-red px-3">Non disponible</a>
-                            {% endif %}
-                        </div>
-                        <div class="text-start px-4 lh-sm mb-3 small" style="height: 80px">
-                            Pendant une semaine vous serez visible sur la premiere page en affichage
-                            aléatoire des centaines
-                            de fois par jours.
-                        </div>
-                        <a href="" class="text-dark-blue text-decoration-underline">Voir un exemple</a>
-                        <div class="text-red mt-4 mb-1">pas valable pour les sous catégories</div>
-                        <div class="input-group mb-3 px-3">
-                            <select  name="packPremium" class="form-select text-end" aria-label="Default select example">
-                                {% for pack in packsPremium %}
-                                    <option {{ Announcement.packageAdTextual and  Announcement.packageAdTextual.id == pack.id ? 'selected' : '' }} value="{{ pack.id }}">{{ pack.nbrDays }} jours {{ (pack.nbrDays * pack.pricePerDay)|number_format(2,'.',',') }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center mt-4 mb-2">
-                        <button name="PREMIUM" class="button border-success bg-green text-white px-3">VALIDER</button>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 px-3 mb-3 text-start">
-                    <div class="alert alert-secondary" role="alert">
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked">
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Première page du site ZIMBOO.CH
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Booster par la visibilité
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Top catégorie première page
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Lien sur votre site (gratuit)
-                            </label>
-                        </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Logo sur votre annonce
-                            </label>
-                        </div>
-                    </div>
-                    <div class="border rounded-3 text-center {{ Announcement.options == 1 ? 'active-subscribtion' : '' }}">
-                        <div class="alert bg-gold text-white mx-2 my-3 p-2" role="alert">
-                            <h5 class="m-0 p-0">OFFRES GOLD</h5>
-                        </div>
-                        <h5 class="h-40px mh-40px pt-2">Toujours en tête des catégories</h5>
-                        <div class="alert text-gold bg-white mx-2 my-3 py-3 py-sm-1 border rounded-3 h-200px mh-200px"
-                             role="alert">
-                            {% if minGP %}
-                                <h3 class="roboto-l fw-bold">{{ minGP.nbrDays }} Jours</h3>
-                                <h4 class="p-0 m-0 roboto-l">en première position</h4>
-                                <h4 class="roboto-l">des catégories</h4>
-                                <h4 class="fw-bold roboto-l">Dès: <span class="fw-normal">CHF</span> {{ minGP.pricePerDay|number_format(2,'.',',') }} par jour</h4>
-                            {% else %}
-                                <a class="text-red px-3">Non disponible</a>
-                            {% endif %}
-                        </div>
-                        <div class="text-start px-4 lh-sm mb-3 small" style="height: 80px">
-                            Pendant une semaine vous serez visible en premier dans la categorie de votre
-                            choix
-                            avec une distinction de couleur GOLD.
-                        </div>
-                        <a href="" class="text-dark-blue text-decoration-underline">Voir un exemple</a>
-                        <div class="mt-4 mb-1"><br></div>
-                        <div class="input-group mb-3 px-3">
-                            <select name="packGold" class="form-select text-end" aria-label="Default select example">
-                                {% for pack in packsGold %}
-                                    <option {{ Announcement.packageAdTextual and Announcement.packageAdTextual.id == pack.id ? 'selected' : '' }} value="{{ pack.id }}">{{ pack.nbrDays }} jours {{ (pack.nbrDays * pack.pricePerDay)|number_format(2,'.',',') }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center mt-4 mb-2">
-                        <button name="GOLD" class="button border-success bg-green text-white px-3">VALIDER</button>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 px-3 mb-3 text-start">
-                    <div class="alert alert-secondary" role="alert">
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked">
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Première page du site ZIMBOO.CH
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked">
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Booster par la visibilité
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked">
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Top catégorie première page
-                            </label>
-                        </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Lien sur votre site (gratuit)
-                            </label>
-                        </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" onclick="return false;"
-                                   onkeydown="return false;" value="" id="flexCheckChecked"
-                                   checked>
-                            <label class="form-check-label small" for="flexCheckChecked">
-                                Logo sur votre annonce
-                            </label>
-                        </div>
-                    </div>
-                    <div class="border rounded-3 text-center {{ Announcement.options == 0 ? 'active-subscribtion' : '' }}">
-                        <div class="alert bg-dark-orange text-white mx-2 my-3 p-2" role="alert">
-                            <h5 class="m-0 p-0">GRATUIT</h5>
-                        </div>
-                        <h5 class="h-40px mh-40px pt-2">Toujours en première page</h5>
-                        <div class="alert text-dark-orange bg-white mx-2 my-3 py-3 border rounded-3 h-200px mh-200px"
-                             role="alert">
-                            <h3 class="roboto-l fw-bold">21 Jours</h3>
-                            <h4 class="pt-2 m-0 roboto-l">dans la catégorie</h4>
-                            <h4 class="roboto-l">de ton choix</h4>
-                            <h4 class="m-0"><br></h4>
-                        </div>
-                        <div class="text-start px-4 lh-sm mt-1 mb-1 small" style="height: 80px">
-                            Vous publiez gratuitement votre annonce sur ZIMMBOO.CH
-                        </div>
-                        <a href="" class="text-dark-blue text-decoration-underline">Voir un exemple</a>
-                        <div class="h-60px"><br></div>
-                        <div class="mb-3 px-3">
-                            <div class="alert bg-dark-orange text-white mx-0 my-0 p-2" style="height: 51px;margin-bottom: 16px" role="alert">
-                                <h5 class="m-0 p-0">Gratuit 21 jours</h5>
+
+
+        <section>
+            <div class="block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="heading margin-bottom-20">
+                                <h2>Buy Our Plans And Packeges</h2>
+                                <span>One of our jobs has some kind of flexibility option - such as telecommuting, a part-time schedule or a flexible or flextime schedule.</span>
+                            </div><!-- Heading -->
+                            <div class="plans-sec">
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="pricetable">
+                                                <div class="pricetable-head">
+                                                    {% if minPP %}
+                                                        <div class="alert bg-dark-blue text-white mx-2 my-3 p-2" role="alert">
+                                                            <h5 class="m-0 p-0">OFFRES PREMIUM</h5>
+                                                        </div>
+                                                        <h2>{{ minPP.nbrDays }}<i>Jours</i></h2>
+                                                        <span>
+                                                        <h4 class="p-0 m-0 roboto-l">sur la première page</h4>
+                                                            <h4 class="fw-bold roboto-l">Dès: <i>CHF</i> {{ minPP.pricePerDay|number_format(2,'.',',') }} par
+                                                        jour</h4>
+                                                    </span>
+                                                    {% else %}
+                                                        <a class="text-red px-3">Non disponible</a>
+                                                    {% endif %}
+
+                                                </div><!-- Price Table -->
+                                                <div class="row">
+                                                    <div class="col-md-12 text-start">
+                                                        <div class="alert alert-secondary" role="alert">
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Première page du site ZIMBOO.CH
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Booster par la visibilité
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Top catégorie première page
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Lien sur votre site (gratuit)
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check ">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Logo sur votre annonce
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border rounded-3 text-center {{ Announcement.options == 2 ? 'active-subscribtion' : '' }}">
+
+                                                            <h5 class="h-40px mh-40px pt-2">Toujours en première page</h5>
+
+                                                            <div class="text-start px-4 lh-sm mb-3 small" style="height: 80px">
+                                                                Pendant une semaine vous serez visible sur la premiere page en affichage
+                                                                aléatoire des centaines
+                                                                de fois par jours.
+                                                            </div>
+                                                            <div class="text-red mt-4 mb-1">pas valable pour les sous catégories</div>
+                                                            <div class="input-group mb-3 px-3">
+                                                                <select  name="packPremium" class="form-select text-end" aria-label="Default select example">
+                                                                    {% for pack in packsPremium %}
+                                                                        <option {{ Announcement.packageAdTextual and  Announcement.packageAdTextual.id == pack.id ? 'selected' : '' }} value="{{ pack.id }}">{{ pack.nbrDays }} jours {{ (pack.nbrDays * pack.pricePerDay)|number_format(2,'.',',') }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 text-center mt-4 mb-2">
+                                                            <button name="PREMIUM" class="button border-success bg-green text-white px-3">Choisir</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="pricetable active">
+                                                <div class="pricetable-head">
+                                                    <div class="alert bg-gold text-white mx-2 my-3 p-2" role="alert">
+                                                        <h5 class="m-0 p-0">OFFRES GOLD</h5>
+                                                    </div>
+                                                    {% if minGP %}
+                                                        <h2>{{ minGP.nbrDays }}<i>Jours</i></h2>
+                                                        <span>
+                                                        <h4 class="p-0 m-0 roboto-l">en première position</h4>
+                                                        <h4 class="roboto-l">des catégories</h4>
+                                                        <h4 class="fw-bold roboto-l">Dès: <i>CHF</i> {{ minGP.pricePerDay|number_format(2,'.',',') }} par jour</h4>
+                                                    </span>
+                                                    {% else %}
+                                                        <a class="text-red px-3">Non disponible</a>
+                                                    {% endif %}
+
+                                                </div><!-- Price Table -->
+                                                <div class="row">
+                                                    <div class="col-md-12 text-start">
+                                                        <div class="alert alert-secondary" role="alert">
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked">
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Première page du site ZIMBOO.CH
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Booster par la visibilité
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Top catégorie première page
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Lien sur votre site (gratuit)
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check ">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Logo sur votre annonce
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border rounded-3 text-center {{ Announcement.options == 1 ? 'active-subscribtion' : '' }}">
+
+                                                            <h5 class="h-40px mh-40px pt-2">Toujours en tête des catégories</h5>
+                                                            <div class="text-start px-4 lh-sm mb-3 small" style="height: 80px">
+                                                                Pendant une semaine vous serez visible en premier dans la categorie de votre
+                                                                choix
+                                                                avec une distinction de couleur GOLD.
+                                                            </div>
+                                                            <div class="mt-4 mb-1"><br></div>
+                                                            <div class="input-group mb-3 px-3">
+                                                                <select name="packGold" class="form-select text-end" aria-label="Default select example">
+                                                                    {% for pack in packsGold %}
+                                                                        <option {{ Announcement.packageAdTextual and Announcement.packageAdTextual.id == pack.id ? 'selected' : '' }} value="{{ pack.id }}">{{ pack.nbrDays }} jours {{ (pack.nbrDays * pack.pricePerDay)|number_format(2,'.',',') }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 text-center mt-4 mb-2">
+                                                            <button name="GOLD" class="button border-success bg-green text-white px-3">Choisir</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="pricetable">
+                                                <div class="pricetable-head">
+                                                    <div class="alert bg-dark-orange text-white mx-2 my-3 p-2" role="alert">
+                                                        <h5 class="m-0 p-0">OFFRES SILVER</h5>
+                                                    </div>
+                                                    <h2>21<i>Jours</i></h2>
+                                                    <span>
+                                                    <h4 class="pt-2 m-0 roboto-l">dans la catégorie</h4>
+                                                    <h4 class="roboto-l">de ton choix</h4>
+                                                </span>
+                                                </div><!-- Price Table -->
+                                                <div class="row">
+                                                    <div class="col-md-12 text-start">
+                                                        <div class="alert alert-secondary" role="alert">
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked">
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Première page du site ZIMBOO.CH
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked">
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Booster par la visibilité
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked">
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Top catégorie première page
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check mb-2">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Lien sur votre site (gratuit)
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check ">
+                                                                <input class="form-check-input" type="checkbox" onclick="return false;"
+                                                                       onkeydown="return false;" value="" id="flexCheckChecked"
+                                                                       checked>
+                                                                <label class="form-check-label small" for="flexCheckChecked">
+                                                                    Logo sur votre annonce
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="border rounded-3 text-center {{ Announcement.options == 0 ? 'active-subscribtion' : '' }}">
+                                                            <h5 class="h-40px mh-40px pt-2">Toujours en première page</h5>
+
+                                                            <div class="text-start px-4 lh-sm mt-1 mb-1 small" style="height: 80px">
+                                                                Vous publiez gratuitement votre annonce sur ZIMMBOO.CH
+                                                            </div>
+                                                            <div class="h-60px"><br></div>
+                                                            <div class="mb-3 px-3">
+                                                                <div class="alert bg-dark-orange text-white mx-0 my-0 p-2" style="height: 51px;margin-bottom: 16px" role="alert">
+                                                                    <h5 class="m-0 p-0">Gratuit 21 jours</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 text-center mt-4 mb-2">
+                                                            <button class="button border-success bg-green text-white px-3">Choisir</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row margin-top-30" style="background-color: #f4f5fa;margin: 0;padding-top: 22px;">
+                                        <div class="col-md-6">
+                                            <a href="{{ path('users_profile') }}" class="button margin-top-0 margin-bottom-20">Annuler</a>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green disabled">publier gratuitement</button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 text-center mt-4 mb-2">
-                        <button class="button border-success bg-green text-white px-3">VALIDER</button>
-                    </div>
                 </div>
             </div>
-        </form>
+        </section>
+
 
     </div>
-        </div>
-    </div>
+    <style>
+        /* Plans Sec */
+        .plans-sec {
+            float: left;
+            width: 100%;
+            margin-top: -30px;
+        }
+        .pricetable {
+            float: left;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            background: #f4f5fa;
 
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
+            border-radius: 8px;
+
+            padding: 10px;
+            -webkit-transition: all 0.4s ease 0s;
+            -moz-transition: all 0.4s ease 0s;
+            -ms-transition: all 0.4s ease 0s;
+            -o-transition: all 0.4s ease 0s;
+            transition: all 0.4s ease 0s;
+        }
+
+        .pricetable:hover {margin-top: 20px;}
+
+        .pricetable-head {
+            float: left;
+            width: 100%;
+            background: #ffffff;
+
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
+            border-radius: 8px;
+
+            -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            -moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            -ms-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            -o-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+
+            padding: 20px 0;
+            height: 270px;
+        }
+        .pricetable-head h3 {
+            float: left;
+            width: 100%;
+            font-family: Open Sans;
+            font-size: 20px;
+            color: #202020;
+            margin: 0;
+        }
+        .pricetable-head h2 {
+            float: left;
+            width: 100%;
+            font-family: Quicksand;
+            font-size: 60px;
+            font-weight: bold;
+            margin: 0;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-top: 17px;
+            line-height: 50px;
+            margin-bottom: 13px;
+        }
+        .pricetable-head h2 i {
+            font-style: normal;
+            font-size: 18px;
+            line-height: 0px;
+            position: relative;
+            bottom: 3px;
+        }
+        .pricetable-head span {
+            float: left;
+            width: 100%;
+            font-family: Quicksand;
+            font-size: 15px;
+            color: #888888;
+            margin-top: 2px;
+        }
+        .pricetable ul {
+            float: left;
+            width: 100%;
+            margin: 0;
+            margin-top: 30px;
+        }
+        .pricetable ul li {
+            float: left;
+            width: 100%;
+            font-family: Open Sans;
+            font-size: 13px;
+            color: #888888;
+            line-height: 40px;
+        }
+        .pricetable > a {
+            float: none;
+            display: inline-block;
+            font-family: Open Sans;
+            font-size: 15px;
+            color: #ffffff;
+            padding: 15px 55px;
+
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            -ms-border-radius: 30px;
+            -o-border-radius: 30px;
+            border-radius: 30px;
+
+            margin-bottom: 40px;
+            margin-top: 20px;
+
+            -webkit-transition: all 0.4s ease 0s;
+            -moz-transition: all 0.4s ease 0s;
+            -ms-transition: all 0.4s ease 0s;
+            -o-transition: all 0.4s ease 0s;
+            transition: all 0.4s ease 0s;
+        }
+        .pricetable.active > a {
+            background: #ffffff;
+        }
+        .pricetable.active ul li {
+            color: #ffffff;
+        }
+
+        .pricetable > a:hover {
+            background: #d42525;
+            color: #FFF;
+        }
+
+
+        /* Subscription Sec */
+        .subscription-sec {
+            float: left;
+            width: 100%;
+        }
+        .subscription-sec h3 {
+            float: left;
+            width: 100%;
+            font-family: Quicksand;
+            font-weight: bold;
+            font-size: 30px;
+            color: #202020;
+            letter-spacing: 0px;
+            margin-bottom: 13px;
+        }
+        .subscription-sec span {
+            float: left;
+            width: 100%;
+            font-family: Open Sans;
+            font-size: 13px;
+            color: #888888;
+            margin: 0;
+        }
+        .subscription-sec form {
+            float: left;
+            width: 100%;
+            background: #ffffff;
+
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            -ms-border-radius: 30px;
+            -o-border-radius: 30px;
+            border-radius: 30px;
+
+            overflow: hidden;
+            position: relative;
+
+            -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            -moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            -ms-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            -o-box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.06);
+
+        }
+        .subscription-sec form input {
+            float: left;
+            width: 100%;
+            background: no-repeat;
+            margin: 0;
+            font-size: 13px;
+            font-family: Open Sans;
+            padding: 0px 50px;
+            height: 50px;
+        }
+        .subscription-sec form button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 50px;
+
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            -ms-border-radius: 40px;
+            -o-border-radius: 40px;
+            border-radius: 40px;
+
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            font-size: 24px;
+            background: #d42525;
+        }
+    </style>
     <style>
         .alert-secondary {
             color: #5a5b5c;
-            background-color: #f9f9fa;
             border-color: #f6f7f7;
         }
         .alert {
