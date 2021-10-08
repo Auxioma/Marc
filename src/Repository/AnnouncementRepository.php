@@ -147,4 +147,31 @@ class AnnouncementRepository extends ServiceEntityRepository
             ;
     }
 
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function ViewAnnoncementAdminForValidationList()
+    {
+        return   $this->createQueryBuilder('a')
+            ->andWhere('a.IsVerified = :val')
+            ->setParameter('val', '0')
+            ->orderBy('a.id', 'DESC')            
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+  
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function ViewAnnoncementAdminForValidationListValidate()
+    {
+        return   $this->createQueryBuilder('a')
+            ->andWhere('a.IsVerified = :val')
+            ->setParameter('val', '1')
+            ->orderBy('a.id', 'DESC')            
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

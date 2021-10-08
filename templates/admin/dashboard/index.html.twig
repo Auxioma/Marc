@@ -603,9 +603,9 @@
 																<thead>
 																	<tr class="border-0">
 																		
-																		<th class="p-0 min-w-125px"></th>
-																		<th class="p-0 min-w-190px"></th>
-																		<th class="p-0 min-w-110px"></th>
+																		<th class="p-0 min-w-125px">Entreprise</th>
+																		<th class="p-0 min-w-190px">Titre</th>
+																		<th class="p-0 min-w-110px">Date dreation</th>
 																		<th class="p-0 min-w-50px"></th>
 																	</tr>
 																</thead>
@@ -617,7 +617,12 @@
 																		<td>
 																			<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ annoucement.users.Compagny }}</a>
 																		</td>
-																		<td class="text-end text-muted fw-bold">{{ annoucement.Title }}</td>
+																		<td class=" text-muted fw-bold">
+																			{{ annoucement.Title }}
+																		</td>
+																		<td class=" text-muted fw-bold">
+																			{{ annoucement.CreatedAt|date("m/d/Y") }}
+																		</td>
 																		<td class="text-end">
 																			<span class="badge badge-light-danger">En attente</span>
 																		</td>
