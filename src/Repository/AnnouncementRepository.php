@@ -110,7 +110,8 @@ class AnnouncementRepository extends ServiceEntityRepository
         return   $this->createQueryBuilder('a')
             ->andWhere('a.IsVerified = :val')
             ->setParameter('val', '0')
-            ->setMaxResults(10)                
+            ->orderBy('a.id', 'ASC')
+            ->setMaxResults(10)            
             ->getQuery()
             ->getResult()
         ;

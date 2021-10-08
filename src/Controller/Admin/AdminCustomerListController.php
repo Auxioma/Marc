@@ -7,6 +7,7 @@ use App\Entity\Announcement;
 use App\Repository\UsersRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\Admin\AdminModifyAnnoucementType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -76,5 +77,35 @@ class AdminCustomerListController extends AbstractController
 
         // Go to the show profile
         return $this->redirectToRoute('admin_admin_customer_list');
+    }
+
+    /**
+     * @Route("/admin/admin/customer/Modify/annoucement/{id}", name="AdminModifyAnnoucement")
+     */
+    public function AdminModifyAnnoucement(Request $request, $id): Response
+    {
+        $ModifyAnnoucement = new Announcement();
+        
+        $form = $this->createForm(AdminModifyAnnoucementType::class, $ModifyAnnoucement);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager   = $this->getDoctrine()->getManager();
+            $ModifyAnnoucement =  $entityManager ->getRepository(Announcement::class)->find($id);
+
+            $ModifyAnnoucement->setEndAt($form->get('EndAt')->getData());
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_admin_customer_list_view', [
+                'id' => $id
+            ]);
+        }
+        
+        return $this->render('admin/admin_customer_list/modify_annoucement_by_admin.html.twig', [
+            'annonce' => $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id),
+            'form' => $form->createView(),
+        ]);
     }
 }
