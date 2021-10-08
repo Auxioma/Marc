@@ -126,8 +126,8 @@ class SubmitAnnouncementController extends AbstractController
             return  $this->redirectToRoute('users_my_history');
         }
 
-        $packsGold = $repPack->findBytypeAsc(1);
-        $packsPremium = $repPack->findBytypeAsc(2);
+        $packsPremium = $repPack->findBytypeAsc(1);
+        $packsGold = $repPack->findBytypeAsc(2);
         $packsSilver = $repPack->findBytypeAsc(3);
 
         $previous = null;
