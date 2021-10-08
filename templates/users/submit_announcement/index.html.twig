@@ -173,7 +173,7 @@
         </div>
         <div class="col-md-3">
 
-                <div class="utf-listing-item" style="border: 1px solid #b9b9b9;">
+                <div class="utf-listing-item" style="border: 1px solid #333;">
                     <a href=""
                        class="utf-smt-listing-img-container">
                         <div class="utf-listing-badges-item">
@@ -274,7 +274,6 @@
         {{ form_widget(picture.position) }}
         <a class="deleteMe"><i style="font-size: 18px;" class="fa fa-trash pr-2" aria-hidden="true"></i></a>
     </div>
-
 {% endmacro %}
 
 {% block javascript %}
@@ -290,7 +289,7 @@
                     var i = 0;
                     $('.positionImg').each(function (){
                         if(i == 0)
-                            $('#vignette-preview-img').attr('src',$(this).val());
+                            $('#vignette-preview-img').attr('src',$(this).prev().val());
                         $(this).val(i);
                         i++;
                     });

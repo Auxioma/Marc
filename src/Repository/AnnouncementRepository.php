@@ -95,7 +95,8 @@ class AnnouncementRepository extends ServiceEntityRepository
         return   $this->createQueryBuilder('a')
             ->andWhere('a.IsVerified = :val')
             ->setParameter('val', '1')
-            ->setMaxResults(10)                
+            ->setMaxResults(10)
+            ->orderBy('a.id','DESC')
             ->getQuery()
             ->getResult()
         ;
@@ -129,6 +130,21 @@ class AnnouncementRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * @return Announcement[] Returns an array of Announcement objects
+     */
+    public function getMyAnnouncement($user)
+    {
+        return   $this->createQueryBuilder('a')
+            ->andWhere('a.users = :val')
+            ->setParameter('val', $user)
+            ->orderBy('a.id','DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 }

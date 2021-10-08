@@ -5,6 +5,7 @@ namespace App\Controller\Users;
 
 use App\datatrans;
 use App\Entity\Facture;
+use App\Entity\PackageAdTextual;
 use App\Entity\TempPicture;
 use App\Entity\Announcement;
 use App\Form\Users\SubmitAnnouncementType;
@@ -20,10 +21,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SubmitAnnouncementController extends AbstractController
 {
     /**
+     * @Route("/users/publier", name="users_publier")
+     */
+    public function publier(Request $request): Response
+    {
+        return $this->render('users/publicite/index.html.twig');
+    }
+
+    /**
+     * @Route("/users/publicite", name="users_submit_publicite")
+     */
+    public function publicite(Request $request): Response
+    {
+
+        return $this->render('users/publicite/publicite.html.twig');
+    }
+    /**
      * @Route("/users/submit/announcement", name="users_submit_announcement")
      */
     public function index(Request $request): Response
     {
+
 
         $Announcement = new Announcement();
         $form = $this->createForm(SubmitAnnouncementType::class, $Announcement);
@@ -56,6 +74,7 @@ class SubmitAnnouncementController extends AbstractController
      */
     public function finalStep(Request $request,PackageAdTextualRepository $repPack,datatrans $datatrans,$id)
     {
+
         $Announcement = $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id);
         if ($request->isMethod('POST')){
 
@@ -75,7 +94,14 @@ class SubmitAnnouncementController extends AbstractController
                 $proceedPaiment = true;
 
             }
-            if (!isset($_POST['PREMIUM']) and !isset($_POST['GOLD'])){
+            if (isset($_POST['SILVER'])) {
+                $pack = $repPack->findOneBy(['id'=>$request->request->get('packSILVER')]);
+                $Announcement->setMontantTotal($pack->getNbrDays()*$pack->getPricePerDay());
+                $Announcement->setPackageAdTextual($pack);
+                $Announcement->setOptions(2);
+                $proceedPaiment = true;
+            }
+            if (!isset($_POST['PREMIUM']) and !isset($_POST['GOLD']) and !isset($_POST['SILVER'])){
                 $Announcement->setIsPaid(true);
                 $Announcement->setMontantTotal(0);
             }
@@ -86,7 +112,6 @@ class SubmitAnnouncementController extends AbstractController
                 $errorPath = "https://zimboo.ch/paiement/cancel?annonceId=".$Announcement->getId();
 
                 $montant = $Announcement->getMontantTotal()*100;
-
                 $response = $datatrans->CreateTransaction("zimboo-".$Announcement->getId(),$montant,$successPath,$cancelPath,$errorPath);
 
                 if(isset($response['error'])){
@@ -98,18 +123,48 @@ class SubmitAnnouncementController extends AbstractController
 
             }
 
-            return$this->redirectToRoute('users_my_history');
+            return  $this->redirectToRoute('users_my_history');
         }
 
-        $packsGold = $repPack->findBytypeAsc(1);
-        $packsPremium = $repPack->findBytypeAsc(2);
+        $packsPremium = $repPack->findBytypeAsc(1);
+        $packsGold = $repPack->findBytypeAsc(2);
+        $packsSilver = $repPack->findBytypeAsc(3);
+
+        $previous = null;
+        foreach ($packsGold as $p){
+            if($previous){
+                $percent = (($previous - $p->getPricePerDay()) / $previous) * 100;
+                $p->setPercentTemporaire(round($percent));
+            }else
+                $previous = $p->getPricePerDay();
+        }
+        $previous = null;
+        foreach ($packsPremium as $p){
+            if($previous){
+                $percent = (($previous - $p->getPricePerDay()) / $previous) * 100;
+                $p->setPercentTemporaire(round($percent));
+            }else
+                $previous = $p->getPricePerDay();
+        }
+        $previous = null;
+        foreach ($packsSilver as $p){
+            if($previous){
+                $percent = (($previous - $p->getPricePerDay()) / $previous) * 100;
+                $p->setPercentTemporaire(round($percent));
+            }else
+                $previous = $p->getPricePerDay();
+        }
+
+
         return $this->render('users/submit_announcement/finalStep.html.twig', [
             'controller_name' => 'SubmitAnnouncementController',
             'Announcement' => $Announcement,
             'packsGold' => $packsGold,
             'packsPremium' => $packsPremium,
-            'minGP' => isset($packsGold[0]) ? $packsGold[0] : null,
-            'minPP' => isset($packsPremium[0]) ? $packsPremium[0] : null,
+            'packsSilver' => $packsSilver,
+            'minGP' => $packsGold[0] ?? null,
+            'minPP' => $packsPremium[0] ?? null,
+            'minSP' => $packsSilver[0] ?? null,
         ]);
     }
 
@@ -118,21 +173,29 @@ class SubmitAnnouncementController extends AbstractController
      */
     public function paiement_success(Request $request): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        $id = $request->get('annonceId');
-        $Announcement = $em->getRepository(Announcement::class)->find($id);
-        $Announcement->setIsPaid(true);
-        $facture = new Facture();
-        $facture->setAnnonce($Announcement);
-        $facture->setClient($this->getUser());
-        $facture->setCreatedAt(new \DateTimeImmutable());
-        $facture->setMontant($Announcement->getMontantTotal());
-        $facture->setDatatransID($request->get('datatransTrxId'));
-        $em->persist($facture);
-        $em->flush();
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $id = $request->get('annonceId');
+            $Announcement = $em->getRepository(Announcement::class)->find($id);
+            $Announcement->setIsPaid(true);
+            $facture = new Facture();
+            $facture->setAnnonce($Announcement);
+            $facture->setClient($this->getUser());
+            $facture->setCreatedAt(new \DateTimeImmutable());
+            $facture->setMontant($Announcement->getMontantTotal());
+            $facture->setDatatransID($request->get('datatransTrxId'));
+            $em->persist($facture);
+            $em->flush();
+        }catch (\Exception $exception){
+            dump($exception->getMessage());
+            dump($exception->getFile());
+            dump($exception->getFile());
+            dump($exception->getTraceAsString());
+            die();
+        }
 
-        dump('good news');
-        dd($Announcement);
+        return $this->redirectToRoute('site_success_result');
+
     }
 
     /**

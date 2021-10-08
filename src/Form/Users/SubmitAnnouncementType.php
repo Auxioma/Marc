@@ -93,7 +93,7 @@ class SubmitAnnouncementType extends AbstractType
 
             ->add('promoTitle', ChoiceType::class,
                 [
-                    'choices' => ['Promo' => "Promo", 'Option' => 'Option','Offre'=>'Offre'],
+                    'choices' => ['Promo' => "Promo", 'Action' => 'Action','Offre'=>'Offre'],
                     'expanded' => true,
                     'label' => false,
                     'data' => "Promo",

@@ -1,0 +1,51 @@
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Crée annonce{% endblock %}
+
+{% block body %}
+
+
+<div class="container margin-top-25">
+    <div class="row">
+        <div class="col-md-12">
+            <style>
+                #breadcrumbs ul li:before{
+                    border-left: 5px solid #a3a3a3 !important;
+                }
+            </style>
+            <nav id="breadcrumbs" style="left: 0px;right: unset;">
+                <ul>
+                    <li><a href="{{ path('site_home_page') }}">Home</a></li>
+                    <li>Succès</li>
+                </ul>
+            </nav>
+
+
+        </div>
+    </div>
+
+
+    <section>
+
+
+        <div class="col-md-12 margin-top-50" style="pointer-events: none !important;">
+            <div class="utf-icon-box-item-area">
+                <div class="icon-container" style="background-color: #00bd36;"><i class="icon-feather-check"></i></div>
+                <h3>Félicitations</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and type setting industry Lorem Ipsum has been industry.
+                    Lorem Ipsum is simply dummy text the printing and type setting industry Lorem Ipsum has been industry.
+                    Lorem Ipsum is simply dummy text the printing and type setting industry Lorem Ipsum has been industry.
+                    Lorem Ipsum is simply dummy text the printing and type setting industry Lorem Ipsum has been industry.Lorem
+                    Ipsum is simply dummy text the printing and type setting industry Lorem Ipsum has been industry.</p>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+
+{% endblock %}

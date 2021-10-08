@@ -2,6 +2,7 @@
 
 namespace App\Controller\Users;
 
+use App\Repository\AnnouncementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,10 +15,12 @@ class MyHistoryController extends AbstractController
     /**
      * @Route("/users/my/history", name="users_my_history")
      */
-    public function index(): Response
+    public function index(AnnouncementRepository $announcementRepository): Response
     {
+        $annonces = $announcementRepository->getMyAnnouncement($this->getUser());
         return $this->render('users/my_history/index.html.twig', [
             'controller_name' => 'MyHistoryController',
+            'mesAnnonces' => $annonces
         ]);
     }
 

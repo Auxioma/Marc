@@ -25,7 +25,7 @@ class PackageAdTextualRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.type = :val')
             ->setParameter('val', $value)
-            ->orderBy('p.pricePerDay', 'ASC')
+            ->orderBy('p.nbrDays', 'ASC')
             ->getQuery()
             ->getResult()
         ;

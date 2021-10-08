@@ -1,0 +1,100 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Crée annonce{% endblock %}
+
+{% block body %}
+
+
+    <div class="container margin-top-25">
+        <div class="row">
+            <div class="col-md-12">
+                <style>
+                    #breadcrumbs ul li:before{
+                        border-left: 5px solid #a3a3a3 !important;
+                    }
+                </style>
+                <nav id="breadcrumbs" style="left: 0px;right: unset;">
+                    <ul>
+                        <li><a href="{{ path('site_home_page') }}">Home</a></li>
+                        <li>Publier</li>
+                    </ul>
+                </nav>
+
+                <h2 style="float: right;">Publier</h2>
+            </div>
+        </div>
+
+
+        <section>
+            <div class="block">
+                <div class="container">
+                    <div class="heading margin-bottom-20">
+                        <h2>Buy Our Plans And Packeges</h2>
+                        <span>One of our jobs has some kind of flexibility option - such as telecommuting, a part-time schedule or a flexible or flextime schedule.</span>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12 margin-top-25" style="height: 260px;border: 1px solid;border-radius: 10px;">
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-8">
+                                <h3>Annonce</h3>
+                                <p>
+                                    Annonce gratuite avec photos, lien sur
+                                    votre site, horaires, émail de contact, et
+                                    beaucoup plus d’option comprise dans
+                                    votre parution. Upgrade de position
+                                    possible pour une meilleur visibilité.
+                                </p>
+                                <div class="col-md-12 text-right">
+                                    <a href="{{ path('users_submit_announcement') }}" class="button margin-top-0 margin-bottom-20 bg-green">Publier</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 margin-top-25" style="height: 260px;border: 1px solid;border-radius: 10px;">
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-8">
+                                <h3>Publicité 1ère page</h3>
+                                <p>
+                                    Annonce gratuite avec photos, lien sur
+                                    votre site, horaires, émail de contact, et
+                                    beaucoup plus d’option comprise dans
+                                    votre parution. Upgrade de position
+                                    possible pour une meilleur visibilité.
+                                </p>
+                                <div class="col-md-12 text-right">
+                                    <a href="{{ path('users_submit_announcement') }}" class="button margin-top-0 margin-bottom-20 bg-green">Publier</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 margin-top-25" style="height: 260px;border: 1px solid;border-radius: 10px;">
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-8">
+                                <h3>Publicité catégorie</h3>
+                                <p>
+                                    Annonce gratuite avec photos, lien sur
+                                    votre site, horaires, émail de contact, et
+                                    beaucoup plus d’option comprise dans
+                                    votre parution. Upgrade de position
+                                    possible pour une meilleur visibilité.
+                                </p>
+                                <div class="col-md-12 text-right">
+                                    <a href="{{ path('users_submit_announcement') }}" class="button margin-top-0 margin-bottom-20 bg-green">Publier</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+{% endblock %}

@@ -14,25 +14,31 @@
             <div class="utf-listing-item" style="border: 1px solid #b9b9b9;">
               <a href="{{ path('site_product', {'idcat':NewOffert.Category.slug, 'id':NewOffert.Id, 'slug':NewOffert.Slug}) }}" class="utf-smt-listing-img-container">
                 <div class="utf-listing-badges-item">
-                  {% if NewOffert.options == 0 %}
+
+                  {% if NewOffert.options == 1 %}
+                    <span class="featured">PREMIUM</span>
+                  {% endif %}
+                  {% if NewOffert.options == 2 %}
                     <span class="featured">GOLD</span>
                   {% endif %}
-                  {% if NewOffert.options == 1 %}
+                  {% if NewOffert.options == 3 %}
                     <span class="featured">SILVER</span>
                   {% endif %}
+
                 </div>
                 <div class="utf-listing-img-content-item"></div>
                 <div class="utf-listing-carousel-item">
+                  {#  TODO : change with dynamic imgs #}
                   <div><img src="{{ asset('images/listing-01.jpg') }}" alt=""></div>
                 </div>
               </a>
               <div class="utf-listing-content">
                 <div class="utf-listing-title">
                   <span class="utf-listing-price">
-                    {% if NewOffert.Discount is defined %}
-                    {{ NewOffert.Discount }} %
+                    {% if NewOffert.Discount is defined and NewOffert.Discount %}
+                      {{ NewOffert.Discount }} %
                     {% else %}
-                    {% trans %} Promotion {% endtrans %}
+                      {{ NewOffert.promoTitle }}
                     {% endif %} 
                   </span>
                   <h4><a class="oneline-text" href="{{ path('site_product', {'idcat':NewOffert.Category.slug, 'id':NewOffert.Id, 'slug':NewOffert.Slug}) }}">{{ NewOffert.Title }}</a></h4>

@@ -4020,9 +4020,11 @@ span.video-button:after {
 	color: #ffffff;
 	font-size: 16px;
 	font-weight: 600;
-	display:block;
-	width:65px;
-	margin:0 auto;
+	position: absolute;
+	left: 50%;
+	top: -30px;
+	transform: translate(-50%, -50%);
+	z-index: 9;
 }
 .utf-listing-img-content-item .utf-listing-price i {
 	display: block;
@@ -4124,8 +4126,10 @@ span.like-icon {
 .utf-listing-title {
 	padding: 20px;
 	padding-bottom: 15px;
+	position: relative;
 }
 .utf-listing-title h4 {
+	margin-top: 0px;
 	margin-bottom:5px;
 	font-weight:600;
 }
@@ -4133,6 +4137,10 @@ span.like-icon {
 	font-size: 18px;
 	color: #333;
 	line-height: 31px;
+	border: 1px solid #333;
+	padding: 0px 10px;
+	border-radius: 5px;
+	text-align: center;
 }
 .utf-listing-title h4 a:hover {
 	color: #e33324;
@@ -4239,14 +4247,14 @@ ul.listing-details li span {
 }
 .utf-listing-features {
 	background: #FFFFFF;
-	border-top: 1px solid #d9d9d9;
-	border-bottom:1px solid #d9d9d9;
+	border-top: 1px solid #333;
+	border-bottom:1px solid #333;
 	width: 100%;
 	display: block;
 	list-style: none;
 	margin: 0;
 	columns:4;
-	padding: 5px 10px 10px 10px;
+	padding: 10px 15px 10px 15px;
 }
 .utf-listing-features li {
 	font-size: 13px;
@@ -14603,6 +14611,7 @@ section.fullwidth .headline-box {
 }
 .list-layout .utf-listing-title {
 	padding-right: 30px;
+	position: relative;
 }
 .property-slider-container .agent-widget {
 	position: relative;
@@ -15411,7 +15420,8 @@ added styles
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-	height: 90px;
+	height: 80px;
+	margin: 0px;
 }
 .oneline-text{
 	overflow: hidden;

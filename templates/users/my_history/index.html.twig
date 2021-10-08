@@ -32,75 +32,38 @@
         <table class="manage-table responsive-table">
           <tr>
             <th>Property</th>
-            <th>Date</th>
+            <th>Date de création</th>
             <th style="text-align:right">Action</th>
           </tr>
           <!-- Item #1 -->
+
+          {% for mesAnnonce in mesAnnonces%}
           <tr>
-            <td class="utf-title-container"><img src="{{ asset('') }}images/listing-02.jpg" alt="">
+            <td class="utf-title-container"><img src="{{ asset('img/announcement/') }}{{ mesAnnonce.picture.first ? mesAnnonce.picture.first.Name : '' }}" alt="">
               <div class="title">
-                <h4><a href="#">Renovated Luxury Apartment</a></h4>
-                <span>2021 San Pedro, Los Angeles</span> <span class="table-property-price">$20,000/mo</span> 
+                <h4><a href="#">
+                        {{ mesAnnonce.title ? mesAnnonce.title : '' }}
+                        {{ mesAnnonce.titlediscount ? mesAnnonce.titlediscount : '' }}
+                    </a>
+                </h4>
+                <span>{{ mesAnnonce.shortDescription}}</span>
+                <span class="table-property-price">
+                    {{ mesAnnonce.discount ? '-'~mesAnnonce.discount~'%' : '' }}
+                    {{ mesAnnonce.promoTitle ? mesAnnonce.promoTitle : '' }}
+                </span>
 			  </div>
 			</td>
-            <td class="utf-expire-date">12 Jan, 2021</td>
+            <td class="utf-expire-date">{{ mesAnnonce.createdAt|date }}</td>
             <td class="action">
 			    <a href="#" class="view tooltip left" title="View"><i class="icon-feather-eye"></i></a>
 				<a href="#" class="edit tooltip left" title="Edit"><i class="icon-feather-edit"></i></a> 
 				<a href="#" class="delete tooltip left" title="Delete"><i class="icon-feather-trash-2"></i></a>
 			</td>
           </tr>
-          <!-- Item #2 -->
-          <tr>
-            <td class="utf-title-container"><img src="{{ asset('') }}images/listing-05.jpg" alt="">
-              <div class="title">
-                <h4><a href="#">Renovated Luxury Apartment</a></h4>
-                <span>2021 San Pedro, Los Angeles</span> <span class="table-property-price">$20,000/mo</span> 
-			  </div>
-			</td>
-            <td class="utf-expire-date">12 Jan, 2021</td>
-            <td class="action">
-				<a href="#" class="view tooltip left" title="View"><i class="icon-feather-eye"></i></a>
-				<a href="#" class="edit tooltip left" title="Edit"><i class="icon-feather-edit"></i></a> 
-				<a href="#" class="delete tooltip left" title="Delete"><i class="icon-feather-trash-2"></i></a>
-			</td>
-          </tr>
-          <!-- Item #3 -->
-          <tr>
-            <td class="utf-title-container"><img src="{{ asset('') }}images/listing-04.jpg" alt="">
-              <div class="title">
-                <h4><a href="#">Renovated Luxury Apartment</a></h4>
-                <span>2021 San Pedro, Los Angeles</span> <span class="table-property-price">$20,000/mo</span> 
-			  </div>
-			</td>
-            <td class="utf-expire-date">12 Jan, 2021</td>
-            <td class="action">
-				<a href="#" class="view tooltip left" title="View"><i class="icon-feather-eye"></i></a>
-				<a href="#" class="edit tooltip left" title="Edit"><i class="icon-feather-edit"></i></a> 
-				<a href="#" class="delete tooltip left" title="Delete"><i class="icon-feather-trash-2"></i></a>
-			</td>
-          </tr>
-          <!-- Item #4 -->
-          <tr>
-            <td class="utf-title-container"><img src="{{ asset('') }}images/listing-06.jpg" alt="">
-              <div class="title">
-                <h4>
-                    <a href="#">
-                        Renovated Luxury Apartment
-                    </a>
-                </h4>
-                <span>2021 San Pedro, Los Angeles</span> <span class="table-property-price">$20,000/mo</span> 
-			  </div>
-			</td>
-            <td class="utf-expire-date">12 Jan, 2021</td>
-            <td class="action">
-				<a href="#" class="view tooltip left" title="View"><i class="icon-feather-eye"></i></a>
-				<a href="#" class="edit tooltip left" title="Edit"><i class="icon-feather-edit"></i></a> 
-				<a href="#" class="delete tooltip left" title="Delete"><i class="icon-feather-trash-2"></i></a>
-			</td>
-          </tr>
+          {% endfor %}
+
+
         </table>
-        <a href="add-new-property.html" class="utf-centered-button margin-top-30 button">Submit New Property</a> 
 	  </div>
     </div>
   </div>
