@@ -18,13 +18,43 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
         $faker = Faker\Factory::create('fr_CH');
 
 
-        for($nbPack = 1; $nbPack <= 8; $nbPack++){
+        $nbrj = 15;$prixJ=5.9;$percent=0.9;
+        for($nbPack = 1; $nbPack <= 6; $nbPack++){
             $pack = new PackageAdTextual();
-            $pack->setNbrDays(rand(4,16));
-            $pack->setPricePerDay(rand(5,14));
-            $pack->setType(rand(1,2));
+            $pack->setNbrDays($nbrj);
+            $pack->setPricePerDay($prixJ * $percent);
+            $pack->setType(1);
             $pack->setName('Custom pack'. rand(1,5));
             $manager->persist($pack);
+            $nbrj = $nbrj + 5;
+            dump($prixJ);
+            $percent = $percent - 0.05;
+        }
+
+        $nbrj = 15;$prixJ=4.9;$percent=0.9;
+        for($nbPack = 1; $nbPack <= 6; $nbPack++){
+            $pack = new PackageAdTextual();
+            $pack->setNbrDays($nbrj);
+            $pack->setPricePerDay($prixJ * $percent);
+            $pack->setType(2);
+            $pack->setName('Custom pack'. rand(1,5));
+            $manager->persist($pack);
+            $nbrj = $nbrj + 5;
+            dump($prixJ);
+            $percent = $percent - 0.05;
+        }
+
+        $nbrj = 15;$prixJ=3.9;$percent=0.9;
+        for($nbPack = 1; $nbPack <= 6; $nbPack++){
+            $pack = new PackageAdTextual();
+            $pack->setNbrDays($nbrj);
+            $pack->setPricePerDay($prixJ * $percent);
+            $pack->setType(3);
+            $pack->setName('Custom pack'. rand(1,5));
+            $manager->persist($pack);
+            $nbrj = $nbrj + 5;
+            dump($prixJ);
+            $percent = $percent - 0.05;
         }
 
         $idcat = 1;

@@ -44,6 +44,11 @@ class PackageAdTextual
      */
     private $Announcement;
 
+    /**
+     * @var
+     */
+    private $percentTemporaire;
+
     public function __construct()
     {
         $this->Announcement = new ArrayCollection();
@@ -131,4 +136,21 @@ class PackageAdTextual
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPercentTemporaire()
+    {
+        return $this->percentTemporaire;
+    }
+
+    /**
+     * @param mixed $percentTemporaire
+     */
+    public function setPercentTemporaire($percentTemporaire): void
+    {
+        $this->percentTemporaire = $percentTemporaire;
+    }
+
 }

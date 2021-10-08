@@ -94,4 +94,5 @@ class HomePageController extends AbstractController
             'groupedOfferts' => $groupedOfferts
         ]);
     }
+
 }
