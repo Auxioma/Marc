@@ -41,8 +41,6 @@ class SubmitAnnouncementController extends AbstractController
      */
     public function index(Request $request): Response
     {
-
-
         $Announcement = new Announcement();
         $form = $this->createForm(SubmitAnnouncementType::class, $Announcement);
         $form->handleRequest($request);

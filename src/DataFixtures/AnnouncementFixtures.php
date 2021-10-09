@@ -27,20 +27,6 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
             $pack->setName('Custom pack'. rand(1,5));
             $manager->persist($pack);
             $nbrj = $nbrj + 5;
-            dump($prixJ);
-            $percent = $percent - 0.05;
-        }
-
-        $nbrj = 15;$prixJ=4.9;$percent=0.9;
-        for($nbPack = 1; $nbPack <= 6; $nbPack++){
-            $pack = new PackageAdTextual();
-            $pack->setNbrDays($nbrj);
-            $pack->setPricePerDay($prixJ * $percent);
-            $pack->setType(2);
-            $pack->setName('Custom pack'. rand(1,5));
-            $manager->persist($pack);
-            $nbrj = $nbrj + 5;
-            dump($prixJ);
             $percent = $percent - 0.05;
         }
 
@@ -49,11 +35,22 @@ class AnnouncementFixtures extends Fixture  implements DependentFixtureInterface
             $pack = new PackageAdTextual();
             $pack->setNbrDays($nbrj);
             $pack->setPricePerDay($prixJ * $percent);
+            $pack->setType(2);
+            $pack->setName('Custom pack'. rand(1,5));
+            $manager->persist($pack);
+            $nbrj = $nbrj + 5;
+            $percent = $percent - 0.05;
+        }
+
+        $nbrj = 15;$prixJ=2.9;$percent=0.9;
+        for($nbPack = 1; $nbPack <= 6; $nbPack++){
+            $pack = new PackageAdTextual();
+            $pack->setNbrDays($nbrj);
+            $pack->setPricePerDay($prixJ * $percent);
             $pack->setType(3);
             $pack->setName('Custom pack'. rand(1,5));
             $manager->persist($pack);
             $nbrj = $nbrj + 5;
-            dump($prixJ);
             $percent = $percent - 0.05;
         }
 

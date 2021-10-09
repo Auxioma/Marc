@@ -13,6 +13,16 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Announcement
 {
+
+    const statusCreated         = "CREATED";
+    const statusPAID            = "PAID";
+    const statusPaymentFailed   = "PAYMENT_FAILED";
+    const statusCancled         = "PAYMENT_CANCLED";
+    const statusPendingApprouve = "PENDING_APPROUVE";
+    const statusAPPROUVED       = "APPROUVED";
+    const statusREJECTED        = "REJECTED";
+    const statusRETOURNED       = "RETOURNED";
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -87,6 +97,17 @@ class Announcement
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $EndAt;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $status = self::statusCreated;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $IsOnline = false;
 
     /**
      * @ORM\Column(type="boolean")
@@ -433,6 +454,38 @@ class Announcement
     public function setMontantTotal(int $montantTotal): void
     {
         $this->montantTotal = $montantTotal;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsOnline(): bool
+    {
+        return $this->IsOnline;
+    }
+
+    /**
+     * @param bool $IsOnline
+     */
+    public function setIsOnline(bool $IsOnline): void
+    {
+        $this->IsOnline = $IsOnline;
     }
 
 }

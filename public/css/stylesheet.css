@@ -12212,7 +12212,7 @@ body, h1, h2, h3, h4, h5, h6, input[type="text"], input[type="password"], input[
 	text-transform: none;
 }
 textarea{
-	background-color: #fbfdff;
+	background-color: #FFFFFF;
     border: 1px solid #b5b5b5;
     box-shadow:0 1px 4px 0px rgba(0, 0, 0, 0.05);
 }
@@ -15822,11 +15822,11 @@ button:disabled,input:disabled {
 .start-0 {
 	left: 0 !important;
 }
-.start-25 {
-	left: 25% !important;
+.start-33 {
+	left: 33% !important;
 }
-.start-50 {
-	left: 50% !important;
+.start-66 {
+	left: 66% !important;
 }
 .start-75 {
 	left: 75% !important;
@@ -15840,8 +15840,14 @@ button:disabled,input:disabled {
 .w-25{
 	width: 25%;
 }
+.w-33{
+	width: 33.33%;
+}
 .w-50{
 	width: 50%;
+}
+.w-66{
+	width: 66.66%;
 }
 .w-75{
 	width: 75%;
