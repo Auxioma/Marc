@@ -21,11 +21,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SubmitAnnouncementController extends AbstractController
 {
     /**
-     * @Route("/users/publier", name="users_publier")
+     * @Route("/users/publier/{option}", name="users_publier", defaults={"option"=null})
      */
-    public function publier(Request $request): Response
+    public function publier(Request $request, $option): Response
     {
-        return $this->render('users/publicite/index.html.twig');
+        return $this->render('users/publicite/index.html.twig',['option'=>$option]);
     }
 
     /**
@@ -36,6 +36,21 @@ class SubmitAnnouncementController extends AbstractController
 
         return $this->render('users/publicite/publicite.html.twig');
     }
+
+
+
+    /**
+     * @Route("/users/publicite-category", name="users_submit_publicite_category")
+     */
+    public function publiciteCategorie(Request $request): Response
+    {
+
+        return $this->render('users/publicite/publiciteCategory.html.twig');
+    }
+
+
+
+
     /**
      * @Route("/users/submit/announcement", name="users_submit_announcement")
      */
