@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
         <link rel="stylesheet" href="{{ asset('css/cropper.css') }}">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
         {% block css %}{% endblock %}
     </head>
     <body>
@@ -42,7 +43,8 @@
         <script src="{{ asset('scripts/tooltips.min.js') }}"></script> 
         <script src="{{ asset('scripts/typed.js') }}"></script>
         <script src="{{ asset('scripts/cropper.js') }}"></script>
-        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <script src="{{ asset('scripts/custom_jquery.js') }}"></script>
         <script>
             $ = jQuery.noConflict();

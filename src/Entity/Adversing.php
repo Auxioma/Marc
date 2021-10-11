@@ -55,14 +55,14 @@ class Adversing
     private $EndAt;
 
     /**
-     * @ORM\Column(type="string", length=3)
-     */
-    private $position;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $IsValid = 0;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Position::class, inversedBy="ads")
+     */
+    private $position;
 
     public function getId(): ?int
     {
@@ -141,18 +141,6 @@ class Adversing
         return $this;
     }
 
-    public function getPosition(): ?string
-    {
-        return $this->position;
-    }
-
-    public function setPosition(string $position): self
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
     public function getIsValid(): ?bool
     {
         return $this->IsValid;
@@ -161,6 +149,18 @@ class Adversing
     public function setIsValid(bool $IsValid): self
     {
         $this->IsValid = $IsValid;
+
+        return $this;
+    }
+
+    public function getPosition(): ?Position
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?Position $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }

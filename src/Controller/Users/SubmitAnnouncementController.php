@@ -11,6 +11,7 @@ use App\Entity\Announcement;
 use App\Form\Users\SubmitAnnouncementType;
 use App\Repository\CategoryRepository;
 use App\Repository\PackageAdTextualRepository;
+use App\Repository\PositionRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,10 +32,16 @@ class SubmitAnnouncementController extends AbstractController
     /**
      * @Route("/users/publicite", name="users_submit_publicite")
      */
-    public function publicite(Request $request): Response
+    public function publicite(Request $request,PositionRepository $repository): Response
     {
+        $positions = $repository->getPositions();
+        $_positions = [];
+        foreach ($positions as $position)
+            $_positions[$position->getSlug()] = $position;
 
-        return $this->render('users/publicite/publicite.html.twig');
+        return $this->render('users/publicite/publicite.html.twig',[
+            'positions' => $_positions
+        ]);
     }
 
 

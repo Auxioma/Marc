@@ -7,11 +7,6 @@
     <div class="container margin-top-25">
         <div class="row">
             <div class="col-md-12">
-                <style>
-                    #breadcrumbs ul li:before{
-                        border-left: 5px solid #a3a3a3 !important;
-                    }
-                </style>
                 <nav id="breadcrumbs" style="left: 0px;right: unset;">
                     <ul>
                         <li><a href="{{ path('site_home_page') }}">Home</a></li>
@@ -26,16 +21,291 @@
             {% include 'users/_partial/menu.html.twig' %}
             <!-- Submit Page -->
             <div class="col-md-6">
-                <div class="submit-page">
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-3 h-100p border w-24 activeBlock">
+                            {{ positions['TOP_GAUCHE'].name }}
+                        </div>
+                        <div class="col-md-6 h-100p border w-48">
+                            <br>
+                        </div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['TOP_GAUCHE'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-3 h-100p border w-24">
+
+                        </div>
+                        <div class="col-md-6 h-100p border w-48 activeBlock">
+                            {{ positions['TOP_FIRST'].name }}
+                        </div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['TOP_FIRST'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-3 h-100p border w-24">
+
+                        </div>
+                        <div class="col-md-6 h-100p border w-48">
+                            <br>
+                        </div>
+                        <div class="col-md-3 h-100p border w-24 activeBlock">
+                            {{ positions['TOP_DROITE'].name }}
+                        </div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['TOP_DROITE'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-3 h-100p border w-24 activeBlock">
+                            {{ positions['PREMIUM_1'].name }}
+                        </div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['PREMIUM_1'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-3 h-100p border w-24">
+
+                        </div>
+                        <div class="col-md-3 h-100p border w-24 activeBlock">
+                            {{ positions['PREMIUM_2'].name }}
+                        </div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                        <div class="col-md-3 h-100p border w-24">
+
+                        </div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['PREMIUM_2'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-3 h-100p border w-24">
+
+                        </div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                        <div class="col-md-3 h-100p border w-24 activeBlock">
+                            {{ positions['PREMIUM_3'].name }}
+                        </div>
+                        <div class="col-md-3 h-100p border w-24">
+
+                        </div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['PREMIUM_3'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-3 h-100p border w-24">
+                        </div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                        <div class="col-md-3 h-100p border w-24"><br></div>
+                        <div class="col-md-3 h-100p border w-24 activeBlock">
+                            {{ positions['PREMIUM_4'].name }}
+                        </div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['PREMIUM_4'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-6 h-100p border w-48 activeBlock">
+                            {{ positions['GRANDE_PREMIUM_GAUCHE'].name }}
+                        </div>
+                        <div class="col-md-6 h-100p border w-48">
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['GRANDE_PREMIUM_GAUCHE'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-page blockAd">
+                    <div class="subBlockAd">
+                        <div class="col-md-6 h-100p border w-48">
+                            <br>
+                        </div>
+                        <div class="col-md-6 h-100p border w-48 activeBlock">
+                            {{ positions['GRANDE_PREMIUM_DROITE'].name }}
+                        </div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <label for="avail">Date début - Date fin</label>
+                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 col-md-7 p-0">
+                            <div class="z-prices">
+                                <span class="fs-4">{{ positions['GRANDE_PREMIUM_DROITE'].prix }}</span>
+                                <span class="extra-sm">CHF</span>
+                            </div>
+                        </div>
+                        <div class="col-5 col-md-5">
+                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-3" style="height: 152vh;position: relative;overflow: visible;display: unset;">
+                <div class="border" style="min-height: 360px;position: sticky;top: 79px;">
 
                 </div>
-            </div>
-            <div class="col-md-3">
-
             </div>
         </div>
     </div>
 
 {% endblock %}
+
+{% block javascript %}
+    <script>
+        $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+            }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
 
 
