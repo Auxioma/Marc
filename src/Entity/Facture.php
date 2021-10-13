@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FactureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,16 @@ class Facture
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Adversing::class, mappedBy="facture")
+     */
+    private $adversings;
+
+    public function __construct()
+    {
+        $this->adversings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +132,33 @@ class Facture
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adversing[]
+     */
+    public function getAdversings(): Collection
+    {
+        return $this->adversings;
+    }
+
+    public function addAdversing(Adversing $adversing): self
+    {
+        if (!$this->adversings->contains($adversing)) {
+            $this->adversings[] = $adversing;
+            $adversing->addFacture($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdversing(Adversing $adversing): self
+    {
+        if ($this->adversings->removeElement($adversing)) {
+            $adversing->removeFacture($this);
+        }
 
         return $this;
     }

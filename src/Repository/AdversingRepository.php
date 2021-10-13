@@ -21,6 +21,18 @@ class AdversingRepository extends ServiceEntityRepository
         parent::__construct($registry, Adversing::class);
     }
 
+    public function getActiveAds()
+    {
+        $today   = new \DateTime();
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.EndAt >= :to')
+            ->andWhere('a.IsValid = :valid')
+            ->setParameter('to', $today)
+            ->setParameter('valid',true)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     
     /**
      * 

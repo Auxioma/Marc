@@ -5221,7 +5221,7 @@ a.show-more-button{
 .user-smt-account-menu-container {
 	border-radius: 6px;
 	box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.12);
-	background: #fbfdff;
+	background: #FFFFFF;
 	padding: 25px 20px;
 	margin: 0 0 40px 0;
 	border: 1px solid #b5b5b5;
@@ -15958,4 +15958,15 @@ button:disabled,input:disabled {
 }
 .z-prices{
 	float: right;height: 45px;display: flex;align-items: center;
+}
+
+
+.daterangepicker td.disabled, .daterangepicker option.disabled {
+	color: #e33324 !important;
+	background: #ffc8c4 !important;
+	border-radius: 0px !important;
+}
+
+input, input[type="text"], input[type="password"], input[type="email"], input[type="number"], select {
+	background-color: #FFFFFF !important;
 }

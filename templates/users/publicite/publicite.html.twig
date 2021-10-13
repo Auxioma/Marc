@@ -14,41 +14,46 @@
                     </ul>
                 </nav>
 
-                <h2 style="float: right;">Publicité 1ère page</h2>
+                <h2 style="float: right;"></h2>
             </div>
         </div>
         <div class="row">
             {% include 'users/_partial/menu.html.twig' %}
             <!-- Submit Page -->
             <div class="col-md-6">
-                <div class="submit-page blockAd">
-                    <div class="subBlockAd">
-                        <div class="col-md-3 h-100p border w-24 activeBlock">
-                            {{ positions['TOP_GAUCHE'].name }}
+                <form method="post">
+                    <div class="submit-page blockAd">
+                        <div class="subBlockAd">
+                            <div class="col-md-3 h-100p border w-24 activeBlock">
+                                {{ positions['TOP_GAUCHE'].name }}
+                            </div>
+                            <div class="col-md-6 h-100p border w-48">
+                                <br>
+                            </div>
+                            <div class="col-md-3 h-100p border w-24"><br></div>
                         </div>
-                        <div class="col-md-6 h-100p border w-48">
-                            <br>
-                        </div>
-                        <div class="col-md-3 h-100p border w-24"><br></div>
-                    </div>
-                    <div class="row margin-top-10">
-                        <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-7 col-md-7 p-0">
-                            <div class="z-prices">
-                                <span class="fs-4">{{ positions['TOP_GAUCHE'].prix }}</span>
-                                <span class="extra-sm">CHF</span>
+                        <div class="row margin-top-10">
+                            <div class="col-md-12">
+                                <label for="availTOP_GAUCHE">Date début - Date fin</label>
+                                <input data-unavaildates="{{ unavailabeDays['TOP_GAUCHE'] }}" id="availTOP_GAUCHE" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                             </div>
                         </div>
-                        <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                        <div class="row">
+                            <div class="col-7 col-md-7 p-0">
+                                <div class="z-prices">
+                                    <span class="fs-4">{{ positions['TOP_GAUCHE'].prix }}</span>
+                                    <span class="extra-sm">CHF</span>
+                                </div>
+                            </div>
+                            <div class="col-5 col-md-5">
+                                <input type="hidden" name="position" value="TOP_GAUCHE">
+                                <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
+
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-3 h-100p border w-24">
@@ -61,8 +66,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availTOP_FIRST">Date début - Date fin</label>
+                            <input data-unavaildates="{{ unavailabeDays['TOP_FIRST'] }}" id="availTOP_FIRST" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -73,10 +78,13 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="TOP_FIRST">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
+                </form>
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-3 h-100p border w-24">
@@ -91,8 +99,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availTOP_DROITE">Date début - Date fin</label>
+                            <input  data-unavaildates="{{ unavailabeDays['TOP_DROITE'] }}" id="availTOP_DROITE" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -103,11 +111,13 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="TOP_DROITE">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
-
+                </form>
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-3 h-100p border w-24 activeBlock">
@@ -119,8 +129,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availPREMIUM_1">Date début - Date fin</label>
+                            <input data-unavaildates="{{ unavailabeDays['PREMIUM_1'] }}"  id="availPREMIUM_1" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -131,10 +141,13 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="PREMIUM_1">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
+                </form>
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-3 h-100p border w-24">
@@ -150,8 +163,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availPREMIUM_2">Date début - Date fin</label>
+                            <input data-unavaildates="{{ unavailabeDays['PREMIUM_2'] }}" id="availPREMIUM_2" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -162,10 +175,13 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="PREMIUM_2">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
+                </form>
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-3 h-100p border w-24">
@@ -181,8 +197,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availPREMIUM_3">Date début - Date fin</label>
+                            <input data-unavaildates="{{ unavailabeDays['PREMIUM_3'] }}" id="availPREMIUM_3" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -193,10 +209,13 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="PREMIUM_3">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
+                </form>
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-3 h-100p border w-24">
@@ -209,8 +228,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availPREMIUM_4">Date début - Date fin</label>
+                            <input data-unavaildates="{{ unavailabeDays['PREMIUM_4'] }}" id="availPREMIUM_4" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -221,11 +240,13 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="PREMIUM_4">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
-
+                </form>
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-6 h-100p border w-48 activeBlock">
@@ -237,8 +258,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availGRANDE_PREMIUM_GAUCHE">Date début - Date fin</label>
+                            <input data-unavaildates="{{ unavailabeDays['GRANDE_PREMIUM_GAUCHE'] }}" id="availGRANDE_PREMIUM_GAUCHE" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -249,10 +270,13 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="GRANDE_PREMIUM_GAUCHE">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
+                </form>
+                <form method="post">
                 <div class="submit-page blockAd">
                     <div class="subBlockAd">
                         <div class="col-md-6 h-100p border w-48">
@@ -264,8 +288,8 @@
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
-                            <label for="avail">Date début - Date fin</label>
-                            <input id="avail" type="text" name="daterange" value="11/10/2021 - 11/15/2021" />
+                            <label for="availGRANDE_PREMIUM_DROITE">Date début - Date fin</label>
+                            <input data-unavaildates="{{ unavailabeDays['GRANDE_PREMIUM_DROITE'] }}" id="availGRANDE_PREMIUM_DROITE" class="daterange" type="text" name="daterange" value="10/10/2021 - 10/15/2021" />
                         </div>
                     </div>
                     <div class="row">
@@ -276,32 +300,217 @@
                             </div>
                         </div>
                         <div class="col-5 col-md-5">
-                            <button class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            <input type="hidden" name="position" value="GRANDE_PREMIUM_DROITE">
+                            <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
                         </div>
                     </div>
                 </div>
+                </form>
 
             </div>
 
-            <div class="col-md-3" style="height: 152vh;position: relative;overflow: visible;display: unset;">
-                <div class="border" style="min-height: 360px;position: sticky;top: 79px;">
+            <div class="col-md-3" style="height: 352vh;position: relative;overflow: visible;display: unset;">
+                <div class="plan" style="position: sticky;top: 79px;">
+                    <div class="utf-plan-price utf-smt-gratuit">
+                        <h3>VOTRE COMMANDE</h3>
+                    </div>
+                    <form method="post" action="{{ path('booking_proceed') }}">
+                        <div class="utf-plan-features">
+                            <ul>
+                                {% for preBooking in preBookings %}
+                                    <li class="parentPub" style="position: relative;text-align: left;">
+                                        <h4>{{ preBooking.position }}</h4>
+                                        <a href="{{ path('users_book_removeItem',{'uuid':preBooking.uuid}) }}" style="color: red; font-size: 20px;position: absolute;top: 10px; right: 10px;">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+
+                                        <small>Du <b>{{ preBooking.dateDebut|date('d/m/Y') }}</b> à <b>{{ preBooking.dateFin|date('d/m/Y') }}</b></small>
+
+                                        <label for="link{{ loop.index }}">Lien de votre publicité</label>
+                                        <input required name="link{{ preBooking.uuid }}" id="link{{ loop.index }}" placeholder="Https://" />
+                                        <input required class="pub_picture" name="file{{ preBooking.uuid }}" id="file{{ loop.index }}" type="file" />
+                                        <input class="base64" name="base64_{{ preBooking.uuid }}" id="filebase64{{ loop.index }}" type="hidden" />
+                                    </li>
+                                    <li style="border-top: unset;">
+                                        <div class="row" style="font-size: 18px;font-weight: 600;">
+                                            <div class="col-md-4">
+                                                PRIX:
+                                            </div>
+                                            <div class="col-md-8 text-right">
+                                                {{ preBooking.total | number_format(2,'.',',') }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                {% if preBookings | length != 0 %}
+                                    <li>
+                                        <div class="row" style="font-size: 24px;font-weight: 600;">
+                                            <div class="col-md-4">
+                                                TOTAL:
+                                            </div>
+                                            <div class="col-md-8 text-right">
+                                                {{ total | number_format(2,'.',',') }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% else %}
+
+                                {% endif %}
+                            </ul>
+                            {% if preBookings | length != 0 %}
+                                <button type="submit" class="button margin-top-0 margin-bottom-20 bg-green w-100p">Valider</button>
+                            {% endif %}
+                        </div>
+                    </form>
 
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Crop Image Before Upload</h4>
+                </div>
+                <div class="modal-body">
 
+                    <div class="row p-2 d-flex justify-content-center align-items-center">
+                        <div class="col-11 col-sm-11 col-md-9 col-lg-9 col-xl-9">
+                            <img src="" id="sample_image" class="crop-image"/>
+                        </div>
+                        <div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-3">
+                            <div class="preview crop-image mx-auto " style="overflow: hidden;width: 160px;height: 160px;margin: 10px;border: 1px solid #ff7f04;"></div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-top-5" id="actions">
+
+                        <div class="col-md-6 docs-buttons">
+                            <div class="btn-group">
+                                <button id="rotateLeft" type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="rotate(-45)">
+                                          <span class="fa fa-undo"></span>
+                                        </span>
+                                </button>
+                                <button id="rotateRight" type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="rotate(45)">
+                                          <span class="fa fa-repeat"></span>
+                                        </span>
+                                </button>
+                                <button id="zoomIn" type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="zoom(0.1)">
+                                          <span class="fa fa-search-plus"></span>
+                                        </span>
+                                </button>
+                                <button id="zoomOut" type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                        <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="zoom(-0.1)">
+                                          <span class="fa fa-search-minus"></span>
+                                        </span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button" data-dismiss="modal">Close</button>
+                    <button type="button" class="button bg-green" id="crop">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascript %}
     <script>
+        var dateToday = new Date();
         $(function() {
-        $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
-            }, function(start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
+            $('.daterange').each(function (){
+                var picker = $(this);
+                var unavailableDates = picker.data('unavaildates') ? picker.data('unavaildates').split(',') : [];
+                picker.daterangepicker({
+                   opens: 'left',
+                   minDate: dateToday,
+                   isInvalidDate: function(date){
+                       var currDate = moment(date._d).format('YYYY-MM-DD');
+                       return  unavailableDates.indexOf(currDate) != -1;
+                   }
+                   }, function(start, end, label) {
+                       console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+               })
+           })
         });
+        $(document).ready(function () {
+
+        var crop = jQuery.noConflict();
+        var $modal = crop('#modal');
+        var image = document.getElementById('sample_image');
+        var cropper;
+        var current;
+
+        crop('.pub_picture').change(function (event) {
+            current = crop(this);
+            var files = event.target.files;
+
+            var done = function (url) {
+                image.src = url;
+                $modal.modal('show');
+            };
+
+            if (files && files.length > 0) {
+                reader = new FileReader();
+                reader.onload = function (event) {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(files[0]);
+            }
+        });
+
+        $modal.on('shown.bs.modal', function () {
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 2,
+                preview: '.preview'
+            });
+        }).on('hidden.bs.modal', function () {
+            cropper.destroy();
+            cropper = null;
+        });
+        crop('#zoomIn').click(function (){
+            cropper.zoom(0.1);
+        });
+        crop('#zoomOut').click(function (){
+            cropper.zoom(-0.1);
+        });
+        crop('#rotateRight').click(function (){
+            cropper.rotate(45);
+        });
+        crop('#rotateLeft').click(function (){
+            cropper.rotate(-45);
+        });
+        crop('#crop').click(function () {
+
+            $modal.modal('hide');
+            canvas = cropper.getCroppedCanvas({
+                width: 400,
+                height: 400
+            });
+
+            canvas.toBlob(function (blob) {
+                url = URL.createObjectURL(blob);
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function () {
+                    var base64data = reader.result;
+                    current.closest('.parentPub').find('.base64').val(base64data);
+                };
+            });
+
+        });
+
+    });
     </script>
 {% endblock %}
 

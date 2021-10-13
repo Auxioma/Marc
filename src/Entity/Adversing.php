@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdversingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -63,6 +65,36 @@ class Adversing
      * @ORM\ManyToOne(targetEntity=Position::class, inversedBy="ads")
      */
     private $position;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $uuid;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $montantTotal;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $IsPaid;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Facture::class, inversedBy="adversings")
+     */
+    private $facture;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="adversings")
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->facture = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -164,4 +196,89 @@ class Adversing
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @param mixed $uuid
+     */
+    public function setUuid($uuid): void
+    {
+        $this->uuid = $uuid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMontantTotal()
+    {
+        return $this->montantTotal;
+    }
+
+    /**
+     * @param mixed $montantTotal
+     */
+    public function setMontantTotal($montantTotal): void
+    {
+        $this->montantTotal = $montantTotal;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsPaid()
+    {
+        return $this->IsPaid;
+    }
+
+    /**
+     * @param mixed $IsPaid
+     */
+    public function setIsPaid($IsPaid): void
+    {
+        $this->IsPaid = $IsPaid;
+    }
+
+    /**
+     * @return Collection|Facture[]
+     */
+    public function getFacture(): Collection
+    {
+        return $this->facture;
+    }
+
+    public function addFacture(Facture $facture): self
+    {
+        if (!$this->facture->contains($facture)) {
+            $this->facture[] = $facture;
+        }
+
+        return $this;
+    }
+
+    public function removeFacture(Facture $facture): self
+    {
+        $this->facture->removeElement($facture);
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
 }

@@ -163,10 +163,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $factures;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Adversing::class, mappedBy="user")
+     */
+    private $adversings;
+
     public function __construct()
     {
         $this->Announcement = new ArrayCollection();
         $this->factures = new ArrayCollection();
+        $this->adversings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -600,6 +606,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($facture->getClient() === $this) {
                 $facture->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adversing[]
+     */
+    public function getAdversings(): Collection
+    {
+        return $this->adversings;
+    }
+
+    public function addAdversing(Adversing $adversing): self
+    {
+        if (!$this->adversings->contains($adversing)) {
+            $this->adversings[] = $adversing;
+            $adversing->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdversing(Adversing $adversing): self
+    {
+        if ($this->adversings->removeElement($adversing)) {
+            // set the owning side to null (unless already changed)
+            if ($adversing->getUser() === $this) {
+                $adversing->setUser(null);
             }
         }
 
