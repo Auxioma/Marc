@@ -201,9 +201,6 @@ class SubmitAnnouncementController extends AbstractController
         return $this->render('users/publicite/publiciteCategory.html.twig');
     }
 
-
-
-
     /**
      * @Route("/users/submit/announcement", name="users_submit_announcement")
      */
@@ -240,7 +237,6 @@ class SubmitAnnouncementController extends AbstractController
      */
     public function finalStep(Request $request,PackageAdTextualRepository $repPack,datatrans $datatrans,$id)
     {
-
         $Announcement = $this->getDoctrine()->getManager()->getRepository(Announcement::class)->find($id);
         if ($request->isMethod('POST')){
 
@@ -286,9 +282,7 @@ class SubmitAnnouncementController extends AbstractController
                    $transactionId = $response['transactionId'];
                    return new RedirectResponse($datatrans::payUrl.$transactionId);
                 }
-
             }
-
             return  $this->redirectToRoute('users_my_history');
         }
 
@@ -367,6 +361,7 @@ class SubmitAnnouncementController extends AbstractController
                     if ($pub){
                         $total = $total + $pub->getMontantTotal();
                         $pub->setIsPaid(true);
+                        $pub->setIsValid(true);
                         $pub->setUser($this->getUser());
                         $facture->addAdversing($pub);
                         $em->persist($pub);
@@ -377,6 +372,9 @@ class SubmitAnnouncementController extends AbstractController
             }
             $em->flush();
         }catch (\Exception $exception){
+
+            // TODO :: to save logs in case we got some errors
+
             dump($exception->getMessage());
             dump($exception->getFile());
             dump($exception->getFile());
