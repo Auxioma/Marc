@@ -141,7 +141,7 @@ class SubmitAnnouncementController extends AbstractController
                 $publicite->setIsValid(false);
                 $publicite->setStartAt($preBooking['dateDebut']);
                 $publicite->setEndAt($preBooking['dateFin']);
-                $filename = self::uploadImageBase64($preBooking['base64']);
+                $filename = self::uploadImageBase64($preBooking['base64'],'publicite');
                 $publicite->setPicture($filename);
                 $publicite->setMontantTotal($preBooking['total']);
                 $publicite->setUuid($preBooking['uuid']);
@@ -213,7 +213,7 @@ class SubmitAnnouncementController extends AbstractController
             foreach ($Announcement->getPicture() as $k => $pic){
                 $base = $pic->getImgBase64();
                 if ($base){
-                    $name = self::uploadImageBase64($base);
+                    $name = self::uploadImageBase64($base,'announcement');
                     $pic->setName($name);
                     $pic->setAlt('annonce');
                 }
@@ -408,7 +408,7 @@ class SubmitAnnouncementController extends AbstractController
         dd($Announcement);
     }
 
-    public function uploadImageBase64($image){
+    public function uploadImageBase64($image,$path){
         $data = $image;
 
         $image_array_1 = explode(";", $data);
@@ -417,7 +417,7 @@ class SubmitAnnouncementController extends AbstractController
 
         $data = base64_decode($image_array_2[1]);
 
-        $uploadDir = $this->getParameter('announcement').'/';
+        $uploadDir = $this->getParameter($path).'/';
 
         $image_name = 'annonce_'. time() . '.png';
 

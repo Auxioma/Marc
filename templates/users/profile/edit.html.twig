@@ -397,9 +397,7 @@
   </div>
   {% endblock %}
 
-
   {% block javascript %}
-
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQof89PvlorQqi57C4mXWVhLXCSm1uwpQ&libraries=places&callback=initAutocomplete" async defer />
   <script>
     var placeSearch, autocomplete;
@@ -459,8 +457,8 @@
       }
     }
   </script>
-
   <script>
+    (function($) {
     function InitChangeHoraire(){
       $('.ligneHoraire').each(function (){
         var el = $(this);
@@ -565,5 +563,6 @@
       });
 
     });
+    })(this.jQuery);
   </script>
 {% endblock %}

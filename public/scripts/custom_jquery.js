@@ -1073,6 +1073,113 @@
         autoplayHoverPause: true,
         adaptiveHeight: true,
     });
+
+
+    function InitChangeHoraire(){
+        $('.ligneHoraire').each(function (){
+            var el = $(this);
+            el.find('.s-check').each(function (){
+                var check = $(this);
+                if (check.is(':checked')){
+                    check.next().html('Ouvert');
+                    check.closest('.horaireBlock').next().css('display','block');
+                }
+                else{
+                    check.closest('.horaireBlock').next().css('display','none');
+                    check.next().html('Fermé') ;
+                }
+            })
+        })
+    }
+    InitChangeHoraire();
+    $(document).on('change','.s-check',function(){
+        InitChangeHoraire();
+    });
+    $(document).on('click','.remove-horaire',function(){
+        $(this).parent().addClass('notVisible');
+        $(this).closest('.ligneHoraire').find('.add-new-horaire').toggle();
+    });
+    $(document).on('click','.add-new-horaire',function(){
+        $(this).toggle();
+        $(this).closest('.ligneHoraire').find('.part2').removeClass('notVisible');
+    });
+
+    function InitProfileLinks(){
+        $('.parentUrlPartner').each(function (){
+            var el = $(this);
+            el.find('.s-check').each(function (){
+                var check = $(this);
+                if (check.is(':checked')){
+                    el.find('.urlPartner').css('display','block');
+                }
+                else{
+                    el.find('.urlPartner').css('display','none');
+                }
+            })
+        })
+    }
+    InitProfileLinks();
+    $(document).on('change','.parentUrlPartner .s-check',function(){
+        InitProfileLinks();
+    });
+    $(document).ready(function () {
+
+        var crop = jQuery.noConflict();
+        var $modal = crop('#modal');
+        var image = document.getElementById('sample_image');
+        var cropper;
+
+        crop('#profile_image').change(function (event) {
+            var files = event.target.files;
+
+            var done = function (url) {
+                image.src = url;
+                $modal.modal('show');
+            };
+
+            if (files && files.length > 0) {
+                reader = new FileReader();
+                reader.onload = function (event) {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(files[0]);
+            }
+        });
+
+        $modal.on('shown.bs.modal', function () {
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 2,
+                preview: '.preview'
+            });
+        }).on('hidden.bs.modal', function () {
+            cropper.destroy();
+            cropper = null;
+        });
+
+        crop('#crop').click(function () {
+
+            $modal.modal('hide');
+            canvas = cropper.getCroppedCanvas({
+                width: 400,
+                height: 400
+            });
+
+            canvas.toBlob(function (blob) {
+                url = URL.createObjectURL(blob);
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function () {
+                    var base64data = reader.result;
+                    crop('#imgprofile').attr('src',base64data);
+                    crop('#profile_imgBase64').val(base64data)
+                };
+            });
+
+        });
+
+    });
+
     /*-----------------------------------------
     /*  Preloader
     -----------------------------------------*/
