@@ -34,7 +34,7 @@ class Position
 
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="float")
      */
     private $prix;
 
